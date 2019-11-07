@@ -1,0 +1,7 @@
+]0;~/Google Drive/r_packages/flipbookr[?1034hEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git pushcommit -m "added numeric clean up for date"push[K[K[KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git co[K[Kadd .
+fatal: Not a git repository (or any of the parent directories): .git
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ gi t[K[Kt commit -m "trying to move[K[Kve to a package"
+fatal: Not a git repository (or any of the parent directories): .git
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ ut[Ksethis[K[K[K[K[K[K[Kgit init
+Initialized empty Git repository in /Users/evangelinereynolds/Google Drive/r_packages/flipbookr/.git/
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit -m "first commit"[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kadd. [K[K[K [Kd .

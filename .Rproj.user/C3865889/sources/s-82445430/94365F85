@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1573065638942.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "94365F85",
+    "lastKnownWriteTime" : 1573078447,
+    "last_content_update" : 1573078447910,
+    "path" : "~/Google Drive/r_packages/flipbookr/R/xaringan_reveal_parentheses_balanced.R",
+    "project_path" : "R/xaringan_reveal_parentheses_balanced.R",
+    "properties" : {
+        "cursorPosition" : "310,62",
+        "docOutlineVisible" : "1",
+        "scrollLine" : "288"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

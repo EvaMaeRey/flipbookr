@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1573074059741.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3611302363",
+    "id" : "7734D6D2",
+    "lastKnownWriteTime" : 1573074059,
+    "last_content_update" : 1573074059,
+    "path" : "~/Google Drive/r_packages/flipbookr/tmp.R",
+    "project_path" : "tmp.R",
+    "properties" : {
+        "cursorPosition" : "0,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
