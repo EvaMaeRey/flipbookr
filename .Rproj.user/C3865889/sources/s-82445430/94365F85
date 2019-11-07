@@ -5,7 +5,7 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2338683599",
+    "hash" : "0",
     "id" : "94365F85",
     "lastKnownWriteTime" : 1573097988,
     "last_content_update" : 1573097988331,
@@ -13,6 +13,7 @@
     "project_path" : "R/xaringan_reveal_parentheses_balanced.R",
     "properties" : {
         "cursorPosition" : "109,11",
+        "docOutlineSize" : "68.94251428260773",
         "docOutlineVisible" : "1",
         "scrollLine" : "100"
     },

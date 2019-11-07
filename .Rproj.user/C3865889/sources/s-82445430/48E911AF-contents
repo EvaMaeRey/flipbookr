@@ -8,5 +8,5 @@
 #'
 #' @examples
 create_minimal_example <- function(path, open = FALSE){
-  usethis::use_template(template = "minimal_example", save_as = path, open = open)
+  file.copy(from = "inst/templates/minimal_example.Rmd", save_as = path, open = open)
 }
