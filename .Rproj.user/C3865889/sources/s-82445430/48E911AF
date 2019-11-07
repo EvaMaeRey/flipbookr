@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1573097222874.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "48E911AF",
+    "lastKnownWriteTime" : 1573097658,
+    "last_content_update" : 1573097658939,
+    "path" : "~/Google Drive/r_packages/flipbookr/R/create_minimal_example.R",
+    "project_path" : "R/create_minimal_example.R",
+    "properties" : {
+        "cursorPosition" : "7,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled3"
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

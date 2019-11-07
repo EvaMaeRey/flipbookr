@@ -90,7 +90,7 @@ parse_code <- function(code) {
               num_open_square = sum(open_square),
               num_closed_square = sum(closed_square),
               full_line = paste0(text, collapse = ""),
-              comment = str_trim(paste0(ifelse(token == "COMMENT", text, ""),
+              comment = stringr::str_trim(paste0(ifelse(token == "COMMENT", text, ""),
                                         collapse = " "))) %>%
     # dplyr::summarise(num_open_par = sum(num_open_par),
     #           num_closed_par = sum(num_closed_par),
@@ -104,10 +104,10 @@ parse_code <- function(code) {
     dplyr::mutate(connector = stringr::str_extract(stringr::str_trim(code), "%>%$|\\+$|->$|%\\+%")) %>%
     dplyr::mutate(connector = tidyr::replace_na(connector, "")) %>%
     dplyr::mutate(code = stringr::str_remove(stringi::stri_trim_right(code), "%>%$|\\+$|->$|%\\+%")) %>%
-    mutate(balanced_paren = (cumsum(num_open_par) - cumsum(num_closed_par)) == 0) %>%
-    mutate(balanced_curly = (cumsum(num_open_curly) - cumsum(num_closed_curly)) == 0) %>%
-    mutate(balanced_square = (cumsum(num_open_square) - cumsum(num_closed_square)) == 0) %>%
-    mutate(balanced_par = balanced_paren & balanced_curly & balanced_square &
+    dplyr::mutate(balanced_paren = (cumsum(num_open_par) - cumsum(num_closed_par)) == 0) %>%
+    dplyr::mutate(balanced_curly = (cumsum(num_open_curly) - cumsum(num_closed_curly)) == 0) %>%
+    dplyr::mutate(balanced_square = (cumsum(num_open_square) - cumsum(num_closed_square)) == 0) %>%
+    dplyr::mutate(balanced_par = balanced_paren & balanced_curly & balanced_square &
              code != "")
     # dplyr::mutate(balanced_par = (cumsum(num_open_par) - cumsum(num_closed_par)) == 0 &
     #          code != "")

@@ -5,16 +5,16 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "0",
+    "hash" : "2338683599",
     "id" : "94365F85",
-    "lastKnownWriteTime" : 1573078447,
-    "last_content_update" : 1573078447910,
+    "lastKnownWriteTime" : 1573097988,
+    "last_content_update" : 1573097988331,
     "path" : "~/Google Drive/r_packages/flipbookr/R/xaringan_reveal_parentheses_balanced.R",
     "project_path" : "R/xaringan_reveal_parentheses_balanced.R",
     "properties" : {
-        "cursorPosition" : "310,62",
+        "cursorPosition" : "109,11",
         "docOutlineVisible" : "1",
-        "scrollLine" : "288"
+        "scrollLine" : "100"
     },
     "relative_order" : 2,
     "source_on_save" : false,

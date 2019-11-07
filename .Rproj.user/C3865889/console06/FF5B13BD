@@ -5,3 +5,75 @@ fatal: Not a git repository (or any of the parent directories): .git
 ]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ ut[Ksethis[K[K[K[K[K[K[Kgit init
 Initialized empty Git repository in /Users/evangelinereynolds/Google Drive/r_packages/flipbookr/.git/
 ]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit -m "first commit"[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kadd. [K[K[K [Kd .
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit -m "first commit"
+[master (root-commit) c30d53b] first commit
+ 57 files changed, 2354 insertions(+)
+ create mode 100644 .Rbuildignore
+ create mode 100644 .Rproj.user/C3865889/console06/FF5B13BD
+ create mode 100644 .Rproj.user/C3865889/console06/FF5B13BD.env
+ create mode 100644 .Rproj.user/C3865889/console06/INDEX001
+ create mode 100644 .Rproj.user/C3865889/cpp-definition-cache
+ create mode 100644 .Rproj.user/C3865889/pcs/files-pane.pper
+ create mode 100644 .Rproj.user/C3865889/pcs/source-pane.pper
+ create mode 100644 .Rproj.user/C3865889/pcs/windowlayoutstate.pper
+ create mode 100644 .Rproj.user/C3865889/pcs/workbench-pane.pper
+ create mode 100644 .Rproj.user/C3865889/rmd-outputs
+ create mode 100644 .Rproj.user/C3865889/saved_source_markers
+ create mode 100644 .Rproj.user/C3865889/sources/prop/19AB9B65
+ create mode 100644 .Rproj.user/C3865889/sources/prop/234F810C
+ create mode 100644 .Rproj.user/C3865889/sources/prop/23A50E46
+ create mode 100644 .Rproj.user/C3865889/sources/prop/3F88E0AC
+ create mode 100644 .Rproj.user/C3865889/sources/prop/486343DA
+ create mode 100644 .Rproj.user/C3865889/sources/prop/4A5DA514
+ create mode 100644 .Rproj.user/C3865889/sources/prop/4D25CDE1
+ create mode 100644 .Rproj.user/C3865889/sources/prop/595A6AF6
+ create mode 100644 .Rproj.user/C3865889/sources/prop/85B73E4B
+ create mode 100644 .Rproj.user/C3865889/sources/prop/A8F315BF
+ create mode 100644 .Rproj.user/C3865889/sources/prop/ACC04465
+ create mode 100644 .Rproj.user/C3865889/sources/prop/B78E320
+ create mode 100644 .Rproj.user/C3865889/sources/prop/DC41EA38
+ create mode 100644 .Rproj.user/C3865889/sources/prop/F7B1C42
+ create mode 100644 .Rproj.user/C3865889/sources/prop/INDEX
+ create mode 100644 .Rproj.user/C3865889/sources/s-82445430/124B4E6D-contents
+ create mode 100644 .Rproj.user/C3865889/sources/s-82445430/3436CE60-contents
+ create mode 100644 .Rproj.user/C3865889/sources/s-82445430/41999F12-contents
+ create mode 100644 .Rproj.user/C3865889/sources/s-82445430/5B8144D6
+ create mode 100644 .Rproj.user/C3865889/sources/s-82445430/5B8144D6-contents
+ create mode 100644 .Rproj.user/C3865889/sources/s-82445430/6E12C4E1
+ create mode 100644 .Rproj.user/C3865889/sources/s-82445430/6E12C4E1-contents
+ create mode 100644 .Rproj.user/C3865889/sources/s-82445430/76FEB923-contents
+ create mode 100644 .Rproj.user/C3865889/sources/s-82445430/7734D6D2
+ create mode 100644 .Rproj.user/C3865889/sources/s-82445430/7734D6D2-contents
+ create mode 100644 .Rproj.user/C3865889/sources/s-82445430/776B29AA-contents
+ create mode 100644 .Rproj.user/C3865889/sources/s-82445430/789755DF-contents
+ create mode 100644 .Rproj.user/C3865889/sources/s-82445430/88CC6176
+ create mode 100644 .Rproj.user/C3865889/sources/s-82445430/88CC6176-contents
+ create mode 100644 .Rproj.user/C3865889/sources/s-82445430/94365F85
+ create mode 100644 .Rproj.user/C3865889/sources/s-82445430/94365F85-contents
+ create mode 100644 .Rproj.user/C3865889/sources/s-82445430/9C8BF37E-contents
+ create mode 100644 .Rproj.user/C3865889/sources/s-82445430/AB17685F-contents
+ create mode 100644 .Rproj.user/C3865889/sources/s-82445430/E50C06E4-contents
+ create mode 100644 .Rproj.user/C3865889/sources/s-82445430/F9CAC877-contents
+ create mode 100644 .Rproj.user/C3865889/sources/s-82445430/FB343907-contents
+ create mode 100644 .Rproj.user/C3865889/sources/s-82445430/FFB47090-contents
+ create mode 100644 .Rproj.user/C3865889/sources/s-82445430/lock_file
+ create mode 100644 .Rproj.user/shared/notebooks/F1E92AFC-days/1/s/chunks.json
+ create mode 100644 .Rproj.user/shared/notebooks/patch-chunk-names
+ create mode 100644 .Rproj.user/shared/notebooks/paths
+ create mode 100644 DESCRIPTION
+ create mode 100644 NAMESPACE
+ create mode 100755 R/xaringan_reveal_parentheses_balanced.R
+ create mode 100644 README.md
+ create mode 100644 flipbookr.Rproj
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git remote add origin https://github.com/EvaMaeRey/flipbookr.git
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push -u origin master
+Counting objects: 57, done.
+Delta compression using up to 4 threads.
+Compressing objects:   2% (1/46)   Compressing objects:   4% (2/46)   Compressing objects:   6% (3/46)   Compressing objects:   8% (4/46)   Compressing objects:  10% (5/46)   Compressing objects:  13% (6/46)   Compressing objects:  15% (7/46)   Compressing objects:  17% (8/46)   Compressing objects:  19% (9/46)   Compressing objects:  21% (10/46)   Compressing objects:  23% (11/46)   Compressing objects:  26% (12/46)   Compressing objects:  28% (13/46)   Compressing objects:  30% (14/46)   Compressing objects:  32% (15/46)   Compressing objects:  34% (16/46)   Compressing objects:  36% (17/46)   Compressing objects:  39% (18/46)   Compressing objects:  41% (19/46)   Compressing objects:  43% (20/46)   Compressing objects:  45% (21/46)   Compressing objects:  47% (22/46)   Compressing objects:  50% (23/46)   Compressing objects:  52% (24/46)   Compressing objects:  54% (25/46)   Compressing objects:  56% (26/46)   Compressing objects:  58% (27/46)   Compressing objects:  60% (28/46)   Compressing objects:  63% (29/46)   Compressing objects:  65% (30/46)   Compressing objects:  67% (31/46)   Compressing objects:  69% (32/46)   Compressing objects:  71% (33/46)   Compressing objects:  73% (34/46)   Compressing objects:  76% (35/46)   Compressing objects:  78% (36/46)   Compressing objects:  80% (37/46)   Compressing objects:  82% (38/46)   Compressing objects:  84% (39/46)   Compressing objects:  86% (40/46)   Compressing objects:  89% (41/46)   Compressing objects:  91% (42/46)   Compressing objects:  93% (43/46)   Compressing objects:  95% (44/46)   Compressing objects:  97% (45/46)   Compressing objects: 100% (46/46)   Compressing objects: 100% (46/46), done.
+Writing objects:   1% (1/57)   Writing objects:   3% (2/57)   Writing objects:   5% (3/57)   Writing objects:   7% (4/57)   Writing objects:   8% (5/57)   Writing objects:  10% (6/57)   Writing objects:  12% (7/57)   Writing objects:  14% (8/57)   Writing objects:  15% (9/57)   Writing objects:  17% (10/57)   Writing objects:  19% (11/57)   Writing objects:  21% (12/57)   Writing objects:  22% (13/57)   Writing objects:  24% (14/57)   Writing objects:  26% (15/57)   Writing objects:  28% (16/57)   Writing objects:  29% (17/57)   Writing objects:  31% (18/57)   Writing objects:  33% (19/57)   Writing objects:  35% (20/57)   Writing objects:  36% (21/57)   Writing objects:  38% (22/57)   Writing objects:  40% (23/57)   Writing objects:  42% (24/57)   Writing objects:  43% (25/57)   Writing objects:  45% (26/57)   Writing objects:  47% (27/57)   Writing objects:  49% (28/57)   Writing objects:  50% (29/57)   Writing objects:  52% (30/57)   Writing objects:  54% (31/57)   Writing objects:  56% (32/57)   Writing objects:  57% (33/57)   Writing objects:  59% (34/57)   Writing objects:  61% (35/57)   Writing objects:  63% (36/57)   Writing objects:  64% (37/57)   Writing objects:  66% (38/57)   Writing objects:  70% (40/57)   Writing objects:  71% (41/57)   Writing objects:  73% (42/57)   Writing objects:  75% (43/57)   Writing objects:  77% (44/57)   Writing objects:  78% (45/57)   Writing objects:  80% (46/57)   Writing objects:  82% (47/57)   Writing objects:  84% (48/57)   Writing objects:  85% (49/57)   Writing objects:  87% (50/57)   Writing objects:  89% (51/57)   Writing objects:  91% (52/57)   Writing objects:  92% (53/57)   Writing objects:  94% (54/57)   Writing objects:  96% (55/57)   Writing objects:  98% (56/57)   Writing objects: 100% (57/57)   Writing objects: 100% (57/57), 15.14 KiB | 262.00 KiB/s, done.
+Total 57 (delta 5), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/5)[Kremote: Resolving deltas:  40% (2/5)[Kremote: Resolving deltas: 100% (5/5)[Kremote: Resolving deltas: 100% (5/5), done.[K
+To https://github.com/EvaMaeRey/flipbookr.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push -u origin masterremote add origin https://github.com/EvaMaeRey/flipbookr.git[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[36Pcommit -m "first commit"add .[K
