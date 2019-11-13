@@ -12,14 +12,13 @@ aes(y = dist) +
 # Describing what follows
 geom_point(alpha = .3) + #REVEAL
 aes(color =
-paste(\"speed\",
-speed > 14)
+speed > 14
 ) %+%
 cars ->
 my_plot "
 
 local_code_logical_indexing <-
-  "list(thing_1 = \"a\",
+"list(thing_1 = \"a\",
      thing_2 = matrix(data = 1:5, nrow = 2)) ->
 my_named_list
 list(\"a\",
@@ -99,6 +98,11 @@ parse_code <- function(code) {
     #                                     collapse = " "))) %>%
     dplyr::left_join(raw_code_table) %>%
     dplyr::mutate(code = ifelse(comment != "", stringr::str_remove(raw_code, comment), raw_code)) %>%
+    dplyr::mutate(user_non_seq = stringr::str_extract(comment, "#REVEAL\\d+")) %>%
+    dplyr::mutate(user_non_seq = stringr::str_extract(user_non_seq, "\\d+")) %>%
+    dplyr::mutate(user_non_seq = as.numeric(user_non_seq)) %>%
+    dplyr::mutate(user_non_seq = tidyr::replace_na(user_non_seq, 1)) %>%
+    dplyr::mutate(comment = stringr::str_remove(comment, "#REVEAL\\d+")) %>%
     dplyr::mutate(user_reveal = stringr::str_detect(comment, "#REVEAL")) %>%
     dplyr::mutate(comment = stringr::str_remove(comment, "#REVEAL")) %>%
     dplyr::mutate(connector = stringr::str_extract(stringr::str_trim(code), "%>%$|\\+$|->$|%\\+%")) %>%
@@ -266,7 +270,7 @@ for (i in 1:length(breaks)) {
 #' Create text that will appear in Rmarkdown document containing code reconstruction chunks
 #'
 #' @param chunk_name a character string which is a chunk name
-#' @param user_reveal_defined a logical for if breaks should be automatically determined or have been defined manually with "#REVEAL" message
+#' @param user_reveal a logical for if breaks should be automatically determined or have been defined manually with "#REVEAL" message
 #' @param show_code a logical for if the code should be displayed or not, default is TRUE
 #' @param title a character string for a title for all the slides to display code-output evolution, default is an empty string
 #' @param reg_assignment logical set to T if output of some object created at beginning of code chunk should be displayed
@@ -275,12 +279,12 @@ for (i in 1:length(breaks)) {
 #' @export
 #'
 #' @examples
-partially_knit_chunks <- function(chunk_name, user_reveal_defined = F, show_code = T, title = "", reg_assignment = F) {
+partially_knit_chunks <- function(chunk_name, user_reveal = F, show_code = T, title = "", reg_assignment = F) {
   # Create slide for lines 1:N for each line N in the given chunk
 
   parsed <- parse_chunk(chunk_name)
 
-  if (user_reveal_defined == T) { breaks <- parsed$line[parsed$user_reveal]  } else {
+  if (user_reveal == T) { breaks <- parsed$line[parsed$user_reveal]  } else {
     breaks <- parsed$line[parsed$balanced_par] }
 
   highlighting <- calc_highlight(breaks = breaks)
@@ -316,7 +320,7 @@ partially_knit_chunks <- function(chunk_name, user_reveal_defined = F, show_code
 #' Apply reveal in Rmarkdown file, to be used in line
 #'
 #' @param chunk_name a character string which is a chunk name
-#' @param user_reveal_defined a logical for if breaks should be automatically determined or have been defined manually with "#REVEAL" message
+#' @param user_reveal a logical for if breaks should be automatically determined or have been defined manually with "#REVEAL" message
 #' @param show_code a logical for if the code should be displayed or not, default is TRUE
 #' @param title a character string for a title for all the slides to display code-output evolution, default is an empty string
 #' @param reg_assignment logical set to T if output of some object created at beginning of code chunk should be displayed
@@ -325,7 +329,12 @@ partially_knit_chunks <- function(chunk_name, user_reveal_defined = F, show_code
 #' @export
 #'
 #' @examples
-apply_reveal <- function(chunk_name, user_reveal_defined = F, show_code = T, title = "", reg_assignment = F){
-  paste(knitr::knit(text = partially_knit_chunks(chunk_name, user_reveal_defined, show_code, title, reg_assignment)), collapse = "\n")
+apply_reveal <- function(chunk_name, user_reveal = F, show_code = T, title = "", reg_assignment = F){
+
+  paste(knitr::knit(text =
+                      partially_knit_chunks(chunk_name, user_reveal,
+                                            show_code, title,
+                                            reg_assignment)),
+        collapse = "\n")
 }
 

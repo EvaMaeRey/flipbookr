@@ -1,6 +1,6 @@
 ---
-title: "A Minimal #TidyTuesday Flipbook"
-author: "Gina Reynolds, May 2019"
+title: "Flipbooks"
+author: "Gina Reynolds, November 2019"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -15,11 +15,39 @@ output:
 
 ```{r setup, include=F}
 knitr::opts_chunk$set(fig.width = 6, message = F, warning = F, 
-                      comment = "", cache = F)
+                      comment = "", cache = T)
 ```
 
 
-
+# What are Flipbooks?
+# Show an one example - ggplot2 flipbook
+# What are their advantages (Don Norman, the Design of Everyday Things)
+ - natural mapping (matching code-output temporal changes)
+ - affordances (ease of use - motion detection, name, automatic parsing - low additional burden on creator)
+ - feedback (minimal changes mean that feedback is digestible)
+# How is it implemented?
+  # automation... (technical side)
+  # And how YOU can make one ...
+# Extending the basic
+  ## adding connectors, allowing code wrapping, using a parser (making it safe for human consumption)
+  ## using %>% .[] - data.table
+  ## Regular Assignment
+  ## Non sequential reveal (not yet implemented)
+  ## Traditional presentations
+  ## Ensembles (not yet stable)
+  ## python, C++ (not yet implemented)
+  ## Visual Table of contents - "You do not need a slide for the Table of Contents!"
+  ## Flipbook mini (not yet final)
+# resources
+  ## package
+  ## flipbooks library (my uses)
+  ## minimal examples
+  ## video?
+# caveats
+  # irreproducibility across platforms (fonts)
+  # output not supported by remark.js, not going to work
+  # may load slow (or not at all - leaflet)
+# future...???
 
 ---
 
@@ -102,7 +130,7 @@ ggplot(data = my_data) +
 
 Okay. Let's load the the `flipbookr` and the `tidyverse` packages.
 
-```{r}
+```{r, cache = F}
 library(flipbookr)
 library(tidyverse)
 ```
@@ -110,8 +138,10 @@ library(tidyverse)
 And load the data from the tidytuesday github page. 
 
 ```{r}
-nobel_winners <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-14/nobel_winners.csv")
-
+# nobel_winners <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-14/nobel_winners.csv")
+source("../../../../../R/flipbook_mini.R")
+source("../../../../../R/base_parse_reveal_xaringan.R")
+source("../../../../../R/non_sequential_reveal.R")
 ```
 
 ---
@@ -121,20 +151,17 @@ nobel_winners <- readr::read_csv("https://raw.githubusercontent.com/rfordatascie
 We'll create this plot.  I have **echo** set to FALSE in the code chunk options here so that you don't see the code, and **eval** to TRUE so that the plot output is produced.  The code chunk is given the name "nobel", and this is used in the in apply_reveal function, which breaks down code by wrangling and plot statements. 
 
 ```{r nobel, echo = F, eval = T, fig.height=5}
-nobel_winners %>% 
-  mutate(age_at_win = prize_year -
-           lubridate::year(birth_date)) %>% 
-ggplot() + 
-  aes(x = prize_year) +  # x axis 
-  aes(y = age_at_win) +  # y axis
-  geom_point() +
-  geom_smooth() +  # loess smoothing
-  theme_minimal() +
-  labs(x = "Year of prize") +
-  labs(y = "Age at Win") +
-  labs(caption = "Vis: Gina Reynolds for TidyTuesday") +
-  labs(title = "Nobel Prize award year vs. age of winner") +
-  labs(subtitle = "Data: \"A dataset of publication records for Nobel laureates\" \nLi, Jichao; Yin, Yian; Fortunato, Santo; Wang Dashun, 2018 ")
+cars %>%             # the data  #REVEAL
+  filter(speed > 4) %>%  # subset
+  ggplot() +              # pipe to ggplot
+  aes(x = speed) +
+  aes(y = dist) +
+  # Describing what follows
+  geom_point(alpha = .3) + #REVEAL
+  aes(color =
+  speed > 14
+  ) %+%
+  cars
 ```
  
 
@@ -152,23 +179,26 @@ In the next slide, we'll walk through the code that produces this plot, and the 
 
 ---
 
+
+# Embracing reverse assignment
+
 # A second approach: Separate the data manipulation from the plotting.
 
 If you'd like, you can also save your manipulated data and then plot, using the `%>%` to create your pipe line, and then reverse assignment operator `->`.  An example follows. 
 
 ---
 
-```{r nobeltransform, echo = F, eval = T, fig.height=5}
-nobel_winners %>% 
-  mutate(age_at_win = prize_year -
-           lubridate::year(birth_date)) -> 
-  nobel_winners_w_age
+```{r data_transformation, echo = F, eval = T, fig.height=5}
+cars %>%             # the data  #REVEAL
+  filter(speed > 4) %>% 
+  mutate(var = 2) ->
+my_data
 ```
 
 
 ---
 
-`r apply_reveal("nobeltransform")`
+`r apply_reveal("data_transformation")`
 
 ---
 
@@ -180,24 +210,168 @@ Note that you also might prefer a behavior where you don't show a preview of the
 
 ---
 
-```{r plot_nobel_again, echo = F, eval = FALSE, fig.height=5}
-ggplot(data = nobel_winners_w_age) + 
-  aes(x = prize_year) +  # x axis 
-  aes(y = age_at_win) +  # y axis
-  geom_point() +
-  geom_smooth() +  # loess smoothing
-  theme_minimal() +
-  labs(x = "Year of prize") +
-  labs(y = "Age at Win") +
-  labs(x = "Year of prize") +
-  labs(y = "Age at Win") +
-  labs(caption = "Vis: Gina Reynolds for TidyTuesday") +
-  labs(title = "Nobel Prize award year vs. age of winner") +
-  labs(subtitle = "Data: \"A dataset of publication records for Nobel laureates\" \nLi, Jichao; Yin, Yian; Fortunato, Santo; Wang Dashun, 2018 ")
+```{r just_plotting, echo = F, eval = FALSE, fig.height=5}
+ggplot(data = my_data) +              # pipe to ggplot
+  aes(x = speed) +
+  aes(y = dist) +
+  # Describing what follows
+  geom_point(alpha = .3) + #REVEAL
+  aes(
+    color = speed > 14
+  ) %+%
+  cars
 ```
 
 
-`r apply_reveal("plot_nobel_again")`
+`r apply_reveal("just_plotting")`
+
+```{r}
+# make_flipbook_mini_chunk(chunk_name = "just_plotting", file_out = "a_flipbook_mini_example.gif")
+```
+
+---
+
+# Can't stomach reverse assignment?
+
+
+---
+
+```{r regular_assignment, eval = T, echo = F}
+a_plot <- cars %>%             # the data  #REVEAL
+  filter(speed > 4) %>%  # subset
+  ggplot() +              # pipe to ggplot
+  aes(x = speed) +
+  aes(y = dist) +
+  # Describing what follows
+  geom_point(alpha = .3) + #REVEAL
+  aes(color =
+  speed > 14
+  ) %+%
+  cars
+```
+
+`r apply_reveal("regular_assignment", reg_assignment = T)`
+
+
+
+
+---
+
+# User defined reveal
+
+---
+
+```{r user_definded_reveal, eval = F, echo = F}
+ggplot(data = my_data) +   # pipe to ggplot
+  aes(x = speed) + 
+  aes(y = dist) + #REVEAL
+  # Describing what follows 
+  geom_blank() +
+  geom_point(data = my_data %>% slice(1)) + #REVEAL
+  geom_point() #REVEAL
+```
+
+`r apply_reveal("user_definded_reveal", user_reveal = T)`
+
+
+---
+
+# User defined reveal
+
+---
+
+
+```{r slow_traditional_presentation, eval = F, echo = F}
+gapminder::gapminder %>%
+  filter(year == 2002) %>% 
+  ggplot() + # pipe to ggplot
+  aes(x = gdpPercap) + #REVEAL
+  aes(y = lifeExp) + #REVEAL
+  # Describing what follows
+  geom_point() +
+  aes(alpha = country == "New Zealand") + 
+  scale_alpha_discrete(limits = c(0, 1), guide = F) + #REVEAL 
+  aes(alpha = NULL) + #REVEAL
+  aes(size = pop) + #REVEAL 
+  aes(color = continent) #REVEAL 
+```
+
+`r apply_reveal("slow_traditional_presentation", show_code = F, user_reveal = T)`
+
+
+
+---
+
+# Non sequential reveal (or can't stomach "slow ggplot"?)
+
+---
+
+```{r non_sequential, eval = F, echo = F}
+cars %>%
+  mutate(speed_14_plus = speed >= 14) %>%
+  ggplot() +
+  aes(x = speed) +
+  aes(y = dist) +
+  # Describing what follows
+  geom_point(
+    size = 2, #REVEAL2
+    alpha = .3, #REVEAL3
+    color = "blue", #REVEAL4
+    ) +
+  aes(color = speed_14_plus)
+```
+
+
+`r apply_reveal_nonsequential("non_sequential")`
+
+---
+
+# Non-traditional pipelines 
+
+---
+
+```{r logical_indexing, eval = F, echo = F}
+list(thing_1 = "a",
+     thing_2 = matrix(data = 1:5, nrow = 2)) ->
+my_named_list
+list("a",
+1:5,
+my_named_list) %>%
+.[[3]] %>%
+.$thing_2 %>%
+.[3]
+```
+
+
+`r apply_reveal("logical_indexing")`
+
+---
+
+
+# data.table
+
+
+
+
+
+
+---
+
+# Thanks
+
+Flipbooker visionaries and developers
+
+- Emi Tanaka
+- Garrick Aden-Buie
+- Ryan Granier
+- Suraj Tharpa
+
+Key Infrastructure
+
+- Yihui Xie (Rmarkdown, Xaringan), Allison Pres Hill
+- Hadley Wickham (ggplot, tidyverse)
+- Stefan Milton Bache (magrittr %>%)
+- Claus Wilke (cowplot::plot_grid())
 
 
 

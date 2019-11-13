@@ -18,5 +18,6 @@ Imports:
     stringi,
     knitr,
     glue,
-    usethis
+    usethis,
+    cowplot
 RoxygenNote: 6.1.1
