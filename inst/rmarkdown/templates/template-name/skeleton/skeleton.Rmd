@@ -19,35 +19,35 @@ knitr::opts_chunk$set(fig.width = 6, message = F, warning = F,
 ```
 
 
-# What are Flipbooks?
-# Show an one example - ggplot2 flipbook
-# What are their advantages (Don Norman, the Design of Everyday Things)
- - natural mapping (matching code-output temporal changes)
- - affordances (ease of use - motion detection, name, automatic parsing - low additional burden on creator)
- - feedback (minimal changes mean that feedback is digestible)
-# How is it implemented?
-  # automation... (technical side)
-  # And how YOU can make one ...
-# Extending the basic
-  ## adding connectors, allowing code wrapping, using a parser (making it safe for human consumption)
-  ## using %>% .[] - data.table
-  ## Regular Assignment
-  ## Non sequential reveal (not yet implemented)
-  ## Traditional presentations
-  ## Ensembles (not yet stable)
-  ## python, C++ (not yet implemented)
-  ## Visual Table of contents - "You do not need a slide for the Table of Contents!"
-  ## Flipbook mini (not yet final)
-# resources
-  ## package
-  ## flipbooks library (my uses)
-  ## minimal examples
-  ## video?
-# caveats
-  # irreproducibility across platforms (fonts)
-  # output not supported by remark.js, not going to work
-  # may load slow (or not at all - leaflet)
-# future...???
+<!-- # What are Flipbooks? -->
+<!-- # Show an one example - ggplot2 flipbook -->
+<!-- # What are their advantages (Don Norman, the Design of Everyday Things) -->
+<!--  - natural mapping (matching code-output temporal changes) -->
+<!--  - affordances (ease of use - motion detection, name, automatic parsing - low additional burden on creator) -->
+<!--  - feedback (minimal changes mean that feedback is digestible) -->
+<!-- # How is it implemented? -->
+<!--   # automation... (technical side) -->
+<!--   # And how YOU can make one ... -->
+<!-- # Extending the basic -->
+<!--   ## adding connectors, allowing code wrapping, using a parser (making it safe for human consumption) -->
+<!--   ## using %>% .[] - data.table -->
+<!--   ## Regular Assignment -->
+<!--   ## Non sequential reveal (not yet implemented) -->
+<!--   ## Traditional presentations -->
+<!--   ## Ensembles (not yet stable) -->
+<!--   ## python, C++ (not yet implemented) -->
+<!--   ## Visual Table of contents - "You do not need a slide for the Table of Contents!" -->
+<!--   ## Flipbook mini (not yet final) -->
+<!-- # resources -->
+<!--   ## package -->
+<!--   ## flipbooks library (my uses) -->
+<!--   ## minimal examples -->
+<!--   ## video? -->
+<!-- # caveats -->
+<!--   # irreproducibility across platforms (fonts) -->
+<!--   # output not supported by remark.js, not going to work -->
+<!--   # may load slow (or not at all - leaflet) -->
+<!-- # future...??? -->
 
 ---
 
@@ -122,6 +122,18 @@ ggplot(data = my_data) +
 ```
 
 
+# You may have seen the ggplot flipbook
+
+
+# We've come along way
+
+- adding pipe and other connections
+- allowed code wrapping - responsible piping.  
+
+
+
+
+
 
 
 ---
@@ -139,9 +151,9 @@ And load the data from the tidytuesday github page.
 
 ```{r}
 # nobel_winners <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-14/nobel_winners.csv")
-source("../../../../../R/flipbook_mini.R")
-source("../../../../../R/base_parse_reveal_xaringan.R")
-source("../../../../../R/non_sequential_reveal.R")
+# source("../../../../../R/flipbook_mini.R")
+# source("../../../../../R/base_parse_reveal_xaringan.R")
+# source("../../../../../R/non_sequential_reveal.R")
 ```
 
 ---
@@ -276,7 +288,7 @@ ggplot(data = my_data) +   # pipe to ggplot
 
 ---
 
-# User defined reveal
+# For use in traditional presentations.
 
 ---
 
@@ -352,12 +364,39 @@ my_named_list) %>%
 
 
 
+---
 
+# Multiple realizations
 
 
 ---
 
-# Thanks
+```{r many_realizations, eval = F, echo = F}
+tibble(tail_length = rnorm(n = 50), 
+       brain_weight = rnorm(n = 50)) ->
+my_data; my_data %>% slice(1:3)
+
+ggplot(data = my_data) +
+  aes(x = tail_length) +
+  aes(y = brain_weight) +
+  geom_point(alpha = .8,
+             color = "steelblue",
+             size = 6) +
+  theme_minimal() +
+  coord_cartesian(xlim = c(-3,3),
+                  ylim = c(-3,3))
+
+cor.test(x = my_data$tail_length,
+         y = my_data$brain_weight)
+```
+
+
+`r apply_repeat_reveal(chunk_name = "many_realizations", num_reveal = 10)`
+
+
+---
+
+# Acknowledgements and Thanks
 
 Flipbooker visionaries and developers
 
@@ -372,6 +411,7 @@ Key Infrastructure
 - Hadley Wickham (ggplot, tidyverse)
 - Stefan Milton Bache (magrittr %>%)
 - Claus Wilke (cowplot::plot_grid())
+- Romain Francois - getParseData
 
 
 
