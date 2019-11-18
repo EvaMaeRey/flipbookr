@@ -147,3 +147,94 @@ remote: Resolving deltas:   0% (0/10)[Kremote: Resolving deltas:  10% (1/10)[
 To https://github.com/EvaMaeRey/flipbookr.git
    c113b52..48f5a6d  master -> master
 ]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit -m "addin[K[K[K[K[Kfic[Kxing non-se quential le[K[Kreveal to not show reveal[K[K[K[K[K[KREVEAL indicator..[K[K.  C[KClearn[K[Kning upt[K some of the balanced pa ren[K[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kpa rentheses code [K, so par[K[K[Kreturned parse o[K[Kd objecte[K d[Kdoen[Ksn[K[Ksn't have ow[Kverwhelmeing n[K[K[K[K[K[King number of colu mns"
+[master 68e3166] fixing non-sequential reveal to not show REVEAL indicator.  Cleaning up some of the balanced parentheses code, so returned parsed object doesn't have overwhelming number of columns
+ 69 files changed, 3287 insertions(+), 38 deletions(-)
+ create mode 100644 libs/bokehjs-0.12.2/bokeh-compiler.min.js
+ create mode 100644 libs/bokehjs-0.12.2/bokeh-widgets.min.css
+ create mode 100644 libs/bokehjs-0.12.2/bokeh-widgets.min.js
+ create mode 100644 libs/bokehjs-0.12.2/bokeh.min.css
+ create mode 100644 libs/bokehjs-0.12.2/bokeh.min.js
+ create mode 100644 libs/bokehjs-0.12.2/icons-classic/label.png
+ create mode 100644 libs/bokehjs-0.12.2/icons-classic/resultset_next.png
+ create mode 100644 libs/bokehjs-0.12.2/icons-classic/resultset_previous.png
+ create mode 100644 libs/bokehjs-0.12.2/images/actions.gif
+ create mode 100644 libs/bokehjs-0.12.2/images/ajax-loader-small.gif
+ create mode 100644 libs/bokehjs-0.12.2/images/arrow_redo.png
+ create mode 100644 libs/bokehjs-0.12.2/images/arrow_right_peppermint.png
+ create mode 100644 libs/bokehjs-0.12.2/images/arrow_right_spearmint.png
+ create mode 100644 libs/bokehjs-0.12.2/images/arrow_undo.png
+ create mode 100644 libs/bokehjs-0.12.2/images/bullet_blue.png
+ create mode 100644 libs/bokehjs-0.12.2/images/bullet_star.png
+ create mode 100644 libs/bokehjs-0.12.2/images/bullet_toggle_minus.png
+ create mode 100644 libs/bokehjs-0.12.2/images/bullet_toggle_plus.png
+ create mode 100644 libs/bokehjs-0.12.2/images/calendar.gif
+ create mode 100644 libs/bokehjs-0.12.2/images/collapse.gif
+ create mode 100644 libs/bokehjs-0.12.2/images/comment_yellow.gif
+ create mode 100644 libs/bokehjs-0.12.2/images/down.gif
+ create mode 100644 libs/bokehjs-0.12.2/images/drag-handle.png
+ create mode 100644 libs/bokehjs-0.12.2/images/editor-helper-bg.gif
+ create mode 100644 libs/bokehjs-0.12.2/images/expand.gif
+ create mode 100644 libs/bokehjs-0.12.2/images/header-bg.gif
+ create mode 100644 libs/bokehjs-0.12.2/images/header-columns-bg.gif
+ create mode 100644 libs/bokehjs-0.12.2/images/header-columns-over-bg.gif
+ create mode 100644 libs/bokehjs-0.12.2/images/help.png
+ create mode 100644 libs/bokehjs-0.12.2/images/info.gif
+ create mode 100644 libs/bokehjs-0.12.2/images/listview.gif
+ create mode 100644 libs/bokehjs-0.12.2/images/pencil.gif
+ create mode 100644 libs/bokehjs-0.12.2/images/row-over-bg.gif
+ create mode 100644 libs/bokehjs-0.12.2/images/sort-asc.gif
+ create mode 100644 libs/bokehjs-0.12.2/images/sort-asc.png
+ create mode 100644 libs/bokehjs-0.12.2/images/sort-desc.gif
+ create mode 100644 libs/bokehjs-0.12.2/images/sort-desc.png
+ create mode 100644 libs/bokehjs-0.12.2/images/stripes.png
+ create mode 100644 libs/bokehjs-0.12.2/images/tag_red.png
+ create mode 100644 libs/bokehjs-0.12.2/images/tick.png
+ create mode 100644 libs/bokehjs-0.12.2/images/ui-bg_flat_0_aaaaaa_40x100.png
+ create mode 100644 libs/bokehjs-0.12.2/images/ui-bg_flat_75_ffffff_40x100.png
+ create mode 100644 libs/bokehjs-0.12.2/images/ui-bg_glass_55_fbf9ee_1x400.png
+ create mode 100644 libs/bokehjs-0.12.2/images/ui-bg_glass_65_ffffff_1x400.png
+ create mode 100644 libs/bokehjs-0.12.2/images/ui-bg_glass_75_dadada_1x400.png
+ create mode 100644 libs/bokehjs-0.12.2/images/ui-bg_glass_75_e6e6e6_1x400.png
+ create mode 100644 libs/bokehjs-0.12.2/images/ui-bg_glass_95_fef1ec_1x400.png
+ create mode 100644 libs/bokehjs-0.12.2/images/ui-bg_highlight-soft_75_cccccc_1x100.png
+ create mode 100644 libs/bokehjs-0.12.2/images/ui-icons_222222_256x240.png
+ create mode 100644 libs/bokehjs-0.12.2/images/ui-icons_2e83ff_256x240.png
+ create mode 100644 libs/bokehjs-0.12.2/images/ui-icons_454545_256x240.png
+ create mode 100644 libs/bokehjs-0.12.2/images/ui-icons_888888_256x240.png
+ create mode 100644 libs/bokehjs-0.12.2/images/ui-icons_cd0a0a_256x240.png
+ create mode 100644 libs/bokehjs-0.12.2/images/user_identity.gif
+ create mode 100644 libs/bokehjs-0.12.2/images/user_identity_plus.gif
+ create mode 100644 libs/bokehjs-0.12.2/loader.css
+ create mode 100644 libs/htmlwidgets-1.3/htmlwidgets.js
+ create mode 100644 libs/rbokeh-binding-0.5.0/rbokeh.js
+ create mode 100644 libs/remark-css-0.0.1/kunoichi.css
+ create mode 100644 libs/remark-css-0.0.1/ninjutsu.css
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
+Counting objects: 92, done.
+Delta compression using up to 4 threads.
+Compressing objects:   1% (1/84)   Compressing objects:   2% (2/84)   Compressing objects:   3% (3/84)   Compressing objects:   4% (4/84)   Compressing objects:   5% (5/84)   Compressing objects:   7% (6/84)   Compressing objects:   8% (7/84)   Compressing objects:   9% (8/84)   Compressing objects:  10% (9/84)   Compressing objects:  11% (10/84)   Compressing objects:  13% (11/84)   Compressing objects:  14% (12/84)   Compressing objects:  15% (13/84)   Compressing objects:  16% (14/84)   Compressing objects:  17% (15/84)   Compressing objects:  19% (16/84)   Compressing objects:  20% (17/84)   Compressing objects:  21% (18/84)   Compressing objects:  22% (19/84)   Compressing objects:  23% (20/84)   Compressing objects:  25% (21/84)   Compressing objects:  26% (22/84)   Compressing objects:  27% (23/84)   Compressing objects:  28% (24/84)   Compressing objects:  29% (25/84)   Compressing objects:  30% (26/84)   Compressing objects:  32% (27/84)   Compressing objects:  33% (28/84)   Compressing objects:  34% (29/84)   Compressing objects:  35% (30/84)   Compressing objects:  36% (31/84)   Compressing objects:  38% (32/84)   Compressing objects:  39% (33/84)   Compressing objects:  40% (34/84)   Compressing objects:  41% (35/84)   Compressing objects:  42% (36/84)   Compressing objects:  44% (37/84)   Compressing objects:  45% (38/84)   Compressing objects:  46% (39/84)   Compressing objects:  47% (40/84)   Compressing objects:  48% (41/84)   Compressing objects:  50% (42/84)   Compressing objects:  51% (43/84)   Compressing objects:  52% (44/84)   Compressing objects:  53% (45/84)   Compressing objects:  54% (46/84)   Compressing objects:  55% (47/84)   Compressing objects:  57% (48/84)   Compressing objects:  58% (49/84)   Compressing objects:  59% (50/84)   Compressing objects:  60% (51/84)   Compressing objects:  61% (52/84)   Compressing objects:  63% (53/84)   Compressing objects:  64% (54/84)   Compressing objects:  65% (55/84)   Compressing objects:  66% (56/84)   Compressing objects:  67% (57/84)   Compressing objects:  69% (58/84)   Compressing objects:  70% (59/84)   Compressing objects:  71% (60/84)   Compressing objects:  72% (61/84)   Compressing objects:  73% (62/84)   Compressing objects:  75% (63/84)   Compressing objects:  76% (64/84)   Compressing objects:  77% (65/84)   Compressing objects:  78% (66/84)   Compressing objects:  79% (67/84)   Compressing objects:  80% (68/84)   Compressing objects:  82% (69/84)   Compressing objects:  83% (70/84)   Compressing objects:  84% (71/84)   Compressing objects:  85% (72/84)   Compressing objects:  86% (73/84)   Compressing objects:  88% (74/84)   Compressing objects:  89% (75/84)   Compressing objects:  90% (76/84)   Compressing objects:  91% (77/84)   Compressing objects:  92% (78/84)   Compressing objects:  94% (79/84)   Compressing objects:  95% (80/84)   Compressing objects:  96% (81/84)   Compressing objects:  97% (82/84)   Compressing objects:  98% (83/84)   Compressing objects: 100% (84/84)   Compressing objects: 100% (84/84), done.
+Writing objects:   1% (1/92)   Writing objects:   2% (2/92)   Writing objects:   3% (3/92)   Writing objects:   4% (4/92)   Writing objects:   5% (5/92)   Writing objects:   6% (6/92)   Writing objects:   7% (7/92)   Writing objects:   8% (8/92)   Writing objects:   9% (9/92)   Writing objects:  10% (10/92)   Writing objects:  11% (11/92)   Writing objects:  13% (12/92)   Writing objects:  14% (13/92)   Writing objects:  15% (14/92)   Writing objects:  16% (15/92)   Writing objects:  17% (16/92)   Writing objects:  18% (17/92)   Writing objects:  19% (18/92)   Writing objects:  20% (19/92)   Writing objects:  21% (20/92)   Writing objects:  22% (21/92)   Writing objects:  23% (22/92)   Writing objects:  25% (23/92)   Writing objects:  26% (24/92)   Writing objects:  27% (25/92)   Writing objects:  28% (26/92)   Writing objects:  29% (27/92)   Writing objects:  30% (28/92)   Writing objects:  31% (29/92)   Writing objects:  32% (30/92)   Writing objects:  33% (31/92)   Writing objects:  34% (32/92)   Writing objects:  35% (33/92)   Writing objects:  36% (34/92)   Writing objects:  38% (35/92)   Writing objects:  39% (36/92)   Writing objects:  40% (37/92)   Writing objects:  41% (38/92)   Writing objects:  42% (39/92)   Writing objects:  43% (40/92)   Writing objects:  44% (41/92)   Writing objects:  45% (42/92)   Writing objects:  46% (43/92)   Writing objects:  47% (44/92)   Writing objects:  48% (45/92)   Writing objects:  50% (46/92)   Writing objects:  51% (47/92)   Writing objects:  52% (48/92)   Writing objects:  53% (49/92)   Writing objects:  54% (50/92)   Writing objects:  55% (51/92)   Writing objects:  56% (52/92)   Writing objects:  57% (53/92)   Writing objects:  58% (54/92)   Writing objects:  61% (57/92)   Writing objects:  63% (58/92)   Writing objects:  64% (59/92)   Writing objects:  65% (60/92)   Writing objects:  66% (61/92)   Writing objects:  67% (62/92)   Writing objects:  68% (63/92)   Writing objects:  69% (64/92)   Writing objects:  70% (65/92)   Writing objects:  71% (66/92)   Writing objects:  72% (67/92)   Writing objects:  73% (68/92)   Writing objects:  75% (69/92)   Writing objects:  76% (70/92)   Writing objects:  77% (71/92)   Writing objects:  78% (72/92)   Writing objects:  79% (73/92)   Writing objects:  80% (74/92)   Writing objects:  81% (75/92)   Writing objects:  82% (76/92)   Writing objects:  83% (77/92)   Writing objects:  85% (79/92)   Writing objects:  86% (80/92)   Writing objects:  88% (81/92)   Writing objects:  89% (82/92)   Writing objects:  90% (83/92)   Writing objects:  91% (84/92)   Writing objects:  92% (85/92)   Writing objects:  93% (86/92)   Writing objects:  94% (87/92)   Writing objects:  95% (88/92)   Writing objects:  96% (89/92)   Writing objects:  97% (90/92)   Writing objects:  98% (91/92)   Writing objects: 100% (92/92)   Writing objects: 100% (92/92), 653.03 KiB | 3.71 MiB/s, done.
+Total 92 (delta 28), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/28)[Kremote: Resolving deltas:   3% (1/28)[Kremote: Resolving deltas:  35% (10/28)[Kremote: Resolving deltas:  50% (14/28)[Kremote: Resolving deltas:  53% (15/28)[Kremote: Resolving deltas:  57% (16/28)[Kremote: Resolving deltas:  60% (17/28)[Kremote: Resolving deltas:  64% (18/28)[Kremote: Resolving deltas:  67% (19/28)[Kremote: Resolving deltas:  71% (20/28)[Kremote: Resolving deltas:  75% (21/28)[Kremote: Resolving deltas:  78% (22/28)[Kremote: Resolving deltas:  82% (23/28)[Kremote: Resolving deltas:  85% (24/28)[Kremote: Resolving deltas:  89% (25/28)[Kremote: Resolving deltas:  92% (26/28)[Kremote: Resolving deltas:  96% (27/28)[Kremote: Resolving deltas: 100% (28/28)[Kremote: Resolving deltas: 100% (28/28), completed with 14 local objects.[K
+To https://github.com/EvaMaeRey/flipbookr.git
+   48f5a6d..68e3166  master -> master
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git[K[K[K[KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git pushcommit -m "fixing non-seqquential reveal to not show REVEAL indicator.  Cleaning up some of the balanced parrentheses code, so returned parsed object doesn't have overwhelming number of colummns"[A[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cadd .[K
+[K
+[K
+[K[A[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .[1Ppushcommit -m "fixing non-seqquential reveal to not show REVEAL indicator.  Cleaning up some of the balanced parrentheses code, so returned parsed object doesn't have overwhelming number of colummns"[A[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpush[K
+[K
+[K
+[K[A[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[Kcommti[K[Kit - [K[K[K[K[K[K[K[K[K[K[K[K[Kgit rm -m[Kr
+usage: git rm [<options>] [--] <file>...
+
+    -n, --dry-run         dry run
+    -q, --quiet           do not list removed files
+    --cached              only remove from the index
+    -f, --force           override the up-to-date check
+    -r                    allow recursive removal
+    --ignore-unmatch      exit with a zero status even if nothing matched
+
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add.[K .

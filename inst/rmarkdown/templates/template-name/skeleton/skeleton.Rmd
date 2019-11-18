@@ -338,7 +338,6 @@ cars %>%
 ```
 
 
-`r apply_reveal_nonsequential("non_sequential")`
 
 ---
 
