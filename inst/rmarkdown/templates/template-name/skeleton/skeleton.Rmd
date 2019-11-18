@@ -94,6 +94,10 @@ The sequential workflow of the Tidyverse makes incremental display of pipelines 
 - order ggplot commands so that reactivity is obvious; scale adjustments to aesthetics might also be near the aesthetic declaration. 
 
 
+
+
+
+
 ---
 
 Here, I contrast the usual plotting method to slow ggplotting:
@@ -412,6 +416,34 @@ Key Infrastructure
 - Stefan Milton Bache (magrittr %>%)
 - Claus Wilke (cowplot::plot_grid())
 - Romain Francois - getParseData
+
+
+
+---
+
+# So meta...
+
+Using flipbooking on the flipbook parser code
+
+
+---
+
+```{r}
+local_code <- # for testing w/o knitting
+  "cars %>%             # the data  #REVEAL
+filter(speed > 4) %>%  # subset
+ggplot() +              # pipe to ggplot
+aes(x = speed) +
+aes(y = dist) +
+# Describing what follows #REVEAL2
+geom_point(alpha = .3) + #REVEAL
+aes(color =
+speed > 14
+) %+%
+cars ->
+my_plot "
+```
+
 
 
 

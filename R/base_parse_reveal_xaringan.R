@@ -43,7 +43,18 @@ speed > 14)
 ) %+%
 cars"
 
-
+local_code_non_sequential <- "cars %>%
+mutate(speed_14_plus = speed >= 14) %>%
+ggplot() +
+aes(x = speed) +
+aes(y = dist) +
+# Describing what follows
+geom_point(
+size = 2,   #REVEAL2
+alpha = .3, #REVEAL3
+color = \"blue\", #REVEAL4
+) +
+aes(color = speed_14_plus)"
 
 
 # New - using parser
@@ -79,42 +90,40 @@ parse_code <- function(code) {
     dplyr::mutate(open_square = text == "[") %>%
     dplyr::mutate(open_square = ifelse(text == "[[", 2, open_square)) %>%
     dplyr::mutate(closed_square = text == "]") %>%
-    # dplyr::mutate(num_open_par = stringr::str_count(token, "\\(|\\{|\\[")) %>% # Counting open parentheses
-    # dplyr::mutate(num_closed_par = stringr::str_count(token, "\\)|\\}|\\]"))  %>% # Counting closed parentheses
     dplyr::group_by(line) %>%
-    dplyr::summarise(num_open_par = sum(open_par),
-              num_closed_par = sum(closed_par),
-              num_open_curly = sum(open_curly),
-              num_closed_curly = sum(closed_curly),
-              num_open_square = sum(open_square),
-              num_closed_square = sum(closed_square),
-              full_line = paste0(text, collapse = ""),
-              comment = stringr::str_trim(paste0(ifelse(token == "COMMENT", text, ""),
-                                        collapse = " "))) %>%
-    # dplyr::summarise(num_open_par = sum(num_open_par),
-    #           num_closed_par = sum(num_closed_par),
-    #           full_line = paste0(text, collapse = ""),
-    #           comment = stringr::str_trim(paste0(ifelse(token == "COMMENT", text, ""),
-    #                                     collapse = " "))) %>%
+    dplyr::summarise(
+      full_line = paste0(text, collapse = ""),
+      comment = stringr::str_trim(paste0(ifelse(token == "COMMENT", text, ""),
+                                         collapse = " ")),
+      num_open_par = sum(open_par),
+      num_closed_par = sum(closed_par),
+      num_open_curly = sum(open_curly),
+      num_closed_curly = sum(closed_curly),
+      num_open_square = sum(open_square),
+      num_closed_square = sum(closed_square)
+              ) %>%
+    dplyr::mutate(balanced_paren = (cumsum(num_open_par) - cumsum(num_closed_par)) == 0) %>%
+    dplyr::mutate(balanced_curly = (cumsum(num_open_curly) - cumsum(num_closed_curly)) == 0) %>%
+    dplyr::mutate(balanced_square = (cumsum(num_open_square) - cumsum(num_closed_square)) == 0) %>%
+    dplyr::mutate(balanced_par = balanced_paren & balanced_curly & balanced_square &
+                    code != "") %>%
+    dplyr::select(-num_open_par, -num_closed_par,
+                  -num_open_curly, -num_closed_curly,
+                  -num_open_square , -num_closed_square,
+                  -balanced_paren, -balanced_curly, -balanced_square) %>%
     dplyr::left_join(raw_code_table) %>%
     dplyr::mutate(code = ifelse(comment != "", stringr::str_remove(raw_code, comment), raw_code)) %>%
     dplyr::mutate(user_non_seq = stringr::str_extract(comment, "#REVEAL\\d+")) %>%
     dplyr::mutate(user_non_seq = stringr::str_extract(user_non_seq, "\\d+")) %>%
     dplyr::mutate(user_non_seq = as.numeric(user_non_seq)) %>%
     dplyr::mutate(user_non_seq = tidyr::replace_na(user_non_seq, 1)) %>%
-    dplyr::mutate(comment = stringr::str_remove(comment, "#REVEAL\\d+")) %>%
     dplyr::mutate(user_reveal = stringr::str_detect(comment, "#REVEAL")) %>%
+    dplyr::mutate(comment = stringr::str_remove(comment, "#REVEAL\\d+")) %>%
     dplyr::mutate(comment = stringr::str_remove(comment, "#REVEAL")) %>%
     dplyr::mutate(connector = stringr::str_extract(stringr::str_trim(code), "%>%$|\\+$|->$|%\\+%")) %>%
     dplyr::mutate(connector = tidyr::replace_na(connector, "")) %>%
-    dplyr::mutate(code = stringr::str_remove(stringi::stri_trim_right(code), "%>%$|\\+$|->$|%\\+%")) %>%
-    dplyr::mutate(balanced_paren = (cumsum(num_open_par) - cumsum(num_closed_par)) == 0) %>%
-    dplyr::mutate(balanced_curly = (cumsum(num_open_curly) - cumsum(num_closed_curly)) == 0) %>%
-    dplyr::mutate(balanced_square = (cumsum(num_open_square) - cumsum(num_closed_square)) == 0) %>%
-    dplyr::mutate(balanced_par = balanced_paren & balanced_curly & balanced_square &
-             code != "")
-    # dplyr::mutate(balanced_par = (cumsum(num_open_par) - cumsum(num_closed_par)) == 0 &
-    #          code != "")
+    dplyr::mutate(code = stringr::str_remove(stringi::stri_trim_right(code), "%>%$|\\+$|->$|%\\+%"))
+
 
 }
 
