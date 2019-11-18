@@ -22,7 +22,7 @@ aes(color = speed_14_plus)"
 #' @export
 #'
 #' @examples
-#' reveal_code_nonsequential(code = local_code)
+#' reveal_code_nonsequential(code = local_code_non_sequential)
 reveal_code_nonsequential <- function(code,
                                         which_supress = 2:5,
                                         which_highlight = 6){
@@ -30,7 +30,8 @@ reveal_code_nonsequential <- function(code,
   parsed <- parse_code(code = code)
 
   parsed %>%
-    dplyr::mutate(reveal = ifelse(dplyr::row_number() %in% which_supress, "", code)) %>%
+    dplyr::mutate(reveal = ifelse(dplyr::row_number() %in% which_supress, "", raw_code)) %>%
+    dplyr::mutate(reveal = stringr::str_replace(reveal, "#REVEAL\\d+"))
     dplyr::mutate(highlight = ifelse(dplyr::row_number() %in% which_highlight, "#<<", "")) %>%
     dplyr::mutate(out = paste0(reveal, "  ", comment, highlight)) %>%
     dplyr::select(out) ->
