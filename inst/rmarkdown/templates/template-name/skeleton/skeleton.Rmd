@@ -337,9 +337,8 @@ cars %>%
   aes(color = speed_14_plus)
 ```
 
-```{r}
-non_sequential_partially_knit_chunks("non_sequential")
-```
+`r apply_reveal_nonsequential("non_sequential")`
+
 
 ---
 

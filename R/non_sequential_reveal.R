@@ -31,7 +31,7 @@ reveal_code_nonsequential <- function(code,
 
   parsed %>%
     dplyr::mutate(reveal = ifelse(dplyr::row_number() %in% which_supress, "", raw_code)) %>%
-    dplyr::mutate(reveal = stringr::str_replace(reveal, "#REVEAL\\d+"))
+    dplyr::mutate(reveal = stringr::str_remove(reveal, "#REVEAL\\d+"))
     dplyr::mutate(highlight = ifelse(dplyr::row_number() %in% which_highlight, "#<<", "")) %>%
     dplyr::mutate(out = paste0(reveal, "  ", comment, highlight)) %>%
     dplyr::select(out) ->
