@@ -128,8 +128,8 @@ parse_code <- function(code) {
              code != "") %>%
     dplyr::select(-num_open_par, -num_closed_par,
                   -num_open_curly, -num_closed_curly,
-                  -num_open_square , -num_closed_square,
-                  -balanced_paren, - balanced_curly, -balanced_square
+                  -num_open_square, -num_closed_square,
+                  -balanced_paren, -balanced_curly, -balanced_square
                   )
     # dplyr::mutate(balanced_par = (cumsum(num_open_par) - cumsum(num_closed_par)) == 0 &
     #          code != "")

@@ -31,7 +31,7 @@ reveal_code_nonsequential <- function(code,
 
   parsed %>%
     dplyr::mutate(reveal = ifelse(dplyr::row_number() %in% which_supress, "", raw_code)) %>%
-    dplyr::mutate(reveal = stringr::str_remove(reveal, "#REVEAL\\d+"))
+    dplyr::mutate(reveal = stringr::str_remove(reveal, "#REVEAL\\d+")) %>%
     dplyr::mutate(highlight = ifelse(dplyr::row_number() %in% which_highlight, "#<<", "")) %>%
     dplyr::mutate(out = paste0(reveal, "  ", comment, highlight)) %>%
     dplyr::select(out) ->
@@ -75,6 +75,7 @@ reveal_chunk_nonsequential <- function(chunk_name,
 #' @export
 #'
 #' @examples
+#' parse_code(code = local_code_non_sequential) %>% calc_supress()
 calc_supress <- function(parsed){
 
   parsed %>%
@@ -109,10 +110,11 @@ calc_supress <- function(parsed){
 #' @export
 #'
 #' @examples
+#' parse_code(code = local_code_non_sequential) %>% calc_highlight_non_sequential()
 calc_highlight_non_sequential <- function(parsed) {
 
   parsed %>%
-    pull(user_non_seq) ->
+    dplyr::pull(user_non_seq) ->
     code_ordering
 
   code_ordering %>%
@@ -156,7 +158,7 @@ non_sequential_partially_knit_chunks <- function(chunk_name,
   parsed <- parse_chunk(chunk_name)
 
   parsed %>%
-    pull(user_non_seq) %>%
+    dplyr::pull(user_non_seq) %>%
     unique() %>%
     sort() ->
     steps

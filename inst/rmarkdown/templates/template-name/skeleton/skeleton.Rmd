@@ -15,7 +15,7 @@ output:
 
 ```{r setup, include=F}
 knitr::opts_chunk$set(fig.width = 6, message = F, warning = F, 
-                      comment = "", cache = T)
+                      comment = "", cache = F)
 ```
 
 
@@ -156,8 +156,8 @@ And load the data from the tidytuesday github page.
 ```{r}
 # nobel_winners <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-14/nobel_winners.csv")
 # source("../../../../../R/flipbook_mini.R")
-# source("../../../../../R/base_parse_reveal_xaringan.R")
-# source("../../../../../R/non_sequential_reveal.R")
+source("../../../../../R/base_parse_reveal_xaringan.R")
+source("../../../../../R/non_sequential_reveal.R")
 ```
 
 ---
@@ -337,6 +337,9 @@ cars %>%
   aes(color = speed_14_plus)
 ```
 
+---
+
+
 `r apply_reveal_nonsequential("non_sequential")`
 
 
@@ -428,7 +431,7 @@ Using flipbooking on the flipbook parser code
 
 ---
 
-```{r}
+```{r, eval = F}
 local_code <- # for testing w/o knitting
   "cars %>%             # the data  #REVEAL
 filter(speed > 4) %>%  # subset
