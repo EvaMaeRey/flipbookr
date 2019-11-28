@@ -16,5 +16,5 @@ reveal_code_nonsequential(code, which_supress = 2:5,
 Supress some code and highlight some code
 }
 \examples{
-reveal_code_nonsequential(code = local_code)
+reveal_code_nonsequential(code = local_code_non_sequential)
 }

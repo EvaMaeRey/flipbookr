@@ -75,7 +75,7 @@ reveal_chunk_nonsequential <- function(chunk_name,
 #' @export
 #'
 #' @examples
-#' parse_code(code = local_code_non_sequential) %>% calc_supress()
+#' calc_supress(parse_code(code = local_code_non_sequential))
 calc_supress <- function(parsed){
 
   parsed %>%
@@ -110,7 +110,7 @@ calc_supress <- function(parsed){
 #' @export
 #'
 #' @examples
-#' parse_code(code = local_code_non_sequential) %>% calc_highlight_non_sequential()
+#' calc_highlight_non_sequential(parsed = parse_code(code = local_code_non_sequential))
 calc_highlight_non_sequential <- function(parsed) {
 
   parsed %>%

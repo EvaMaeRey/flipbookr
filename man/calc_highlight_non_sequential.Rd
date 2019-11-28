@@ -15,3 +15,6 @@ a list of integer vectors
 \description{
 A list of vectors saying where to highlight at each step
 }
+\examples{
+calc_highlight_non_sequential(parsed = parse_code(code = local_code_non_sequential))
+}

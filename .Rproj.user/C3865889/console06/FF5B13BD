@@ -278,3 +278,16 @@ remote: Resolving deltas:   0% (0/7)[Kremote: Resolving deltas:  14% (1/7)[K
 To https://github.com/EvaMaeRey/flipbookr.git
    c6c210f..e40adc0  master -> master
 ]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ some[K[K[K[Ka[Kgit add .
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit -m "som mor[K[K[K[Ke more non s[K[K-sequential reveal"[K.  a dding dplr[Kyr::pull"
+[master fa071ec] some more non-sequential reveal.  adding dplyr::pull
+ 5 files changed, 28 insertions(+), 10 deletions(-)
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
+Counting objects: 16, done.
+Delta compression using up to 4 threads.
+Compressing objects:   8% (1/12)   Compressing objects:  16% (2/12)   Compressing objects:  25% (3/12)   Compressing objects:  33% (4/12)   Compressing objects:  41% (5/12)   Compressing objects:  50% (6/12)   Compressing objects:  58% (7/12)   Compressing objects:  66% (8/12)   Compressing objects:  75% (9/12)   Compressing objects:  83% (10/12)   Compressing objects:  91% (11/12)   Compressing objects: 100% (12/12)   Compressing objects: 100% (12/12), done.
+Writing objects:   6% (1/16)   Writing objects:  12% (2/16)   Writing objects:  18% (3/16)   Writing objects:  25% (4/16)   Writing objects:  31% (5/16)   Writing objects:  37% (6/16)   Writing objects:  43% (7/16)   Writing objects:  50% (8/16)   Writing objects:  56% (9/16)   Writing objects:  62% (10/16)   Writing objects:  68% (11/16)   Writing objects:  75% (12/16)   Writing objects:  81% (13/16)   Writing objects:  87% (14/16)   Writing objects:  93% (15/16)   Writing objects: 100% (16/16)   Writing objects: 100% (16/16), 1.48 KiB | 35.00 KiB/s, done.
+Total 16 (delta 7), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/7)[Kremote: Resolving deltas:  14% (1/7)[Kremote: Resolving deltas:  28% (2/7)[Kremote: Resolving deltas:  42% (3/7)[Kremote: Resolving deltas:  57% (4/7)[Kremote: Resolving deltas:  71% (5/7)[Kremote: Resolving deltas:  85% (6/7)[Kremote: Resolving deltas: 100% (7/7)[Kremote: Resolving deltas: 100% (7/7), completed with 7 local objects.[K
+To https://github.com/EvaMaeRey/flipbookr.git
+   e40adc0..fa071ec  master -> master
+[Kmyers-screen-3:flipbookr evangelinereynolds$ [Kmyers-screen-3:flipbookr evangelinereynolds$ git k[Kpush [K[K[K[Ka[K[Kadd .

@@ -282,6 +282,114 @@ for (i in 1:length(breaks)) {
 
 
 
+
+return_partial_chunks <- function(type = "output",
+                                  eval = type == "output",
+                                  echo = type == "code") {
+  glue::glue("```{r {{{type}}}_{{chunk_name}}_{{breaks}}, eval={{{eval}}}, echo = {{{echo}}}, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlighting}}, {{reg_assignment}})}",
+             "```",
+             .open = "{{{", .close = "}}}", .sep = "\n")
+}
+return_partial_chunks()
+
+
+# return_partial_code_chunks <- function(){
+#
+#   return_partial_chunks(eval = FALSE, echo = TRUE, type = "code")
+#
+# }
+# return_partial_code_chunks()
+#
+# return_partial_plot_chunks <- function() {
+#
+#   return_partial_chunks(eval = TRUE, echo = FALSE, type = "plot")
+#
+# }
+# return_partial_plot_chunks()
+
+
+
+return_partial_side_by_side_code_plot_chunks <- function(chunk_name = "a_chunk_name",
+                                           breaks = 1:3,
+                                           highlighting = list(1, 1:2, 1:3),
+                                           title = "My Title",
+                                           reg_assignment = F,
+                                           split = 40) {
+
+  partial_knit_steps <- glue::glue(
+    "class: split-{{split}}",
+    "count: false",
+    "{{title}}",
+    ".column[.content[",
+    return_partial_chunks(type = "code"),
+    "]]",
+    ".column[.content[",
+    return_partial_chunks(type = "output"),
+    "]]",
+    .open = "{{", .close = "}}", .sep = "\n"
+    )
+
+  glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
+
+}
+return_partial_side_by_side_code_plot_chunks()
+
+
+
+return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
+                                               breaks = 1:3,
+                                               highlighting = list(1, 1:2, 1:3),
+                                               title = "My Title",
+                                               reg_assignment = F,
+                                               type = "output") {
+
+  partial_knit_steps <- glue::glue(
+    "count: false",
+    "{{title}}",
+    return_partial_chunks(eval = type == "output", echo = type == "code", type = type),
+    .open = "{{", .close = "}}", .sep = "\n"
+  )
+
+  glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
+
+}
+return_partial_code_or_output_chunks()
+
+
+# uses above code, but calculates breaks and highlighting
+new_partial_knit_chunks <- function(chunk_name = "example_chunk_name",
+                                    title = "My Title",
+                                    reg_assignment = F,
+                                    type = "plot"){
+
+
+parsed <- parse_chunk(chunk_name)
+
+if (user_reveal == T) {
+
+    breaks <- parsed$line[parsed$user_reveal]
+
+  } else {
+
+    breaks <- parsed$line[parsed$balanced_par]
+
+  }
+
+highlighting <- calc_highlight(breaks = breaks)
+
+if (show_code == T) {
+
+  return_partial_side_by_side_code_plot_chunks()
+
+} else {
+
+  return_partial_code_or_plot_chunks()
+
+}
+
+}
+
+
 # partial knit chunks
 
 
@@ -297,13 +405,20 @@ for (i in 1:length(breaks)) {
 #' @export
 #'
 #' @examples
-partially_knit_chunks <- function(chunk_name, user_reveal = F, show_code = T, title = "", reg_assignment = F) {
+partially_knit_chunks <- function(chunk_name = "example_chunk_name", user_reveal = F, show_code = T, title = "", reg_assignment = F) {
   # Create slide for lines 1:N for each line N in the given chunk
 
   parsed <- parse_chunk(chunk_name)
 
-  if (user_reveal == T) { breaks <- parsed$line[parsed$user_reveal]  } else {
-    breaks <- parsed$line[parsed$balanced_par] }
+  if (user_reveal == T) {
+
+    breaks <- parsed$line[parsed$user_reveal]
+
+  } else {
+
+    breaks <- parsed$line[parsed$balanced_par]
+
+    }
 
   highlighting <- calc_highlight(breaks = breaks)
 
@@ -321,6 +436,7 @@ partially_knit_chunks <- function(chunk_name, user_reveal = F, show_code = T, ti
       "]]",
       .open = "{{", .close = "}}", .sep = "\n"
     )
+
   } else {
 
     partial_knit_steps <- glue::glue(title,"```{r output_{{chunk_name}}_{{breaks}}, echo=FALSE, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlighting}}, {{reg_assignment}})}",
@@ -331,6 +447,7 @@ partially_knit_chunks <- function(chunk_name, user_reveal = F, show_code = T, ti
   }
 
   glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
+
 }
 
 

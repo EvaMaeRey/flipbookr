@@ -156,8 +156,8 @@ And load the data from the tidytuesday github page.
 ```{r}
 # nobel_winners <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-14/nobel_winners.csv")
 # source("../../../../../R/flipbook_mini.R")
-source("../../../../../R/base_parse_reveal_xaringan.R")
-source("../../../../../R/non_sequential_reveal.R")
+# source("../../../../../R/base_parse_reveal_xaringan.R")
+# source("../../../../../R/non_sequential_reveal.R")
 ```
 
 ---
@@ -388,6 +388,7 @@ ggplot(data = my_data) +
   aes(y = brain_weight) +
   geom_point(alpha = .8,
              color = "steelblue",
+             shape = 21,
              size = 6) +
   theme_minimal() +
   coord_cartesian(xlim = c(-3,3),
@@ -419,6 +420,24 @@ Key Infrastructure
 - Stefan Milton Bache (magrittr %>%)
 - Claus Wilke (cowplot::plot_grid())
 - Romain Francois - getParseData
+
+---
+
+More influences
+
+- Jesse Mostipak
+- Eva Murry & Andy Kriebel
+- #MakeoverMonday
+- #TidyTuesday
+- Mara Averick
+- Matt Blackwell
+- Women Summer School 
+- Roger Peng
+- Edward Tufte
+- Matt Dowle
+- Norm Matloff
+- Elio Campitelli
+- BITSS
 
 
 

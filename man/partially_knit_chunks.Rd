@@ -4,8 +4,8 @@
 \alias{partially_knit_chunks}
 \title{Create text that will appear in Rmarkdown document containing code reconstruction chunks}
 \usage{
-partially_knit_chunks(chunk_name, user_reveal = F, show_code = T,
-  title = "", reg_assignment = F)
+partially_knit_chunks(chunk_name = "example_chunk_name",
+  user_reveal = F, show_code = T, title = "", reg_assignment = F)
 }
 \arguments{
 \item{chunk_name}{a character string which is a chunk name}

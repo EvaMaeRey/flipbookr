@@ -15,3 +15,6 @@ a list of integer vectors
 \description{
 Calculate a list of vectors for rows to supress at each step
 }
+\examples{
+calc_supress(parse_code(code = local_code_non_sequential))
+}
