@@ -309,7 +309,7 @@ return_partial_chunks()
 
 
 
-return_partial_side_by_side_code_plot_chunks <- function(chunk_name = "a_chunk_name",
+return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk_name",
                                            breaks = 1:3,
                                            highlighting = list(1, 1:2, 1:3),
                                            title = "My Title",
@@ -332,7 +332,7 @@ return_partial_side_by_side_code_plot_chunks <- function(chunk_name = "a_chunk_n
   glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
 
 }
-return_partial_side_by_side_code_plot_chunks()
+return_partial_side_by_side_code_output_chunks()
 
 
 
@@ -381,11 +381,11 @@ highlighting <- calc_highlight(breaks = breaks)
 
 if (is.null(type)) {
 
-  return_partial_side_by_side_code_plot_chunks()
+  return_partial_side_by_side_code_output_chunks()
 
 } else {
 
-  return_partial_code_or_plot_chunks()
+  return_partial_code_or_output_chunks()
 
 }
 
