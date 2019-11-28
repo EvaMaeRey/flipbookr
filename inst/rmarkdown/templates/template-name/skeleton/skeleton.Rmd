@@ -147,7 +147,7 @@ ggplot(data = my_data) +
 Okay. Let's load the the `flipbookr` and the `tidyverse` packages.
 
 ```{r, cache = F}
-library(flipbookr)
+# library(flipbookr)
 library(tidyverse)
 ```
 
@@ -156,8 +156,8 @@ And load the data from the tidytuesday github page.
 ```{r}
 # nobel_winners <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-14/nobel_winners.csv")
 # source("../../../../../R/flipbook_mini.R")
-# source("../../../../../R/base_parse_reveal_xaringan.R")
-# source("../../../../../R/non_sequential_reveal.R")
+source("../../../../../R/base_parse_reveal_xaringan.R")
+source("../../../../../R/non_sequential_reveal.R")
 ```
 
 ---
@@ -181,6 +181,21 @@ cars %>%             # the data  #REVEAL
 ```
  
 
+```{r}
+my_local <- "cars %>%             # the data  #REVEAL
+  filter(speed > 4) %>%  # subset
+  ggplot() +              # pipe to ggplot
+  aes(x = speed) +
+  aes(y = dist) +
+  # Describing what follows
+  geom_point(alpha = .3) + #REVEAL
+  aes(color =
+  speed > 14
+  ) %+%
+  cars"
+```
+
+
  
 ---
 
@@ -188,6 +203,104 @@ cars %>%             # the data  #REVEAL
 
 In the next slide, we'll walk through the code that produces this plot, and the output along the way. We use the code `apply_reveal("nobel")` in-line to access the code from the code chunk called *nobel*.
  
+---
+
+
+```{r}
+my_local %>% 
+  parse_code() ->
+parsed
+parsed %>% 
+  determine_breaks() ->
+breaks
+breaks %>% 
+  calc_highlight() ->
+highlighting
+
+parsed %>% 
+  reveal_parsed(break_point = 3, highlight = 2:3) 
+
+
+
+```
+
+---
+
+```{r}
+reveal_chunk("nobel")
+```
+
+
+```{r}
+# return_partial_side_by_side_code_output_chunks(chunk_name = "nobel")
+```
+
+---
+
+```{r}
+
+# return_partial_code_or_output_chunks(chunk_name = "nobel")
+```
+
+---
+
+
+```{r}
+reveal_chunk('nobel', 1, 1, FALSE)
+```
+
+
+---
+
+count: false
+My Title
+```{r output_nobel_1, eval=TRUE, echo = FALSE, code=reveal_chunk('nobel', 1, 1, FALSE)}
+```
+
+---
+
+```{r}
+partially_knit_chunks(chunk_name = "nobel")
+```
+
+---
+
+
+```{r}
+apply_reveal(chunk_name = "nobel")
+```
+
+
+
+
+---
+
+class: split-40
+count: false
+My Title
+.column[.content[
+```{r code_nobel_1, eval=FALSE, echo = TRUE, code=reveal_chunk('nobel', 1, 1, FALSE)}
+```
+]]
+.column[.content[
+```{r output_nobel_1, eval=TRUE, echo = FALSE, code=reveal_chunk('nobel', 1, 1, FALSE)}
+```
+]]
+---
+class: split-40
+count: false
+My Title
+.column[.content[
+```{r code_nobel_2, eval=FALSE, echo = TRUE, code=reveal_chunk('nobel', 2, 2, FALSE)}
+```
+]]
+.column[.content[
+```{r output_nobel_2, eval=TRUE, echo = FALSE, code=reveal_chunk('nobel', 2, 2, FALSE)}
+```
+]]
+---
+
+
 ---
 
 `r apply_reveal("nobel")`
@@ -214,7 +327,7 @@ my_data
 
 ---
 
-`r apply_reveal("data_transformation")`
+*** apply_reveal("data_transformation")`
 
 ---
 
@@ -239,7 +352,7 @@ ggplot(data = my_data) +              # pipe to ggplot
 ```
 
 
-`r apply_reveal("just_plotting")`
+*** apply_reveal("just_plotting")`
 
 ```{r}
 # make_flipbook_mini_chunk(chunk_name = "just_plotting", file_out = "a_flipbook_mini_example.gif")
@@ -266,7 +379,7 @@ a_plot <- cars %>%             # the data  #REVEAL
   cars
 ```
 
-`r apply_reveal("regular_assignment", reg_assignment = T)`
+*** apply_reveal("regular_assignment", reg_assignment = T)`
 
 
 
@@ -287,7 +400,7 @@ ggplot(data = my_data) +   # pipe to ggplot
   geom_point() #REVEAL
 ```
 
-`r apply_reveal("user_definded_reveal", user_reveal = T)`
+*** apply_reveal("user_definded_reveal", user_reveal = T)`
 
 
 ---
@@ -312,7 +425,7 @@ gapminder::gapminder %>%
   aes(color = continent) #REVEAL 
 ```
 
-`r apply_reveal("slow_traditional_presentation", show_code = F, user_reveal = T)`
+*** apply_reveal("slow_traditional_presentation", show_code = F, user_reveal = T)`
 
 
 
@@ -340,7 +453,7 @@ cars %>%
 ---
 
 
-`r apply_reveal_nonsequential("non_sequential")`
+*** apply_reveal_nonsequential("non_sequential")`
 
 
 ---
@@ -362,7 +475,7 @@ my_named_list) %>%
 ```
 
 
-`r apply_reveal("logical_indexing")`
+*** apply_reveal("logical_indexing")`
 
 ---
 
@@ -399,7 +512,7 @@ cor.test(x = my_data$tail_length,
 ```
 
 
-`r apply_repeat_reveal(chunk_name = "many_realizations", num_reveal = 10)`
+*** apply_repeat_reveal(chunk_name = "many_realizations", num_reveal = 10)`
 
 
 ---

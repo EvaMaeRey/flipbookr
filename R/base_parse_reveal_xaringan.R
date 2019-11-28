@@ -57,6 +57,21 @@ color = \"blue\", #REVEAL4
 aes(color = speed_14_plus)"
 
 
+#' Code chunk as text
+#'
+#' @param chunk_name a character string which is a chunk name
+#'
+#' @return the code in the chunk as a string
+#' @export
+#'
+#' @examples
+chunk_as_text <- function(chunk_name){
+
+  paste(knitr::knit_code$get(chunk_name), collapse = "\n")
+
+}
+
+
 # New - using parser
 # We want to take just text (scalar), parse it and return a useful dataframe
 
@@ -137,172 +152,216 @@ parse_code <- function(code) {
 }
 
 
-#' Code chunk as text
+#' Determine breaks
 #'
-#' @param chunk_name a character string which is a chunk name
+#' @param parsed parse code dataframe
+#' @param break_type text input "auto", "user", or "non_seq"
 #'
-#' @return the code in the chunk as a string
+#' @return a vector of integers
 #' @export
 #'
 #' @examples
-chunk_as_text <- function(chunk_name){
+#' determine_breaks(parse_code(local_code), "auto")
+determine_breaks <- function(parsed, break_type = "auto"){
 
-  paste(knitr::knit_code$get(chunk_name), collapse = "\n")
+  if (break_type == "auto") {
 
-}
+    breaks <- parsed$line[parsed$balanced_par]
 
+  } else if (break_type == "user") {
 
+    breaks <- parsed$line[parsed$user_reveal]
 
+  } else {
 
-#' Parse chunk
-#'
-#' @param chunk_name a character string which is a chunk name
-#'
-#' @return parsed code from a code chunk in an Rmd
-#' @export
-#'
-#' @examples
-parse_chunk <- function(chunk_name){
+    breaks <- parsed$line[parsed$user_non_seq]
 
-  code <- chunk_as_text(chunk_name)
-
-  parse_code(code)
-
-}
-
-
-#' Partially reveal parsed code
-#'
-#' @param parsed the output resulting from parsing code
-#' @param upto a integer indicating the line of code
-#' @param highlight integers indicating which lines of code to highlight
-#'
-#' @return Partial code with indicators for highlighting
-#' @export
-#'
-#' @examples
-reveal_parsed <- function(parsed, upto = 3, highlight = 1:3){
-
-  parsed %>%
-    dplyr::mutate(reveal = 1:dplyr::n() <= upto) %>%
-    dplyr::filter(reveal) %>%
-    dplyr::mutate(connector = dplyr::case_when(1:dplyr::n() == dplyr::n() ~ "",
-                                 1:dplyr::n() != dplyr::n() ~ connector)) %>%
-    dplyr::mutate(highlight = ifelse(1:dplyr::n() %in% highlight, "#<<", ""
-    )) %>%
-    dplyr::mutate(out = paste0(code, "", connector, "  ", comment, highlight)) %>%
-    dplyr::select(out) ->
-    up_to_result
-  up_to_result$out
-
-}
-
-
-
-#' Partially reveal code
-#'
-#' @param code code as a character string
-#' @param upto an integer indicating the line of code
-#' @param highlight integers indicating which lines of code to highlight
-#'
-#' @return Partial code with indicators for highlighting
-#' @export
-#'
-#' @examples
-#' reveal_code(code = local_code_regular_assignment)
-#' reveal_code(code = local_code)
-#' reveal_code(code = local_code, 5, 3:5)
-reveal_code <- function(code, upto = 3, highlight = 1:3) {
-
-  parsed <- parse_code(code = code)
-
-  reveal_parsed(parsed = parsed, upto = upto, highlight = highlight)
-
-}
-
-
-#' Reveal Chunk
-#'
-#' @param chunk_name a character string which is a chunk name
-#' @param upto an integer indicating the line of code
-#' @param highlight integers indicating which lines of code to highlight
-#' @param reg_assignment logical set to T if output of some object created at beginning of code chunk should be displayed
-#'
-#' @return Partial code with indicators for highlighting
-#' @export
-#'
-#' @examples
-reveal_chunk <- function(chunk_name, upto = 3, highlight = 1:3, reg_assignment = F){
-
-  content <- chunk_as_text(chunk_name)
-  parsed <- parse_code(code = content)
-
-  if (reg_assignment == F) {
-    reveal_parsed(parsed = parsed, upto = upto, highlight = highlight)
-  }else{
-    the_reveal <- reveal_parsed(parsed = parsed, upto = upto, highlight = highlight)
-
-    object_to_track <- the_reveal[1] %>%
-      stringr::str_extract(".+\\<-") %>%
-      stringr::str_remove("<-") %>%
-      stringr::str_trim()
-
-    c(the_reveal, " ",
-      paste(object_to_track, "# print object"))
   }
 
+  breaks
 
 }
 
 
-#' Calculate highlighting for sequential reveal
+#' Calculate highlight for sequential reveal
 #'
 #' @param breaks a vector of the lines where code breaks are needed
 #'
-#' @return list of vectors with highlighting at each step
+#' @return list of vectors with highlight at each step
 #' @export
 #'
 #' @examples
 #' calc_highlight(c(1,5,7,10))
 calc_highlight <- function(breaks) {
 
-  highlighting <- list()
+  highlight <- list()
 
-for (i in 1:length(breaks)) {
-  if (i == 1) {
-    highlighting[[i]] <- 1:breaks[i]
-  } else {
-    highlighting[[i]] <- (breaks[i - 1] + 1):breaks[i]
+  for (i in 1:length(breaks)) {
+    if (i == 1) {
+      highlight[[i]] <- 1:breaks[i]
+    } else {
+      highlight[[i]] <- (breaks[i - 1] + 1):breaks[i]
+    }
   }
+
+  return(highlight)
+
 }
 
-  return(highlighting)
+
+#'
+#' #' Parse chunk
+#' #'
+#' #' @param chunk_name a character string which is a chunk name
+#' #'
+#' #' @return parsed code from a code chunk in an Rmd
+#' #' @export
+#' #'
+#' #' @examples
+#' parse_chunk <- function(chunk_name){
+#'
+#'   code <- chunk_as_text(chunk_name)
+#'
+#'   parse_code(code)
+#'
+#' }
+
+
+#' Partially reveal parsed code
+#'
+#' @param parsed the output resulting from parsing code
+#' @param break_point a integer indicating the line of code
+#' @param highlight integers indicating which lines of code to highlight
+#'
+#' @return Partial code with indicators for highlight
+#' @export
+#'
+#' @examples
+reveal_parsed_classic <- function(parsed, break_point = 3, highlight = 1:3){
+
+  parsed %>%
+    dplyr::mutate(reveal = 1:dplyr::n() <= break_point) %>%
+    dplyr::filter(reveal) %>%
+    dplyr::mutate(connector = dplyr::case_when(1:dplyr::n() == dplyr::n() ~ "",
+                                 1:dplyr::n() != dplyr::n() ~ connector)) %>%
+    dplyr::mutate(highlight = ifelse(1:dplyr::n() %in% highlight, "#<<", "" )) %>%
+    dplyr::mutate(out = paste0(code, "", connector, "  ", comment, highlight)) %>%
+    dplyr::select(out) ->
+    up_to_result
+
+  up_to_result$out
 
 }
 
 
 
+#' Partially reveal parsed regular assignment
+#'
+#' @param parsed the output resulting from parsing code
+#' @param break_point an integer indicating the line of code
+#' @param highlight integers indicating which lines of code to highlight
+#'
+#' @return Partial code with indicators for highlight
+#' @export
+#'
+#' @examples
+#' reveal_code(code = local_code_regular_assignment)
+#' reveal_code(code = local_code)
+#' reveal_code(code = local_code, 5, 3:5)
+reveal_parsed_reg_assignment <- function(parsed, break_point = 3, highlight = 1:3){
 
-return_partial_chunks <- function(type = "output",
-                                  eval = type == "output",
-                                  echo = type == "code") {
-  glue::glue("```{r {{{type}}}_{{chunk_name}}_{{breaks}}, eval={{{eval}}}, echo = {{{echo}}}, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlighting}}, {{reg_assignment}})}",
+  the_reveal <- reveal_parsed(parsed, break_point, highlight)
+
+  the_reveal[1] %>%
+      stringr::str_extract(".+\\<-") %>%
+      stringr::str_remove("<-") %>%
+      stringr::str_trim() ->
+    object_to_track
+
+    c(the_reveal, " ", paste(object_to_track, "# print object"))
+
+}
+
+
+reveal_parsed <- function(parsed, break_point = 3, highlight = 1:3, reg_assignment = F){
+
+  if (reg_assignment == F) {
+    reveal_parsed_classic(parsed, break_point, highlight)
+  }else{
+      reveal_parsed_reg_assignment(parsed, break_point, highlight)
+    }
+
+}
+
+#' #' Reveal Chunk
+#' #'
+#' #' @param chunk_name a character string which is a chunk name
+#' #' @param break_point an integer indicating the line of code
+#' #' @param highlight integers indicating which lines of code to highlight
+#' #' @param reg_assignment logical set to T if output of some object created at beginning of code chunk should be displayed
+#' #'
+#' #' @return Partial code with indicators for highlight
+#' #' @export
+#' #'
+#' #' @examples
+#' reveal_chunk <- function(chunk_name, break_point = 3, highlight = 1:3, reg_assignment = F){
+#'
+#'   chunk_name %>%
+#'     chunk_as_text() %>%
+#'     parse_code() ->
+#'   parsed
+#'
+#'   if (reg_assignment == F) {
+#'
+#'     reveal_parsed(parsed = parsed, break_point = break_point, highlight = highlight)
+#'
+#'     }else{
+#'
+#'     the_reveal <- reveal_parsed(parsed = parsed, break_point = break_point, highlight = highlight)
+#'
+#'     object_to_track <- the_reveal[1] %>%
+#'       stringr::str_extract(".+\\<-") %>%
+#'       stringr::str_remove("<-") %>%
+#'       stringr::str_trim()
+#'
+#'     c(the_reveal, " ",
+#'       paste(object_to_track, "# print object"))
+#'   }
+#'
+#'
+#' }
+
+
+reveal_chunk <- function(chunk_name, break_point = 3, highlight = 1:3, reg_assignment = F){
+
+  chunk_name %>%
+    chunk_as_text() %>%
+    parse_code() %>%
+    reveal_parsed(break_point, highlight, reg_assignment)
+
+}
+
+
+return_partial_chunks_template <- function(display_type = "output",
+                                  eval = display_type == "output",
+                                  echo = display_type == "code") {
+  glue::glue("```{r {{{display_type}}}_{{chunk_name}}_{{breaks}}, eval={{{eval}}}, echo = {{{echo}}}, code=reveal_chunk('{{chunk_name}}', break_point = {{breaks}}, highlight = {{highlight}}, reg_assignment = {{reg_assignment}})}",
              "```",
              .open = "{{{", .close = "}}}", .sep = "\n")
 }
-return_partial_chunks()
+return_partial_chunks_template()
 
 
 # return_partial_code_chunks <- function(){
 #
-#   return_partial_chunks(eval = FALSE, echo = TRUE, type = "code")
+#   return_partial_chunks(eval = FALSE, echo = TRUE, display_type = "code")
 #
 # }
 # return_partial_code_chunks()
 #
 # return_partial_plot_chunks <- function() {
 #
-#   return_partial_chunks(eval = TRUE, echo = FALSE, type = "plot")
+#   return_partial_chunks(eval = TRUE, echo = FALSE, display_type = "plot")
 #
 # }
 # return_partial_plot_chunks()
@@ -311,7 +370,7 @@ return_partial_chunks()
 
 return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk_name",
                                            breaks = 1:3,
-                                           highlighting = list(1, 1:2, 1:3),
+                                           highlight = list(1, 1:2, 1:3),
                                            title = "My Title",
                                            reg_assignment = F,
                                            split = 40) {
@@ -321,11 +380,12 @@ return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk
     "count: false",
     "{{title}}",
     ".column[.content[",
-    return_partial_chunks(type = "code"),
+    return_partial_chunks_template(display_type = "code"),
     "]]",
     ".column[.content[",
-    return_partial_chunks(type = "output"),
+    return_partial_chunks_template(display_type = "output"),
     "]]",
+    " ",
     .open = "{{", .close = "}}", .sep = "\n"
     )
 
@@ -338,15 +398,15 @@ return_partial_side_by_side_code_output_chunks()
 
 return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
                                                breaks = 1:3,
-                                               highlighting = list(1, 1:2, 1:3),
+                                               highlight = list(1, 1:2, 1:3),
                                                title = "My Title",
                                                reg_assignment = F,
-                                               type = "output") {
+                                               display_type = "output") {
 
   partial_knit_steps <- glue::glue(
     "count: false",
     "{{title}}",
-    return_partial_chunks(eval = type == "output", echo = type == "code", type = type),
+    return_partial_chunks_template(eval = display_type == "output", echo = display_type == "code", display_type = display_type),
     .open = "{{", .close = "}}", .sep = "\n"
   )
 
@@ -357,38 +417,68 @@ return_partial_code_or_output_chunks()
 
 
 
-# uses above code, but calculates breaks and highlighting
+# uses above code, but calculates breaks and highlight
 partially_knit_chunks <- function(chunk_name = "example_chunk_name",
                                   title = "My Title",
                                   reg_assignment = F,
-                                  type = NULL,
-                                  user_reveal = F){
+                                  display_type = "both",
+                                  break_type = "auto",
+                                  split = 40){
 
 
-parsed <- parse_chunk(chunk_name)
+  chunk_name %>%
+    chunk_as_text() %>%
+    parse_code() ->
+  parsed
 
-if (user_reveal == T) {
+breaks <- determine_breaks(parsed, break_type)
 
-    breaks <- parsed$line[parsed$user_reveal]
+highlight <- calc_highlight(breaks = breaks)
 
-  } else {
+if (display_type == "both") {
 
-    breaks <- parsed$line[parsed$balanced_par]
-
-  }
-
-highlighting <- calc_highlight(breaks = breaks)
-
-if (is.null(type)) {
-
-  return_partial_side_by_side_code_output_chunks()
+  return_partial_side_by_side_code_output_chunks(chunk_name,
+                                                 title,
+                                                 breaks = breaks,
+                                                 highlight = highlight,
+                                                 reg_assignment,
+                                                 split = 40)
 
 } else {
 
-  return_partial_code_or_output_chunks()
+  return_partial_code_or_output_chunks(chunk_name,
+                                       title,
+                                       breaks = breaks,
+                                       highlight = highlight,
+                                       reg_assignment)
 
 }
 
+}
+
+
+#' Apply reveal in Rmarkdown file, to be used in line
+#'
+#' @param chunk_name a character string which is a chunk name
+#' @param user_reveal a logical for if breaks should be automatically determined or have been defined manually with "#REVEAL" message
+#' @param show_code a logical for if the code should be displayed or not, default is TRUE
+#' @param title a character string for a title for all the slides to display code-output evolution, default is an empty string
+#' @param reg_assignment logical set to T if output of some object created at beginning of code chunk should be displayed
+#'
+#' @return a character string to be interpreted as .Rmd content
+#' @export
+#'
+#' @examples
+apply_reveal <- function(chunk_name, display_type = "both", break_type = "auto", title = "", reg_assignment = F, split = 40){
+
+  paste(knitr::knit(text =
+                      partially_knit_chunks(chunk_name,
+                                            title,
+                                            reg_assignment,
+                                            display_type,
+                                            break_type,
+                                            split)),
+        collapse = "\n")
 }
 
 
@@ -422,18 +512,18 @@ if (is.null(type)) {
 #'
 #'     }
 #'
-#'   highlighting <- calc_highlight(breaks = breaks)
+#'   highlight <- calc_highlight(breaks = breaks)
 #'
 #'   if (show_code == T) {
 #'     partial_knit_steps <- glue::glue(
 #'       "class: split-40",
 #'       "count: false",
 #'       ".column[.content[",
-#'       "```{r plot_{{chunk_name}}_{{breaks}}, eval=FALSE, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlighting}}, {{reg_assignment}})}",
+#'       "```{r plot_{{chunk_name}}_{{breaks}}, eval=FALSE, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlight}}, {{reg_assignment}})}",
 #'       "```",
 #'       "]]",
 #'       ".column[.content[",
-#'       "```{r output_{{chunk_name}}_{{breaks}}, echo=FALSE, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlighting}}, {{reg_assignment}})}",
+#'       "```{r output_{{chunk_name}}_{{breaks}}, echo=FALSE, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlight}}, {{reg_assignment}})}",
 #'       "```",
 #'       "]]",
 #'       .open = "{{", .close = "}}", .sep = "\n"
@@ -441,7 +531,7 @@ if (is.null(type)) {
 #'
 #'   } else {
 #'
-#'     partial_knit_steps <- glue::glue(title,"```{r output_{{chunk_name}}_{{breaks}}, echo=FALSE, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlighting}}, {{reg_assignment}})}",
+#'     partial_knit_steps <- glue::glue(title,"```{r output_{{chunk_name}}_{{breaks}}, echo=FALSE, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlight}}, {{reg_assignment}})}",
 #'                                      "```",
 #'                                      .open = "{{", .close = "}}", .sep = "\n"
 #'     )
@@ -454,26 +544,4 @@ if (is.null(type)) {
 
 
 
-#' Apply reveal in Rmarkdown file, to be used in line
-#'
-#' @param chunk_name a character string which is a chunk name
-#' @param user_reveal a logical for if breaks should be automatically determined or have been defined manually with "#REVEAL" message
-#' @param show_code a logical for if the code should be displayed or not, default is TRUE
-#' @param title a character string for a title for all the slides to display code-output evolution, default is an empty string
-#' @param reg_assignment logical set to T if output of some object created at beginning of code chunk should be displayed
-#'
-#' @return a character string to be interpreted as .Rmd content
-#' @export
-#'
-#' @examples
-apply_reveal <- function(chunk_name, user_reveal = F, type = NULL, title = "", reg_assignment = F){
-
-  paste(knitr::knit(text =
-                      partially_knit_chunks(chunk_name,
-                                            user_reveal,
-                                            type,
-                                            title,
-                                            reg_assignment)),
-        collapse = "\n")
-}
 

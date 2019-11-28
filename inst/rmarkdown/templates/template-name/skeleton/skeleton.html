@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Flipbooks</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Gina Reynolds, November 2019" />
+    <link href="libs/remark-css-0.0.1/kunoichi.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Flipbooks
+### Gina Reynolds, November 2019
+
+---
+
+
+
+
+
+
+&lt;!-- # What are Flipbooks? --&gt;
+&lt;!-- # Show an one example - ggplot2 flipbook --&gt;
+&lt;!-- # What are their advantages (Don Norman, the Design of Everyday Things) --&gt;
+&lt;!--  - natural mapping (matching code-output temporal changes) --&gt;
+&lt;!--  - affordances (ease of use - motion detection, name, automatic parsing - low additional burden on creator) --&gt;
+&lt;!--  - feedback (minimal changes mean that feedback is digestible) --&gt;
+&lt;!-- # How is it implemented? --&gt;
+&lt;!--   # automation... (technical side) --&gt;
+&lt;!--   # And how YOU can make one ... --&gt;
+&lt;!-- # Extending the basic --&gt;
+&lt;!--   ## adding connectors, allowing code wrapping, using a parser (making it safe for human consumption) --&gt;
+&lt;!--   ## using %&gt;% .[] - data.table --&gt;
+&lt;!--   ## Regular Assignment --&gt;
+&lt;!--   ## Non sequential reveal (not yet implemented) --&gt;
+&lt;!--   ## Traditional presentations --&gt;
+&lt;!--   ## Ensembles (not yet stable) --&gt;
+&lt;!--   ## python, C++ (not yet implemented) --&gt;
+&lt;!--   ## Visual Table of contents - "You do not need a slide for the Table of Contents!" --&gt;
+&lt;!--   ## Flipbook mini (not yet final) --&gt;
+&lt;!-- # resources --&gt;
+&lt;!--   ## package --&gt;
+&lt;!--   ## flipbooks library (my uses) --&gt;
+&lt;!--   ## minimal examples --&gt;
+&lt;!--   ## video? --&gt;
+&lt;!-- # caveats --&gt;
+&lt;!--   # irreproducibility across platforms (fonts) --&gt;
+&lt;!--   # output not supported by remark.js, not going to work --&gt;
+&lt;!--   # may load slow (or not at all - leaflet) --&gt;
+&lt;!-- # future...??? --&gt;
+
+---
+
+# Introduction
+
+This is a minimal example to demonstrate how to create a flipbook with data from #TidyTuesday.  It walks through data wrangling and plots pipelines made with the Tidyverse.  The functions that make this possible are the work of Emi Tanaka, Garrick Aden-Buie and myself, and are built for Xaringan, an Rmarkdown file type for creating presentation slides; the functions make use of the function `knitr:::knit_code$get()`.
+
+The code to create the flipbook is an .Rmd that you can download [**here**](https://raw.githubusercontent.com/EvaMaeRey/little_flipbooks_library/master/tidytuesday_minimal_example/tidytuesday_minimal_example.Rmd).
+
+---
+
+Interested in more flipbooks? Check out 
+
+- [the ggplot flipbook](https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html)
+- [The Tidyverse in Action](https://evamaerey.github.io/tidyverse_in_action/tidyverse_in_action.html)
+- [the ggplot2 grammar guide](https://evamaerey.github.io/ggplot2_grammar_guide/ggplot2_grammar_guide)
+
+and 
+
+- [the little flipbooks libraray](https://raw.githubusercontent.com/EvaMaeRey/little_flipbooks_library)
+
+
+For more about Xaringan:
+
+- [Xaringan presentation slides](https://slides.yihui.name/xaringan/)
+
+The sequential workflow of the Tidyverse makes incremental display of pipelines and ggplot statements ideal:  
+
+- [www.tidyverse.org](https://www.tidyverse.org/)
+
+
+---
+
+
+# What's the slow ggplot style?
+
+"Slow ggplot" just means working more incrementally than is typical. Elements of the approach are as follows:
+
+- pulling out aes() from the ggplot() function:  
+- using fewer functions; example - using labs() to add a title instead of ggtitle()
+- using functions multiple times; example aes(x = var1) + aes(y = var2) rather than aes(x = var1, y = var2)
+- using base R functions and tidyverse functions.  For other packages, the :: style to call them
+- write out arguments (no shortcuts)  aes(x = gdppercap) not aes(gdppercap)
+- order ggplot commands so that reactivity is obvious; scale adjustments to aesthetics might also be near the aesthetic declaration. 
+
+
+
+
+
+
+---
+
+Here, I contrast the usual plotting method to slow ggplotting:
+
+Usual approach:
+
+
+```r
+ggplot(my_data, aes(var1, y = var2, col = var3)) +
+  geom_point() +
+  ggtitle("My Title") +
+  labs(x = "the x label", y = "the y label", col = "legend title")
+```
+
+Using slow ggplotting: 
+
+
+```r
+ggplot(data = my_data) +
+  aes(x = var1) +
+  aes(y = var2) +
+  geom_point() +
+  aes(col = var3) +
+  labs(y = "the y label") +
+  labs(x = "the x label") +
+  labs(col = "legend title") +
+  labs(title = "My title")
+```
+
+
+# You may have seen the ggplot flipbook
+
+
+# We've come along way
+
+- adding pipe and other connections
+- allowed code wrapping - responsible piping.  
+
+
+
+
+
+
+
+---
+
+# Set up
+
+Okay. Let's load the the `flipbookr` and the `tidyverse` packages.
+
+
+```r
+# library(flipbookr)
+library(tidyverse)
+```
+
+And load the data from the tidytuesday github page. 
+
+
+```r
+# nobel_winners &lt;- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-14/nobel_winners.csv")
+# source("../../../../../R/flipbook_mini.R")
+source("../../../../../R/base_parse_reveal_xaringan.R")
+source("../../../../../R/non_sequential_reveal.R")
+```
+
+---
+
+# Where we are going: 
+
+We'll create this plot.  I have **echo** set to FALSE in the code chunk options here so that you don't see the code, and **eval** to TRUE so that the plot output is produced.  The code chunk is given the name "nobel", and this is used in the in apply_reveal function, which breaks down code by wrangling and plot statements. 
+
+![](skeleton_files/figure-html/nobel-1.png)&lt;!-- --&gt;
+ 
+
+
+```r
+my_local &lt;- "cars %&gt;%             # the data  #REVEAL
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +              # pipe to ggplot
+  aes(x = speed) +
+  aes(y = dist) +
+  # Describing what follows
+  geom_point(alpha = .3) + #REVEAL
+  aes(color =
+  speed &gt; 14
+  ) %+%
+  cars"
+```
+
+
+ 
+---
+
+# How do we get there?
+
+In the next slide, we'll walk through the code that produces this plot, and the output along the way. We use the code `apply_reveal("nobel")` in-line to access the code from the code chunk called *nobel*.
+ 
+---
+
+
+
+```r
+my_local %&gt;% 
+  parse_code() -&gt;
+parsed
+parsed %&gt;% 
+  determine_breaks() -&gt;
+breaks
+breaks %&gt;% 
+  calc_highlight() -&gt;
+highlighting
+
+parsed %&gt;% 
+  reveal_parsed(break_point = 3, highlight = 2:3) 
+```
+
+```
+[1] "cars %&gt;%  # the data  "              
+[2] "  filter(speed &gt; 4) %&gt;%  # subset#&lt;&lt;"
+[3] "  ggplot()   # pipe to ggplot#&lt;&lt;"    
+```
+
+---
+
+
+```r
+reveal_chunk("nobel")
+```
+
+```
+[1] "cars %&gt;%  # the data  #&lt;&lt;"           
+[2] "  filter(speed &gt; 4) %&gt;%  # subset#&lt;&lt;"
+[3] "  ggplot()   # pipe to ggplot#&lt;&lt;"    
+```
+
+
+
+```r
+# return_partial_side_by_side_code_output_chunks(chunk_name = "nobel")
+```
+
+---
+
+
+```r
+# return_partial_code_or_output_chunks(chunk_name = "nobel")
+```
+
+---
+
+
+
+```r
+reveal_chunk('nobel', 1, 1, FALSE)
+```
+
+```
+[1] "cars   # the data  #&lt;&lt;"
+```
+
+
+---
+
+count: false
+My Title
+
+```
+   speed dist
+1      4    2
+2      4   10
+3      7    4
+4      7   22
+5      8   16
+6      9   10
+7     10   18
+8     10   26
+9     10   34
+10    11   17
+11    11   28
+12    12   14
+13    12   20
+14    12   24
+15    12   28
+16    13   26
+17    13   34
+18    13   34
+19    13   46
+20    14   26
+21    14   36
+22    14   60
+23    14   80
+24    15   20
+25    15   26
+26    15   54
+27    16   32
+28    16   40
+29    17   32
+30    17   40
+31    17   50
+32    18   42
+33    18   56
+34    18   76
+35    18   84
+36    19   36
+37    19   46
+38    19   68
+39    20   32
+40    20   48
+41    20   52
+42    20   56
+43    20   64
+44    22   66
+45    23   54
+46    24   70
+47    24   92
+48    24   93
+49    24  120
+50    25   85
+```
+
+---
+
+
+```r
+partially_knit_chunks(chunk_name = "nobel")
+```
+
+````
+class: split-40
+count: false
+My Title
+.column[.content[
+```{r code_nobel_1, eval=FALSE, echo = TRUE, code=reveal_chunk('nobel', break_point = 1, highlight = 1, reg_assignment = FALSE)}
+```
+]]
+.column[.content[
+```{r output_nobel_1, eval=TRUE, echo = FALSE, code=reveal_chunk('nobel', break_point = 1, highlight = 1, reg_assignment = FALSE)}
+```
+]]
+---
+class: split-40
+count: false
+My Title
+.column[.content[
+```{r code_nobel_2, eval=FALSE, echo = TRUE, code=reveal_chunk('nobel', break_point = 2, highlight = 2, reg_assignment = FALSE)}
+```
+]]
+.column[.content[
+```{r output_nobel_2, eval=TRUE, echo = FALSE, code=reveal_chunk('nobel', break_point = 2, highlight = 2, reg_assignment = FALSE)}
+```
+]]
+---
+class: split-40
+count: false
+My Title
+.column[.content[
+```{r code_nobel_3, eval=FALSE, echo = TRUE, code=reveal_chunk('nobel', break_point = 3, highlight = 3, reg_assignment = FALSE)}
+```
+]]
+.column[.content[
+```{r output_nobel_3, eval=TRUE, echo = FALSE, code=reveal_chunk('nobel', break_point = 3, highlight = 3, reg_assignment = FALSE)}
+```
+]]
+---
+class: split-40
+count: false
+My Title
+.column[.content[
+```{r code_nobel_4, eval=FALSE, echo = TRUE, code=reveal_chunk('nobel', break_point = 4, highlight = 4, reg_assignment = FALSE)}
+```
+]]
+.column[.content[
+```{r output_nobel_4, eval=TRUE, echo = FALSE, code=reveal_chunk('nobel', break_point = 4, highlight = 4, reg_assignment = FALSE)}
+```
+]]
+---
+class: split-40
+count: false
+My Title
+.column[.content[
+```{r code_nobel_5, eval=FALSE, echo = TRUE, code=reveal_chunk('nobel', break_point = 5, highlight = 5, reg_assignment = FALSE)}
+```
+]]
+.column[.content[
+```{r output_nobel_5, eval=TRUE, echo = FALSE, code=reveal_chunk('nobel', break_point = 5, highlight = 5, reg_assignment = FALSE)}
+```
+]]
+---
+class: split-40
+count: false
+My Title
+.column[.content[
+```{r code_nobel_7, eval=FALSE, echo = TRUE, code=reveal_chunk('nobel', break_point = 7, highlight = 6:7, reg_assignment = FALSE)}
+```
+]]
+.column[.content[
+```{r output_nobel_7, eval=TRUE, echo = FALSE, code=reveal_chunk('nobel', break_point = 7, highlight = 6:7, reg_assignment = FALSE)}
+```
+]]
+---
+class: split-40
+count: false
+My Title
+.column[.content[
+```{r code_nobel_10, eval=FALSE, echo = TRUE, code=reveal_chunk('nobel', break_point = 10, highlight = 8:10, reg_assignment = FALSE)}
+```
+]]
+.column[.content[
+```{r output_nobel_10, eval=TRUE, echo = FALSE, code=reveal_chunk('nobel', break_point = 10, highlight = 8:10, reg_assignment = FALSE)}
+```
+]]
+---
+class: split-40
+count: false
+My Title
+.column[.content[
+```{r code_nobel_11, eval=FALSE, echo = TRUE, code=reveal_chunk('nobel', break_point = 11, highlight = 11, reg_assignment = FALSE)}
+```
+]]
+.column[.content[
+```{r output_nobel_11, eval=TRUE, echo = FALSE, code=reveal_chunk('nobel', break_point = 11, highlight = 11, reg_assignment = FALSE)}
+```
+]]
+````
+
+---
+
+
+
+```r
+apply_reveal(chunk_name = "nobel")
+```
+
+```
+
+  |                                                                            
+  |                                                                      |   0%
+  |                                                                            
+  |..                                                                    |   3%
+  ordinary text without R code
+
+
+  |                                                                            
+  |....                                                                  |   6%
+label: code_nobel_1 (with options) 
+List of 3
+ $ eval: logi FALSE
+ $ echo: logi TRUE
+ $ code: language reveal_chunk("nobel", break_point = 1, highlight = 1, reg_assignment = FALSE)
+
+
+  |                                                                            
+  |......                                                                |   9%
+  ordinary text without R code
+
+
+  |                                                                            
+  |........                                                              |  12%
+label: output_nobel_1 (with options) 
+List of 3
+ $ eval: logi TRUE
+ $ echo: logi FALSE
+ $ code: language reveal_chunk("nobel", break_point = 1, highlight = 1, reg_assignment = FALSE)
+
+
+  |                                                                            
+  |...........                                                           |  15%
+  ordinary text without R code
+
+
+  |                                                                            
+  |.............                                                         |  18%
+label: code_nobel_2 (with options) 
+List of 3
+ $ eval: logi FALSE
+ $ echo: logi TRUE
+ $ code: language reveal_chunk("nobel", break_point = 2, highlight = 2, reg_assignment = FALSE)
+
+
+  |                                                                            
+  |...............                                                       |  21%
+  ordinary text without R code
+
+
+  |                                                                            
+  |.................                                                     |  24%
+label: output_nobel_2 (with options) 
+List of 3
+ $ eval: logi TRUE
+ $ echo: logi FALSE
+ $ code: language reveal_chunk("nobel", break_point = 2, highlight = 2, reg_assignment = FALSE)
+
+
+  |                                                                            
+  |...................                                                   |  27%
+  ordinary text without R code
+
+
+  |                                                                            
+  |.....................                                                 |  30%
+label: code_nobel_3 (with options) 
+List of 3
+ $ eval: logi FALSE
+ $ echo: logi TRUE
+ $ code: language reveal_chunk("nobel", break_point = 3, highlight = 3, reg_assignment = FALSE)
+
+
+  |                                                                            
+  |.......................                                               |  33%
+  ordinary text without R code
+
+
+  |                                                                            
+  |.........................                                             |  36%
+label: output_nobel_3 (with options) 
+List of 3
+ $ eval: logi TRUE
+ $ echo: logi FALSE
+ $ code: language reveal_chunk("nobel", break_point = 3, highlight = 3, reg_assignment = FALSE)
+```
+
+```
+
+  |                                                                            
+  |............................                                          |  39%
+  ordinary text without R code
+
+
+  |                                                                            
+  |..............................                                        |  42%
+label: code_nobel_4 (with options) 
+List of 3
+ $ eval: logi FALSE
+ $ echo: logi TRUE
+ $ code: language reveal_chunk("nobel", break_point = 4, highlight = 4, reg_assignment = FALSE)
+
+
+  |                                                                            
+  |................................                                      |  45%
+  ordinary text without R code
+
+
+  |                                                                            
+  |..................................                                    |  48%
+label: output_nobel_4 (with options) 
+List of 3
+ $ eval: logi TRUE
+ $ echo: logi FALSE
+ $ code: language reveal_chunk("nobel", break_point = 4, highlight = 4, reg_assignment = FALSE)
+```
+
+```
+
+  |                                                                            
+  |....................................                                  |  52%
+  ordinary text without R code
+
+
+  |                                                                            
+  |......................................                                |  55%
+label: code_nobel_5 (with options) 
+List of 3
+ $ eval: logi FALSE
+ $ echo: logi TRUE
+ $ code: language reveal_chunk("nobel", break_point = 5, highlight = 5, reg_assignment = FALSE)
+
+
+  |                                                                            
+  |........................................                              |  58%
+  ordinary text without R code
+
+
+  |                                                                            
+  |..........................................                            |  61%
+label: output_nobel_5 (with options) 
+List of 3
+ $ eval: logi TRUE
+ $ echo: logi FALSE
+ $ code: language reveal_chunk("nobel", break_point = 5, highlight = 5, reg_assignment = FALSE)
+```
+
+```
+
+  |                                                                            
+  |.............................................                         |  64%
+  ordinary text without R code
+
+
+  |                                                                            
+  |...............................................                       |  67%
+label: code_nobel_7 (with options) 
+List of 3
+ $ eval: logi FALSE
+ $ echo: logi TRUE
+ $ code: language reveal_chunk("nobel", break_point = 7, highlight = 6:7, reg_assignment = FALSE)
+
+
+  |                                                                            
+  |.................................................                     |  70%
+  ordinary text without R code
+
+
+  |                                                                            
+  |...................................................                   |  73%
+label: output_nobel_7 (with options) 
+List of 3
+ $ eval: logi TRUE
+ $ echo: logi FALSE
+ $ code: language reveal_chunk("nobel", break_point = 7, highlight = 6:7, reg_assignment = FALSE)
+```
+
+```
+
+  |                                                                            
+  |.....................................................                 |  76%
+  ordinary text without R code
+
+
+  |                                                                            
+  |.......................................................               |  79%
+label: code_nobel_10 (with options) 
+List of 3
+ $ eval: logi FALSE
+ $ echo: logi TRUE
+ $ code: language reveal_chunk("nobel", break_point = 10, highlight = 8:10, reg_assignment = FALSE)
+
+
+  |                                                                            
+  |.........................................................             |  82%
+  ordinary text without R code
+
+
+  |                                                                            
+  |...........................................................           |  85%
+label: output_nobel_10 (with options) 
+List of 3
+ $ eval: logi TRUE
+ $ echo: logi FALSE
+ $ code: language reveal_chunk("nobel", break_point = 10, highlight = 8:10, reg_assignment = FALSE)
+```
+
+```
+
+  |                                                                            
+  |..............................................................        |  88%
+  ordinary text without R code
+
+
+  |                                                                            
+  |................................................................      |  91%
+label: code_nobel_11 (with options) 
+List of 3
+ $ eval: logi FALSE
+ $ echo: logi TRUE
+ $ code: language reveal_chunk("nobel", break_point = 11, highlight = 11, reg_assignment = FALSE)
+
+
+  |                                                                            
+  |..................................................................    |  94%
+  ordinary text without R code
+
+
+  |                                                                            
+  |....................................................................  |  97%
+label: output_nobel_11 (with options) 
+List of 3
+ $ eval: logi TRUE
+ $ echo: logi FALSE
+ $ code: language reveal_chunk("nobel", break_point = 11, highlight = 11, reg_assignment = FALSE)
+```
+
+```
+
+  |                                                                            
+  |......................................................................| 100%
+  ordinary text without R code
+```
+
+```
+[1] "class: split-40\ncount: false\n\n.column[.content[\n\n```r\n*cars   # the data\n```\n]]\n.column[.content[\n\n```\n   speed dist\n1      4    2\n2      4   10\n3      7    4\n4      7   22\n5      8   16\n6      9   10\n7     10   18\n8     10   26\n9     10   34\n10    11   17\n11    11   28\n12    12   14\n13    12   20\n14    12   24\n15    12   28\n16    13   26\n17    13   34\n18    13   34\n19    13   46\n20    14   26\n21    14   36\n22    14   60\n23    14   80\n24    15   20\n25    15   26\n26    15   54\n27    16   32\n28    16   40\n29    17   32\n30    17   40\n31    17   50\n32    18   42\n33    18   56\n34    18   76\n35    18   84\n36    19   36\n37    19   46\n38    19   68\n39    20   32\n40    20   48\n41    20   52\n42    20   56\n43    20   64\n44    22   66\n45    23   54\n46    24   70\n47    24   92\n48    24   93\n49    24  120\n50    25   85\n```\n]]\n---\nclass: split-40\ncount: false\n\n.column[.content[\n\n```r\ncars %&gt;%  # the data  \n* filter(speed &gt; 4)   # subset\n```\n]]\n.column[.content[\n\n```\n   speed dist\n1      7    4\n2      7   22\n3      8   16\n4      9   10\n5     10   18\n6     10   26\n7     10   34\n8     11   17\n9     11   28\n10    12   14\n11    12   20\n12    12   24\n13    12   28\n14    13   26\n15    13   34\n16    13   34\n17    13   46\n18    14   26\n19    14   36\n20    14   60\n21    14   80\n22    15   20\n23    15   26\n24    15   54\n25    16   32\n26    16   40\n27    17   32\n28    17   40\n29    17   50\n30    18   42\n31    18   56\n32    18   76\n33    18   84\n34    19   36\n35    19   46\n36    19   68\n37    20   32\n38    20   48\n39    20   52\n40    20   56\n41    20   64\n42    22   66\n43    23   54\n44    24   70\n45    24   92\n46    24   93\n47    24  120\n48    25   85\n```\n]]\n---\nclass: split-40\ncount: false\n\n.column[.content[\n\n```r\ncars %&gt;%  # the data  \n  filter(speed &gt; 4) %&gt;%  # subset\n* ggplot()   # pipe to ggplot\n```\n]]\n.column[.content[\n![](skeleton_files/figure-html/output_nobel_3-1.png)&lt;!-- --&gt;\n]]\n---\nclass: split-40\ncount: false\n\n.column[.content[\n\n```r\ncars %&gt;%  # the data  \n  filter(speed &gt; 4) %&gt;%  # subset\n  ggplot() +  # pipe to ggplot\n* aes(x = speed)\n```\n]]\n.column[.content[\n![](skeleton_files/figure-html/output_nobel_4-1.png)&lt;!-- --&gt;\n]]\n---\nclass: split-40\ncount: false\n\n.column[.content[\n\n```r\ncars %&gt;%  # the data  \n  filter(speed &gt; 4) %&gt;%  # subset\n  ggplot() +  # pipe to ggplot\n  aes(x = speed) +  \n* aes(y = dist)\n```\n]]\n.column[.content[\n![](skeleton_files/figure-html/output_nobel_5-1.png)&lt;!-- --&gt;\n]]\n---\nclass: split-40\ncount: false\n\n.column[.content[\n\n```r\ncars %&gt;%  # the data  \n  filter(speed &gt; 4) %&gt;%  # subset\n  ggplot() +  # pipe to ggplot\n  aes(x = speed) +  \n  aes(y = dist) +  \n* # Describing what follows\n* geom_point(alpha = .3)\n```\n]]\n.column[.content[\n![](skeleton_files/figure-html/output_nobel_7-1.png)&lt;!-- --&gt;\n]]\n---\nclass: split-40\ncount: false\n\n.column[.content[\n\n```r\ncars %&gt;%  # the data  \n  filter(speed &gt; 4) %&gt;%  # subset\n  ggplot() +  # pipe to ggplot\n  aes(x = speed) +  \n  aes(y = dist) +  \n  # Describing what follows\n  geom_point(alpha = .3) +  \n* aes(color =\n* speed &gt; 14\n* )\n```\n]]\n.column[.content[\n![](skeleton_files/figure-html/output_nobel_10-1.png)&lt;!-- --&gt;\n]]\n---\nclass: split-40\ncount: false\n\n.column[.content[\n\n```r\ncars %&gt;%  # the data  \n  filter(speed &gt; 4) %&gt;%  # subset\n  ggplot() +  # pipe to ggplot\n  aes(x = speed) +  \n  aes(y = dist) +  \n  # Describing what follows\n  geom_point(alpha = .3) +  \n  aes(color =  \n  speed &gt; 14  \n  ) %+%  \n* cars\n```\n]]\n.column[.content[\n![](skeleton_files/figure-html/output_nobel_11-1.png)&lt;!-- --&gt;\n]]"
+```
+
+
+
+
+---
+
+class: split-40
+count: false
+My Title
+.column[.content[
+
+```r
+*cars   # the data
+```
+]]
+.column[.content[
+
+```
+   speed dist
+1      4    2
+2      4   10
+3      7    4
+4      7   22
+5      8   16
+6      9   10
+7     10   18
+8     10   26
+9     10   34
+10    11   17
+11    11   28
+12    12   14
+13    12   20
+14    12   24
+15    12   28
+16    13   26
+17    13   34
+18    13   34
+19    13   46
+20    14   26
+21    14   36
+22    14   60
+23    14   80
+24    15   20
+25    15   26
+26    15   54
+27    16   32
+28    16   40
+29    17   32
+30    17   40
+31    17   50
+32    18   42
+33    18   56
+34    18   76
+35    18   84
+36    19   36
+37    19   46
+38    19   68
+39    20   32
+40    20   48
+41    20   52
+42    20   56
+43    20   64
+44    22   66
+45    23   54
+46    24   70
+47    24   92
+48    24   93
+49    24  120
+50    25   85
+```
+]]
+---
+class: split-40
+count: false
+My Title
+.column[.content[
+
+```r
+cars %&gt;%  # the data  
+* filter(speed &gt; 4)   # subset
+```
+]]
+.column[.content[
+
+```
+   speed dist
+1      7    4
+2      7   22
+3      8   16
+4      9   10
+5     10   18
+6     10   26
+7     10   34
+8     11   17
+9     11   28
+10    12   14
+11    12   20
+12    12   24
+13    12   28
+14    13   26
+15    13   34
+16    13   34
+17    13   46
+18    14   26
+19    14   36
+20    14   60
+21    14   80
+22    15   20
+23    15   26
+24    15   54
+25    16   32
+26    16   40
+27    17   32
+28    17   40
+29    17   50
+30    18   42
+31    18   56
+32    18   76
+33    18   84
+34    19   36
+35    19   46
+36    19   68
+37    20   32
+38    20   48
+39    20   52
+40    20   56
+41    20   64
+42    22   66
+43    23   54
+44    24   70
+45    24   92
+46    24   93
+47    24  120
+48    25   85
+```
+]]
+---
+
+
+---
+
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+*cars   # the data
+```
+]]
+.column[.content[
+
+```
+   speed dist
+1      4    2
+2      4   10
+3      7    4
+4      7   22
+5      8   16
+6      9   10
+7     10   18
+8     10   26
+9     10   34
+10    11   17
+11    11   28
+12    12   14
+13    12   20
+14    12   24
+15    12   28
+16    13   26
+17    13   34
+18    13   34
+19    13   46
+20    14   26
+21    14   36
+22    14   60
+23    14   80
+24    15   20
+25    15   26
+26    15   54
+27    16   32
+28    16   40
+29    17   32
+30    17   40
+31    17   50
+32    18   42
+33    18   56
+34    18   76
+35    18   84
+36    19   36
+37    19   46
+38    19   68
+39    20   32
+40    20   48
+41    20   52
+42    20   56
+43    20   64
+44    22   66
+45    23   54
+46    24   70
+47    24   92
+48    24   93
+49    24  120
+50    25   85
+```
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data  
+* filter(speed &gt; 4)   # subset
+```
+]]
+.column[.content[
+
+```
+   speed dist
+1      7    4
+2      7   22
+3      8   16
+4      9   10
+5     10   18
+6     10   26
+7     10   34
+8     11   17
+9     11   28
+10    12   14
+11    12   20
+12    12   24
+13    12   28
+14    13   26
+15    13   34
+16    13   34
+17    13   46
+18    14   26
+19    14   36
+20    14   60
+21    14   80
+22    15   20
+23    15   26
+24    15   54
+25    16   32
+26    16   40
+27    17   32
+28    17   40
+29    17   50
+30    18   42
+31    18   56
+32    18   76
+33    18   84
+34    19   36
+35    19   46
+36    19   68
+37    20   32
+38    20   48
+39    20   52
+40    20   56
+41    20   64
+42    22   66
+43    23   54
+44    24   70
+45    24   92
+46    24   93
+47    24  120
+48    25   85
+```
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data  
+  filter(speed &gt; 4) %&gt;%  # subset
+* ggplot()   # pipe to ggplot
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_nobel_3-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data  
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+* aes(x = speed)
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_nobel_4-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data  
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+* aes(y = dist)
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_nobel_5-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data  
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+  aes(y = dist) +  
+* # Describing what follows
+* geom_point(alpha = .3)
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_nobel_7-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data  
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+  aes(y = dist) +  
+  # Describing what follows
+  geom_point(alpha = .3) +  
+* aes(color =
+* speed &gt; 14
+* )
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_nobel_10-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data  
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+  aes(y = dist) +  
+  # Describing what follows
+  geom_point(alpha = .3) +  
+  aes(color =  
+  speed &gt; 14  
+  ) %+%  
+* cars
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_nobel_11-1.png)&lt;!-- --&gt;
+]]
+
+
+---
+
+
+# Embracing reverse assignment
+
+# A second approach: Separate the data manipulation from the plotting.
+
+If you'd like, you can also save your manipulated data and then plot, using the `%&gt;%` to create your pipe line, and then reverse assignment operator `-&gt;`.  An example follows. 
+
+---
+
+
+
+
+---
+
+*** apply_reveal("data_transformation")`
+
+---
+
+# Plotting the transformed data (and *not* revealing your plot in advance -- *just* showing the build).
+
+Now you can use the transformed data to start the plot.  
+
+Note that you also might prefer a behavior where you don't show a preview of the finished plot in advance.  I show an example of this below. I don't evaluate the code chunk (i.e. I've set eval to FALSE) and I don't echo it (i.e. echo is set to false). This means that the code chunk itself won't yeild any output (code or plot) to be put on a slide.  This means that I don't need to use the dashes, \-\-\- to separate the code chunk from the `apply_reveal()` statement, which differs from previous set-ups where a slide separator directly preceded the `apply_reveal()` call. 
+
+---
+
+
+
+
+*** apply_reveal("just_plotting")`
+
+
+```r
+# make_flipbook_mini_chunk(chunk_name = "just_plotting", file_out = "a_flipbook_mini_example.gif")
+```
+
+---
+
+# Can't stomach reverse assignment?
+
+
+---
+
+
+
+*** apply_reveal("regular_assignment", reg_assignment = T)`
+
+
+
+
+---
+
+# User defined reveal
+
+---
+
+
+
+*** apply_reveal("user_definded_reveal", user_reveal = T)`
+
+
+---
+
+# For use in traditional presentations.
+
+---
+
+
+
+
+*** apply_reveal("slow_traditional_presentation", show_code = F, user_reveal = T)`
+
+
+
+---
+
+# Non sequential reveal (or can't stomach "slow ggplot"?)
+
+---
+
+
+
+---
+
+
+*** apply_reveal_nonsequential("non_sequential")`
+
+
+---
+
+# Non-traditional pipelines 
+
+---
+
+
+
+
+*** apply_reveal("logical_indexing")`
+
+---
+
+
+# data.table
+
+
+
+---
+
+# Multiple realizations
+
+
+---
+
+
+
+
+*** apply_repeat_reveal(chunk_name = "many_realizations", num_reveal = 10)`
+
+
+---
+
+# Acknowledgements and Thanks
+
+Flipbooker visionaries and developers
+
+- Emi Tanaka
+- Garrick Aden-Buie
+- Ryan Granier
+- Suraj Tharpa
+
+Key Infrastructure
+
+- Yihui Xie (Rmarkdown, Xaringan), Allison Pres Hill
+- Hadley Wickham (ggplot, tidyverse)
+- Stefan Milton Bache (magrittr %&gt;%)
+- Claus Wilke (cowplot::plot_grid())
+- Romain Francois - getParseData
+
+---
+
+More influences
+
+- Jesse Mostipak
+- Eva Murry &amp; Andy Kriebel
+- #MakeoverMonday
+- #TidyTuesday
+- Mara Averick
+- Matt Blackwell
+- Women Summer School 
+- Roger Peng
+- Edward Tufte
+- Matt Dowle
+- Norm Matloff
+- Elio Campitelli
+- BITSS
+
+
+
+---
+
+# So meta...
+
+Using flipbooking on the flipbook parser code
+
+
+---
+
+
+```r
+local_code &lt;- # for testing w/o knitting
+  "cars %&gt;%             # the data  #REVEAL
+filter(speed &gt; 4) %&gt;%  # subset
+ggplot() +              # pipe to ggplot
+aes(x = speed) +
+aes(y = dist) +
+# Describing what follows #REVEAL2
+geom_point(alpha = .3) + #REVEAL
+aes(color =
+speed &gt; 14
+) %+%
+cars -&gt;
+my_plot "
+```
+
+
+
+
+&lt;style type="text/css"&gt;
+.remark-code{line-height: 1.5; font-size: 80%}
+&lt;/style&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:10",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
