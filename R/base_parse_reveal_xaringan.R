@@ -356,11 +356,13 @@ return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
 return_partial_code_or_output_chunks()
 
 
+
 # uses above code, but calculates breaks and highlighting
-new_partial_knit_chunks <- function(chunk_name = "example_chunk_name",
-                                    title = "My Title",
-                                    reg_assignment = F,
-                                    type = "plot"){
+partially_knit_chunks <- function(chunk_name = "example_chunk_name",
+                                  title = "My Title",
+                                  reg_assignment = F,
+                                  type = NULL,
+                                  user_reveal = F){
 
 
 parsed <- parse_chunk(chunk_name)
@@ -377,7 +379,7 @@ if (user_reveal == T) {
 
 highlighting <- calc_highlight(breaks = breaks)
 
-if (show_code == T) {
+if (is.null(type)) {
 
   return_partial_side_by_side_code_plot_chunks()
 
@@ -391,64 +393,64 @@ if (show_code == T) {
 
 
 # partial knit chunks
-
-
-#' Create text that will appear in Rmarkdown document containing code reconstruction chunks
 #'
-#' @param chunk_name a character string which is a chunk name
-#' @param user_reveal a logical for if breaks should be automatically determined or have been defined manually with "#REVEAL" message
-#' @param show_code a logical for if the code should be displayed or not, default is TRUE
-#' @param title a character string for a title for all the slides to display code-output evolution, default is an empty string
-#' @param reg_assignment logical set to T if output of some object created at beginning of code chunk should be displayed
 #'
-#' @return a character string to be interpreted as .Rmd content
-#' @export
+#' #' Create text that will appear in Rmarkdown document containing code reconstruction chunks
+#' #'
+#' #' @param chunk_name a character string which is a chunk name
+#' #' @param user_reveal a logical for if breaks should be automatically determined or have been defined manually with "#REVEAL" message
+#' #' @param show_code a logical for if the code should be displayed or not, default is TRUE
+#' #' @param title a character string for a title for all the slides to display code-output evolution, default is an empty string
+#' #' @param reg_assignment logical set to T if output of some object created at beginning of code chunk should be displayed
+#' #'
+#' #' @return a character string to be interpreted as .Rmd content
+#' #' @export
+#' #'
+#' #' @examples
+#' partially_knit_chunks <- function(chunk_name = "example_chunk_name", user_reveal = F, show_code = T, title = "", reg_assignment = F) {
+#'   # Create slide for lines 1:N for each line N in the given chunk
 #'
-#' @examples
-partially_knit_chunks <- function(chunk_name = "example_chunk_name", user_reveal = F, show_code = T, title = "", reg_assignment = F) {
-  # Create slide for lines 1:N for each line N in the given chunk
-
-  parsed <- parse_chunk(chunk_name)
-
-  if (user_reveal == T) {
-
-    breaks <- parsed$line[parsed$user_reveal]
-
-  } else {
-
-    breaks <- parsed$line[parsed$balanced_par]
-
-    }
-
-  highlighting <- calc_highlight(breaks = breaks)
-
-  if (show_code == T) {
-    partial_knit_steps <- glue::glue(
-      "class: split-40",
-      "count: false",
-      ".column[.content[",
-      "```{r plot_{{chunk_name}}_{{breaks}}, eval=FALSE, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlighting}}, {{reg_assignment}})}",
-      "```",
-      "]]",
-      ".column[.content[",
-      "```{r output_{{chunk_name}}_{{breaks}}, echo=FALSE, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlighting}}, {{reg_assignment}})}",
-      "```",
-      "]]",
-      .open = "{{", .close = "}}", .sep = "\n"
-    )
-
-  } else {
-
-    partial_knit_steps <- glue::glue(title,"```{r output_{{chunk_name}}_{{breaks}}, echo=FALSE, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlighting}}, {{reg_assignment}})}",
-                                     "```",
-                                     .open = "{{", .close = "}}", .sep = "\n"
-    )
-
-  }
-
-  glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
-
-}
+#'   parsed <- parse_chunk(chunk_name)
+#'
+#'   if (user_reveal == T) {
+#'
+#'     breaks <- parsed$line[parsed$user_reveal]
+#'
+#'   } else {
+#'
+#'     breaks <- parsed$line[parsed$balanced_par]
+#'
+#'     }
+#'
+#'   highlighting <- calc_highlight(breaks = breaks)
+#'
+#'   if (show_code == T) {
+#'     partial_knit_steps <- glue::glue(
+#'       "class: split-40",
+#'       "count: false",
+#'       ".column[.content[",
+#'       "```{r plot_{{chunk_name}}_{{breaks}}, eval=FALSE, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlighting}}, {{reg_assignment}})}",
+#'       "```",
+#'       "]]",
+#'       ".column[.content[",
+#'       "```{r output_{{chunk_name}}_{{breaks}}, echo=FALSE, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlighting}}, {{reg_assignment}})}",
+#'       "```",
+#'       "]]",
+#'       .open = "{{", .close = "}}", .sep = "\n"
+#'     )
+#'
+#'   } else {
+#'
+#'     partial_knit_steps <- glue::glue(title,"```{r output_{{chunk_name}}_{{breaks}}, echo=FALSE, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlighting}}, {{reg_assignment}})}",
+#'                                      "```",
+#'                                      .open = "{{", .close = "}}", .sep = "\n"
+#'     )
+#'
+#'   }
+#'
+#'   glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
+#'
+#' }
 
 
 
@@ -464,11 +466,13 @@ partially_knit_chunks <- function(chunk_name = "example_chunk_name", user_reveal
 #' @export
 #'
 #' @examples
-apply_reveal <- function(chunk_name, user_reveal = F, show_code = T, title = "", reg_assignment = F){
+apply_reveal <- function(chunk_name, user_reveal = F, type = NULL, title = "", reg_assignment = F){
 
   paste(knitr::knit(text =
-                      partially_knit_chunks(chunk_name, user_reveal,
-                                            show_code, title,
+                      partially_knit_chunks(chunk_name,
+                                            user_reveal,
+                                            type,
+                                            title,
                                             reg_assignment)),
         collapse = "\n")
 }
