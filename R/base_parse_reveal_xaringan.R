@@ -52,7 +52,7 @@ aes(y = dist) +
 geom_point(
 size = 2,   #REVEAL2
 alpha = .3, #REVEAL3
-color = \"blue\", #REVEAL4
+color = \"blue\", #REVEAL-3
 ) +
 aes(color = speed_14_plus)"
 
@@ -84,7 +84,7 @@ chunk_as_text <- function(chunk_name){
 #'
 #' @examples
 #' parse_code(code = local_code)
-#' parse_code(code = local_code_regular_assignment)
+#' parse_code(code = local_code_non_sequential)
 parse_code <- function(code) {
 
   # code <- paste(knitr::knit_code$get("the_code"), collapse = "\n")
@@ -126,8 +126,8 @@ parse_code <- function(code) {
     #                                     collapse = " "))) %>%
     dplyr::left_join(raw_code_table) %>%
     dplyr::mutate(code = ifelse(comment != "", stringr::str_remove(raw_code, comment), raw_code)) %>%
-    dplyr::mutate(user_non_seq = stringr::str_extract(comment, "#REVEAL\\d+")) %>%
-    dplyr::mutate(user_non_seq = stringr::str_extract(user_non_seq, "\\d+")) %>%
+    dplyr::mutate(user_non_seq = stringr::str_extract(comment, "#REVEAL-?\\d+")) %>%
+    dplyr::mutate(user_non_seq = stringr::str_extract(user_non_seq, "-?\\d+")) %>%
     dplyr::mutate(user_non_seq = as.numeric(user_non_seq)) %>%
     dplyr::mutate(user_non_seq = tidyr::replace_na(user_non_seq, 1)) %>%
     dplyr::mutate(user_reveal = stringr::str_detect(comment, "#REVEAL")) %>%
@@ -152,6 +152,8 @@ parse_code <- function(code) {
 }
 
 
+
+
 #' Determine breaks
 #'
 #' @param parsed parse code dataframe
@@ -161,24 +163,119 @@ parse_code <- function(code) {
 #' @export
 #'
 #' @examples
-#' determine_breaks(parse_code(local_code), "auto")
+#' determine_breaks(parsed = parse_code(local_code), break_type = "user")
 determine_breaks <- function(parsed, break_type = "auto"){
 
   if (break_type == "auto") {
 
     breaks <- parsed$line[parsed$balanced_par]
 
+    show_order <- cumsum(parsed$balanced_par) + 1 - parsed$balanced_par
+
+
+
   } else if (break_type == "user") {
 
     breaks <- parsed$line[parsed$user_reveal]
 
+    show_order <-  cumsum(parsed$user_reveal) + 1 - parsed$user_reveal
+
   } else {
 
-    breaks <- parsed$line[parsed$user_non_seq]
+    # make flexible by allowing non integers here.
+    show_order <- parsed$user_non_seq
 
   }
 
   breaks
+
+}
+
+#' calc_code_panes(parsed = parse_code(local_code), break_type = "user")
+calc_code_panes <- function(show_order = c(2, 1, 1, 2, 2, 2, 3)){
+
+  if (break_type == "auto") {
+
+    code_order <- cumsum(parsed$balanced_par) + 1 - parsed$balanced_par
+    num_panes <- max(code_order)
+
+  } else if (break_type == "user") {
+
+    code_order <- cumsum(parsed$user_reveal) + 1 - parsed$user_reveal
+    num_panes <- max(code_order)
+
+  } else if (break_type == "non_seq") {
+
+    # make flexible by allowing non integers here.
+    code_order <- parsed$user_non_seq
+    num_panes <- max(code_order)
+
+  } else if (break_type == "multiverse") {
+
+    num_panes <- 10
+
+  }
+
+panes <- list()
+
+  for (i in 1:num_panes) {
+
+    # fix this for non_sequential to allow removal
+    panes[[i]] <- which(code_order <= i)
+
+  }
+
+  panes
+
+}
+
+
+
+# calc_lines_to_show <- function(parsed = parse_code(local_code_non_sequential))
+
+calc_lines_to_show <- function(breaks){
+
+  parsed %>%
+    dplyr::pull(user_non_seq) ->
+    code_ordering
+
+  code_ordering %>%
+    abs() %>%
+    unique() %>%
+    sort() ->
+    steps
+
+  which_show <- list()
+
+  for (i in steps) {
+
+    which_show[[i]] <- which(
+      ifelse(code_ordering > 0,
+             code_ordering <= i,
+             abs(code_ordering) > i)
+    )
+
+  }
+
+
+  which_show
+
+}
+
+calc_lines_to_highlight <- function(which_show = list(c(1,2), c(1,2,3,4))){
+
+
+which_highlight <- list()
+
+which_highlight[[1]] <- which_show[[1]]
+
+for (i in 2:length(which_show)) {
+
+  which_highlight[[i]] <- which_show[[i]][!(which_show[[i]] %in% which_show[[i - 1]])]
+
+}
+
+
 
 }
 
@@ -207,6 +304,9 @@ calc_highlight <- function(breaks) {
   return(highlight)
 
 }
+
+
+
 
 
 #'

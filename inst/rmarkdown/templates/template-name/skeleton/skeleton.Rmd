@@ -132,7 +132,7 @@ ggplot(data = my_data) +
 # We've come along way
 
 - adding pipe and other connections
-- allowed code wrapping - responsible piping.  
+- allowed code wrapping - responsible piping
 
 
 
@@ -147,7 +147,7 @@ ggplot(data = my_data) +
 Okay. Let's load the the `flipbookr` and the `tidyverse` packages.
 
 ```{r, cache = F}
-# library(flipbookr)
+library(flipbookr)
 library(tidyverse)
 ```
 
@@ -156,8 +156,8 @@ And load the data from the tidytuesday github page.
 ```{r}
 # nobel_winners <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-14/nobel_winners.csv")
 # source("../../../../../R/flipbook_mini.R")
-source("../../../../../R/base_parse_reveal_xaringan.R")
-source("../../../../../R/non_sequential_reveal.R")
+# source("../../../../../R/base_parse_reveal_xaringan.R")
+# source("../../../../../R/non_sequential_reveal.R")
 ```
 
 ---
@@ -211,17 +211,20 @@ my_local %>%
   parse_code() ->
 parsed
 parsed %>% 
-  determine_breaks() ->
+  determine_breaks(break_type = "auto") ->
 breaks
 breaks %>% 
   calc_highlight() ->
 highlighting
 
 parsed %>% 
-  reveal_parsed(break_point = 3, highlight = 2:3) 
+  reveal_parsed(break_point = breaks[3], highlight = highlighting[[3]]) 
 
+flipbookr::return_partial_chunks_template()
 
+flipbookr::return_partial_side_by_side_code_output_chunks("my_example", breaks = breaks, highlight = highlighting)
 
+partially_knit_chunks
 ```
 
 ---
@@ -453,7 +456,7 @@ cars %>%
 ---
 
 
-*** apply_reveal_nonsequential("non_sequential")`
+`r apply_reveal_nonsequential("non_sequential")`
 
 
 ---

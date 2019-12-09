@@ -7,7 +7,7 @@ aes(y = dist) +
 geom_point(
 size = 2,   #REVEAL2
 alpha = .3, #REVEAL3
-color = \"blue\", #REVEAL4
+color = \"blue\", #REVEAL-3
 ) +
 aes(color = speed_14_plus)"
 
@@ -23,7 +23,7 @@ aes(color = speed_14_plus)"
 #'
 #' @examples
 #' reveal_code_nonsequential(code = local_code_non_sequential)
-reveal_code_nonsequential <- function(code,
+reveal_code_nonsequential <- function(code = local_code_non_sequential,
                                         which_supress = 2:5,
                                         which_highlight = 6){
 
@@ -34,7 +34,8 @@ reveal_code_nonsequential <- function(code,
     dplyr::mutate(reveal = stringr::str_remove(reveal, "#REVEAL\\d+")) %>%
     dplyr::mutate(highlight = ifelse(dplyr::row_number() %in% which_highlight, "#<<", "")) %>%
     dplyr::mutate(out = paste0(reveal, "  ", comment, highlight)) %>%
-    dplyr::select(out) ->
+    dplyr::select(out) %>%
+    dplyr::filter(!str_detect(out, "^\\s+$")) ->
     up_to_result
   up_to_result$out
 
