@@ -238,9 +238,9 @@ show_and_highlight_pane_classic <- function(parsed, which_show = 1:3, which_high
 }
 
 # example
-show_and_highlight_pane_reg_assignment <- function(parsed, which_show = 1:3, which_highlight = 3){
+show_and_highlight_pane_reg_assign <- function(parsed, which_show = 1:3, which_highlight = 3){
 
-  the_reveal <- show_and_highlight_pane(parsed, which_show, which_highlight)
+  the_reveal <- show_and_highlight_pane_classic(parsed, which_show, which_highlight)
 
   the_reveal[1] %>%
       stringr::str_extract(".+\\<-") %>%
@@ -253,23 +253,23 @@ show_and_highlight_pane_reg_assignment <- function(parsed, which_show = 1:3, whi
 }
 
 # example reveal_pane(parsed = parse_code(local_code))
-partial_code <- function(parsed, which_show = 1:3, which_highlight = 3, reg_assignment = F){
+partial_code <- function(parsed, which_show = 1:3, which_highlight = 3, reg_assign = F){
 
-  if (reg_assignment == F) {
+  if (reg_assign == F) {
     show_and_highlight_pane_classic(parsed, which_show, which_highlight)
   }else{
-    show_and_highlight_pane_reg_assignment(parsed, which_show, which_highlight)
+    show_and_highlight_pane_reg_assign(parsed, which_show, which_highlight)
   }
 
 }
 
 
-partial_chunk <- function(chunk_name, which_show = 1:3, which_highlight = 3, reg_assignment = F){
+partial_chunk <- function(chunk_name, which_show = 1:3, which_highlight = 3, reg_assign = F){
 
   chunk_name %>%
     chunk_as_text() %>%
     parse_code() %>%
-    partial_code(which_show, which_highlight, reg_assignment)
+    partial_code(which_show, which_highlight, reg_assign)
 
 }
 
@@ -284,7 +284,7 @@ return_partial_chunks_template <- function(display_type = "output",
                                   eval = display_type == "output",
                                   echo = display_type == "code") {
 
-  glue::glue("```{r {{{display_type}}}_{{chunk_name}}_{{breaks}}, eval={{{eval}}}, echo = {{{echo}}}, code=partial_chunk('{{chunk_name}}', which_show = {{which_show}}, which_highlight = {{which_highlight}}, reg_assignment = {{reg_assignment}})}",
+  glue::glue("```{r {{{display_type}}}_{{chunk_name}}_{{breaks}}, eval={{{eval}}}, echo = {{{echo}}}, code=partial_chunk('{{chunk_name}}', which_show = {{which_show}}, which_highlight = {{which_highlight}}, reg_assign = {{reg_assign}})}",
              "```",
              .open = "{{{", .close = "}}}", .sep = "\n")
 }
@@ -312,7 +312,7 @@ return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk
                                            which_show = list(1, 1:2, 1:3),
                                            which_highlight = list(1, 2, 3),
                                            title = "My Title",
-                                           reg_assignment = F,
+                                           reg_assign = F,
                                            split = 40) {
 
   breaks <- 1:length(which_show)  # number of temporal breakpoints
@@ -342,7 +342,7 @@ return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
                                                  which_show = list(1, 1:2, 1:3),
                                                  which_highlight = list(1, 2, 3),
                                                title = "My Title",
-                                               reg_assignment = F,
+                                               reg_assign = F,
                                                display_type = "output") {
 
   breaks <- 1:length(which_show)  # number of temporal breakpoints
@@ -365,7 +365,7 @@ return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
 # uses above code, but calculates breaks and highlight
 partially_knit_chunks <- function(chunk_name = "example_chunk_name",
                                   title = "My Title",
-                                  reg_assignment = F,
+                                  reg_assign = F,
                                   display_type = "both",
                                   break_type = "auto",
                                   split = 40){
@@ -386,20 +386,22 @@ if (display_type == "both") {
                                                  title,
                                                  which_show = which_show,
                                                  which_highlight = which_highlight,
-                                                 reg_assignment,
+                                                 reg_assign = reg_assign,
                                                  split = 40)
 
 } else {
 
   return_partial_code_or_output_chunks(chunk_name,
                                        title,
+                                       display_type,
                                        which_show = which_show,
                                        which_highlight = which_highlight,
-                                       reg_assignment)
+                                       reg_assign = reg_assign)
 
 }
 
 }
+# partially_knit_chunks()
 
 
 #' Apply reveal in Rmarkdown file, to be used in line
@@ -408,18 +410,18 @@ if (display_type == "both") {
 #' @param user_reveal a logical for if breaks should be automatically determined or have been defined manually with "#REVEAL" message
 #' @param show_code a logical for if the code should be displayed or not, default is TRUE
 #' @param title a character string for a title for all the slides to display code-output evolution, default is an empty string
-#' @param reg_assignment logical set to T if output of some object created at beginning of code chunk should be displayed
+#' @param reg_assign logical set to T if output of some object created at beginning of code chunk should be displayed
 #'
 #' @return a character string to be interpreted as .Rmd content
 #' @export
 #'
 #' @examples
-apply_reveal <- function(chunk_name, display_type = "both", break_type = "auto", title = "", reg_assignment = F, split = 40){
+apply_reveal <- function(chunk_name, display_type = "both", break_type = "auto", title = "", reg_assign = F, split = 40){
 
   paste(knitr::knit(text =
                       partially_knit_chunks(chunk_name,
                                             title,
-                                            reg_assignment,
+                                            reg_assign = reg_assign,
                                             display_type,
                                             break_type,
                                             split)),
@@ -436,13 +438,13 @@ apply_reveal <- function(chunk_name, display_type = "both", break_type = "auto",
 #' #' @param user_reveal a logical for if breaks should be automatically determined or have been defined manually with "#REVEAL" message
 #' #' @param show_code a logical for if the code should be displayed or not, default is TRUE
 #' #' @param title a character string for a title for all the slides to display code-output evolution, default is an empty string
-#' #' @param reg_assignment logical set to T if output of some object created at beginning of code chunk should be displayed
+#' #' @param reg_assign logical set to T if output of some object created at beginning of code chunk should be displayed
 #' #'
 #' #' @return a character string to be interpreted as .Rmd content
 #' #' @export
 #' #'
 #' #' @examples
-#' partially_knit_chunks <- function(chunk_name = "example_chunk_name", user_reveal = F, show_code = T, title = "", reg_assignment = F) {
+#' partially_knit_chunks <- function(chunk_name = "example_chunk_name", user_reveal = F, show_code = T, title = "", reg_assign = F) {
 #'   # Create slide for lines 1:N for each line N in the given chunk
 #'
 #'   parsed <- parse_chunk(chunk_name)
@@ -464,11 +466,11 @@ apply_reveal <- function(chunk_name, display_type = "both", break_type = "auto",
 #'       "class: split-40",
 #'       "count: false",
 #'       ".column[.content[",
-#'       "```{r plot_{{chunk_name}}_{{breaks}}, eval=FALSE, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlight}}, {{reg_assignment}})}",
+#'       "```{r plot_{{chunk_name}}_{{breaks}}, eval=FALSE, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlight}}, {{reg_assign}})}",
 #'       "```",
 #'       "]]",
 #'       ".column[.content[",
-#'       "```{r output_{{chunk_name}}_{{breaks}}, echo=FALSE, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlight}}, {{reg_assignment}})}",
+#'       "```{r output_{{chunk_name}}_{{breaks}}, echo=FALSE, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlight}}, {{reg_assign}})}",
 #'       "```",
 #'       "]]",
 #'       .open = "{{", .close = "}}", .sep = "\n"
@@ -476,7 +478,7 @@ apply_reveal <- function(chunk_name, display_type = "both", break_type = "auto",
 #'
 #'   } else {
 #'
-#'     partial_knit_steps <- glue::glue(title,"```{r output_{{chunk_name}}_{{breaks}}, echo=FALSE, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlight}}, {{reg_assignment}})}",
+#'     partial_knit_steps <- glue::glue(title,"```{r output_{{chunk_name}}_{{breaks}}, echo=FALSE, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlight}}, {{reg_assign}})}",
 #'                                      "```",
 #'                                      .open = "{{", .close = "}}", .sep = "\n"
 #'     )

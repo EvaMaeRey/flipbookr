@@ -135,11 +135,6 @@ ggplot(data = my_data) +
 - allowed code wrapping - responsible piping
 
 
-
-
-
-
-
 ---
 
 # Set up
@@ -162,7 +157,7 @@ source("../../../../../R/base_parse_reveal_xaringan.R")
 
 
 
-``` r
+``` 
 apply_reveal(chunk_name = 'cars', break_type = "auto")
 apply_reveal(chunk_name = 'cars', break_type = "user")
 apply_reveal(chunk_name = 'cars', break_type = "non_seq")
@@ -181,7 +176,22 @@ We'll create this plot.  I have **echo** set to FALSE in the code chunk options 
 
 ---
 
-`r apply_reveal("cars")`
+`r apply_reveal("cars_auto")`
+
+```{r cars_auto, echo = F, eval = F, fig.height=5}
+cars %>%             # the data 
+  filter(speed > 4) %>%  # subset
+  ggplot() +              # pipe to ggplot
+  aes(x = speed) +
+  aes(y = dist) +
+  # Describing what follows
+  geom_point(
+    alpha = .3,
+    color = "blue" 
+    ) + 
+  aes(size = speed)
+```
+
 
 ---
 
@@ -189,7 +199,21 @@ We'll create this plot.  I have **echo** set to FALSE in the code chunk options 
 
 ---
 
-`r apply_reveal("cars", break_type = "user")`
+`r apply_reveal("cars_user", break_type = "user")`
+
+```{r cars_user, echo = F, eval = F, fig.height=5}
+cars %>%             # the data 
+  filter(speed > 4) %>%  # subset
+  ggplot() +              # pipe to ggplot
+  aes(x = speed) +
+  aes(y = dist) + #REVEAL
+  # Describing what follows
+  geom_point(
+    alpha = .3,
+    color = "blue" 
+    ) + #REVEAL
+  aes(size = speed) #REVEAL
+```
 
 ---
 
@@ -197,20 +221,10 @@ We'll create this plot.  I have **echo** set to FALSE in the code chunk options 
 
 ---
 
-`r apply_reveal("cars", break_type = "non_seq")`
+`r apply_reveal("cars_non_seq", break_type = "non_seq")`
 
----
-
-# Multiverse
-
----
-
-`r apply_reveal("cars", break_type = 5)`
-
----
-
-```{r cars, echo = F, eval = T, fig.height=5}
-cars %>%             # the data  #REVEAL
+```{r cars_non_seq, echo = F, eval = F, fig.height=5}
+cars %>%             # the data 
   filter(speed > 4) %>%  # subset
   ggplot() +              # pipe to ggplot
   aes(x = speed) +
@@ -219,13 +233,82 @@ cars %>%             # the data  #REVEAL
   geom_point(
     alpha = .3,
     color = "blue" #REVEAL2
+    ) + 
+  aes(size = speed)
+```
+
+
+---
+
+# Multiverse
+
+---
+
+`r apply_reveal("cars_multi", break_type = 5)`
+
+```{r cars_multi, echo = F, eval = T, fig.height=5}
+tibble(speed = rnorm(5),
+       dist = rnorm(5)) %>%             # the data 
+  ggplot() +              # pipe to ggplot
+  aes(x = speed) +
+  aes(y = dist) +
+  # Describing what follows
+  geom_point(
+    alpha = .3,
+    color = "blue" #REVEAL2
+    ) + 
+  aes(size = speed)
+```
+
+
+---
+
+# Just reveal output
+
+---
+
+`r apply_reveal("cars", break_type = "user", display_type = "output")`
+
+---
+
+`r apply_reveal("cars", break_type = "auto", display_type = "code")`
+
+---
+
+```{r cars, echo = F, eval = F, fig.height=5}
+cars %>%             # the data  
+  filter(speed > 4) %>%  # subset
+  ggplot() +              # pipe to ggplot
+  aes(x = speed) +
+  aes(y = dist) + #REVEAL
+  # Describing what follows
+  geom_point(
+    alpha = .3,
+    color = "blue" #REVEAL2
     ) + #REVEAL
-  aes(color =
-  speed > 14
-  ) %+%
-  cars
+  aes(size = speed) #REVEAL
 ```
  
+
+---
+
+# Regular assignment
+
+---
+
+`r apply_reveal("reg_assign", break_type = "auto", display_type = "both", reg_assign = T)`
+
+
+```{r reg_assign, echo = F, eval = T}
+my_object <- cars %>%             # the data  
+  filter(speed > 4) %>%  # subset
+  ggplot() +              # pipe to ggplot
+  aes(x = speed) +
+  aes(y = dist) 
+```
+
+---
+
 
 ```{r}
 my_local <- "cars %>%             # the data  #REVEAL
@@ -242,392 +325,395 @@ my_local <- "cars %>%             # the data  #REVEAL
 ```
 
 
- 
----
 
-# How do we get there?
+<!-- --- -->
 
-In the next slide, we'll walk through the code that produces this plot, and the output along the way. We use the code `apply_reveal('cars')` in-line to access the code from the code chunk called *nobel*.
- 
----
+<!-- # How do we get there? -->
 
-
-```{r, eval = F}
-my_local %>% 
-  parse_code() ->
-parsed
-parsed %>% 
-  determine_breaks(break_type = "auto") ->
-breaks
-breaks %>% 
-  calc_highlight() ->
-highlighting
-
-parsed %>% 
-  reveal_parsed(break_point = breaks[3], highlight = highlighting[[3]]) 
-
-flipbookr::return_partial_chunks_template()
-
-flipbookr::return_partial_side_by_side_code_output_chunks("my_example", breaks = breaks, highlight = highlighting)
-
-partially_knit_chunks
-```
-
----
-
-```{r}
-# reveal_chunk('cars')
-```
-
-
-```{r}
-# return_partial_side_by_side_code_output_chunks(chunk_name = 'cars')
-```
-
----
-
-```{r}
-
-# return_partial_code_or_output_chunks(chunk_name = 'cars')
-```
-
----
-
-
-```{r, eval = F}
-partial_chunk('cars', 1, 1, FALSE)
-```
-
-
----
-
-count: false
-My Title
-```{r output_nobel_1, eval=TRUE, echo = FALSE, code=partial_chunk('cars', 1, 1, FALSE)}
-```
-
----
-
-```{r}
-partially_knit_chunks(chunk_name = 'cars')
-```
-
----
-
-
-```{r}
-apply_reveal(chunk_name = 'cars')
-```
-
-
-
-
----
-
-class: split-40
-count: false
-My Title
-.column[.content[
-```{r code_nobel_1, eval=FALSE, echo = TRUE, code=partial_chunk('cars', 1, 1, FALSE)}
-```
-]]
-.column[.content[
-```{r output_nobel_1, eval=TRUE, echo = FALSE, code=partial_chunk('cars', 1, 1, FALSE)}
-```
-]]
----
-class: split-40
-count: false
-My Title
-.column[.content[
-```{r code_nobel_2, eval=FALSE, echo = TRUE, code=partial_chunk('cars', 1:2, 2, FALSE)}
-```
-]]
-.column[.content[
-```{r output_nobel_2, eval=TRUE, echo = FALSE, code=partial_chunk('cars', 1:2, 2, FALSE)}
-```
-]]
----
-
-
----
-
-
+<!-- In the next slide, we'll walk through the code that produces this plot, and the output along the way. We use the code `apply_reveal('cars')` in-line to access the code from the code chunk called *nobel*. -->
 
 <!-- --- -->
 
 
-<!-- # Embracing reverse assignment -->
+<!-- ```{r, eval = F} -->
+<!-- my_local %>%  -->
+<!--   parse_code() -> -->
+<!-- parsed -->
+<!-- parsed %>%  -->
+<!--   determine_breaks(break_type = "auto") -> -->
+<!-- breaks -->
+<!-- breaks %>%  -->
+<!--   calc_highlight() -> -->
+<!-- highlighting -->
 
-<!-- # A second approach: Separate the data manipulation from the plotting. -->
+<!-- parsed %>%  -->
+<!--   reveal_parsed(break_point = breaks[3], highlight = highlighting[[3]])  -->
 
-<!-- If you'd like, you can also save your manipulated data and then plot, using the `%>%` to create your pipe line, and then reverse assignment operator `->`.  An example follows.  -->
+<!-- flipbookr::return_partial_chunks_template() -->
+
+<!-- flipbookr::return_partial_side_by_side_code_output_chunks("my_example", breaks = breaks, highlight = highlighting) -->
+
+
+<!-- ``` -->
 
 <!-- --- -->
 
-<!-- ```{r data_transformation, echo = F, eval = T, fig.height=5} -->
-<!-- cars %>%             # the data  #REVEAL -->
-<!--   filter(speed > 4) %>%  -->
-<!--   mutate(var = 2) -> -->
-<!-- my_data -->
+<!-- ```{r} -->
+<!-- # reveal_chunk('cars') -->
+<!-- ``` -->
+
+
+<!-- ```{r} -->
+<!-- # return_partial_side_by_side_code_output_chunks(chunk_name = 'cars') -->
+<!-- ``` -->
+
+<!-- --- -->
+
+<!-- ```{r} -->
+
+<!-- # return_partial_code_or_output_chunks(chunk_name = 'cars') -->
+<!-- ``` -->
+
+<!-- --- -->
+
+
+<!-- ```{r, eval = F} -->
+<!-- partial_chunk('cars', 1, 1, FALSE) -->
 <!-- ``` -->
 
 
 <!-- --- -->
 
-<!-- *** apply_reveal("data_transformation")` -->
+<!-- count: false -->
+<!-- My Title -->
+<!-- ```{r output_nobel_1, eval=TRUE, echo = FALSE, code=partial_chunk('cars', 1, 1, FALSE)} -->
+<!-- ``` -->
 
 <!-- --- -->
 
-<!-- # Plotting the transformed data (and *not* revealing your plot in advance -- *just* showing the build). -->
-
-<!-- Now you can use the transformed data to start the plot.   -->
-
-<!-- Note that you also might prefer a behavior where you don't show a preview of the finished plot in advance.  I show an example of this below. I don't evaluate the code chunk (i.e. I've set eval to FALSE) and I don't echo it (i.e. echo is set to false). This means that the code chunk itself won't yeild any output (code or plot) to be put on a slide.  This means that I don't need to use the dashes, \-\-\- to separate the code chunk from the `apply_reveal()` statement, which differs from previous set-ups where a slide separator directly preceded the `apply_reveal()` call.  -->
+<!-- ```{r} -->
+<!-- partially_knit_chunks(chunk_name = 'cars') -->
+<!-- ``` -->
 
 <!-- --- -->
 
-<!-- ```{r just_plotting, echo = F, eval = FALSE, fig.height=5} -->
-<!-- ggplot(data = my_data) +              # pipe to ggplot -->
+
+<!-- ```{r} -->
+<!-- apply_reveal(chunk_name = 'cars') -->
+<!-- ``` -->
+
+
+
+
+<!-- --- -->
+
+<!-- class: split-40 -->
+<!-- count: false -->
+<!-- My Title -->
+<!-- .column[.content[ -->
+<!-- ```{r code_nobel_1, eval=FALSE, echo = TRUE, code=partial_chunk('cars', 1, 1, FALSE)} -->
+<!-- ``` -->
+<!-- ]] -->
+<!-- .column[.content[ -->
+<!-- ```{r output_nobel_1, eval=TRUE, echo = FALSE, code=partial_chunk('cars', 1, 1, FALSE)} -->
+<!-- ``` -->
+<!-- ]] -->
+<!-- --- -->
+<!-- class: split-40 -->
+<!-- count: false -->
+<!-- My Title -->
+<!-- .column[.content[ -->
+<!-- ```{r code_nobel_2, eval=FALSE, echo = TRUE, code=partial_chunk('cars', 1:2, 2, FALSE)} -->
+<!-- ``` -->
+<!-- ]] -->
+<!-- .column[.content[ -->
+<!-- ```{r output_nobel_2, eval=TRUE, echo = FALSE, code=partial_chunk('cars', 1:2, 2, FALSE)} -->
+<!-- ``` -->
+<!-- ]] -->
+<!-- --- -->
+
+
+<!-- --- -->
+
+
+
+<!-- <!-- --- --> -->
+
+
+<!-- <!-- # Embracing reverse assignment --> -->
+
+<!-- <!-- # A second approach: Separate the data manipulation from the plotting. --> -->
+
+<!-- <!-- If you'd like, you can also save your manipulated data and then plot, using the `%>%` to create your pipe line, and then reverse assignment operator `->`.  An example follows.  --> -->
+
+<!-- <!-- --- --> -->
+
+<!-- <!-- ```{r data_transformation, echo = F, eval = T, fig.height=5} --> -->
+<!-- <!-- cars %>%             # the data  #REVEAL --> -->
+<!-- <!--   filter(speed > 4) %>%  --> -->
+<!-- <!--   mutate(var = 2) -> --> -->
+<!-- <!-- my_data --> -->
+<!-- <!-- ``` --> -->
+
+
+<!-- <!-- --- --> -->
+
+<!-- <!-- *** apply_reveal("data_transformation")` --> -->
+
+<!-- <!-- --- --> -->
+
+<!-- <!-- # Plotting the transformed data (and *not* revealing your plot in advance -- *just* showing the build). --> -->
+
+<!-- <!-- Now you can use the transformed data to start the plot.   --> -->
+
+<!-- <!-- Note that you also might prefer a behavior where you don't show a preview of the finished plot in advance.  I show an example of this below. I don't evaluate the code chunk (i.e. I've set eval to FALSE) and I don't echo it (i.e. echo is set to false). This means that the code chunk itself won't yeild any output (code or plot) to be put on a slide.  This means that I don't need to use the dashes, \-\-\- to separate the code chunk from the `apply_reveal()` statement, which differs from previous set-ups where a slide separator directly preceded the `apply_reveal()` call.  --> -->
+
+<!-- <!-- --- --> -->
+
+<!-- <!-- ```{r just_plotting, echo = F, eval = FALSE, fig.height=5} --> -->
+<!-- <!-- ggplot(data = my_data) +              # pipe to ggplot --> -->
+<!-- <!--   aes(x = speed) + --> -->
+<!-- <!--   aes(y = dist) + --> -->
+<!-- <!--   # Describing what follows --> -->
+<!-- <!--   geom_point(alpha = .3) + #REVEAL --> -->
+<!-- <!--   aes( --> -->
+<!-- <!--     color = speed > 14 --> -->
+<!-- <!--   ) %+% --> -->
+<!-- <!--   cars --> -->
+<!-- <!-- ``` --> -->
+
+
+<!-- <!-- *** apply_reveal("just_plotting")` --> -->
+
+<!-- <!-- ```{r} --> -->
+<!-- <!-- # make_flipbook_mini_chunk(chunk_name = "just_plotting", file_out = "a_flipbook_mini_example.gif") --> -->
+<!-- <!-- ``` --> -->
+
+<!-- <!-- --- --> -->
+
+<!-- # Can't stomach reverse assignment? -->
+
+
+<!-- --- -->
+
+<!-- ```{r regular_assignment, eval = T, echo = F} -->
+<!-- a_plot <- cars %>%             # the data  #REVEAL -->
+<!--   filter(speed > 4) %>%  # subset -->
+<!--   ggplot() +              # pipe to ggplot -->
 <!--   aes(x = speed) + -->
 <!--   aes(y = dist) + -->
 <!--   # Describing what follows -->
 <!--   geom_point(alpha = .3) + #REVEAL -->
-<!--   aes( -->
-<!--     color = speed > 14 -->
+<!--   aes(color = -->
+<!--   speed > 14 -->
 <!--   ) %+% -->
 <!--   cars -->
 <!-- ``` -->
 
-
-<!-- *** apply_reveal("just_plotting")` -->
-
-<!-- ```{r} -->
-<!-- # make_flipbook_mini_chunk(chunk_name = "just_plotting", file_out = "a_flipbook_mini_example.gif") -->
-<!-- ``` -->
-
 <!-- --- -->
 
-# Can't stomach reverse assignment?
-
-
----
-
-```{r regular_assignment, eval = T, echo = F}
-a_plot <- cars %>%             # the data  #REVEAL
-  filter(speed > 4) %>%  # subset
-  ggplot() +              # pipe to ggplot
-  aes(x = speed) +
-  aes(y = dist) +
-  # Describing what follows
-  geom_point(alpha = .3) + #REVEAL
-  aes(color =
-  speed > 14
-  ) %+%
-  cars
-```
-
----
-
-`r apply_reveal("regular_assignment", reg_assignment = T)`
+<!-- r apply_reveal("regular_assignment", reg_assignment = T)` -->
 
 
 
 
 <!-- --- -->
 
-<!-- # User defined reveal -->
+<!-- <!-- --- --> -->
 
-<!-- --- -->
+<!-- <!-- # User defined reveal --> -->
 
-<!-- ```{r user_definded_reveal, eval = F, echo = F} -->
-<!-- ggplot(data = my_data) +   # pipe to ggplot -->
-<!--   aes(x = speed) +  -->
-<!--   aes(y = dist) + #REVEAL -->
-<!--   # Describing what follows  -->
-<!--   geom_blank() + -->
-<!--   geom_point(data = my_data %>% slice(1)) + #REVEAL -->
-<!--   geom_point() #REVEAL -->
-<!-- ``` -->
+<!-- <!-- --- --> -->
 
-<!-- *** apply_reveal("user_definded_reveal", user_reveal = T)` -->
+<!-- <!-- ```{r user_definded_reveal, eval = F, echo = F} --> -->
+<!-- <!-- ggplot(data = my_data) +   # pipe to ggplot --> -->
+<!-- <!--   aes(x = speed) +  --> -->
+<!-- <!--   aes(y = dist) + #REVEAL --> -->
+<!-- <!--   # Describing what follows  --> -->
+<!-- <!--   geom_blank() + --> -->
+<!-- <!--   geom_point(data = my_data %>% slice(1)) + #REVEAL --> -->
+<!-- <!--   geom_point() #REVEAL --> -->
+<!-- <!-- ``` --> -->
+
+<!-- <!-- *** apply_reveal("user_definded_reveal", user_reveal = T)` --> -->
 
 
-<!-- --- -->
+<!-- <!-- --- --> -->
 
-<!-- # For use in traditional presentations. -->
+<!-- <!-- # For use in traditional presentations. --> -->
 
-<!-- --- -->
+<!-- <!-- --- --> -->
 
 
 <!-- ```{r slow_traditional_presentation, eval = F, echo = F} -->
 <!-- gapminder::gapminder %>% -->
-<!--   filter(year == 2002) %>%  -->
+<!--   filter(year == 2002) %>% -->
 <!--   ggplot() + # pipe to ggplot -->
 <!--   aes(x = gdpPercap) + #REVEAL -->
 <!--   aes(y = lifeExp) + #REVEAL -->
 <!--   # Describing what follows -->
 <!--   geom_point() + -->
-<!--   aes(alpha = country == "New Zealand") +  -->
-<!--   scale_alpha_discrete(limits = c(0, 1), guide = F) + #REVEAL  -->
+<!--   aes(alpha = country == "New Zealand") + -->
+<!--   scale_alpha_discrete(limits = c(0, 1), guide = F) + #REVEAL -->
 <!--   aes(alpha = NULL) + #REVEAL -->
-<!--   aes(size = pop) + #REVEAL  -->
-<!--   aes(color = continent) #REVEAL  -->
+<!--   aes(size = pop) + #REVEAL -->
+<!--   aes(color = continent) #REVEAL -->
+<!-- apply_reveal() -->
 <!-- ``` -->
 
-<!-- *** apply_reveal("slow_traditional_presentation", show_code = F, user_reveal = T)` -->
+<!-- r apply_reveal(chunk_name = "slow_traditional_presentation", display_type = "output", break_type = "user")` -->
 
+
+
+<!-- <!-- --- --> -->
+
+<!-- <!-- # Non sequential reveal (or can't stomach "slow ggplot"?) --> -->
+
+<!-- <!-- --- --> -->
+
+<!-- <!-- ```{r non_sequential, eval = F, echo = F} --> -->
+<!-- <!-- cars %>% --> -->
+<!-- <!--   mutate(speed_14_plus = speed >= 14) %>% --> -->
+<!-- <!--   ggplot() + --> -->
+<!-- <!--   aes(x = speed) + --> -->
+<!-- <!--   aes(y = dist) + --> -->
+<!-- <!--   # Describing what follows --> -->
+<!-- <!--   geom_point( --> -->
+<!-- <!--     size = 2, #REVEAL2 --> -->
+<!-- <!--     alpha = .3, #REVEAL3 --> -->
+<!-- <!--     color = "blue", #REVEAL4 --> -->
+<!-- <!--     ) + --> -->
+<!-- <!--   aes(color = speed_14_plus) --> -->
+<!-- <!-- ``` --> -->
+
+<!-- <!-- --- --> -->
+
+
+<!-- <!-- r apply_reveal_nonsequential("non_sequential")` --> -->
 
 
 <!-- --- -->
 
-<!-- # Non sequential reveal (or can't stomach "slow ggplot"?) -->
+<!-- # Non-traditional pipelines  -->
 
 <!-- --- -->
 
-<!-- ```{r non_sequential, eval = F, echo = F} -->
-<!-- cars %>% -->
-<!--   mutate(speed_14_plus = speed >= 14) %>% -->
-<!--   ggplot() + -->
-<!--   aes(x = speed) + -->
-<!--   aes(y = dist) + -->
-<!--   # Describing what follows -->
-<!--   geom_point( -->
-<!--     size = 2, #REVEAL2 -->
-<!--     alpha = .3, #REVEAL3 -->
-<!--     color = "blue", #REVEAL4 -->
-<!--     ) + -->
-<!--   aes(color = speed_14_plus) -->
+<!-- r apply_reveal("logical_indexing")` -->
+
+<!-- ```{r logical_indexing, eval = F, echo = F} -->
+<!-- list(thing_1 = "a", -->
+<!--      thing_2 = matrix(data = 1:5, nrow = 2)) -> -->
+<!-- my_named_list -->
+<!-- list("a", -->
+<!-- 1:5, -->
+<!-- my_named_list) %>% -->
+<!-- .[[3]] %>% -->
+<!-- .$thing_2 %>% -->
+<!-- .[3] -->
 <!-- ``` -->
 
+
+
 <!-- --- -->
 
-
-<!-- r apply_reveal_nonsequential("non_sequential")` -->
-
-
----
-
-# Non-traditional pipelines 
-
----
-
-```{r logical_indexing, eval = F, echo = F}
-list(thing_1 = "a",
-     thing_2 = matrix(data = 1:5, nrow = 2)) ->
-my_named_list
-list("a",
-1:5,
-my_named_list) %>%
-.[[3]] %>%
-.$thing_2 %>%
-.[3]
-```
-
-
-*** apply_reveal("logical_indexing")`
-
----
-
-
-# data.table
+<!-- # data.table -->
 
 
 
----
+<!-- --- -->
 
-# Multiple realizations
-
-
----
-
-```{r many_realizations, eval = F, echo = F}
-tibble(tail_length = rnorm(n = 50), 
-       brain_weight = rnorm(n = 50)) ->
-my_data; my_data %>% slice(1:3)
-
-ggplot(data = my_data) +
-  aes(x = tail_length) +
-  aes(y = brain_weight) +
-  geom_point(alpha = .8,
-             color = "steelblue",
-             shape = 21,
-             size = 6) +
-  theme_minimal() +
-  coord_cartesian(xlim = c(-3,3),
-                  ylim = c(-3,3))
-
-cor.test(x = my_data$tail_length,
-         y = my_data$brain_weight)
-```
+<!-- # Multiple realizations -->
 
 
-*** apply_repeat_reveal(chunk_name = "many_realizations", num_reveal = 10)`
+<!-- --- -->
+
+<!-- ```{r many_realizations, eval = F, echo = F} -->
+<!-- tibble(tail_length = rnorm(n = 50),  -->
+<!--        brain_weight = rnorm(n = 50)) -> -->
+<!-- my_data; my_data %>% slice(1:3) -->
+
+<!-- ggplot(data = my_data) + -->
+<!--   aes(x = tail_length) + -->
+<!--   aes(y = brain_weight) + -->
+<!--   geom_point(alpha = .8, -->
+<!--              color = "steelblue", -->
+<!--              shape = 21, -->
+<!--              size = 6) + -->
+<!--   theme_minimal() + -->
+<!--   coord_cartesian(xlim = c(-3,3), -->
+<!--                   ylim = c(-3,3)) -->
+
+<!-- cor.test(x = my_data$tail_length, -->
+<!--          y = my_data$brain_weight) -->
+<!-- ``` -->
 
 
----
-
-# Acknowledgements and Thanks
-
-Flipbooker visionaries and developers
-
-- Emi Tanaka
-- Garrick Aden-Buie
-- Ryan Granier
-- Suraj Tharpa
-
-Key Infrastructure
-
-- Yihui Xie (Rmarkdown, Xaringan), Allison Pres Hill
-- Hadley Wickham (ggplot, tidyverse)
-- Stefan Milton Bache (magrittr %>%)
-- Claus Wilke (cowplot::plot_grid())
-- Romain Francois - getParseData
-
----
-
-More influences
-
-- Jesse Mostipak
-- Eva Murry & Andy Kriebel
-- #MakeoverMonday
-- #TidyTuesday
-- Mara Averick
-- Matt Blackwell
-- Women Summer School 
-- Roger Peng
-- Edward Tufte
-- Matt Dowle
-- Norm Matloff
-- Elio Campitelli
-- BITSS
+<!-- *** apply_repeat_reveal(chunk_name = "many_realizations", num_reveal = 10)` -->
 
 
+<!-- --- -->
 
----
+<!-- # Acknowledgements and Thanks -->
 
-# So meta...
+<!-- Flipbooker visionaries and developers -->
 
-Using flipbooking on the flipbook parser code
+<!-- - Emi Tanaka -->
+<!-- - Garrick Aden-Buie -->
+<!-- - Ryan Granier -->
+<!-- - Suraj Tharpa -->
+
+<!-- Key Infrastructure -->
+
+<!-- - Yihui Xie (Rmarkdown, Xaringan), Allison Pres Hill -->
+<!-- - Hadley Wickham (ggplot, tidyverse) -->
+<!-- - Stefan Milton Bache (magrittr %>%) -->
+<!-- - Claus Wilke (cowplot::plot_grid()) -->
+<!-- - Romain Francois - getParseData -->
+
+<!-- --- -->
+
+<!-- More influences -->
+
+<!-- - Jesse Mostipak -->
+<!-- - Eva Murry & Andy Kriebel -->
+<!-- - #MakeoverMonday -->
+<!-- - #TidyTuesday -->
+<!-- - Mara Averick -->
+<!-- - Matt Blackwell -->
+<!-- - Women Summer School  -->
+<!-- - Roger Peng -->
+<!-- - Edward Tufte -->
+<!-- - Matt Dowle -->
+<!-- - Norm Matloff -->
+<!-- - Elio Campitelli -->
+<!-- - BITSS -->
 
 
----
 
-```{r, eval = F}
-local_code <- # for testing w/o knitting
-  "cars %>%             # the data  #REVEAL
-filter(speed > 4) %>%  # subset
-ggplot() +              # pipe to ggplot
-aes(x = speed) +
-aes(y = dist) +
-# Describing what follows #REVEAL2
-geom_point(alpha = .3) + #REVEAL
-aes(color =
-speed > 14
-) %+%
-cars ->
-my_plot "
-```
+<!-- --- -->
+
+<!-- # So meta... -->
+
+<!-- Using flipbooking on the flipbook parser code -->
+
+
+<!-- --- -->
+
+<!-- ```{r, eval = F} -->
+<!-- local_code <- # for testing w/o knitting -->
+<!--   "cars %>%             # the data  #REVEAL -->
+<!-- filter(speed > 4) %>%  # subset -->
+<!-- ggplot() +              # pipe to ggplot -->
+<!-- aes(x = speed) + -->
+<!-- aes(y = dist) + -->
+<!-- # Describing what follows #REVEAL2 -->
+<!-- geom_point(alpha = .3) + #REVEAL -->
+<!-- aes(color = -->
+<!-- speed > 14 -->
+<!-- ) %+% -->
+<!-- cars -> -->
+<!-- my_plot " -->
+<!-- ``` -->
 
 
 
