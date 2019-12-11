@@ -11,11 +11,12 @@ aes(x = speed) +
 aes(y = dist) +
 # Describing what follows
 geom_point(alpha = .3) + #REVEAL
+geom_point(alpha = 1) + #REVEAL2
 aes(color =
 speed > 14
 ) %+%
 cars ->
-my_plot "
+my_plot  #REVEAL"
 
 local_code_logical_indexing <-
 "list(thing_1 = \"a\",
@@ -84,7 +85,6 @@ chunk_as_text <- function(chunk_name){
 #'
 #' @examples
 #' parse_code(code = local_code)
-#' parse_code(code = local_code_non_sequential)
 parse_code <- function(code) {
 
   # code <- paste(knitr::knit_code$get("the_code"), collapse = "\n")
@@ -126,73 +126,32 @@ parse_code <- function(code) {
     #                                     collapse = " "))) %>%
     dplyr::left_join(raw_code_table) %>%
     dplyr::mutate(code = ifelse(comment != "", stringr::str_remove(raw_code, comment), raw_code)) %>%
+    dplyr::mutate(connector = stringr::str_extract(stringr::str_trim(code), "%>%$|\\+$|->$|%\\+%")) %>%
+    dplyr::mutate(connector = tidyr::replace_na(connector, "")) %>%
     dplyr::mutate(user_non_seq = stringr::str_extract(comment, "#REVEAL-?\\d+")) %>%
     dplyr::mutate(user_non_seq = stringr::str_extract(user_non_seq, "-?\\d+")) %>%
     dplyr::mutate(user_non_seq = as.numeric(user_non_seq)) %>%
     dplyr::mutate(user_non_seq = tidyr::replace_na(user_non_seq, 1)) %>%
-    dplyr::mutate(user_reveal = stringr::str_detect(comment, "#REVEAL")) %>%
     dplyr::mutate(comment = stringr::str_remove(comment, "#REVEAL\\d+")) %>%
+    dplyr::mutate(user_reveal = stringr::str_detect(comment, "#REVEAL")) %>%
     dplyr::mutate(comment = stringr::str_remove(comment, "#REVEAL")) %>%
-    dplyr::mutate(connector = stringr::str_extract(stringr::str_trim(code), "%>%$|\\+$|->$|%\\+%")) %>%
-    dplyr::mutate(connector = tidyr::replace_na(connector, "")) %>%
     dplyr::mutate(code = stringr::str_remove(stringi::stri_trim_right(code), "%>%$|\\+$|->$|%\\+%")) %>%
     dplyr::mutate(balanced_paren = (cumsum(num_open_par) - cumsum(num_closed_par)) == 0) %>%
     dplyr::mutate(balanced_curly = (cumsum(num_open_curly) - cumsum(num_closed_curly)) == 0) %>%
     dplyr::mutate(balanced_square = (cumsum(num_open_square) - cumsum(num_closed_square)) == 0) %>%
     dplyr::mutate(balanced_par = balanced_paren & balanced_curly & balanced_square &
              code != "") %>%
-    dplyr::select(-num_open_par, -num_closed_par,
-                  -num_open_curly, -num_closed_curly,
-                  -num_open_square, -num_closed_square,
-                  -balanced_paren, -balanced_curly, -balanced_square
-                  )
+    dplyr::select(line, raw_code, code, connector, comment, user_non_seq, user_reveal, balanced_par)
     # dplyr::mutate(balanced_par = (cumsum(num_open_par) - cumsum(num_closed_par)) == 0 &
     #          code != "")
 
 }
+# parse_code(code = local_code)
 
 
 
 
-#' Determine breaks
-#'
-#' @param parsed parse code dataframe
-#' @param break_type text input "auto", "user", or "non_seq"
-#'
-#' @return a vector of integers
-#' @export
-#'
-#' @examples
-#' determine_breaks(parsed = parse_code(local_code), break_type = "user")
-determine_breaks <- function(parsed, break_type = "auto"){
-
-  if (break_type == "auto") {
-
-    breaks <- parsed$line[parsed$balanced_par]
-
-    show_order <- cumsum(parsed$balanced_par) + 1 - parsed$balanced_par
-
-
-
-  } else if (break_type == "user") {
-
-    breaks <- parsed$line[parsed$user_reveal]
-
-    show_order <-  cumsum(parsed$user_reveal) + 1 - parsed$user_reveal
-
-  } else {
-
-    # make flexible by allowing non integers here.
-    show_order <- parsed$user_non_seq
-
-  }
-
-  breaks
-
-}
-
-#' calc_code_panes(parsed = parse_code(local_code), break_type = "user")
-calc_code_panes <- function(show_order = c(2, 1, 1, 2, 2, 2, 3)){
+calc_which_lines_to_show <- function(parsed, break_type = "user"){
 
   if (break_type == "auto") {
 
@@ -210,121 +169,49 @@ calc_code_panes <- function(show_order = c(2, 1, 1, 2, 2, 2, 3)){
     code_order <- parsed$user_non_seq
     num_panes <- max(code_order)
 
-  } else if (break_type == "multiverse") {
+  } else if (is.numeric(break_type)) {  # multiverse case
 
-    num_panes <- 10
+
+    code_order <- rep(1, nrow(parsed))
+    num_panes <- break_type
 
   }
 
-panes <- list()
+  which_show <- list()
 
   for (i in 1:num_panes) {
 
     # fix this for non_sequential to allow removal
-    panes[[i]] <- which(code_order <= i)
+    which_show[[i]] <- which(code_order <= i)
 
   }
-
-  panes
-
-}
-
-
-
-# calc_lines_to_show <- function(parsed = parse_code(local_code_non_sequential))
-
-calc_lines_to_show <- function(breaks){
-
-  parsed %>%
-    dplyr::pull(user_non_seq) ->
-    code_ordering
-
-  code_ordering %>%
-    abs() %>%
-    unique() %>%
-    sort() ->
-    steps
-
-  which_show <- list()
-
-  for (i in steps) {
-
-    which_show[[i]] <- which(
-      ifelse(code_ordering > 0,
-             code_ordering <= i,
-             abs(code_ordering) > i)
-    )
-
-  }
-
 
   which_show
 
 }
+# calc_which_lines_to_show(parsed = parse_code(local_code), break_type = "user")
+# calc_which_lines_to_show(parsed = parse_code(local_code), break_type = "auto")
+# calc_which_lines_to_show(parsed = parse_code(local_code), break_type = "non_seq")
+# calc_which_lines_to_show(parsed = parse_code(local_code), break_type = 6)
 
+# calc_lines_to_highlight()
 calc_lines_to_highlight <- function(which_show = list(c(1,2), c(1,2,3,4))){
 
 
-which_highlight <- list()
+  which_highlight <- list()
 
-which_highlight[[1]] <- which_show[[1]]
+  which_highlight[[1]] <- which_show[[1]]
 
-for (i in 2:length(which_show)) {
+  for (i in 2:length(which_show)) {
 
-  which_highlight[[i]] <- which_show[[i]][!(which_show[[i]] %in% which_show[[i - 1]])]
+    which_highlight[[i]] <- which_show[[i]][!(which_show[[i]] %in% which_show[[i - 1]])]
 
-}
-
-
-
-}
-
-
-#' Calculate highlight for sequential reveal
-#'
-#' @param breaks a vector of the lines where code breaks are needed
-#'
-#' @return list of vectors with highlight at each step
-#' @export
-#'
-#' @examples
-#' calc_highlight(c(1,5,7,10))
-calc_highlight <- function(breaks) {
-
-  highlight <- list()
-
-  for (i in 1:length(breaks)) {
-    if (i == 1) {
-      highlight[[i]] <- 1:breaks[i]
-    } else {
-      highlight[[i]] <- (breaks[i - 1] + 1):breaks[i]
-    }
   }
 
-  return(highlight)
+  which_highlight
 
 }
-
-
-
-
-
-#'
-#' #' Parse chunk
-#' #'
-#' #' @param chunk_name a character string which is a chunk name
-#' #'
-#' #' @return parsed code from a code chunk in an Rmd
-#' #' @export
-#' #'
-#' #' @examples
-#' parse_chunk <- function(chunk_name){
-#'
-#'   code <- chunk_as_text(chunk_name)
-#'
-#'   parse_code(code)
-#'
-#' }
+# calc_lines_to_highlight()
 
 
 #' Partially reveal parsed code
@@ -337,119 +224,71 @@ calc_highlight <- function(breaks) {
 #' @export
 #'
 #' @examples
-reveal_parsed_classic <- function(parsed, break_point = 3, highlight = 1:3){
+show_and_highlight_pane_classic <- function(parsed, which_show = 1:3, which_highlight = 3){
 
   parsed %>%
-    dplyr::mutate(reveal = 1:dplyr::n() <= break_point) %>%
-    dplyr::filter(reveal) %>%
+    dplyr::filter(1:n() %in% which_show) %>%
     dplyr::mutate(connector = dplyr::case_when(1:dplyr::n() == dplyr::n() ~ "",
-                                 1:dplyr::n() != dplyr::n() ~ connector)) %>%
-    dplyr::mutate(highlight = ifelse(1:dplyr::n() %in% highlight, "#<<", "" )) %>%
+                                               1:dplyr::n() != dplyr::n() ~ connector)) %>%
+    dplyr::mutate(highlight = ifelse(1:dplyr::n() %in% which_highlight, "#<<", "" )) %>%
     dplyr::mutate(out = paste0(code, "", connector, "  ", comment, highlight)) %>%
-    dplyr::select(out) ->
-    up_to_result
+    dplyr::pull()
 
-  up_to_result$out
 
 }
 
+# example
+show_and_highlight_pane_reg_assignment <- function(parsed, which_show = 1:3, which_highlight = 3){
 
-
-#' Partially reveal parsed regular assignment
-#'
-#' @param parsed the output resulting from parsing code
-#' @param break_point an integer indicating the line of code
-#' @param highlight integers indicating which lines of code to highlight
-#'
-#' @return Partial code with indicators for highlight
-#' @export
-#'
-#' @examples
-#' reveal_code(code = local_code_regular_assignment)
-#' reveal_code(code = local_code)
-#' reveal_code(code = local_code, 5, 3:5)
-reveal_parsed_reg_assignment <- function(parsed, break_point = 3, highlight = 1:3){
-
-  the_reveal <- reveal_parsed(parsed, break_point, highlight)
+  the_reveal <- show_and_highlight_pane(parsed, which_show, which_highlight)
 
   the_reveal[1] %>%
       stringr::str_extract(".+\\<-") %>%
       stringr::str_remove("<-") %>%
       stringr::str_trim() ->
-    object_to_track
+    object_to_track  # this is the object created at the beginning of the code chunk
 
     c(the_reveal, " ", paste(object_to_track, "# print object"))
 
 }
 
-
-reveal_parsed <- function(parsed, break_point = 3, highlight = 1:3, reg_assignment = F){
+# example reveal_pane(parsed = parse_code(local_code))
+partial_code <- function(parsed, which_show = 1:3, which_highlight = 3, reg_assignment = F){
 
   if (reg_assignment == F) {
-    reveal_parsed_classic(parsed, break_point, highlight)
+    show_and_highlight_pane_classic(parsed, which_show, which_highlight)
   }else{
-      reveal_parsed_reg_assignment(parsed, break_point, highlight)
-    }
+    show_and_highlight_pane_reg_assignment(parsed, which_show, which_highlight)
+  }
 
 }
 
-#' #' Reveal Chunk
-#' #'
-#' #' @param chunk_name a character string which is a chunk name
-#' #' @param break_point an integer indicating the line of code
-#' #' @param highlight integers indicating which lines of code to highlight
-#' #' @param reg_assignment logical set to T if output of some object created at beginning of code chunk should be displayed
-#' #'
-#' #' @return Partial code with indicators for highlight
-#' #' @export
-#' #'
-#' #' @examples
-#' reveal_chunk <- function(chunk_name, break_point = 3, highlight = 1:3, reg_assignment = F){
-#'
-#'   chunk_name %>%
-#'     chunk_as_text() %>%
-#'     parse_code() ->
-#'   parsed
-#'
-#'   if (reg_assignment == F) {
-#'
-#'     reveal_parsed(parsed = parsed, break_point = break_point, highlight = highlight)
-#'
-#'     }else{
-#'
-#'     the_reveal <- reveal_parsed(parsed = parsed, break_point = break_point, highlight = highlight)
-#'
-#'     object_to_track <- the_reveal[1] %>%
-#'       stringr::str_extract(".+\\<-") %>%
-#'       stringr::str_remove("<-") %>%
-#'       stringr::str_trim()
-#'
-#'     c(the_reveal, " ",
-#'       paste(object_to_track, "# print object"))
-#'   }
-#'
-#'
-#' }
 
-
-reveal_chunk <- function(chunk_name, break_point = 3, highlight = 1:3, reg_assignment = F){
+partial_chunk <- function(chunk_name, which_show = 1:3, which_highlight = 3, reg_assignment = F){
 
   chunk_name %>%
     chunk_as_text() %>%
     parse_code() %>%
-    reveal_parsed(break_point, highlight, reg_assignment)
+    partial_code(which_show, which_highlight, reg_assignment)
 
 }
+
+
+
+
+
+
 
 
 return_partial_chunks_template <- function(display_type = "output",
                                   eval = display_type == "output",
                                   echo = display_type == "code") {
-  glue::glue("```{r {{{display_type}}}_{{chunk_name}}_{{breaks}}, eval={{{eval}}}, echo = {{{echo}}}, code=reveal_chunk('{{chunk_name}}', break_point = {{breaks}}, highlight = {{highlight}}, reg_assignment = {{reg_assignment}})}",
+
+  glue::glue("```{r {{{display_type}}}_{{chunk_name}}_{{breaks}}, eval={{{eval}}}, echo = {{{echo}}}, code=partial_chunk('{{chunk_name}}', which_show = {{which_show}}, which_highlight = {{which_highlight}}, reg_assignment = {{reg_assignment}})}",
              "```",
              .open = "{{{", .close = "}}}", .sep = "\n")
 }
-return_partial_chunks_template()
+# return_partial_chunks_template()
 
 
 # return_partial_code_chunks <- function(){
@@ -469,11 +308,14 @@ return_partial_chunks_template()
 
 
 return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk_name",
-                                           breaks = 1:3,
-                                           highlight = list(1, 1:2, 1:3),
+                                                           breaks = 1:3,
+                                           which_show = list(1, 1:2, 1:3),
+                                           which_highlight = list(1, 2, 3),
                                            title = "My Title",
                                            reg_assignment = F,
                                            split = 40) {
+
+  breaks <- 1:length(which_show)  # number of temporal breakpoints
 
   partial_knit_steps <- glue::glue(
     "class: split-{{split}}",
@@ -492,16 +334,19 @@ return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk
   glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
 
 }
-return_partial_side_by_side_code_output_chunks()
+# return_partial_side_by_side_code_output_chunks()
 
 
 
 return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
-                                               breaks = 1:3,
-                                               highlight = list(1, 1:2, 1:3),
+                                                 which_show = list(1, 1:2, 1:3),
+                                                 which_highlight = list(1, 2, 3),
                                                title = "My Title",
                                                reg_assignment = F,
                                                display_type = "output") {
+
+  breaks <- 1:length(which_show)  # number of temporal breakpoints
+
 
   partial_knit_steps <- glue::glue(
     "count: false",
@@ -513,7 +358,7 @@ return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
   glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
 
 }
-return_partial_code_or_output_chunks()
+# return_partial_code_or_output_chunks()
 
 
 
@@ -531,16 +376,16 @@ partially_knit_chunks <- function(chunk_name = "example_chunk_name",
     parse_code() ->
   parsed
 
-breaks <- determine_breaks(parsed, break_type)
+which_show <- calc_which_lines_to_show(parsed = parsed, break_type)
 
-highlight <- calc_highlight(breaks = breaks)
+which_highlight <- calc_lines_to_highlight(which_show = which_show)
 
 if (display_type == "both") {
 
   return_partial_side_by_side_code_output_chunks(chunk_name,
                                                  title,
-                                                 breaks = breaks,
-                                                 highlight = highlight,
+                                                 which_show = which_show,
+                                                 which_highlight = which_highlight,
                                                  reg_assignment,
                                                  split = 40)
 
@@ -548,8 +393,8 @@ if (display_type == "both") {
 
   return_partial_code_or_output_chunks(chunk_name,
                                        title,
-                                       breaks = breaks,
-                                       highlight = highlight,
+                                       which_show = which_show,
+                                       which_highlight = which_highlight,
                                        reg_assignment)
 
 }

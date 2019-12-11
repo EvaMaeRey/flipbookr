@@ -136,7 +136,7 @@ ggplot(data = my_data) +
 # We've come along way
 
 - adding pipe and other connections
-- allowed code wrapping - responsible piping.  
+- allowed code wrapping - responsible piping
 
 
 
@@ -152,7 +152,7 @@ Okay. Let's load the the `flipbookr` and the `tidyverse` packages.
 
 
 ```r
-library(flipbookr)
+# library(flipbookr)
 library(tidyverse)
 ```
 
@@ -162,17 +162,599 @@ And load the data from the tidytuesday github page.
 ```r
 # nobel_winners &lt;- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-14/nobel_winners.csv")
 # source("../../../../../R/flipbook_mini.R")
-# source("../../../../../R/base_parse_reveal_xaringan.R")
+source("../../../../../R/base_parse_reveal_xaringan.R")
 # source("../../../../../R/non_sequential_reveal.R")
+```
+
+
+
+``` r
+apply_reveal(chunk_name = 'cars', break_type = "auto")
+apply_reveal(chunk_name = 'cars', break_type = "user")
+apply_reveal(chunk_name = 'cars', break_type = "non_seq")
+apply_reveal(chunk_name = 'cars', break_type = 5)
 ```
 
 ---
 
 # Where we are going: 
 
-We'll create this plot.  I have **echo** set to FALSE in the code chunk options here so that you don't see the code, and **eval** to TRUE so that the plot output is produced.  The code chunk is given the name "nobel", and this is used in the in apply_reveal function, which breaks down code by wrangling and plot statements. 
+We'll create this plot.  I have **echo** set to FALSE in the code chunk options here so that you don't see the code, and **eval** to TRUE so that the plot output is produced.  The code chunk is given the name 'cars', and this is used in the in apply_reveal function, which breaks down code by wrangling and plot statements. 
 
-![](skeleton_files/figure-html/nobel-1.png)&lt;!-- --&gt;
+---
+
+# Auto
+
+---
+
+class: split-40
+count: false
+FALSE
+.column[.content[
+
+```r
+*cars   # the data
+```
+]]
+.column[.content[
+
+```
+   speed dist
+1      4    2
+2      4   10
+3      7    4
+4      7   22
+5      8   16
+6      9   10
+7     10   18
+8     10   26
+9     10   34
+10    11   17
+11    11   28
+12    12   14
+13    12   20
+14    12   24
+15    12   28
+16    13   26
+17    13   34
+18    13   34
+19    13   46
+20    14   26
+21    14   36
+22    14   60
+23    14   80
+24    15   20
+25    15   26
+26    15   54
+27    16   32
+28    16   40
+29    17   32
+30    17   40
+31    17   50
+32    18   42
+33    18   56
+34    18   76
+35    18   84
+36    19   36
+37    19   46
+38    19   68
+39    20   32
+40    20   48
+41    20   52
+42    20   56
+43    20   64
+44    22   66
+45    23   54
+46    24   70
+47    24   92
+48    24   93
+49    24  120
+50    25   85
+```
+]]
+---
+class: split-40
+count: false
+FALSE
+.column[.content[
+
+```r
+cars %&gt;%  # the data  
+* filter(speed &gt; 4)   # subset
+```
+]]
+.column[.content[
+
+```
+   speed dist
+1      7    4
+2      7   22
+3      8   16
+4      9   10
+5     10   18
+6     10   26
+7     10   34
+8     11   17
+9     11   28
+10    12   14
+11    12   20
+12    12   24
+13    12   28
+14    13   26
+15    13   34
+16    13   34
+17    13   46
+18    14   26
+19    14   36
+20    14   60
+21    14   80
+22    15   20
+23    15   26
+24    15   54
+25    16   32
+26    16   40
+27    17   32
+28    17   40
+29    17   50
+30    18   42
+31    18   56
+32    18   76
+33    18   84
+34    19   36
+35    19   46
+36    19   68
+37    20   32
+38    20   48
+39    20   52
+40    20   56
+41    20   64
+42    22   66
+43    23   54
+44    24   70
+45    24   92
+46    24   93
+47    24  120
+48    25   85
+```
+]]
+---
+class: split-40
+count: false
+FALSE
+.column[.content[
+
+```r
+cars %&gt;%  # the data  
+  filter(speed &gt; 4) %&gt;%  # subset
+* ggplot()   # pipe to ggplot
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_3-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+FALSE
+.column[.content[
+
+```r
+cars %&gt;%  # the data  
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+* aes(x = speed)
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_4-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+FALSE
+.column[.content[
+
+```r
+cars %&gt;%  # the data  
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+* aes(y = dist)
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_5-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+FALSE
+.column[.content[
+
+```r
+cars %&gt;%  # the data  
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+  aes(y = dist) +  
+* # Describing what follows
+* geom_point(
+*   alpha = .3,
+*   color = "blue"
+*   )
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_6-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+FALSE
+.column[.content[
+
+```r
+cars %&gt;%  # the data  
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+  aes(y = dist) +  
+  # Describing what follows
+  geom_point(  
+    alpha = .3,  
+    color = "blue"  
+    ) +  
+* aes(color =
+* speed &gt; 14
+* )
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_7-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+FALSE
+.column[.content[
+
+```r
+cars %&gt;%  # the data  
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+  aes(y = dist) +  
+  # Describing what follows
+  geom_point(  
+    alpha = .3,  
+    color = "blue"  
+    ) +  
+  aes(color =  
+  speed &gt; 14  
+  ) %+%  
+* cars
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_8-1.png)&lt;!-- --&gt;
+]]
+
+---
+
+# User, sequential
+
+---
+
+class: split-40
+count: false
+FALSE
+.column[.content[
+
+```r
+*cars   # the data
+```
+]]
+.column[.content[
+
+```
+   speed dist
+1      4    2
+2      4   10
+3      7    4
+4      7   22
+5      8   16
+6      9   10
+7     10   18
+8     10   26
+9     10   34
+10    11   17
+11    11   28
+12    12   14
+13    12   20
+14    12   24
+15    12   28
+16    13   26
+17    13   34
+18    13   34
+19    13   46
+20    14   26
+21    14   36
+22    14   60
+23    14   80
+24    15   20
+25    15   26
+26    15   54
+27    16   32
+28    16   40
+29    17   32
+30    17   40
+31    17   50
+32    18   42
+33    18   56
+34    18   76
+35    18   84
+36    19   36
+37    19   46
+38    19   68
+39    20   32
+40    20   48
+41    20   52
+42    20   56
+43    20   64
+44    22   66
+45    23   54
+46    24   70
+47    24   92
+48    24   93
+49    24  120
+50    25   85
+```
+]]
+---
+class: split-40
+count: false
+FALSE
+.column[.content[
+
+```r
+cars %&gt;%  # the data  
+* filter(speed &gt; 4) %&gt;%  # subset
+* ggplot() +  # pipe to ggplot
+* aes(x = speed) +
+* aes(y = dist) +
+* # Describing what follows
+* geom_point(
+*   alpha = .3,
+*   color = "blue"
+*   )
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_2-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+FALSE
+.column[.content[
+
+```r
+cars %&gt;%  # the data  
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+  aes(y = dist) +  
+  # Describing what follows
+  geom_point(  
+    alpha = .3,  
+    color = "blue"  
+    ) +  
+* aes(color =
+* speed &gt; 14
+* ) %+%
+* cars
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_3-1.png)&lt;!-- --&gt;
+]]
+
+---
+
+# User, nonsequential
+
+---
+
+class: split-40
+count: false
+FALSE
+.column[.content[
+
+```r
+*cars %&gt;%  # the data
+* filter(speed &gt; 4) %&gt;%  # subset
+* ggplot() +  # pipe to ggplot
+* aes(x = speed) +
+* aes(y = dist) +
+* # Describing what follows
+* geom_point(
+*   alpha = .3,
+    ) +  
+* aes(color =
+* speed &gt; 14
+* ) %+%
+* cars
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_1-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+FALSE
+.column[.content[
+
+```r
+cars %&gt;%  # the data  
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+  aes(y = dist) +  
+  # Describing what follows
+  geom_point(  
+    alpha = .3,  
+*   color = "blue"
+    ) +  
+  aes(color =  
+  speed &gt; 14  
+  ) %+%  
+  cars  
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_2-1.png)&lt;!-- --&gt;
+]]
+
+---
+
+# Multiverse
+
+---
+
+class: split-40
+count: false
+FALSE
+.column[.content[
+
+```r
+*cars %&gt;%  # the data
+* filter(speed &gt; 4) %&gt;%  # subset
+* ggplot() +  # pipe to ggplot
+* aes(x = speed) +
+* aes(y = dist) +
+* # Describing what follows
+* geom_point(
+*   alpha = .3,
+*   color = "blue"
+*   ) +
+* aes(color =
+* speed &gt; 14
+* ) %+%
+* cars
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_1-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+FALSE
+.column[.content[
+
+```r
+cars %&gt;%  # the data  
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+  aes(y = dist) +  
+  # Describing what follows
+  geom_point(  
+    alpha = .3,  
+    color = "blue"  
+    ) +  
+  aes(color =  
+  speed &gt; 14  
+  ) %+%  
+  cars  
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_2-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+FALSE
+.column[.content[
+
+```r
+cars %&gt;%  # the data  
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+  aes(y = dist) +  
+  # Describing what follows
+  geom_point(  
+    alpha = .3,  
+    color = "blue"  
+    ) +  
+  aes(color =  
+  speed &gt; 14  
+  ) %+%  
+  cars  
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_3-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+FALSE
+.column[.content[
+
+```r
+cars %&gt;%  # the data  
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+  aes(y = dist) +  
+  # Describing what follows
+  geom_point(  
+    alpha = .3,  
+    color = "blue"  
+    ) +  
+  aes(color =  
+  speed &gt; 14  
+  ) %+%  
+  cars  
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_4-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+FALSE
+.column[.content[
+
+```r
+cars %&gt;%  # the data  
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+  aes(y = dist) +  
+  # Describing what follows
+  geom_point(  
+    alpha = .3,  
+    color = "blue"  
+    ) +  
+  aes(color =  
+  speed &gt; 14  
+  ) %+%  
+  cars  
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_5-1.png)&lt;!-- --&gt;
+]]
+
+---
+
+![](skeleton_files/figure-html/cars-1.png)&lt;!-- --&gt;
  
 
 
@@ -196,7 +778,7 @@ my_local &lt;- "cars %&gt;%             # the data  #REVEAL
 
 # How do we get there?
 
-In the next slide, we'll walk through the code that produces this plot, and the output along the way. We use the code `apply_reveal("nobel")` in-line to access the code from the code chunk called *nobel*.
+In the next slide, we'll walk through the code that produces this plot, and the output along the way. We use the code `apply_reveal('cars')` in-line to access the code from the code chunk called *nobel*.
  
 ---
 
@@ -207,46 +789,40 @@ my_local %&gt;%
   parse_code() -&gt;
 parsed
 parsed %&gt;% 
-  determine_breaks() -&gt;
+  determine_breaks(break_type = "auto") -&gt;
 breaks
 breaks %&gt;% 
   calc_highlight() -&gt;
 highlighting
 
 parsed %&gt;% 
-  reveal_parsed(break_point = 3, highlight = 2:3) 
-```
+  reveal_parsed(break_point = breaks[3], highlight = highlighting[[3]]) 
 
-```
-[1] "cars %&gt;%  # the data  "              
-[2] "  filter(speed &gt; 4) %&gt;%  # subset#&lt;&lt;"
-[3] "  ggplot()   # pipe to ggplot#&lt;&lt;"    
-```
+flipbookr::return_partial_chunks_template()
 
----
+flipbookr::return_partial_side_by_side_code_output_chunks("my_example", breaks = breaks, highlight = highlighting)
 
-
-```r
-reveal_chunk("nobel")
-```
-
-```
-[1] "cars %&gt;%  # the data  #&lt;&lt;"           
-[2] "  filter(speed &gt; 4) %&gt;%  # subset#&lt;&lt;"
-[3] "  ggplot()   # pipe to ggplot#&lt;&lt;"    
-```
-
-
-
-```r
-# return_partial_side_by_side_code_output_chunks(chunk_name = "nobel")
+partially_knit_chunks
 ```
 
 ---
 
 
 ```r
-# return_partial_code_or_output_chunks(chunk_name = "nobel")
+# reveal_chunk('cars')
+```
+
+
+
+```r
+# return_partial_side_by_side_code_output_chunks(chunk_name = 'cars')
+```
+
+---
+
+
+```r
+# return_partial_code_or_output_chunks(chunk_name = 'cars')
 ```
 
 ---
@@ -254,11 +830,7 @@ reveal_chunk("nobel")
 
 
 ```r
-reveal_chunk('nobel', 1, 1, FALSE)
-```
-
-```
-[1] "cars   # the data  #&lt;&lt;"
+partial_chunk('cars', 1, 1, FALSE)
 ```
 
 
@@ -325,103 +897,103 @@ My Title
 
 
 ```r
-partially_knit_chunks(chunk_name = "nobel")
+partially_knit_chunks(chunk_name = 'cars')
 ```
 
 ````
 class: split-40
 count: false
-My Title
+FALSE
 .column[.content[
-```{r code_nobel_1, eval=FALSE, echo = TRUE, code=reveal_chunk('nobel', break_point = 1, highlight = 1, reg_assignment = FALSE)}
+```{r code_cars_1, eval=FALSE, echo = TRUE, code=partial_chunk('cars', which_show = 1, which_highlight = 1, reg_assignment = FALSE)}
 ```
 ]]
 .column[.content[
-```{r output_nobel_1, eval=TRUE, echo = FALSE, code=reveal_chunk('nobel', break_point = 1, highlight = 1, reg_assignment = FALSE)}
-```
-]]
----
-class: split-40
-count: false
-My Title
-.column[.content[
-```{r code_nobel_2, eval=FALSE, echo = TRUE, code=reveal_chunk('nobel', break_point = 2, highlight = 2, reg_assignment = FALSE)}
-```
-]]
-.column[.content[
-```{r output_nobel_2, eval=TRUE, echo = FALSE, code=reveal_chunk('nobel', break_point = 2, highlight = 2, reg_assignment = FALSE)}
+```{r output_cars_1, eval=TRUE, echo = FALSE, code=partial_chunk('cars', which_show = 1, which_highlight = 1, reg_assignment = FALSE)}
 ```
 ]]
 ---
 class: split-40
 count: false
-My Title
+FALSE
 .column[.content[
-```{r code_nobel_3, eval=FALSE, echo = TRUE, code=reveal_chunk('nobel', break_point = 3, highlight = 3, reg_assignment = FALSE)}
+```{r code_cars_2, eval=FALSE, echo = TRUE, code=partial_chunk('cars', which_show = 1:2, which_highlight = 2, reg_assignment = FALSE)}
 ```
 ]]
 .column[.content[
-```{r output_nobel_3, eval=TRUE, echo = FALSE, code=reveal_chunk('nobel', break_point = 3, highlight = 3, reg_assignment = FALSE)}
-```
-]]
----
-class: split-40
-count: false
-My Title
-.column[.content[
-```{r code_nobel_4, eval=FALSE, echo = TRUE, code=reveal_chunk('nobel', break_point = 4, highlight = 4, reg_assignment = FALSE)}
-```
-]]
-.column[.content[
-```{r output_nobel_4, eval=TRUE, echo = FALSE, code=reveal_chunk('nobel', break_point = 4, highlight = 4, reg_assignment = FALSE)}
+```{r output_cars_2, eval=TRUE, echo = FALSE, code=partial_chunk('cars', which_show = 1:2, which_highlight = 2, reg_assignment = FALSE)}
 ```
 ]]
 ---
 class: split-40
 count: false
-My Title
+FALSE
 .column[.content[
-```{r code_nobel_5, eval=FALSE, echo = TRUE, code=reveal_chunk('nobel', break_point = 5, highlight = 5, reg_assignment = FALSE)}
+```{r code_cars_3, eval=FALSE, echo = TRUE, code=partial_chunk('cars', which_show = 1:3, which_highlight = 3, reg_assignment = FALSE)}
 ```
 ]]
 .column[.content[
-```{r output_nobel_5, eval=TRUE, echo = FALSE, code=reveal_chunk('nobel', break_point = 5, highlight = 5, reg_assignment = FALSE)}
-```
-]]
----
-class: split-40
-count: false
-My Title
-.column[.content[
-```{r code_nobel_7, eval=FALSE, echo = TRUE, code=reveal_chunk('nobel', break_point = 7, highlight = 6:7, reg_assignment = FALSE)}
-```
-]]
-.column[.content[
-```{r output_nobel_7, eval=TRUE, echo = FALSE, code=reveal_chunk('nobel', break_point = 7, highlight = 6:7, reg_assignment = FALSE)}
+```{r output_cars_3, eval=TRUE, echo = FALSE, code=partial_chunk('cars', which_show = 1:3, which_highlight = 3, reg_assignment = FALSE)}
 ```
 ]]
 ---
 class: split-40
 count: false
-My Title
+FALSE
 .column[.content[
-```{r code_nobel_10, eval=FALSE, echo = TRUE, code=reveal_chunk('nobel', break_point = 10, highlight = 8:10, reg_assignment = FALSE)}
+```{r code_cars_4, eval=FALSE, echo = TRUE, code=partial_chunk('cars', which_show = 1:4, which_highlight = 4, reg_assignment = FALSE)}
 ```
 ]]
 .column[.content[
-```{r output_nobel_10, eval=TRUE, echo = FALSE, code=reveal_chunk('nobel', break_point = 10, highlight = 8:10, reg_assignment = FALSE)}
+```{r output_cars_4, eval=TRUE, echo = FALSE, code=partial_chunk('cars', which_show = 1:4, which_highlight = 4, reg_assignment = FALSE)}
 ```
 ]]
 ---
 class: split-40
 count: false
-My Title
+FALSE
 .column[.content[
-```{r code_nobel_11, eval=FALSE, echo = TRUE, code=reveal_chunk('nobel', break_point = 11, highlight = 11, reg_assignment = FALSE)}
+```{r code_cars_5, eval=FALSE, echo = TRUE, code=partial_chunk('cars', which_show = 1:5, which_highlight = 5, reg_assignment = FALSE)}
 ```
 ]]
 .column[.content[
-```{r output_nobel_11, eval=TRUE, echo = FALSE, code=reveal_chunk('nobel', break_point = 11, highlight = 11, reg_assignment = FALSE)}
+```{r output_cars_5, eval=TRUE, echo = FALSE, code=partial_chunk('cars', which_show = 1:5, which_highlight = 5, reg_assignment = FALSE)}
+```
+]]
+---
+class: split-40
+count: false
+FALSE
+.column[.content[
+```{r code_cars_6, eval=FALSE, echo = TRUE, code=partial_chunk('cars', which_show = 1:10, which_highlight = 6:10, reg_assignment = FALSE)}
+```
+]]
+.column[.content[
+```{r output_cars_6, eval=TRUE, echo = FALSE, code=partial_chunk('cars', which_show = 1:10, which_highlight = 6:10, reg_assignment = FALSE)}
+```
+]]
+---
+class: split-40
+count: false
+FALSE
+.column[.content[
+```{r code_cars_7, eval=FALSE, echo = TRUE, code=partial_chunk('cars', which_show = 1:13, which_highlight = 11:13, reg_assignment = FALSE)}
+```
+]]
+.column[.content[
+```{r output_cars_7, eval=TRUE, echo = FALSE, code=partial_chunk('cars', which_show = 1:13, which_highlight = 11:13, reg_assignment = FALSE)}
+```
+]]
+---
+class: split-40
+count: false
+FALSE
+.column[.content[
+```{r code_cars_8, eval=FALSE, echo = TRUE, code=partial_chunk('cars', which_show = 1:14, which_highlight = 14, reg_assignment = FALSE)}
+```
+]]
+.column[.content[
+```{r output_cars_8, eval=TRUE, echo = FALSE, code=partial_chunk('cars', which_show = 1:14, which_highlight = 14, reg_assignment = FALSE)}
 ```
 ]]
 ````
@@ -431,7 +1003,7 @@ My Title
 
 
 ```r
-apply_reveal(chunk_name = "nobel")
+apply_reveal(chunk_name = 'cars')
 ```
 
 ```
@@ -445,11 +1017,11 @@ apply_reveal(chunk_name = "nobel")
 
   |                                                                            
   |....                                                                  |   6%
-label: code_nobel_1 (with options) 
+label: code_cars_1 (with options) 
 List of 3
  $ eval: logi FALSE
  $ echo: logi TRUE
- $ code: language reveal_chunk("nobel", break_point = 1, highlight = 1, reg_assignment = FALSE)
+ $ code: language partial_chunk("cars", which_show = 1, which_highlight = 1, reg_assignment = FALSE)
 
 
   |                                                                            
@@ -459,11 +1031,11 @@ List of 3
 
   |                                                                            
   |........                                                              |  12%
-label: output_nobel_1 (with options) 
+label: output_cars_1 (with options) 
 List of 3
  $ eval: logi TRUE
  $ echo: logi FALSE
- $ code: language reveal_chunk("nobel", break_point = 1, highlight = 1, reg_assignment = FALSE)
+ $ code: language partial_chunk("cars", which_show = 1, which_highlight = 1, reg_assignment = FALSE)
 
 
   |                                                                            
@@ -473,11 +1045,11 @@ List of 3
 
   |                                                                            
   |.............                                                         |  18%
-label: code_nobel_2 (with options) 
+label: code_cars_2 (with options) 
 List of 3
  $ eval: logi FALSE
  $ echo: logi TRUE
- $ code: language reveal_chunk("nobel", break_point = 2, highlight = 2, reg_assignment = FALSE)
+ $ code: language partial_chunk("cars", which_show = 1:2, which_highlight = 2, reg_assignment = FALSE)
 
 
   |                                                                            
@@ -487,11 +1059,11 @@ List of 3
 
   |                                                                            
   |.................                                                     |  24%
-label: output_nobel_2 (with options) 
+label: output_cars_2 (with options) 
 List of 3
  $ eval: logi TRUE
  $ echo: logi FALSE
- $ code: language reveal_chunk("nobel", break_point = 2, highlight = 2, reg_assignment = FALSE)
+ $ code: language partial_chunk("cars", which_show = 1:2, which_highlight = 2, reg_assignment = FALSE)
 
 
   |                                                                            
@@ -501,11 +1073,11 @@ List of 3
 
   |                                                                            
   |.....................                                                 |  30%
-label: code_nobel_3 (with options) 
+label: code_cars_3 (with options) 
 List of 3
  $ eval: logi FALSE
  $ echo: logi TRUE
- $ code: language reveal_chunk("nobel", break_point = 3, highlight = 3, reg_assignment = FALSE)
+ $ code: language partial_chunk("cars", which_show = 1:3, which_highlight = 3, reg_assignment = FALSE)
 
 
   |                                                                            
@@ -515,11 +1087,11 @@ List of 3
 
   |                                                                            
   |.........................                                             |  36%
-label: output_nobel_3 (with options) 
+label: output_cars_3 (with options) 
 List of 3
  $ eval: logi TRUE
  $ echo: logi FALSE
- $ code: language reveal_chunk("nobel", break_point = 3, highlight = 3, reg_assignment = FALSE)
+ $ code: language partial_chunk("cars", which_show = 1:3, which_highlight = 3, reg_assignment = FALSE)
 ```
 
 ```
@@ -531,11 +1103,11 @@ List of 3
 
   |                                                                            
   |..............................                                        |  42%
-label: code_nobel_4 (with options) 
+label: code_cars_4 (with options) 
 List of 3
  $ eval: logi FALSE
  $ echo: logi TRUE
- $ code: language reveal_chunk("nobel", break_point = 4, highlight = 4, reg_assignment = FALSE)
+ $ code: language partial_chunk("cars", which_show = 1:4, which_highlight = 4, reg_assignment = FALSE)
 
 
   |                                                                            
@@ -545,11 +1117,11 @@ List of 3
 
   |                                                                            
   |..................................                                    |  48%
-label: output_nobel_4 (with options) 
+label: output_cars_4 (with options) 
 List of 3
  $ eval: logi TRUE
  $ echo: logi FALSE
- $ code: language reveal_chunk("nobel", break_point = 4, highlight = 4, reg_assignment = FALSE)
+ $ code: language partial_chunk("cars", which_show = 1:4, which_highlight = 4, reg_assignment = FALSE)
 ```
 
 ```
@@ -561,11 +1133,11 @@ List of 3
 
   |                                                                            
   |......................................                                |  55%
-label: code_nobel_5 (with options) 
+label: code_cars_5 (with options) 
 List of 3
  $ eval: logi FALSE
  $ echo: logi TRUE
- $ code: language reveal_chunk("nobel", break_point = 5, highlight = 5, reg_assignment = FALSE)
+ $ code: language partial_chunk("cars", which_show = 1:5, which_highlight = 5, reg_assignment = FALSE)
 
 
   |                                                                            
@@ -575,11 +1147,11 @@ List of 3
 
   |                                                                            
   |..........................................                            |  61%
-label: output_nobel_5 (with options) 
+label: output_cars_5 (with options) 
 List of 3
  $ eval: logi TRUE
  $ echo: logi FALSE
- $ code: language reveal_chunk("nobel", break_point = 5, highlight = 5, reg_assignment = FALSE)
+ $ code: language partial_chunk("cars", which_show = 1:5, which_highlight = 5, reg_assignment = FALSE)
 ```
 
 ```
@@ -591,11 +1163,11 @@ List of 3
 
   |                                                                            
   |...............................................                       |  67%
-label: code_nobel_7 (with options) 
+label: code_cars_6 (with options) 
 List of 3
  $ eval: logi FALSE
  $ echo: logi TRUE
- $ code: language reveal_chunk("nobel", break_point = 7, highlight = 6:7, reg_assignment = FALSE)
+ $ code: language partial_chunk("cars", which_show = 1:10, which_highlight = 6:10, reg_assignment = FALSE)
 
 
   |                                                                            
@@ -605,11 +1177,11 @@ List of 3
 
   |                                                                            
   |...................................................                   |  73%
-label: output_nobel_7 (with options) 
+label: output_cars_6 (with options) 
 List of 3
  $ eval: logi TRUE
  $ echo: logi FALSE
- $ code: language reveal_chunk("nobel", break_point = 7, highlight = 6:7, reg_assignment = FALSE)
+ $ code: language partial_chunk("cars", which_show = 1:10, which_highlight = 6:10, reg_assignment = FALSE)
 ```
 
 ```
@@ -621,11 +1193,11 @@ List of 3
 
   |                                                                            
   |.......................................................               |  79%
-label: code_nobel_10 (with options) 
+label: code_cars_7 (with options) 
 List of 3
  $ eval: logi FALSE
  $ echo: logi TRUE
- $ code: language reveal_chunk("nobel", break_point = 10, highlight = 8:10, reg_assignment = FALSE)
+ $ code: language partial_chunk("cars", which_show = 1:13, which_highlight = 11:13, reg_assignment = FALSE)
 
 
   |                                                                            
@@ -635,11 +1207,11 @@ List of 3
 
   |                                                                            
   |...........................................................           |  85%
-label: output_nobel_10 (with options) 
+label: output_cars_7 (with options) 
 List of 3
  $ eval: logi TRUE
  $ echo: logi FALSE
- $ code: language reveal_chunk("nobel", break_point = 10, highlight = 8:10, reg_assignment = FALSE)
+ $ code: language partial_chunk("cars", which_show = 1:13, which_highlight = 11:13, reg_assignment = FALSE)
 ```
 
 ```
@@ -651,11 +1223,11 @@ List of 3
 
   |                                                                            
   |................................................................      |  91%
-label: code_nobel_11 (with options) 
+label: code_cars_8 (with options) 
 List of 3
  $ eval: logi FALSE
  $ echo: logi TRUE
- $ code: language reveal_chunk("nobel", break_point = 11, highlight = 11, reg_assignment = FALSE)
+ $ code: language partial_chunk("cars", which_show = 1:14, which_highlight = 14, reg_assignment = FALSE)
 
 
   |                                                                            
@@ -665,11 +1237,11 @@ List of 3
 
   |                                                                            
   |....................................................................  |  97%
-label: output_nobel_11 (with options) 
+label: output_cars_8 (with options) 
 List of 3
  $ eval: logi TRUE
  $ echo: logi FALSE
- $ code: language reveal_chunk("nobel", break_point = 11, highlight = 11, reg_assignment = FALSE)
+ $ code: language partial_chunk("cars", which_show = 1:14, which_highlight = 14, reg_assignment = FALSE)
 ```
 
 ```
@@ -680,7 +1252,7 @@ List of 3
 ```
 
 ```
-[1] "class: split-40\ncount: false\n\n.column[.content[\n\n```r\n*cars   # the data\n```\n]]\n.column[.content[\n\n```\n   speed dist\n1      4    2\n2      4   10\n3      7    4\n4      7   22\n5      8   16\n6      9   10\n7     10   18\n8     10   26\n9     10   34\n10    11   17\n11    11   28\n12    12   14\n13    12   20\n14    12   24\n15    12   28\n16    13   26\n17    13   34\n18    13   34\n19    13   46\n20    14   26\n21    14   36\n22    14   60\n23    14   80\n24    15   20\n25    15   26\n26    15   54\n27    16   32\n28    16   40\n29    17   32\n30    17   40\n31    17   50\n32    18   42\n33    18   56\n34    18   76\n35    18   84\n36    19   36\n37    19   46\n38    19   68\n39    20   32\n40    20   48\n41    20   52\n42    20   56\n43    20   64\n44    22   66\n45    23   54\n46    24   70\n47    24   92\n48    24   93\n49    24  120\n50    25   85\n```\n]]\n---\nclass: split-40\ncount: false\n\n.column[.content[\n\n```r\ncars %&gt;%  # the data  \n* filter(speed &gt; 4)   # subset\n```\n]]\n.column[.content[\n\n```\n   speed dist\n1      7    4\n2      7   22\n3      8   16\n4      9   10\n5     10   18\n6     10   26\n7     10   34\n8     11   17\n9     11   28\n10    12   14\n11    12   20\n12    12   24\n13    12   28\n14    13   26\n15    13   34\n16    13   34\n17    13   46\n18    14   26\n19    14   36\n20    14   60\n21    14   80\n22    15   20\n23    15   26\n24    15   54\n25    16   32\n26    16   40\n27    17   32\n28    17   40\n29    17   50\n30    18   42\n31    18   56\n32    18   76\n33    18   84\n34    19   36\n35    19   46\n36    19   68\n37    20   32\n38    20   48\n39    20   52\n40    20   56\n41    20   64\n42    22   66\n43    23   54\n44    24   70\n45    24   92\n46    24   93\n47    24  120\n48    25   85\n```\n]]\n---\nclass: split-40\ncount: false\n\n.column[.content[\n\n```r\ncars %&gt;%  # the data  \n  filter(speed &gt; 4) %&gt;%  # subset\n* ggplot()   # pipe to ggplot\n```\n]]\n.column[.content[\n![](skeleton_files/figure-html/output_nobel_3-1.png)&lt;!-- --&gt;\n]]\n---\nclass: split-40\ncount: false\n\n.column[.content[\n\n```r\ncars %&gt;%  # the data  \n  filter(speed &gt; 4) %&gt;%  # subset\n  ggplot() +  # pipe to ggplot\n* aes(x = speed)\n```\n]]\n.column[.content[\n![](skeleton_files/figure-html/output_nobel_4-1.png)&lt;!-- --&gt;\n]]\n---\nclass: split-40\ncount: false\n\n.column[.content[\n\n```r\ncars %&gt;%  # the data  \n  filter(speed &gt; 4) %&gt;%  # subset\n  ggplot() +  # pipe to ggplot\n  aes(x = speed) +  \n* aes(y = dist)\n```\n]]\n.column[.content[\n![](skeleton_files/figure-html/output_nobel_5-1.png)&lt;!-- --&gt;\n]]\n---\nclass: split-40\ncount: false\n\n.column[.content[\n\n```r\ncars %&gt;%  # the data  \n  filter(speed &gt; 4) %&gt;%  # subset\n  ggplot() +  # pipe to ggplot\n  aes(x = speed) +  \n  aes(y = dist) +  \n* # Describing what follows\n* geom_point(alpha = .3)\n```\n]]\n.column[.content[\n![](skeleton_files/figure-html/output_nobel_7-1.png)&lt;!-- --&gt;\n]]\n---\nclass: split-40\ncount: false\n\n.column[.content[\n\n```r\ncars %&gt;%  # the data  \n  filter(speed &gt; 4) %&gt;%  # subset\n  ggplot() +  # pipe to ggplot\n  aes(x = speed) +  \n  aes(y = dist) +  \n  # Describing what follows\n  geom_point(alpha = .3) +  \n* aes(color =\n* speed &gt; 14\n* )\n```\n]]\n.column[.content[\n![](skeleton_files/figure-html/output_nobel_10-1.png)&lt;!-- --&gt;\n]]\n---\nclass: split-40\ncount: false\n\n.column[.content[\n\n```r\ncars %&gt;%  # the data  \n  filter(speed &gt; 4) %&gt;%  # subset\n  ggplot() +  # pipe to ggplot\n  aes(x = speed) +  \n  aes(y = dist) +  \n  # Describing what follows\n  geom_point(alpha = .3) +  \n  aes(color =  \n  speed &gt; 14  \n  ) %+%  \n* cars\n```\n]]\n.column[.content[\n![](skeleton_files/figure-html/output_nobel_11-1.png)&lt;!-- --&gt;\n]]"
+[1] "class: split-40\ncount: false\nFALSE\n.column[.content[\n\n```r\n*cars   # the data\n```\n]]\n.column[.content[\n\n```\n   speed dist\n1      4    2\n2      4   10\n3      7    4\n4      7   22\n5      8   16\n6      9   10\n7     10   18\n8     10   26\n9     10   34\n10    11   17\n11    11   28\n12    12   14\n13    12   20\n14    12   24\n15    12   28\n16    13   26\n17    13   34\n18    13   34\n19    13   46\n20    14   26\n21    14   36\n22    14   60\n23    14   80\n24    15   20\n25    15   26\n26    15   54\n27    16   32\n28    16   40\n29    17   32\n30    17   40\n31    17   50\n32    18   42\n33    18   56\n34    18   76\n35    18   84\n36    19   36\n37    19   46\n38    19   68\n39    20   32\n40    20   48\n41    20   52\n42    20   56\n43    20   64\n44    22   66\n45    23   54\n46    24   70\n47    24   92\n48    24   93\n49    24  120\n50    25   85\n```\n]]\n---\nclass: split-40\ncount: false\nFALSE\n.column[.content[\n\n```r\ncars %&gt;%  # the data  \n* filter(speed &gt; 4)   # subset\n```\n]]\n.column[.content[\n\n```\n   speed dist\n1      7    4\n2      7   22\n3      8   16\n4      9   10\n5     10   18\n6     10   26\n7     10   34\n8     11   17\n9     11   28\n10    12   14\n11    12   20\n12    12   24\n13    12   28\n14    13   26\n15    13   34\n16    13   34\n17    13   46\n18    14   26\n19    14   36\n20    14   60\n21    14   80\n22    15   20\n23    15   26\n24    15   54\n25    16   32\n26    16   40\n27    17   32\n28    17   40\n29    17   50\n30    18   42\n31    18   56\n32    18   76\n33    18   84\n34    19   36\n35    19   46\n36    19   68\n37    20   32\n38    20   48\n39    20   52\n40    20   56\n41    20   64\n42    22   66\n43    23   54\n44    24   70\n45    24   92\n46    24   93\n47    24  120\n48    25   85\n```\n]]\n---\nclass: split-40\ncount: false\nFALSE\n.column[.content[\n\n```r\ncars %&gt;%  # the data  \n  filter(speed &gt; 4) %&gt;%  # subset\n* ggplot()   # pipe to ggplot\n```\n]]\n.column[.content[\n![](skeleton_files/figure-html/output_cars_3-1.png)&lt;!-- --&gt;\n]]\n---\nclass: split-40\ncount: false\nFALSE\n.column[.content[\n\n```r\ncars %&gt;%  # the data  \n  filter(speed &gt; 4) %&gt;%  # subset\n  ggplot() +  # pipe to ggplot\n* aes(x = speed)\n```\n]]\n.column[.content[\n![](skeleton_files/figure-html/output_cars_4-1.png)&lt;!-- --&gt;\n]]\n---\nclass: split-40\ncount: false\nFALSE\n.column[.content[\n\n```r\ncars %&gt;%  # the data  \n  filter(speed &gt; 4) %&gt;%  # subset\n  ggplot() +  # pipe to ggplot\n  aes(x = speed) +  \n* aes(y = dist)\n```\n]]\n.column[.content[\n![](skeleton_files/figure-html/output_cars_5-1.png)&lt;!-- --&gt;\n]]\n---\nclass: split-40\ncount: false\nFALSE\n.column[.content[\n\n```r\ncars %&gt;%  # the data  \n  filter(speed &gt; 4) %&gt;%  # subset\n  ggplot() +  # pipe to ggplot\n  aes(x = speed) +  \n  aes(y = dist) +  \n* # Describing what follows\n* geom_point(\n*   alpha = .3,\n*   color = \"blue\"\n*   )\n```\n]]\n.column[.content[\n![](skeleton_files/figure-html/output_cars_6-1.png)&lt;!-- --&gt;\n]]\n---\nclass: split-40\ncount: false\nFALSE\n.column[.content[\n\n```r\ncars %&gt;%  # the data  \n  filter(speed &gt; 4) %&gt;%  # subset\n  ggplot() +  # pipe to ggplot\n  aes(x = speed) +  \n  aes(y = dist) +  \n  # Describing what follows\n  geom_point(  \n    alpha = .3,  \n    color = \"blue\"  \n    ) +  \n* aes(color =\n* speed &gt; 14\n* )\n```\n]]\n.column[.content[\n![](skeleton_files/figure-html/output_cars_7-1.png)&lt;!-- --&gt;\n]]\n---\nclass: split-40\ncount: false\nFALSE\n.column[.content[\n\n```r\ncars %&gt;%  # the data  \n  filter(speed &gt; 4) %&gt;%  # subset\n  ggplot() +  # pipe to ggplot\n  aes(x = speed) +  \n  aes(y = dist) +  \n  # Describing what follows\n  geom_point(  \n    alpha = .3,  \n    color = \"blue\"  \n    ) +  \n  aes(color =  \n  speed &gt; 14  \n  ) %+%  \n* cars\n```\n]]\n.column[.content[\n![](skeleton_files/figure-html/output_cars_8-1.png)&lt;!-- --&gt;\n]]"
 ```
 
 
@@ -823,175 +1395,136 @@ cars %&gt;%  # the data
 
 ---
 
+
+
+&lt;!-- --- --&gt;
+
+
+&lt;!-- # Embracing reverse assignment --&gt;
+
+&lt;!-- # A second approach: Separate the data manipulation from the plotting. --&gt;
+
+&lt;!-- If you'd like, you can also save your manipulated data and then plot, using the `%&gt;%` to create your pipe line, and then reverse assignment operator `-&gt;`.  An example follows.  --&gt;
+
+&lt;!-- --- --&gt;
+
+&lt;!-- ```{r data_transformation, echo = F, eval = T, fig.height=5} --&gt;
+&lt;!-- cars %&gt;%             # the data  #REVEAL --&gt;
+&lt;!--   filter(speed &gt; 4) %&gt;%  --&gt;
+&lt;!--   mutate(var = 2) -&gt; --&gt;
+&lt;!-- my_data --&gt;
+&lt;!-- ``` --&gt;
+
+
+&lt;!-- --- --&gt;
+
+&lt;!-- *** apply_reveal("data_transformation")` --&gt;
+
+&lt;!-- --- --&gt;
+
+&lt;!-- # Plotting the transformed data (and *not* revealing your plot in advance -- *just* showing the build). --&gt;
+
+&lt;!-- Now you can use the transformed data to start the plot.   --&gt;
+
+&lt;!-- Note that you also might prefer a behavior where you don't show a preview of the finished plot in advance.  I show an example of this below. I don't evaluate the code chunk (i.e. I've set eval to FALSE) and I don't echo it (i.e. echo is set to false). This means that the code chunk itself won't yeild any output (code or plot) to be put on a slide.  This means that I don't need to use the dashes, \-\-\- to separate the code chunk from the `apply_reveal()` statement, which differs from previous set-ups where a slide separator directly preceded the `apply_reveal()` call.  --&gt;
+
+&lt;!-- --- --&gt;
+
+&lt;!-- ```{r just_plotting, echo = F, eval = FALSE, fig.height=5} --&gt;
+&lt;!-- ggplot(data = my_data) +              # pipe to ggplot --&gt;
+&lt;!--   aes(x = speed) + --&gt;
+&lt;!--   aes(y = dist) + --&gt;
+&lt;!--   # Describing what follows --&gt;
+&lt;!--   geom_point(alpha = .3) + #REVEAL --&gt;
+&lt;!--   aes( --&gt;
+&lt;!--     color = speed &gt; 14 --&gt;
+&lt;!--   ) %+% --&gt;
+&lt;!--   cars --&gt;
+&lt;!-- ``` --&gt;
+
+
+&lt;!-- *** apply_reveal("just_plotting")` --&gt;
+
+&lt;!-- ```{r} --&gt;
+&lt;!-- # make_flipbook_mini_chunk(chunk_name = "just_plotting", file_out = "a_flipbook_mini_example.gif") --&gt;
+&lt;!-- ``` --&gt;
+
+&lt;!-- --- --&gt;
+
+# Can't stomach reverse assignment?
+
+
+---
+
+
+
+---
+
 class: split-40
 count: false
-
+TRUE
 .column[.content[
 
 ```r
-*cars   # the data
+*a_plot &lt;- cars   # the data
 ```
 ]]
 .column[.content[
 
-```
-   speed dist
-1      4    2
-2      4   10
-3      7    4
-4      7   22
-5      8   16
-6      9   10
-7     10   18
-8     10   26
-9     10   34
-10    11   17
-11    11   28
-12    12   14
-13    12   20
-14    12   24
-15    12   28
-16    13   26
-17    13   34
-18    13   34
-19    13   46
-20    14   26
-21    14   36
-22    14   60
-23    14   80
-24    15   20
-25    15   26
-26    15   54
-27    16   32
-28    16   40
-29    17   32
-30    17   40
-31    17   50
-32    18   42
-33    18   56
-34    18   76
-35    18   84
-36    19   36
-37    19   46
-38    19   68
-39    20   32
-40    20   48
-41    20   52
-42    20   56
-43    20   64
-44    22   66
-45    23   54
-46    24   70
-47    24   92
-48    24   93
-49    24  120
-50    25   85
-```
 ]]
 ---
 class: split-40
 count: false
-
+TRUE
 .column[.content[
 
 ```r
-cars %&gt;%  # the data  
+a_plot &lt;- cars %&gt;%  # the data  
 * filter(speed &gt; 4)   # subset
 ```
 ]]
 .column[.content[
 
-```
-   speed dist
-1      7    4
-2      7   22
-3      8   16
-4      9   10
-5     10   18
-6     10   26
-7     10   34
-8     11   17
-9     11   28
-10    12   14
-11    12   20
-12    12   24
-13    12   28
-14    13   26
-15    13   34
-16    13   34
-17    13   46
-18    14   26
-19    14   36
-20    14   60
-21    14   80
-22    15   20
-23    15   26
-24    15   54
-25    16   32
-26    16   40
-27    17   32
-28    17   40
-29    17   50
-30    18   42
-31    18   56
-32    18   76
-33    18   84
-34    19   36
-35    19   46
-36    19   68
-37    20   32
-38    20   48
-39    20   52
-40    20   56
-41    20   64
-42    22   66
-43    23   54
-44    24   70
-45    24   92
-46    24   93
-47    24  120
-48    25   85
-```
 ]]
 ---
 class: split-40
 count: false
-
+TRUE
 .column[.content[
 
 ```r
-cars %&gt;%  # the data  
+a_plot &lt;- cars %&gt;%  # the data  
   filter(speed &gt; 4) %&gt;%  # subset
 * ggplot()   # pipe to ggplot
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_nobel_3-1.png)&lt;!-- --&gt;
+
 ]]
 ---
 class: split-40
 count: false
-
+TRUE
 .column[.content[
 
 ```r
-cars %&gt;%  # the data  
+a_plot &lt;- cars %&gt;%  # the data  
   filter(speed &gt; 4) %&gt;%  # subset
   ggplot() +  # pipe to ggplot
 * aes(x = speed)
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_nobel_4-1.png)&lt;!-- --&gt;
+
 ]]
 ---
 class: split-40
 count: false
-
+TRUE
 .column[.content[
 
 ```r
-cars %&gt;%  # the data  
+a_plot &lt;- cars %&gt;%  # the data  
   filter(speed &gt; 4) %&gt;%  # subset
   ggplot() +  # pipe to ggplot
   aes(x = speed) +  
@@ -999,16 +1532,16 @@ cars %&gt;%  # the data
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_nobel_5-1.png)&lt;!-- --&gt;
+
 ]]
 ---
 class: split-40
 count: false
-
+TRUE
 .column[.content[
 
 ```r
-cars %&gt;%  # the data  
+a_plot &lt;- cars %&gt;%  # the data  
   filter(speed &gt; 4) %&gt;%  # subset
   ggplot() +  # pipe to ggplot
   aes(x = speed) +  
@@ -1018,16 +1551,16 @@ cars %&gt;%  # the data
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_nobel_7-1.png)&lt;!-- --&gt;
+
 ]]
 ---
 class: split-40
 count: false
-
+TRUE
 .column[.content[
 
 ```r
-cars %&gt;%  # the data  
+a_plot &lt;- cars %&gt;%  # the data  
   filter(speed &gt; 4) %&gt;%  # subset
   ggplot() +  # pipe to ggplot
   aes(x = speed) +  
@@ -1040,16 +1573,16 @@ cars %&gt;%  # the data
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_nobel_10-1.png)&lt;!-- --&gt;
+
 ]]
 ---
 class: split-40
 count: false
-
+TRUE
 .column[.content[
 
 ```r
-cars %&gt;%  # the data  
+a_plot &lt;- cars %&gt;%  # the data  
   filter(speed &gt; 4) %&gt;%  # subset
   ggplot() +  # pipe to ggplot
   aes(x = speed) +  
@@ -1063,98 +1596,82 @@ cars %&gt;%  # the data
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_nobel_11-1.png)&lt;!-- --&gt;
+
 ]]
 
 
----
 
 
-# Embracing reverse assignment
+&lt;!-- --- --&gt;
 
-# A second approach: Separate the data manipulation from the plotting.
+&lt;!-- # User defined reveal --&gt;
 
-If you'd like, you can also save your manipulated data and then plot, using the `%&gt;%` to create your pipe line, and then reverse assignment operator `-&gt;`.  An example follows. 
+&lt;!-- --- --&gt;
 
----
+&lt;!-- ```{r user_definded_reveal, eval = F, echo = F} --&gt;
+&lt;!-- ggplot(data = my_data) +   # pipe to ggplot --&gt;
+&lt;!--   aes(x = speed) +  --&gt;
+&lt;!--   aes(y = dist) + #REVEAL --&gt;
+&lt;!--   # Describing what follows  --&gt;
+&lt;!--   geom_blank() + --&gt;
+&lt;!--   geom_point(data = my_data %&gt;% slice(1)) + #REVEAL --&gt;
+&lt;!--   geom_point() #REVEAL --&gt;
+&lt;!-- ``` --&gt;
 
-
-
-
----
-
-*** apply_reveal("data_transformation")`
-
----
-
-# Plotting the transformed data (and *not* revealing your plot in advance -- *just* showing the build).
-
-Now you can use the transformed data to start the plot.  
-
-Note that you also might prefer a behavior where you don't show a preview of the finished plot in advance.  I show an example of this below. I don't evaluate the code chunk (i.e. I've set eval to FALSE) and I don't echo it (i.e. echo is set to false). This means that the code chunk itself won't yeild any output (code or plot) to be put on a slide.  This means that I don't need to use the dashes, \-\-\- to separate the code chunk from the `apply_reveal()` statement, which differs from previous set-ups where a slide separator directly preceded the `apply_reveal()` call. 
-
----
+&lt;!-- *** apply_reveal("user_definded_reveal", user_reveal = T)` --&gt;
 
 
+&lt;!-- --- --&gt;
+
+&lt;!-- # For use in traditional presentations. --&gt;
+
+&lt;!-- --- --&gt;
 
 
-*** apply_reveal("just_plotting")`
+&lt;!-- ```{r slow_traditional_presentation, eval = F, echo = F} --&gt;
+&lt;!-- gapminder::gapminder %&gt;% --&gt;
+&lt;!--   filter(year == 2002) %&gt;%  --&gt;
+&lt;!--   ggplot() + # pipe to ggplot --&gt;
+&lt;!--   aes(x = gdpPercap) + #REVEAL --&gt;
+&lt;!--   aes(y = lifeExp) + #REVEAL --&gt;
+&lt;!--   # Describing what follows --&gt;
+&lt;!--   geom_point() + --&gt;
+&lt;!--   aes(alpha = country == "New Zealand") +  --&gt;
+&lt;!--   scale_alpha_discrete(limits = c(0, 1), guide = F) + #REVEAL  --&gt;
+&lt;!--   aes(alpha = NULL) + #REVEAL --&gt;
+&lt;!--   aes(size = pop) + #REVEAL  --&gt;
+&lt;!--   aes(color = continent) #REVEAL  --&gt;
+&lt;!-- ``` --&gt;
 
-
-```r
-# make_flipbook_mini_chunk(chunk_name = "just_plotting", file_out = "a_flipbook_mini_example.gif")
-```
-
----
-
-# Can't stomach reverse assignment?
-
-
----
-
-
-
-*** apply_reveal("regular_assignment", reg_assignment = T)`
+&lt;!-- *** apply_reveal("slow_traditional_presentation", show_code = F, user_reveal = T)` --&gt;
 
 
 
+&lt;!-- --- --&gt;
 
----
+&lt;!-- # Non sequential reveal (or can't stomach "slow ggplot"?) --&gt;
 
-# User defined reveal
+&lt;!-- --- --&gt;
 
----
+&lt;!-- ```{r non_sequential, eval = F, echo = F} --&gt;
+&lt;!-- cars %&gt;% --&gt;
+&lt;!--   mutate(speed_14_plus = speed &gt;= 14) %&gt;% --&gt;
+&lt;!--   ggplot() + --&gt;
+&lt;!--   aes(x = speed) + --&gt;
+&lt;!--   aes(y = dist) + --&gt;
+&lt;!--   # Describing what follows --&gt;
+&lt;!--   geom_point( --&gt;
+&lt;!--     size = 2, #REVEAL2 --&gt;
+&lt;!--     alpha = .3, #REVEAL3 --&gt;
+&lt;!--     color = "blue", #REVEAL4 --&gt;
+&lt;!--     ) + --&gt;
+&lt;!--   aes(color = speed_14_plus) --&gt;
+&lt;!-- ``` --&gt;
 
-
-
-*** apply_reveal("user_definded_reveal", user_reveal = T)`
-
-
----
-
-# For use in traditional presentations.
-
----
-
-
-
-
-*** apply_reveal("slow_traditional_presentation", show_code = F, user_reveal = T)`
-
-
-
----
-
-# Non sequential reveal (or can't stomach "slow ggplot"?)
-
----
+&lt;!-- --- --&gt;
 
 
-
----
-
-
-*** apply_reveal_nonsequential("non_sequential")`
+&lt;!-- r apply_reveal_nonsequential("non_sequential")` --&gt;
 
 
 ---

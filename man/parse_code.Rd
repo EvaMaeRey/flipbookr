@@ -17,5 +17,4 @@ Parse code
 }
 \examples{
 parse_code(code = local_code)
-parse_code(code = local_code_regular_assignment)
 }
