@@ -139,11 +139,6 @@ ggplot(data = my_data) +
 - allowed code wrapping - responsible piping
 
 
-
-
-
-
-
 ---
 
 # Set up
@@ -167,12 +162,16 @@ source("../../../../../R/base_parse_reveal_xaringan.R")
 ```
 
 
+---
+
+# flipbookr::apply_reveal()
+
 
 ``` 
-apply_reveal(chunk_name = 'cars', break_type = "auto")
-apply_reveal(chunk_name = 'cars', break_type = "user")
-apply_reveal(chunk_name = 'cars', break_type = "non_seq")
-apply_reveal(chunk_name = 'cars', break_type = 5)
+r apply_reveal(chunk_name = 'cars', break_type = "auto")`
+r apply_reveal(chunk_name = 'cars', break_type = "user")`
+r apply_reveal(chunk_name = 'cars', break_type = "non_seq")`
+r apply_reveal(chunk_name = 'cars', break_type = 5)`
 ```
 
 ---
@@ -189,7 +188,7 @@ We'll create this plot.  I have **echo** set to FALSE in the code chunk options 
 
 class: split-40
 count: false
-My Title
+
 .column[.content[
 
 ```r
@@ -255,7 +254,7 @@ My Title
 ---
 class: split-40
 count: false
-My Title
+
 .column[.content[
 
 ```r
@@ -320,7 +319,7 @@ cars %&gt;%  # the data
 ---
 class: split-40
 count: false
-My Title
+
 .column[.content[
 
 ```r
@@ -330,12 +329,12 @@ cars %&gt;%  # the data
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_cars_auto_3-1.png)&lt;!-- --&gt;
+![](skeleton_files/figure-html/output_cars_auto_3_auto-1.png)&lt;!-- --&gt;
 ]]
 ---
 class: split-40
 count: false
-My Title
+
 .column[.content[
 
 ```r
@@ -346,12 +345,12 @@ cars %&gt;%  # the data
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_cars_auto_4-1.png)&lt;!-- --&gt;
+![](skeleton_files/figure-html/output_cars_auto_4_auto-1.png)&lt;!-- --&gt;
 ]]
 ---
 class: split-40
 count: false
-My Title
+
 .column[.content[
 
 ```r
@@ -363,12 +362,12 @@ cars %&gt;%  # the data
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_cars_auto_5-1.png)&lt;!-- --&gt;
+![](skeleton_files/figure-html/output_cars_auto_5_auto-1.png)&lt;!-- --&gt;
 ]]
 ---
 class: split-40
 count: false
-My Title
+
 .column[.content[
 
 ```r
@@ -385,12 +384,12 @@ cars %&gt;%  # the data
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_cars_auto_6-1.png)&lt;!-- --&gt;
+![](skeleton_files/figure-html/output_cars_auto_6_auto-1.png)&lt;!-- --&gt;
 ]]
 ---
 class: split-40
 count: false
-My Title
+
 .column[.content[
 
 ```r
@@ -408,7 +407,233 @@ cars %&gt;%  # the data
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_cars_auto_7-1.png)&lt;!-- --&gt;
+![](skeleton_files/figure-html/output_cars_auto_7_auto-1.png)&lt;!-- --&gt;
+]]
+
+---
+
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+*cars   # the data
+```
+]]
+.column[.content[
+
+```
+   speed dist
+1      4    2
+2      4   10
+3      7    4
+4      7   22
+5      8   16
+6      9   10
+7     10   18
+8     10   26
+9     10   34
+10    11   17
+11    11   28
+12    12   14
+13    12   20
+14    12   24
+15    12   28
+16    13   26
+17    13   34
+18    13   34
+19    13   46
+20    14   26
+21    14   36
+22    14   60
+23    14   80
+24    15   20
+25    15   26
+26    15   54
+27    16   32
+28    16   40
+29    17   32
+30    17   40
+31    17   50
+32    18   42
+33    18   56
+34    18   76
+35    18   84
+36    19   36
+37    19   46
+38    19   68
+39    20   32
+40    20   48
+41    20   52
+42    20   56
+43    20   64
+44    22   66
+45    23   54
+46    24   70
+47    24   92
+48    24   93
+49    24  120
+50    25   85
+```
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data
+* filter(speed &gt; 4)   # subset
+```
+]]
+.column[.content[
+
+```
+   speed dist
+1      7    4
+2      7   22
+3      8   16
+4      9   10
+5     10   18
+6     10   26
+7     10   34
+8     11   17
+9     11   28
+10    12   14
+11    12   20
+12    12   24
+13    12   28
+14    13   26
+15    13   34
+16    13   34
+17    13   46
+18    14   26
+19    14   36
+20    14   60
+21    14   80
+22    15   20
+23    15   26
+24    15   54
+25    16   32
+26    16   40
+27    17   32
+28    17   40
+29    17   50
+30    18   42
+31    18   56
+32    18   76
+33    18   84
+34    19   36
+35    19   46
+36    19   68
+37    20   32
+38    20   48
+39    20   52
+40    20   56
+41    20   64
+42    22   66
+43    23   54
+44    24   70
+45    24   92
+46    24   93
+47    24  120
+48    25   85
+```
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data
+  filter(speed &gt; 4) %&gt;%  # subset
+* ggplot()   # pipe to ggplot
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_user_3_auto-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+* aes(x = speed)
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_user_4_auto-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+* aes(y = dist)
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_user_5_auto-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+  aes(y = dist) +  
+* # Describing what follows
+* geom_point(
+*   alpha = .3,
+*   color = "blue"
+*   )
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_user_6_auto-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+  aes(y = dist) +  
+  # Describing what follows
+  geom_point(  
+    alpha = .3,  
+    color = "blue"  
+    ) +  
+* aes(size = speed)
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_user_7_auto-1.png)&lt;!-- --&gt;
 ]]
 
 
@@ -422,7 +647,7 @@ cars %&gt;%  # the data
 
 class: split-40
 count: false
-My Title
+
 .column[.content[
 
 ```r
@@ -434,12 +659,12 @@ My Title
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_cars_user_1-1.png)&lt;!-- --&gt;
+![](skeleton_files/figure-html/output_cars_user_1_user-1.png)&lt;!-- --&gt;
 ]]
 ---
 class: split-40
 count: false
-My Title
+
 .column[.content[
 
 ```r
@@ -456,12 +681,12 @@ cars %&gt;%  # the data
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_cars_user_2-1.png)&lt;!-- --&gt;
+![](skeleton_files/figure-html/output_cars_user_2_user-1.png)&lt;!-- --&gt;
 ]]
 ---
 class: split-40
 count: false
-My Title
+
 .column[.content[
 
 ```r
@@ -479,7 +704,7 @@ cars %&gt;%  # the data
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_cars_user_3-1.png)&lt;!-- --&gt;
+![](skeleton_files/figure-html/output_cars_user_3_user-1.png)&lt;!-- --&gt;
 ]]
 
 
@@ -492,7 +717,7 @@ cars %&gt;%  # the data
 
 class: split-40
 count: false
-My Title
+
 .column[.content[
 
 ```r
@@ -503,18 +728,39 @@ My Title
 * aes(y = dist) +
 * # Describing what follows
 * geom_point(
-*   alpha = .3,
     ) +  
-* aes(size = speed)
+  aes(size = speed)  
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_cars_non_seq_1-1.png)&lt;!-- --&gt;
+![](skeleton_files/figure-html/output_cars_non_seq_1_non_seq-1.png)&lt;!-- --&gt;
 ]]
 ---
 class: split-40
 count: false
-My Title
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+  aes(y = dist) +  
+  # Describing what follows
+  geom_point(  
+*   alpha = .3,
+    ) +  
+  aes(size = speed)  
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_non_seq_2_non_seq-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+
 .column[.content[
 
 ```r
@@ -532,8 +778,431 @@ cars %&gt;%  # the data
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_cars_non_seq_2-1.png)&lt;!-- --&gt;
+![](skeleton_files/figure-html/output_cars_non_seq_3_non_seq-1.png)&lt;!-- --&gt;
 ]]
+
+
+---
+
+# User
+
+---
+
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+*cars %&gt;%  # the data
+* filter(speed &gt; 4) %&gt;%  # subset
+* ggplot() +  # pipe to ggplot
+* aes(x = speed) +
+* aes(y = dist)
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_non_seq_1_user-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+  aes(y = dist) +  
+* # Describing what follows
+* geom_point(
+*   alpha = .3,
+*   color = "blue"
+*   )
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_non_seq_2_user-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+  aes(y = dist) +  
+  # Describing what follows
+  geom_point(  
+    alpha = .3,  
+    color = "blue"  
+    ) +  
+* aes(size = speed)
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_non_seq_3_user-1.png)&lt;!-- --&gt;
+]]
+
+---
+
+# Auto
+
+---
+
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+*cars   # the data
+```
+]]
+.column[.content[
+
+```
+   speed dist
+1      4    2
+2      4   10
+3      7    4
+4      7   22
+5      8   16
+6      9   10
+7     10   18
+8     10   26
+9     10   34
+10    11   17
+11    11   28
+12    12   14
+13    12   20
+14    12   24
+15    12   28
+16    13   26
+17    13   34
+18    13   34
+19    13   46
+20    14   26
+21    14   36
+22    14   60
+23    14   80
+24    15   20
+25    15   26
+26    15   54
+27    16   32
+28    16   40
+29    17   32
+30    17   40
+31    17   50
+32    18   42
+33    18   56
+34    18   76
+35    18   84
+36    19   36
+37    19   46
+38    19   68
+39    20   32
+40    20   48
+41    20   52
+42    20   56
+43    20   64
+44    22   66
+45    23   54
+46    24   70
+47    24   92
+48    24   93
+49    24  120
+50    25   85
+```
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data
+* filter(speed &gt; 4)   # subset
+```
+]]
+.column[.content[
+
+```
+   speed dist
+1      7    4
+2      7   22
+3      8   16
+4      9   10
+5     10   18
+6     10   26
+7     10   34
+8     11   17
+9     11   28
+10    12   14
+11    12   20
+12    12   24
+13    12   28
+14    13   26
+15    13   34
+16    13   34
+17    13   46
+18    14   26
+19    14   36
+20    14   60
+21    14   80
+22    15   20
+23    15   26
+24    15   54
+25    16   32
+26    16   40
+27    17   32
+28    17   40
+29    17   50
+30    18   42
+31    18   56
+32    18   76
+33    18   84
+34    19   36
+35    19   46
+36    19   68
+37    20   32
+38    20   48
+39    20   52
+40    20   56
+41    20   64
+42    22   66
+43    23   54
+44    24   70
+45    24   92
+46    24   93
+47    24  120
+48    25   85
+```
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data
+  filter(speed &gt; 4) %&gt;%  # subset
+* ggplot()   # pipe to ggplot
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_non_seq_3_auto-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+* aes(x = speed)
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_non_seq_4_auto-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+* aes(y = dist)
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_non_seq_5_auto-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+  aes(y = dist) +  
+* # Describing what follows
+* geom_point(
+*   alpha = .3,
+*   color = "blue"
+*   )
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_non_seq_6_auto-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+  aes(y = dist) +  
+  # Describing what follows
+  geom_point(  
+    alpha = .3,  
+    color = "blue"  
+    ) +  
+* aes(size = speed)
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_non_seq_7_auto-1.png)&lt;!-- --&gt;
+]]
+
+---
+
+# Multiverse
+
+---
+
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+*cars %&gt;%  # the data
+* filter(speed &gt; 4) %&gt;%  # subset
+* ggplot() +  # pipe to ggplot
+* aes(x = speed) +
+* aes(y = dist) +
+* # Describing what follows
+* geom_point(
+*   alpha = .3,
+*   color = "blue"
+*   ) +
+* aes(size = speed)
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_non_seq_1_5-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+  aes(y = dist) +  
+  # Describing what follows
+  geom_point(  
+    alpha = .3,  
+    color = "blue"  
+    ) +  
+  aes(size = speed)  
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_non_seq_2_5-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+  aes(y = dist) +  
+  # Describing what follows
+  geom_point(  
+    alpha = .3,  
+    color = "blue"  
+    ) +  
+  aes(size = speed)  
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_non_seq_3_5-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+  aes(y = dist) +  
+  # Describing what follows
+  geom_point(  
+    alpha = .3,  
+    color = "blue"  
+    ) +  
+  aes(size = speed)  
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_non_seq_4_5-1.png)&lt;!-- --&gt;
+]]
+---
+class: split-40
+count: false
+
+.column[.content[
+
+```r
+cars %&gt;%  # the data
+  filter(speed &gt; 4) %&gt;%  # subset
+  ggplot() +  # pipe to ggplot
+  aes(x = speed) +  
+  aes(y = dist) +  
+  # Describing what follows
+  geom_point(  
+    alpha = .3,  
+    color = "blue"  
+    ) +  
+  aes(size = speed)  
+```
+]]
+.column[.content[
+![](skeleton_files/figure-html/output_cars_non_seq_5_5-1.png)&lt;!-- --&gt;
+]]
+
+
+---
 
 
 
@@ -546,7 +1215,7 @@ cars %&gt;%  # the data
 
 class: split-40
 count: false
-My Title
+
 .column[.content[
 
 ```r
@@ -564,12 +1233,12 @@ My Title
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_cars_multi_1-1.png)&lt;!-- --&gt;
+![](skeleton_files/figure-html/output_cars_multi_1_5-1.png)&lt;!-- --&gt;
 ]]
 ---
 class: split-40
 count: false
-My Title
+
 .column[.content[
 
 ```r
@@ -587,12 +1256,12 @@ tibble(speed = rnorm(5),
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_cars_multi_2-1.png)&lt;!-- --&gt;
+![](skeleton_files/figure-html/output_cars_multi_2_5-1.png)&lt;!-- --&gt;
 ]]
 ---
 class: split-40
 count: false
-My Title
+
 .column[.content[
 
 ```r
@@ -610,12 +1279,12 @@ tibble(speed = rnorm(5),
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_cars_multi_3-1.png)&lt;!-- --&gt;
+![](skeleton_files/figure-html/output_cars_multi_3_5-1.png)&lt;!-- --&gt;
 ]]
 ---
 class: split-40
 count: false
-My Title
+
 .column[.content[
 
 ```r
@@ -633,12 +1302,12 @@ tibble(speed = rnorm(5),
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_cars_multi_4-1.png)&lt;!-- --&gt;
+![](skeleton_files/figure-html/output_cars_multi_4_5-1.png)&lt;!-- --&gt;
 ]]
 ---
 class: split-40
 count: false
-My Title
+
 .column[.content[
 
 ```r
@@ -656,7 +1325,7 @@ tibble(speed = rnorm(5),
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_cars_multi_5-1.png)&lt;!-- --&gt;
+![](skeleton_files/figure-html/output_cars_multi_5_5-1.png)&lt;!-- --&gt;
 ]]
 
 ![](skeleton_files/figure-html/cars_multi-1.png)&lt;!-- --&gt;
@@ -670,15 +1339,15 @@ tibble(speed = rnorm(5),
 
 count: false
 
-![](skeleton_files/figure-html/output_cars_1-1.png)&lt;!-- --&gt;
+![](skeleton_files/figure-html/output_cars_1_user-1.png)&lt;!-- --&gt;
 ---
 count: false
 
-![](skeleton_files/figure-html/output_cars_2-1.png)&lt;!-- --&gt;
+![](skeleton_files/figure-html/output_cars_2_user-1.png)&lt;!-- --&gt;
 ---
 count: false
 
-![](skeleton_files/figure-html/output_cars_3-1.png)&lt;!-- --&gt;
+![](skeleton_files/figure-html/output_cars_3_user-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -773,7 +1442,7 @@ cars %&gt;%  # the data
 
 class: split-40
 count: false
-My Title
+
 .column[.content[
 
 ```r
@@ -841,7 +1510,7 @@ my_object # print object
 ---
 class: split-40
 count: false
-My Title
+
 .column[.content[
 
 ```r
@@ -908,7 +1577,7 @@ my_object # print object
 ---
 class: split-40
 count: false
-My Title
+
 .column[.content[
 
 ```r
@@ -920,12 +1589,12 @@ my_object # print object
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_reg_assign_3-1.png)&lt;!-- --&gt;
+![](skeleton_files/figure-html/output_reg_assign_3_auto-1.png)&lt;!-- --&gt;
 ]]
 ---
 class: split-40
 count: false
-My Title
+
 .column[.content[
 
 ```r
@@ -938,12 +1607,12 @@ my_object # print object
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_reg_assign_4-1.png)&lt;!-- --&gt;
+![](skeleton_files/figure-html/output_reg_assign_4_auto-1.png)&lt;!-- --&gt;
 ]]
 ---
 class: split-40
 count: false
-My Title
+
 .column[.content[
 
 ```r
@@ -957,7 +1626,7 @@ my_object # print object
 ```
 ]]
 .column[.content[
-![](skeleton_files/figure-html/output_reg_assign_5-1.png)&lt;!-- --&gt;
+![](skeleton_files/figure-html/output_reg_assign_5_auto-1.png)&lt;!-- --&gt;
 ]]
 
 

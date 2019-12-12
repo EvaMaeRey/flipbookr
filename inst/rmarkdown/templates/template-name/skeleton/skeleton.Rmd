@@ -15,7 +15,7 @@ output:
 
 ```{r setup, include=F}
 knitr::opts_chunk$set(fig.width = 6, message = F, warning = F, 
-                      comment = "", cache = F)
+                      comment = "", cache = T)
 ```
 
 
@@ -148,7 +148,7 @@ library(tidyverse)
 
 And load the data from the tidytuesday github page. 
 
-```{r}
+```{r, cache = F}
 # nobel_winners <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-14/nobel_winners.csv")
 # source("../../../../../R/flipbook_mini.R")
 source("../../../../../R/base_parse_reveal_xaringan.R")
@@ -156,12 +156,16 @@ source("../../../../../R/base_parse_reveal_xaringan.R")
 ```
 
 
+---
+
+# flipbookr::apply_reveal()
+
 
 ``` 
-apply_reveal(chunk_name = 'cars', break_type = "auto")
-apply_reveal(chunk_name = 'cars', break_type = "user")
-apply_reveal(chunk_name = 'cars', break_type = "non_seq")
-apply_reveal(chunk_name = 'cars', break_type = 5)
+r apply_reveal(chunk_name = 'cars', break_type = "auto")`
+r apply_reveal(chunk_name = 'cars', break_type = "user")`
+r apply_reveal(chunk_name = 'cars', break_type = "non_seq")`
+r apply_reveal(chunk_name = 'cars', break_type = 5)`
 ```
 
 ---
@@ -177,6 +181,10 @@ We'll create this plot.  I have **echo** set to FALSE in the code chunk options 
 ---
 
 `r apply_reveal("cars_auto")`
+
+---
+
+`r apply_reveal("cars_user", break_type = "auto")`
 
 ```{r cars_auto, echo = F, eval = F, fig.height=5}
 cars %>%             # the data 
@@ -223,18 +231,46 @@ cars %>%             # the data
 
 `r apply_reveal("cars_non_seq", break_type = "non_seq")`
 
+
+---
+
+# User
+
+---
+
+`r apply_reveal("cars_non_seq", break_type = "user")`
+
+---
+
+# Auto
+
+---
+
+`r apply_reveal("cars_non_seq", break_type = "auto")`
+
+---
+
+# Multiverse
+
+---
+
+`r apply_reveal("cars_non_seq", break_type = 5)`
+
+
+---
+
 ```{r cars_non_seq, echo = F, eval = F, fig.height=5}
 cars %>%             # the data 
   filter(speed > 4) %>%  # subset
   ggplot() +              # pipe to ggplot
   aes(x = speed) +
-  aes(y = dist) +
+  aes(y = dist) + #REVEAL
   # Describing what follows
   geom_point(
-    alpha = .3,
-    color = "blue" #REVEAL2
-    ) + 
-  aes(size = speed)
+    alpha = .3, #REVEAL2
+    color = "blue" #REVEAL3
+    ) + #REVEAL
+  aes(size = speed) #REVEAL
 ```
 
 

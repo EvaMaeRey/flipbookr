@@ -1,8 +1,6 @@
 # Emi Tanaka (@statsgen) and Garrick Aden-Buie (@grrrck) and Evangeline Reynolds (@EvaMaeRey)
 # have contributed to this code
 
-
-
 local_code <- # for testing w/o knitting
   "cars %>%             # the data  #REVEAL
 filter(speed > 4) %>%  # subset
@@ -17,17 +15,6 @@ speed > 14
 ) %+%
 cars ->
 my_plot  #REVEAL"
-
-local_code_logical_indexing <-
-"list(thing_1 = \"a\",
-     thing_2 = matrix(data = 1:5, nrow = 2)) ->
-my_named_list
-list(\"a\",
-1:5,
-my_named_list) %>%
-.[[ 3 ] ] %>%
-.$thing_2 %>%
-.[3]"
 
 
 local_code_regular_assignment <- # for testing w/o knitting
@@ -44,18 +31,6 @@ speed > 14)
 ) %+%
 cars"
 
-local_code_non_sequential <- "cars %>%
-mutate(speed_14_plus = speed >= 14) %>%
-ggplot() +
-aes(x = speed) +
-aes(y = dist) +
-# Describing what follows
-geom_point(
-size = 2,   #REVEAL2
-alpha = .3, #REVEAL3
-color = \"blue\", #REVEAL-3
-) +
-aes(color = speed_14_plus)"
 
 
 #' Code chunk as text
@@ -273,42 +248,21 @@ partial_chunk <- function(chunk_name, which_show = 1:3, which_highlight = 3, reg
 
 }
 
-
-
-
-
-
-
-
 return_partial_chunks_template <- function(display_type = "output",
+                                           break_type = "auto",
                                   eval = display_type == "output",
                                   echo = display_type == "code") {
 
-  glue::glue("```{r {{{display_type}}}_{{chunk_name}}_{{breaks}}, eval={{{eval}}}, echo = {{{echo}}}, code=partial_chunk('{{chunk_name}}', which_show = {{which_show}}, which_highlight = {{which_highlight}}, reg_assign = {{reg_assign}})}",
+  glue::glue("```{r {{{display_type}}}_{{chunk_name}}_{{breaks}}_{{{break_type}}}, eval={{{eval}}}, echo = {{{echo}}}, code=partial_chunk('{{chunk_name}}', which_show = {{which_show}}, which_highlight = {{which_highlight}}, reg_assign = {{reg_assign}})}",
              "```",
              .open = "{{{", .close = "}}}", .sep = "\n")
 }
 # return_partial_chunks_template()
 
 
-# return_partial_code_chunks <- function(){
-#
-#   return_partial_chunks(eval = FALSE, echo = TRUE, display_type = "code")
-#
-# }
-# return_partial_code_chunks()
-#
-# return_partial_plot_chunks <- function() {
-#
-#   return_partial_chunks(eval = TRUE, echo = FALSE, display_type = "plot")
-#
-# }
-# return_partial_plot_chunks()
-
-
 
 return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk_name",
-                                                           breaks = 1:3,
+                                                           break_type = "auto",
                                            which_show = list(1, 1:2, 1:3),
                                            which_highlight = list(1, 2, 3),
                                            title = "My Title",
@@ -322,10 +276,12 @@ return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk
     "count: false",
     "{{title}}",
     ".column[.content[",
-    return_partial_chunks_template(display_type = "code"),
+    return_partial_chunks_template(display_type = "code",
+                                   break_type = break_type),
     "]]",
     ".column[.content[",
-    return_partial_chunks_template(display_type = "output"),
+    return_partial_chunks_template(display_type = "output",
+                                   break_type = break_type),
     "]]",
     " ",
     .open = "{{", .close = "}}", .sep = "\n"
@@ -339,6 +295,7 @@ return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk
 
 
 return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
+                                                 break_type = "auto",
                                                  which_show = list(1, 1:2, 1:3),
                                                  which_highlight = list(1, 2, 3),
                                                title = "My Title",
@@ -351,7 +308,10 @@ return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
   partial_knit_steps <- glue::glue(
     "count: false",
     "{{title}}",
-    return_partial_chunks_template(eval = display_type == "output", echo = display_type == "code", display_type = display_type),
+    return_partial_chunks_template(eval = display_type == "output",
+                                   echo = display_type == "code",
+                                   display_type = display_type,
+                                   break_type = break_type),
     .open = "{{", .close = "}}", .sep = "\n"
   )
 
@@ -384,6 +344,7 @@ if (display_type == "both") {
 
   return_partial_side_by_side_code_output_chunks(chunk_name,
                                                  title,
+                                                 break_type = break_type,
                                                  which_show = which_show,
                                                  which_highlight = which_highlight,
                                                  reg_assign = reg_assign,
@@ -394,6 +355,7 @@ if (display_type == "both") {
   return_partial_code_or_output_chunks(chunk_name,
                                        title,
                                        display_type,
+                                       break_type = break_type,
                                        which_show = which_show,
                                        which_highlight = which_highlight,
                                        reg_assign = reg_assign)
@@ -423,72 +385,8 @@ apply_reveal <- function(chunk_name, display_type = "both", break_type = "auto",
                                             title,
                                             reg_assign = reg_assign,
                                             display_type,
-                                            break_type,
+                                            break_type = break_type,
                                             split)),
         collapse = "\n")
 }
-
-
-# partial knit chunks
-#'
-#'
-#' #' Create text that will appear in Rmarkdown document containing code reconstruction chunks
-#' #'
-#' #' @param chunk_name a character string which is a chunk name
-#' #' @param user_reveal a logical for if breaks should be automatically determined or have been defined manually with "#REVEAL" message
-#' #' @param show_code a logical for if the code should be displayed or not, default is TRUE
-#' #' @param title a character string for a title for all the slides to display code-output evolution, default is an empty string
-#' #' @param reg_assign logical set to T if output of some object created at beginning of code chunk should be displayed
-#' #'
-#' #' @return a character string to be interpreted as .Rmd content
-#' #' @export
-#' #'
-#' #' @examples
-#' partially_knit_chunks <- function(chunk_name = "example_chunk_name", user_reveal = F, show_code = T, title = "", reg_assign = F) {
-#'   # Create slide for lines 1:N for each line N in the given chunk
-#'
-#'   parsed <- parse_chunk(chunk_name)
-#'
-#'   if (user_reveal == T) {
-#'
-#'     breaks <- parsed$line[parsed$user_reveal]
-#'
-#'   } else {
-#'
-#'     breaks <- parsed$line[parsed$balanced_par]
-#'
-#'     }
-#'
-#'   highlight <- calc_highlight(breaks = breaks)
-#'
-#'   if (show_code == T) {
-#'     partial_knit_steps <- glue::glue(
-#'       "class: split-40",
-#'       "count: false",
-#'       ".column[.content[",
-#'       "```{r plot_{{chunk_name}}_{{breaks}}, eval=FALSE, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlight}}, {{reg_assign}})}",
-#'       "```",
-#'       "]]",
-#'       ".column[.content[",
-#'       "```{r output_{{chunk_name}}_{{breaks}}, echo=FALSE, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlight}}, {{reg_assign}})}",
-#'       "```",
-#'       "]]",
-#'       .open = "{{", .close = "}}", .sep = "\n"
-#'     )
-#'
-#'   } else {
-#'
-#'     partial_knit_steps <- glue::glue(title,"```{r output_{{chunk_name}}_{{breaks}}, echo=FALSE, code=reveal_chunk('{{chunk_name}}', {{breaks}}, {{highlight}}, {{reg_assign}})}",
-#'                                      "```",
-#'                                      .open = "{{", .close = "}}", .sep = "\n"
-#'     )
-#'
-#'   }
-#'
-#'   glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
-#'
-#' }
-
-
-
 

@@ -478,3 +478,157 @@ remote: Resolving deltas:   0% (0/16)[Kremote: Resolving deltas:   6% (1/16)[
 To https://github.com/EvaMaeRey/flipbookr.git
    280aef4..c958bab  master -> master
 [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git init[K[K[K[K[K pu[K[K[K ini[K[K[Kini[K[K[Kadd .
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push[K[K[K[Kcommit -m "many good [K[K[K[K[K[K[K[K[Ku[K[Kthe unification is becoming a success. [K"[K Stil l things to do."
+[master 36efe50] the unification is becoming a success. Still things to do.
+ 151 files changed, 945 insertions(+), 1200 deletions(-)
+ rewrite .Rproj.user/C3865889/console06/INDEX001 (97%)
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/__packages
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/cars_11e9129b8a043d9f013325c1f9704d9d.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/cars_11e9129b8a043d9f013325c1f9704d9d.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/cars_11e9129b8a043d9f013325c1f9704d9d.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_1_3a26c9ca268b51ac77f5e6880a18bae8.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_1_3a26c9ca268b51ac77f5e6880a18bae8.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_1_3a26c9ca268b51ac77f5e6880a18bae8.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_2_f96f7425f7002a2154b5a7f5b0edb020.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_2_f96f7425f7002a2154b5a7f5b0edb020.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_2_f96f7425f7002a2154b5a7f5b0edb020.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_3_92a6720f6fea4691e933bdf76eb1163f.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_3_92a6720f6fea4691e933bdf76eb1163f.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_3_92a6720f6fea4691e933bdf76eb1163f.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_4_712b9a9d9e0bf7e0363e51c21b537c09.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_4_712b9a9d9e0bf7e0363e51c21b537c09.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_4_712b9a9d9e0bf7e0363e51c21b537c09.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_5_23ad9115759ae0b3b3a7658034ee3efc.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_5_23ad9115759ae0b3b3a7658034ee3efc.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_5_23ad9115759ae0b3b3a7658034ee3efc.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_6_d1be6f7ea1c5a5e9d4ce630fa7836307.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_6_d1be6f7ea1c5a5e9d4ce630fa7836307.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_6_d1be6f7ea1c5a5e9d4ce630fa7836307.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_7_fe288b3d5cc682d8a0e3e49ba49dceb5.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_7_fe288b3d5cc682d8a0e3e49ba49dceb5.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_7_fe288b3d5cc682d8a0e3e49ba49dceb5.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_8_715c70e20eeb5db4996e4de35adec038.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_8_715c70e20eeb5db4996e4de35adec038.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_cars_8_715c70e20eeb5db4996e4de35adec038.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_nobel_1_d3df5acc530aea7f0ebb5dc73aebabed.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_nobel_1_d3df5acc530aea7f0ebb5dc73aebabed.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_nobel_1_d3df5acc530aea7f0ebb5dc73aebabed.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_nobel_2_32256fa20359a9507dd8ae74c931f74a.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_nobel_2_32256fa20359a9507dd8ae74c931f74a.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_nobel_2_32256fa20359a9507dd8ae74c931f74a.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_1_e2c2cf978ceb9ad470576b9d98d41c46.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_1_e2c2cf978ceb9ad470576b9d98d41c46.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_1_e2c2cf978ceb9ad470576b9d98d41c46.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_2_5e5e1e795a28c0bbd4c1bdfaaafd96bc.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_2_5e5e1e795a28c0bbd4c1bdfaaafd96bc.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_2_5e5e1e795a28c0bbd4c1bdfaaafd96bc.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_3_d0a0f96df5637ad670b3ec8841ecc03c.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_3_d0a0f96df5637ad670b3ec8841ecc03c.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_3_d0a0f96df5637ad670b3ec8841ecc03c.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_4_b024e6f0995620c9a354b7fcee1d0939.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_4_b024e6f0995620c9a354b7fcee1d0939.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_4_b024e6f0995620c9a354b7fcee1d0939.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_5_64b1b600164622da672320bf459ede63.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_5_64b1b600164622da672320bf459ede63.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_5_64b1b600164622da672320bf459ede63.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_6_7cb584cf716ccf2d95a1705469eb08bf.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_6_7cb584cf716ccf2d95a1705469eb08bf.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_6_7cb584cf716ccf2d95a1705469eb08bf.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_7_c2b99de874c4b286fec8309d49e4e5e9.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_7_c2b99de874c4b286fec8309d49e4e5e9.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_7_c2b99de874c4b286fec8309d49e4e5e9.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_8_d69dd1f2881cd4f5dce9c092fb6ffa28.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_8_d69dd1f2881cd4f5dce9c092fb6ffa28.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_8_d69dd1f2881cd4f5dce9c092fb6ffa28.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_nobel_1_95546eefd23c9c31e80a1cd9f0377752.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_nobel_1_95546eefd23c9c31e80a1cd9f0377752.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_nobel_1_95546eefd23c9c31e80a1cd9f0377752.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_nobel_2_13981cdc90928bd9870cf2d5e2885c9d.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_nobel_2_13981cdc90928bd9870cf2d5e2885c9d.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_nobel_2_13981cdc90928bd9870cf2d5e2885c9d.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/regular_assignment_1b2b6de20420c842c220f806829dd1e7.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/regular_assignment_1b2b6de20420c842c220f806829dd1e7.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/regular_assignment_1b2b6de20420c842c220f806829dd1e7.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-10_be1574bb594682490195d6d44a339f29.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-10_be1574bb594682490195d6d44a339f29.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-10_be1574bb594682490195d6d44a339f29.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-11_16b8f68ecbe7da96adcfaebaa8d262b0.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-11_16b8f68ecbe7da96adcfaebaa8d262b0.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-11_16b8f68ecbe7da96adcfaebaa8d262b0.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-12_c533ac34fe1e358415dc1c2696a0f54e.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-12_c533ac34fe1e358415dc1c2696a0f54e.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-12_c533ac34fe1e358415dc1c2696a0f54e.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-1_8d9411d127820c91b14a201dc6d7cff0.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-1_8d9411d127820c91b14a201dc6d7cff0.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-1_8d9411d127820c91b14a201dc6d7cff0.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-2_e7b76cbd07e0835ccea0c46eee99e11f.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-2_e7b76cbd07e0835ccea0c46eee99e11f.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-2_e7b76cbd07e0835ccea0c46eee99e11f.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-4_cecb8cdfe4b0be2c04f2acc972bca3e7.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-4_cecb8cdfe4b0be2c04f2acc972bca3e7.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-4_cecb8cdfe4b0be2c04f2acc972bca3e7.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-5_617479c014f9d701817e65720d0688ea.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-5_617479c014f9d701817e65720d0688ea.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-5_617479c014f9d701817e65720d0688ea.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-6_13278e7972402ac09a2a51099bd22126.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-6_13278e7972402ac09a2a51099bd22126.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-6_13278e7972402ac09a2a51099bd22126.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-7_6287cbea468c93cb30730495a7b80710.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-7_6287cbea468c93cb30730495a7b80710.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-7_6287cbea468c93cb30730495a7b80710.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-8_6168301c13f6a7441a1e6d8ca337d3f7.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-8_6168301c13f6a7441a1e6d8ca337d3f7.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-8_6168301c13f6a7441a1e6d8ca337d3f7.rdx
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-9_58e85e229aa003c92ff3d6cbbc352fec.RData
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-9_58e85e229aa003c92ff3d6cbbc352fec.rdb
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-9_58e85e229aa003c92ff3d6cbbc352fec.rdx
+ rewrite inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars-1.png (93%)
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_auto-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_multi-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_non_seq-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_user-1.png
+ copy inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/{output_cars_5-1.png => output_cars_1-1.png} (100%)
+ rewrite inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_3-1.png (83%)
+ rewrite inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_4-1.png (87%)
+ rewrite inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_5-1.png (91%)
+ rewrite inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_7-1.png (93%)
+ copy inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/{output_cars_3-1.png => output_cars_auto_3-1.png} (100%)
+ copy inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/{output_cars_4-1.png => output_cars_auto_4-1.png} (100%)
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_auto_5-1.png
+ rename inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/{output_cars_1-1.png => output_cars_auto_6-1.png} (100%)
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_auto_7-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_multi_1-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_multi_2-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_multi_3-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_multi_4-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_multi_5-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_non_seq_1-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_non_seq_2-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_user_1-1.png
+ copy inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/{output_cars_7-1.png => output_cars_user_2-1.png} (100%)
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_user_3-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_reg_assign_3-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_reg_assign_4-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_reg_assign_5-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_regular_assignment_3-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_regular_assignment_4-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_regular_assignment_5-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_regular_assignment_6-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_regular_assignment_7-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_regular_assignment_8-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_slow_traditional_presentation_1-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_slow_traditional_presentation_2-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_slow_traditional_presentation_3-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_slow_traditional_presentation_4-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_slow_traditional_presentation_5-1.png
+ create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_slow_traditional_presentation_6-1.png
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ t[Kgit push
+Counting objects: 84, done.
+Delta compression using up to 4 threads.
+Compressing objects:   1% (1/77)   Compressing objects:   2% (2/77)   Compressing objects:   3% (3/77)   Compressing objects:   5% (4/77)   Compressing objects:   6% (5/77)   Compressing objects:   7% (6/77)   Compressing objects:   9% (7/77)   Compressing objects:  10% (8/77)   Compressing objects:  11% (9/77)   Compressing objects:  12% (10/77)   Compressing objects:  14% (11/77)   Compressing objects:  15% (12/77)   Compressing objects:  16% (13/77)   Compressing objects:  18% (14/77)   Compressing objects:  19% (15/77)   Compressing objects:  20% (16/77)   Compressing objects:  22% (17/77)   Compressing objects:  23% (18/77)   Compressing objects:  24% (19/77)   Compressing objects:  25% (20/77)   Compressing objects:  27% (21/77)   Compressing objects:  28% (22/77)   Compressing objects:  29% (23/77)   Compressing objects:  31% (24/77)   Compressing objects:  32% (25/77)   Compressing objects:  33% (26/77)   Compressing objects:  35% (27/77)   Compressing objects:  36% (28/77)   Compressing objects:  37% (29/77)   Compressing objects:  38% (30/77)   Compressing objects:  40% (31/77)   Compressing objects:  41% (32/77)   Compressing objects:  42% (33/77)   Compressing objects:  44% (34/77)   Compressing objects:  45% (35/77)   Compressing objects:  46% (36/77)   Compressing objects:  48% (37/77)   Compressing objects:  49% (38/77)   Compressing objects:  50% (39/77)   Compressing objects:  51% (40/77)   Compressing objects:  53% (41/77)   Compressing objects:  54% (42/77)   Compressing objects:  55% (43/77)   Compressing objects:  57% (44/77)   Compressing objects:  58% (45/77)   Compressing objects:  59% (46/77)   Compressing objects:  61% (47/77)   Compressing objects:  62% (48/77)   Compressing objects:  63% (49/77)   Compressing objects:  64% (50/77)   Compressing objects:  66% (51/77)   Compressing objects:  67% (52/77)   Compressing objects:  68% (53/77)   Compressing objects:  70% (54/77)   Compressing objects:  71% (55/77)   Compressing objects:  72% (56/77)   Compressing objects:  74% (57/77)   Compressing objects:  75% (58/77)   Compressing objects:  76% (59/77)   Compressing objects:  77% (60/77)   Compressing objects:  79% (61/77)   Compressing objects:  80% (62/77)   Compressing objects:  81% (63/77)   Compressing objects:  83% (64/77)   Compressing objects:  84% (65/77)   Compressing objects:  85% (66/77)   Compressing objects:  87% (67/77)   Compressing objects:  88% (68/77)   Compressing objects:  89% (69/77)   Compressing objects:  90% (70/77)   Compressing objects:  92% (71/77)   Compressing objects:  93% (72/77)   Compressing objects:  94% (73/77)   Compressing objects:  96% (74/77)   Compressing objects:  97% (75/77)   Compressing objects:  98% (76/77)   Compressing objects: 100% (77/77)   Compressing objects: 100% (77/77), done.
+Writing objects:   1% (1/84)   Writing objects:   2% (2/84)   Writing objects:   3% (3/84)   Writing objects:   4% (4/84)   Writing objects:   5% (5/84)   Writing objects:   7% (6/84)   Writing objects:   8% (7/84)   Writing objects:   9% (8/84)   Writing objects:  10% (9/84)   Writing objects:  11% (10/84)   Writing objects:  13% (11/84)   Writing objects:  14% (12/84)   Writing objects:  15% (13/84)   Writing objects:  16% (14/84)   Writing objects:  17% (15/84)   Writing objects:  19% (16/84)   Writing objects:  20% (17/84)   Writing objects:  21% (18/84)   Writing objects:  22% (19/84)   Writing objects:  23% (20/84)   Writing objects:  25% (21/84)   Writing objects:  26% (22/84)   Writing objects:  27% (23/84)   Writing objects:  28% (24/84)   Writing objects:  29% (25/84)   Writing objects:  30% (26/84)   Writing objects:  32% (27/84)   Writing objects:  33% (28/84)   Writing objects:  36% (31/84)   Writing objects:  38% (32/84)   Writing objects:  39% (33/84)   Writing objects:  40% (34/84)   Writing objects:  41% (35/84)   Writing objects:  42% (36/84)   Writing objects:  44% (37/84)   Writing objects:  45% (38/84)   Writing objects:  46% (39/84)   Writing objects:  47% (40/84)   Writing objects:  48% (41/84)   Writing objects:  52% (44/84)   Writing objects:  53% (45/84)   Writing objects:  54% (46/84)   Writing objects:  55% (47/84)   Writing objects:  57% (48/84)   Writing objects:  58% (49/84)   Writing objects:  59% (50/84)   Writing objects:  60% (51/84)   Writing objects:  61% (52/84)   Writing objects:  63% (53/84)   Writing objects:  64% (54/84)   Writing objects:  65% (55/84)   Writing objects:  66% (56/84)   Writing objects:  67% (57/84)   Writing objects:  69% (58/84)   Writing objects:  70% (59/84)   Writing objects:  71% (60/84)   Writing objects:  72% (61/84)   Writing objects:  73% (62/84)   Writing objects:  75% (63/84)   Writing objects:  76% (64/84)   Writing objects:  77% (65/84)   Writing objects:  78% (66/84)   Writing objects:  79% (67/84)   Writing objects:  80% (68/84)   Writing objects:  82% (69/84)   Writing objects:  83% (70/84)   Writing objects:  84% (71/84)   Writing objects:  85% (72/84)   Writing objects:  86% (73/84)   Writing objects:  88% (74/84)   Writing objects:  89% (75/84)   Writing objects:  90% (76/84)   Writing objects:  91% (77/84)   Writing objects:  92% (78/84)   Writing objects:  94% (79/84)   Writing objects:  95% (80/84)   Writing objects:  96% (81/84)   Writing objects:  97% (82/84)   Writing objects:  98% (83/84)   Writing objects: 100% (84/84)   Writing objects: 100% (84/84), 371.62 KiB | 2.25 MiB/s, done.
+Total 84 (delta 26), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/26)[Kremote: Resolving deltas:  30% (8/26)[Kremote: Resolving deltas:  53% (14/26)[Kremote: Resolving deltas:  57% (15/26)[Kremote: Resolving deltas:  61% (16/26)[Kremote: Resolving deltas:  65% (17/26)[Kremote: Resolving deltas:  69% (18/26)[Kremote: Resolving deltas:  73% (19/26)[Kremote: Resolving deltas:  76% (20/26)[Kremote: Resolving deltas:  80% (21/26)[Kremote: Resolving deltas:  84% (22/26)[Kremote: Resolving deltas:  88% (23/26)[Kremote: Resolving deltas:  92% (24/26)[Kremote: Resolving deltas:  96% (25/26)[Kremote: Resolving deltas: 100% (26/26)[Kremote: Resolving deltas: 100% (26/26), completed with 12 local objects.[K
+To https://github.com/EvaMaeRey/flipbookr.git
+   c958bab..36efe50  master -> master
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ t[Keval[K[K[K[Kev[K[Kgmail[K[K[K[K[Kgti[K[Kit add .
