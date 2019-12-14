@@ -15,7 +15,7 @@ output:
 
 ```{r setup, include=F}
 knitr::opts_chunk$set(fig.width = 6, message = F, warning = F, 
-                      comment = "", cache = T)
+                      comment = "", cache = F)
 ```
 
 
@@ -142,7 +142,7 @@ ggplot(data = my_data) +
 Okay. Let's load the the `flipbookr` and the `tidyverse` packages.
 
 ```{r, cache = F}
-# library(flipbookr)
+library(flipbookr)
 library(tidyverse)
 ```
 
@@ -151,7 +151,7 @@ And load the data from the tidytuesday github page.
 ```{r, cache = F}
 # nobel_winners <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-14/nobel_winners.csv")
 # source("../../../../../R/flipbook_mini.R")
-source("../../../../../R/base_parse_reveal_xaringan.R")
+# source("../../../../../R/base_parse_reveal_xaringan.R")
 # source("../../../../../R/non_sequential_reveal.R")
 ```
 

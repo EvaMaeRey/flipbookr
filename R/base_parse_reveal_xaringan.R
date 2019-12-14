@@ -226,7 +226,7 @@ calc_lines_to_highlight <- function(which_show = list(c(1,2), c(1,2,3,4)), break
 show_and_highlight_pane_classic <- function(parsed, which_show = 1:3, which_highlight = 3){
 
   parsed %>%
-    dplyr::filter(1:n() %in% which_show) %>%
+    dplyr::filter(1:dplyr::n() %in% which_show) %>%
     dplyr::mutate(connector = dplyr::case_when(1:dplyr::n() == dplyr::n() ~ "",
                                                1:dplyr::n() != dplyr::n() ~ connector)) %>%
     dplyr::mutate(highlight = ifelse(1:dplyr::n() %in% which_highlight, "#<<", "" )) %>%
