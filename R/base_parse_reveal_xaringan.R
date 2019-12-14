@@ -10,6 +10,7 @@ aes(y = dist) +
 # Describing what follows
 geom_point(alpha = .3) + #REVEAL
 geom_point(alpha = 1) + #REVEAL2
+geom_jitter(alpha = .5) + #REVEAL3
 aes(color =
 speed > 14
 ) %+%
@@ -170,22 +171,45 @@ calc_which_lines_to_show <- function(parsed, break_type = "user"){
 # calc_which_lines_to_show(parsed = parse_code(local_code), break_type = 6)
 
 # calc_lines_to_highlight()
-calc_lines_to_highlight <- function(which_show = list(c(1,2), c(1,2,3,4))){
+calc_lines_to_highlight <- function(which_show = list(c(1,2), c(1,2,3,4)), break_type = "auto"){
 
 
   which_highlight <- list()
 
+  if (break_type == "user" | break_type == "auto" | break_type == "non_seq"){
+
   which_highlight[[1]] <- which_show[[1]]
 
-  for (i in 2:length(which_show)) {
+    for (i in 2:length(which_show)) {
 
-    which_highlight[[i]] <- which_show[[i]][!(which_show[[i]] %in% which_show[[i - 1]])]
+      which_highlight[[i]] <- which_show[[i]][!(which_show[[i]] %in% which_show[[i - 1]])]
 
-  }
+    }
+
+  }  else if (is.numeric(break_type)) {
+
+      for (i in 1:length(which_show)) {
+
+        which_highlight[[i]] <- as.integer(c())
+
+      }
+
+    }
 
   which_highlight
 
-}
+  }
+
+# local_code %>%
+#   parse_code() %>%
+#   calc_which_lines_to_show(break_type = "non_seq") %>%
+#   calc_lines_to_highlight(break_type = "non_seq")
+#
+
+
+
+
+
 # calc_lines_to_highlight()
 
 
@@ -211,6 +235,29 @@ show_and_highlight_pane_classic <- function(parsed, which_show = 1:3, which_high
 
 
 }
+
+#' #' reveal_code_nonsequential(code = local_code_non_sequential)	#' #' reveal_code_nonsequential(code = local_code_non_sequential)
+#' reveal_code_nonsequential <- function(code = local_code_non_sequential,	#' reveal_code_nonsequential <- function(code = local_code_non_sequential,
+#'                                       which_supress = 2:5,	#'                                         which_supress = 2:5,
+#'                                       which_highlight = 6){	#'                                         which_highlight = 6){
+#'
+#'   #'
+#'   parsed <- parse_code(code = code)	#'   parsed <- parse_code(code = code)
+#'
+#'   #'
+#'   parsed %>%	#'   parsed %>%
+#'     dplyr::mutate(reveal = ifelse(dplyr::row_number() %in% which_supress, "", raw_code)) %>%	#'     dplyr::mutate(reveal = ifelse(dplyr::row_number() %in% which_supress, "", raw_code)) %>%
+#'     dplyr::mutate(reveal = stringr::str_remove(reveal, "#REVEAL\\d+")) %>%	#'     dplyr::mutate(reveal = stringr::str_remove(reveal, "#REVEAL\\d+")) %>%
+#'     dplyr::mutate(highlight = ifelse(dplyr::row_number() %in% which_highlight, "#<<", "")) %>%	#'     dplyr::mutate(highlight = ifelse(dplyr::row_number() %in% which_highlight, "#<<", "")) %>%
+#'     dplyr::mutate(out = paste0(reveal, "  ", comment, highlight)) %>%	#'     dplyr::mutate(out = paste0(reveal, "  ", comment, highlight)) %>%
+#'     dplyr::select(out) %>%	#'     dplyr::select(out) %>%
+#'     dplyr::filter(!str_detect(out, "^\\s+$")) ->	#'     dplyr::filter(!str_detect(out, "^\\s+$")) ->
+#'     up_to_result	#'     up_to_result
+#'   up_to_result$out	#'   up_to_result$out
+#'
+#'   #'
+#'                                       }
+
 
 # example
 show_and_highlight_pane_reg_assign <- function(parsed, which_show = 1:3, which_highlight = 3){
@@ -338,7 +385,8 @@ partially_knit_chunks <- function(chunk_name = "example_chunk_name",
 
 which_show <- calc_which_lines_to_show(parsed = parsed, break_type)
 
-which_highlight <- calc_lines_to_highlight(which_show = which_show)
+which_highlight <- calc_lines_to_highlight(which_show = which_show,
+                                           break_type = break_type)
 
 if (display_type == "both") {
 

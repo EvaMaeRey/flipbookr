@@ -176,90 +176,7 @@ We'll create this plot.  I have **echo** set to FALSE in the code chunk options 
 
 ---
 
-# Auto
-
----
-
-`r apply_reveal("cars_auto")`
-
----
-
-`r apply_reveal("cars_user", break_type = "auto")`
-
-```{r cars_auto, echo = F, eval = F, fig.height=5}
-cars %>%             # the data 
-  filter(speed > 4) %>%  # subset
-  ggplot() +              # pipe to ggplot
-  aes(x = speed) +
-  aes(y = dist) +
-  # Describing what follows
-  geom_point(
-    alpha = .3,
-    color = "blue" 
-    ) + 
-  aes(size = speed)
-```
-
-
----
-
-# User, sequential
-
----
-
-`r apply_reveal("cars_user", break_type = "user")`
-
-```{r cars_user, echo = F, eval = F, fig.height=5}
-cars %>%             # the data 
-  filter(speed > 4) %>%  # subset
-  ggplot() +              # pipe to ggplot
-  aes(x = speed) +
-  aes(y = dist) + #REVEAL
-  # Describing what follows
-  geom_point(
-    alpha = .3,
-    color = "blue" 
-    ) + #REVEAL
-  aes(size = speed) #REVEAL
-```
-
----
-
-# User, nonsequential
-
----
-
-`r apply_reveal("cars_non_seq", break_type = "non_seq")`
-
-
----
-
-# User
-
----
-
-`r apply_reveal("cars_non_seq", break_type = "user")`
-
----
-
-# Auto
-
----
-
-`r apply_reveal("cars_non_seq", break_type = "auto")`
-
----
-
-# Multiverse
-
----
-
-`r apply_reveal("cars_non_seq", break_type = 5)`
-
-
----
-
-```{r cars_non_seq, echo = F, eval = F, fig.height=5}
+```{r cars, echo = F, eval = F, fig.height=5}
 cars %>%             # the data 
   filter(speed > 4) %>%  # subset
   ggplot() +              # pipe to ggplot
@@ -273,6 +190,44 @@ cars %>%             # the data
   aes(size = speed) #REVEAL
 ```
 
+---
+
+# User
+
+---
+
+`r apply_reveal("cars", break_type = "user")`
+
+---
+
+# Auto
+
+---
+
+`r apply_reveal("cars", break_type = "auto")`
+
+
+---
+
+# User, nonsequential
+
+---
+
+`r apply_reveal("cars", break_type = "non_seq")`
+
+---
+
+# Multiverse
+
+---
+
+`r apply_reveal("cars", break_type = 5)`
+
+
+---
+
+
+
 
 ---
 
@@ -281,6 +236,9 @@ cars %>%             # the data
 ---
 
 `r apply_reveal("cars_multi", break_type = 5)`
+
+---
+
 
 ```{r cars_multi, echo = F, eval = T, fig.height=5}
 tibble(speed = rnorm(5),
@@ -297,33 +255,7 @@ tibble(speed = rnorm(5),
 ```
 
 
----
 
-# Just reveal output
-
----
-
-`r apply_reveal("cars", break_type = "user", display_type = "output")`
-
----
-
-`r apply_reveal("cars", break_type = "auto", display_type = "code")`
-
----
-
-```{r cars, echo = F, eval = F, fig.height=5}
-cars %>%             # the data  
-  filter(speed > 4) %>%  # subset
-  ggplot() +              # pipe to ggplot
-  aes(x = speed) +
-  aes(y = dist) + #REVEAL
-  # Describing what follows
-  geom_point(
-    alpha = .3,
-    color = "blue" #REVEAL2
-    ) + #REVEAL
-  aes(size = speed) #REVEAL
-```
  
 
 ---
@@ -360,7 +292,23 @@ my_local <- "cars %>%             # the data  #REVEAL
   cars"
 ```
 
+---
 
+# Output only
+
+---
+
+`r apply_reveal("cars", break_type = "user", display_type = "output")`
+
+---
+
+# Code only
+
+---
+
+`r apply_reveal("cars", break_type = "auto", display_type = "code")`
+
+---
 
 <!-- --- -->
 

@@ -5,14 +5,14 @@
 \title{Apply reveal in Rmarkdown file, to be used in line}
 \usage{
 apply_reveal(chunk_name, display_type = "both", break_type = "auto",
-  title = "", reg_assignment = F, split = 40)
+  title = "", reg_assign = F, split = 40)
 }
 \arguments{
 \item{chunk_name}{a character string which is a chunk name}
 
 \item{title}{a character string for a title for all the slides to display code-output evolution, default is an empty string}
 
-\item{reg_assignment}{logical set to T if output of some object created at beginning of code chunk should be displayed}
+\item{reg_assign}{logical set to T if output of some object created at beginning of code chunk should be displayed}
 
 \item{user_reveal}{a logical for if breaks should be automatically determined or have been defined manually with "#REVEAL" message}
 
