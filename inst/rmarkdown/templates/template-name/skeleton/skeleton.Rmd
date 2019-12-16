@@ -1,10 +1,11 @@
 ---
-title: "Flipbooks"
-author: "Gina Reynolds, November 2019"
+title: "The fragile and perilous art of flipbooking"
+subtitle: "With flipbookr and xaringan"
+author: "Gina Reynolds, December 2019"
 output:
   xaringan::moon_reader:
     lib_dir: libs
-    css: ["kunoichi", "ninjutsu"]
+    css: ["xaringan-themer.css", ninjutsu]
     nature:
       ratio: 16:10
       highlightStyle: github
@@ -13,170 +14,101 @@ output:
 ---
 
 
-```{r setup, include=F}
-knitr::opts_chunk$set(fig.width = 6, message = F, warning = F, 
-                      comment = "", cache = F)
+
+# Welcome
+
+- Yes, there is now a package called `flipbookr`
+
+--
+
+- Yes, it's still under construction (thus, the dramatic fragile and perilous)
+
+--
+
+- Yes, you can help by contributing at https://github.com/EvaMaeRey/flipbookr and letting us know if/how it breaks and frustrates you!
+
+---
+
+# "Flipbooks" you say? 
+
+“Flipbooks” are tools that present side-by-side, aligned, incremental code-output evolution via automated code parsing and reconstruction. More about Flipbooks [here](https://evamaerey.github.io/little_flipbooks_library/about/what_the_flipbook).  There now exists a package for making Flipbooks for R: flipbookr.  This is underdevelopment, but you are welcome to try it out by installing from github:
+
+``` r
+devtools::install_github("EvaMaeRey/flipbookr")
 ```
 
+Once you install the package, a template for making the flipbook that you are looking at will be available for selection from within RStudio, File -> New File -> R Markdown -> From Template -> A Minimal Flipbook.
 
-<!-- # What are Flipbooks? -->
-<!-- # Show an one example - ggplot2 flipbook -->
-<!-- # What are their advantages (Don Norman, the Design of Everyday Things) -->
-<!--  - natural mapping (matching code-output temporal changes) -->
-<!--  - affordances (ease of use - motion detection, name, automatic parsing - low additional burden on creator) -->
-<!--  - feedback (minimal changes mean that feedback is digestible) -->
-<!-- # How is it implemented? -->
-<!--   # automation... (technical side) -->
-<!--   # And how YOU can make one ... -->
-<!-- # Extending the basic -->
-<!--   ## adding connectors, allowing code wrapping, using a parser (making it safe for human consumption) -->
-<!--   ## using %>% .[] - data.table -->
-<!--   ## Regular Assignment -->
-<!--   ## Non sequential reveal (not yet implemented) -->
-<!--   ## Traditional presentations -->
-<!--   ## Ensembles (not yet stable) -->
-<!--   ## python, C++ (not yet implemented) -->
-<!--   ## Visual Table of contents - "You do not need a slide for the Table of Contents!" -->
-<!--   ## Flipbook mini (not yet final) -->
-<!-- # resources -->
-<!--   ## package -->
-<!--   ## flipbooks library (my uses) -->
-<!--   ## minimal examples -->
-<!--   ## video? -->
-<!-- # caveats -->
-<!--   # irreproducibility across platforms (fonts) -->
-<!--   # output not supported by remark.js, not going to work -->
-<!--   # may load slow (or not at all - leaflet) -->
-<!-- # future...??? -->
-
----
-
-# Introduction
-
-This is a minimal example to demonstrate how to create a flipbook with data from #TidyTuesday.  It walks through data wrangling and plots pipelines made with the Tidyverse.  The functions that make this possible are the work of Emi Tanaka, Garrick Aden-Buie and myself, and are built for Xaringan, an Rmarkdown file type for creating presentation slides; the functions make use of the function `knitr:::knit_code$get()`.
-
-The code to create the flipbook is an .Rmd that you can download [**here**](https://raw.githubusercontent.com/EvaMaeRey/little_flipbooks_library/master/tidytuesday_minimal_example/tidytuesday_minimal_example.Rmd).
-
----
-
-Interested in more flipbooks? Check out 
-
-- [the ggplot flipbook](https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html)
-- [The Tidyverse in Action](https://evamaerey.github.io/tidyverse_in_action/tidyverse_in_action.html)
-- [the ggplot2 grammar guide](https://evamaerey.github.io/ggplot2_grammar_guide/ggplot2_grammar_guide)
-
-and 
-
-- [the little flipbooks libraray](https://raw.githubusercontent.com/EvaMaeRey/little_flipbooks_library)
-
-
-For more about Xaringan:
-
-- [Xaringan presentation slides](https://slides.yihui.name/xaringan/)
-
-The sequential workflow of the Tidyverse makes incremental display of pipelines and ggplot statements ideal:  
-
-- [www.tidyverse.org](https://www.tidyverse.org/)
-
-
----
-
-
-# What's the slow ggplot style?
-
-"Slow ggplot" just means working more incrementally than is typical. Elements of the approach are as follows:
-
-- pulling out aes() from the ggplot() function:  
-- using fewer functions; example - using labs() to add a title instead of ggtitle()
-- using functions multiple times; example aes(x = var1) + aes(y = var2) rather than aes(x = var1, y = var2)
-- using base R functions and tidyverse functions.  For other packages, the :: style to call them
-- write out arguments (no shortcuts)  aes(x = gdppercap) not aes(gdppercap)
-- order ggplot commands so that reactivity is obvious; scale adjustments to aesthetics might also be near the aesthetic declaration. 
-
-
-
-
-
-
----
-
-Here, I contrast the usual plotting method to slow ggplotting:
-
-Usual approach:
-
-```{r, eval = F}
-ggplot(my_data, aes(var1, y = var2, col = var3)) +
-  geom_point() +
-  ggtitle("My Title") +
-  labs(x = "the x label", y = "the y label", col = "legend title")
-```
-
-Using slow ggplotting: 
-
-```{r, eval = F}
-ggplot(data = my_data) +
-  aes(x = var1) +
-  aes(y = var2) +
-  geom_point() +
-  aes(col = var3) +
-  labs(y = "the y label") +
-  labs(x = "the x label") +
-  labs(col = "legend title") +
-  labs(title = "My title")
-```
-
-
-# You may have seen the ggplot flipbook
-
-
-# We've come along way
-
-- adding pipe and other connections
-- allowed code wrapping - responsible piping
-
+Or you can find the .Rmd template for this flipbook [here](https://raw.githubusercontent.com/EvaMaeRey/flipbookr/master/inst/rmarkdown/templates/template-name/skeleton/skeleton.Rmd).
 
 ---
 
 # Set up
 
-Okay. Let's load the the `flipbookr` and the `tidyverse` packages.
+The flipbook you will be building here uses the Rmarkdown (comingles code and prose) and Xaringan (html slideshows) infrastructure.  Here I set the code chunk options for the code chunks that follow.
 
-```{r, cache = F}
-# library(flipbookr)
+
+```{r setup}
+knitr::opts_chunk$set(fig.width = 6, message = F, warning = F, 
+                      comment = "", cache = F)
+```
+
+You'll also use the flipbookr package, of course!
+
+```{r}
+library(flipbookr)
+```
+
+
+
+
+```{r}
 library(tidyverse)
 ```
 
-And load the data from the tidytuesday github page. 
 
-```{r, cache = F}
-# nobel_winners <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-14/nobel_winners.csv")
-# source("../../../../../R/flipbook_mini.R")
-source("../../../../../R/base_parse_reveal_xaringan.R")
-# source("../../../../../R/non_sequential_reveal.R")
+
+<!-- To work more interactively, I still am making the script available for myself-->
+
+
+```{r, cache = F, echo = F}
+# source("../../../../../R/base_parse_reveal_xaringan.R")
+```
+
+
+
+
+---
+
+# Xaringan look and feel
+
+To quickly change the look and feel of your xaringan slide show, I'd recommend that you use the [xaringanthemer](https://github.com/gadenbuie/xaringanthemer) package.  The code below creates a css file for you that will be used to style your slide show; you can see it referenced at the beginning of this document in the "YMAL" --- the introductory materials that you see at the top of this document.   
+
+```{r xaringan_look}
+xaringanthemer::mono_accent(
+  code_highlight_color = "rgba(266, 266, 50, .35)",
+  base_color = "#63418A")
 ```
 
 
 ---
 
-# flipbookr::apply_reveal()
 
 
-``` 
-r apply_reveal(chunk_name = 'cars', break_type = "auto")`
-r apply_reveal(chunk_name = 'cars', break_type = "user")`
-r apply_reveal(chunk_name = 'cars', break_type = "non_seq")`
-r apply_reveal(chunk_name = 'cars', break_type = 5)`
-```
+
+
 
 ---
 
-# Where we are going: 
+# Using flipbookr::flipbookify()
 
-We'll create this plot.  I have **echo** set to FALSE in the code chunk options here so that you don't see the code, and **eval** to TRUE so that the plot output is produced.  The code chunk is given the name 'cars', and this is used in the in apply_reveal function, which breaks down code by wrangling and plot statements. 
+There are several modalities that you might be interested in using for "flipbooking" your code and the next section is dedicated to demoing some of them. 
 
----
+We'll apply our flipbooking to the below input code - the code chunk is named "cars".  For now I set echo = TRUE for this code chunk, so you can see the code content but sometimes you might like to set echo to FALSE. 
 
-```{r cars, echo = F, eval = F, fig.height=5}
+
+
+```{r cars, echo = T, eval = F, fig.height=5}
 cars %>%             # the data 
   filter(speed > 4) %>%  # subset
   ggplot() +              # pipe to ggplot
@@ -190,55 +122,54 @@ cars %>%             # the data
   aes(size = speed) #REVEAL
 ```
 
+Notice the regular comments and the special #REVEAL comments.
 
 ---
 
-# Auto
+## Slide breaks in-line call. 
+
+
 
 ---
 
-`r apply_reveal("cars", break_type = "auto")`
+## Auto
+
+One parameter of flipbooking is the break_type.  The default is "auto", in which appropriate breakpoints are determined automatically --- by finding where parentheses are balanced. 
 
 ---
 
-# User
+`r flipbookify("cars", break_type = "auto")`
 
 ---
 
-`r apply_reveal("cars", break_type = "user")`
+## User
+
+If the break_type is set to "user", the breakpoints are those indicated by the user with the special comment #REVEAL
 
 ---
 
-# User, nonsequential
+`r flipbookify("cars", break_type = "user")`
 
 ---
 
-`r apply_reveal("cars", break_type = "non_seq")`
+## User, nonsequential
+
+If the break_type is set to "non_seq", the breakpoints are those indicated by the user with the special comment #REVEAL2, #REVEAL3 etc to indicate at which point in time the code should appear.  
 
 ---
 
+`r flipbookify("cars", break_type = "non_seq")`
 
-# Output only
-
----
-
-`r apply_reveal("cars", break_type = "user", display_type = "output")`
 
 ---
 
-# Code only
+## Multiverse - multiple realizations for the same code
+
+Another modality is to set break_type equal to a positive integer, indicating that you want the same code chunk to be displayed multiple times.  This makes the most sense in a setting where there is some randomization or random sampling and you want to see different realizations. 
 
 ---
 
-`r apply_reveal("cars", break_type = "auto", display_type = "code")`
-
----
-
-# Multiverse
-
----
-
-`r apply_reveal("cars_multi", break_type = 5)`
+`r flipbookify("cars_multi", break_type = 3)`
 
 
 ```{r cars_multi, echo = F, eval = F, fig.height=5}
@@ -254,479 +185,199 @@ cars %>%
     ) + 
   geom_smooth(method = lm, se = F) +
   coord_cartesian(xlim = range(cars$speed),
-                  ylim = range(cars$dist))
+                  ylim = range(cars$dist)) +
+  theme(legend.position = c(.9, .2))
 ```
 
 
 
 
+---
 
+# display_type
 
- 
+There are also different display modalities.  Namely you can indicate if you want "both" the code and the output displayed in your flipbookification, or just the "output" (perhaps to be used in a traditional presentation), or just the "code" (which might be used to kind of test student expectations about some code).  You have already seen the default where the parameter display_type is set to "both", but let's have a look at "output" and "code" only.
+
 
 ---
 
-# Regular assignment
+## Output only
+
+
 
 ---
 
-`r apply_reveal("reg_assign_example", break_type = "auto", display_type = "both", reg_assign = T)`
+`r flipbookify("cars", break_type = "user", display_type = "output")`
+
+---
+
+## Code only
+
+---
+
+`r flipbookify("cars", break_type = "auto", display_type = "code")`
 
 
-```{r reg_assign_example, echo = F, eval = T}
-my_object <- cars %>%   # the data  
+
+---
+
+# assignment and interchunk dependencies
+
+---
+
+## regular and reverse assignment (reg_assign = T or reg_assign = F)
+
+flipbooking works most naturally with chains of manipualtions and reverse assignment.  Working sequentially with a pipeline of code, you get feedback all along the way until you get to the point of assigning all of what you have done to a new object. Thus the parameter reg_assign is by default set to FALSE.
+
+But, setting the reg_assign paramter to T and using regular assignment, you can still create a meaningful flipbook.   When reg_assign = T, the first object that is created prints at the end of the derivative code chunks. 
+
+
+---
+
+`r flipbookify("reg_assign", break_type = "auto", display_type = "both", reg_assign = T)`
+
+
+```{r reg_assign, echo = F, eval = F}
+my_plot <- cars %>%   # the data  
   filter(speed > 4) %>%  # subset
   ggplot() +              # pipe to ggplot
   aes(x = speed) +
-  aes(y = dist) 
+  aes(y = dist) +
+  geom_point()
 ```
 
-<!-- --- -->
 
-
-<!-- # Under the hood of flipbookr -->
-
-
-<!-- ```{r} -->
-<!-- my_local <- "cars %>%             # the data  #REVEAL -->
-<!--   filter(speed > 4) %>%  # subset -->
-<!--   ggplot() +              # pipe to ggplot -->
-<!--   aes(x = speed) + -->
-<!--   aes(y = dist) + -->
-<!--   # Describing what follows -->
-<!--   geom_point(alpha = .3) + #REVEAL -->
-<!--   aes(color = -->
-<!--   speed > 14 -->
-<!--   ) %+% -->
-<!--   cars" -->
-<!-- ``` -->
-
-
-
-<!-- --- -->
-
-<!-- r apply_reveal("calc_panes")` -->
-
-
-<!-- ```{r calc_panes, eval = F, echo = F} -->
-<!-- flipbookr:::local_code %>% -->
-<!--   parse_code() %>% -->
-<!--   calc_lines_to_show(break_type = "user") %>% -->
-<!--   calc_lines_to_highlight(break_type = "user") -->
-<!-- ``` -->
-
-<!-- --- -->
-
-<!-- `r apply_reveal("return_partial_code")` -->
-
-<!-- ```{r return_partial_code, eval = F, echo = F} -->
-<!-- flipbookr:::local_code %>% -->
-<!--   parse_code() %>%  -->
-<!--   partial_code(which_show = 1:5, which_highlight = 5) -->
-<!-- ``` -->
-
-<!-- --- -->
-
-<!-- ```{r} -->
-<!-- return_partial_chunks_template() -->
-<!-- ``` -->
-
-
-<!-- --- -->
-
-<!-- Sequential workflow that provides feedback and reassurance.  -->
 
 
 ---
 
-<!-- --- -->
+## interchunk dependencies
 
-<!-- # How do we get there? -->
+If there are dependenceies between code chunks, you may need to turn the code chunk option `eval` to TRUE (and usually echo = F).  This may be the case when you create an object in one code chunk that you use in a subsequent code chunk.  
 
-<!-- In the next slide, we'll walk through the code that produces this plot, and the output along the way. We use the code `apply_reveal('cars')` in-line to access the code from the code chunk called *nobel*. -->
+---
 
-<!-- --- -->
+`r flipbookify("plot_object")`
 
+```{r plot_object, eval = T, echo = F}
+cars %>% 
+  ggplot() +
+  aes(x = speed) +
+  aes(y = dist) +
+  geom_point() ->
+cars_plot
+```
 
-<!-- ```{r, eval = F} -->
-<!-- my_local %>%  -->
-<!--   parse_code() -> -->
-<!-- parsed -->
-<!-- parsed %>%  -->
-<!--   determine_breaks(break_type = "auto") -> -->
-<!-- breaks -->
-<!-- breaks %>%  -->
-<!--   calc_highlight() -> -->
-<!-- highlighting -->
 
-<!-- parsed %>%  -->
-<!--   reveal_parsed(break_point = breaks[3], highlight = highlighting[[3]])  -->
+---
 
-<!-- flipbookr::return_partial_chunks_template() -->
 
-<!-- flipbookr::return_partial_side_by_side_code_output_chunks("my_example", breaks = breaks, highlight = highlighting) -->
+`r flipbookify("further_building")`
 
+```{r further_building, echo = F, eval = F}
+cars_plot +
+  labs(x = "Speed (mph)") + 
+  labs(y = "Stopping distance (ft)")
+```
 
-<!-- ``` -->
 
-<!-- --- -->
 
-<!-- ```{r} -->
-<!-- # reveal_chunk('cars') -->
-<!-- ``` -->
+---
 
+# Beyond the tidyverse
 
-<!-- ```{r} -->
-<!-- # return_partial_side_by_side_code_output_chunks(chunk_name = 'cars') -->
-<!-- ``` -->
+It is no surprise that Flipbooks are born in the context of the popularity of the tidyverse tools --- tools that are designed be be used in sequential pipelines and that give a satisfying amount of feedback along the way!
 
-<!-- --- -->
+But base R techniques and other popular tools can certainly also be employed.  
 
-<!-- ```{r} -->
+---
 
-<!-- # return_partial_code_or_output_chunks(chunk_name = 'cars') -->
-<!-- ``` -->
+# "chaining" by overwriting objects
 
-<!-- --- -->
+---
 
+`r flipbookify("reg_assign2", break_type = "auto", display_type = "both", reg_assign = T)`
 
-<!-- ```{r, eval = F} -->
-<!-- partial_chunk('cars', 1, 1, FALSE) -->
-<!-- ``` -->
 
+```{r reg_assign2, echo = F, eval = F}
+cars_mod <- cars
+names(cars_mod)[2] <- "distance"
+cars_mod <- cars_mod[cars_mod$distance > 10, ]
+cars_mod <- cars_mod["distance"]
+```
 
-<!-- --- -->
 
-<!-- count: false -->
-<!-- My Title -->
-<!-- ```{r output_nobel_1, eval=TRUE, echo = FALSE, code=partial_chunk('cars', 1, 1, FALSE)} -->
-<!-- ``` -->
+---
 
-<!-- --- -->
+## using the .[] and .[[]] syntax with the migrittr pipe - %>%
 
-<!-- ```{r} -->
-<!-- partially_knit_chunks(chunk_name = 'cars') -->
-<!-- ``` -->
+Flipbooking can also be applied to logical indexing workflows if the steps are broken up using the %>% followed by .[] and .[[]].  Thus flipbooking can also be used with base R logical indexing and with the popular `data.table` package. 
 
-<!-- --- -->
 
+---
 
-<!-- ```{r} -->
-<!-- apply_reveal(chunk_name = 'cars') -->
-<!-- ``` -->
+`r flipbookify("dot_notation")`
 
+```{r dot_notation, echo = F, eval = T}
+cars %>% 
+  .[cars$speed > median(cars$speed),] %>% 
+  .["speed"] %>% 
+  .[,1] ->
+top_speeds
+```
 
+---
 
 
-<!-- --- -->
+# Base R plotting
 
-<!-- class: split-40 -->
-<!-- count: false -->
-<!-- My Title -->
-<!-- .column[.content[ -->
-<!-- ```{r code_nobel_1, eval=FALSE, echo = TRUE, code=partial_chunk('cars', 1, 1, FALSE)} -->
-<!-- ``` -->
-<!-- ]] -->
-<!-- .column[.content[ -->
-<!-- ```{r output_nobel_1, eval=TRUE, echo = FALSE, code=partial_chunk('cars', 1, 1, FALSE)} -->
-<!-- ``` -->
-<!-- ]] -->
-<!-- --- -->
-<!-- class: split-40 -->
-<!-- count: false -->
-<!-- My Title -->
-<!-- .column[.content[ -->
-<!-- ```{r code_nobel_2, eval=FALSE, echo = TRUE, code=partial_chunk('cars', 1:2, 2, FALSE)} -->
-<!-- ``` -->
-<!-- ]] -->
-<!-- .column[.content[ -->
-<!-- ```{r output_nobel_2, eval=TRUE, echo = FALSE, code=partial_chunk('cars', 1:2, 2, FALSE)} -->
-<!-- ``` -->
-<!-- ]] -->
-<!-- --- -->
+It has been a while since I've done much plotting with base R, but I think it is important to have an example or two. 
 
+---
 
-<!-- --- -->
+`r flipbookify("base_r_plotting")`
 
+```{r base_r_plotting, echo = F, eval = F}
+plot(cars, xlab = "Speed (mph)", 
+     ylab = "Stopping distance (ft)",
+     las = 1)
+lines(lowess(cars$speed, cars$dist, 
+             f = 2/3, iter = 3), 
+      col = "red")
+title(main = "the `cars` data")
+title(sub = "Data is from Ezekiel's (1930) 'Methods of Correlation Analysis'.")
+```
 
 
-<!-- <!-- --- --> -->
+---
 
+`r flipbookify("cars_anova")`
 
-<!-- <!-- # Embracing reverse assignment --> -->
+```{r cars_anova, eval = T, echo = F, fig.keep='none'}
+## An example of polynomial regression
+plot(cars, xlab = "Speed (mph)", 
+     ylab = "Stopping distance (ft)",
+    las = 1, xlim = c(0, 25))
+seq(0, 25, length.out = 200) ->
+  d
+for (degree in 1:4) {
+  model <- lm(dist ~ poly(speed, degree), 
+           data = cars)
+  lines(d, 
+        predict(model, 
+                data.frame(speed = d)), 
+        col = degree)
+}
+```
 
-<!-- <!-- # A second approach: Separate the data manipulation from the plotting. --> -->
 
-<!-- <!-- If you'd like, you can also save your manipulated data and then plot, using the `%>%` to create your pipe line, and then reverse assignment operator `->`.  An example follows.  --> -->
 
-<!-- <!-- --- --> -->
 
-<!-- <!-- ```{r data_transformation, echo = F, eval = T, fig.height=5} --> -->
-<!-- <!-- cars %>%             # the data  #REVEAL --> -->
-<!-- <!--   filter(speed > 4) %>%  --> -->
-<!-- <!--   mutate(var = 2) -> --> -->
-<!-- <!-- my_data --> -->
-<!-- <!-- ``` --> -->
+---
 
+# Sharing your flipbooks
 
-<!-- <!-- --- --> -->
 
-<!-- <!-- *** apply_reveal("data_transformation")` --> -->
-
-<!-- <!-- --- --> -->
-
-<!-- <!-- # Plotting the transformed data (and *not* revealing your plot in advance -- *just* showing the build). --> -->
-
-<!-- <!-- Now you can use the transformed data to start the plot.   --> -->
-
-<!-- <!-- Note that you also might prefer a behavior where you don't show a preview of the finished plot in advance.  I show an example of this below. I don't evaluate the code chunk (i.e. I've set eval to FALSE) and I don't echo it (i.e. echo is set to false). This means that the code chunk itself won't yeild any output (code or plot) to be put on a slide.  This means that I don't need to use the dashes, \-\-\- to separate the code chunk from the `apply_reveal()` statement, which differs from previous set-ups where a slide separator directly preceded the `apply_reveal()` call.  --> -->
-
-<!-- <!-- --- --> -->
-
-<!-- <!-- ```{r just_plotting, echo = F, eval = FALSE, fig.height=5} --> -->
-<!-- <!-- ggplot(data = my_data) +              # pipe to ggplot --> -->
-<!-- <!--   aes(x = speed) + --> -->
-<!-- <!--   aes(y = dist) + --> -->
-<!-- <!--   # Describing what follows --> -->
-<!-- <!--   geom_point(alpha = .3) + #REVEAL --> -->
-<!-- <!--   aes( --> -->
-<!-- <!--     color = speed > 14 --> -->
-<!-- <!--   ) %+% --> -->
-<!-- <!--   cars --> -->
-<!-- <!-- ``` --> -->
-
-
-<!-- <!-- *** apply_reveal("just_plotting")` --> -->
-
-<!-- <!-- ```{r} --> -->
-<!-- <!-- # make_flipbook_mini_chunk(chunk_name = "just_plotting", file_out = "a_flipbook_mini_example.gif") --> -->
-<!-- <!-- ``` --> -->
-
-<!-- <!-- --- --> -->
-
-<!-- # Can't stomach reverse assignment? -->
-
-
-<!-- --- -->
-
-<!-- ```{r regular_assignment, eval = T, echo = F} -->
-<!-- a_plot <- cars %>%             # the data  #REVEAL -->
-<!--   filter(speed > 4) %>%  # subset -->
-<!--   ggplot() +              # pipe to ggplot -->
-<!--   aes(x = speed) + -->
-<!--   aes(y = dist) + -->
-<!--   # Describing what follows -->
-<!--   geom_point(alpha = .3) + #REVEAL -->
-<!--   aes(color = -->
-<!--   speed > 14 -->
-<!--   ) %+% -->
-<!--   cars -->
-<!-- ``` -->
-
-<!-- --- -->
-
-<!-- r apply_reveal("regular_assignment", reg_assignment = T)` -->
-
-
-
-
-<!-- --- -->
-
-<!-- <!-- --- --> -->
-
-<!-- <!-- # User defined reveal --> -->
-
-<!-- <!-- --- --> -->
-
-<!-- <!-- ```{r user_definded_reveal, eval = F, echo = F} --> -->
-<!-- <!-- ggplot(data = my_data) +   # pipe to ggplot --> -->
-<!-- <!--   aes(x = speed) +  --> -->
-<!-- <!--   aes(y = dist) + #REVEAL --> -->
-<!-- <!--   # Describing what follows  --> -->
-<!-- <!--   geom_blank() + --> -->
-<!-- <!--   geom_point(data = my_data %>% slice(1)) + #REVEAL --> -->
-<!-- <!--   geom_point() #REVEAL --> -->
-<!-- <!-- ``` --> -->
-
-<!-- <!-- *** apply_reveal("user_definded_reveal", user_reveal = T)` --> -->
-
-
-<!-- <!-- --- --> -->
-
-<!-- <!-- # For use in traditional presentations. --> -->
-
-<!-- <!-- --- --> -->
-
-
-<!-- ```{r slow_traditional_presentation, eval = F, echo = F} -->
-<!-- gapminder::gapminder %>% -->
-<!--   filter(year == 2002) %>% -->
-<!--   ggplot() + # pipe to ggplot -->
-<!--   aes(x = gdpPercap) + #REVEAL -->
-<!--   aes(y = lifeExp) + #REVEAL -->
-<!--   # Describing what follows -->
-<!--   geom_point() + -->
-<!--   aes(alpha = country == "New Zealand") + -->
-<!--   scale_alpha_discrete(limits = c(0, 1), guide = F) + #REVEAL -->
-<!--   aes(alpha = NULL) + #REVEAL -->
-<!--   aes(size = pop) + #REVEAL -->
-<!--   aes(color = continent) #REVEAL -->
-<!-- apply_reveal() -->
-<!-- ``` -->
-
-<!-- r apply_reveal(chunk_name = "slow_traditional_presentation", display_type = "output", break_type = "user")` -->
-
-
-
-<!-- <!-- --- --> -->
-
-<!-- <!-- # Non sequential reveal (or can't stomach "slow ggplot"?) --> -->
-
-<!-- <!-- --- --> -->
-
-<!-- <!-- ```{r non_sequential, eval = F, echo = F} --> -->
-<!-- <!-- cars %>% --> -->
-<!-- <!--   mutate(speed_14_plus = speed >= 14) %>% --> -->
-<!-- <!--   ggplot() + --> -->
-<!-- <!--   aes(x = speed) + --> -->
-<!-- <!--   aes(y = dist) + --> -->
-<!-- <!--   # Describing what follows --> -->
-<!-- <!--   geom_point( --> -->
-<!-- <!--     size = 2, #REVEAL2 --> -->
-<!-- <!--     alpha = .3, #REVEAL3 --> -->
-<!-- <!--     color = "blue", #REVEAL4 --> -->
-<!-- <!--     ) + --> -->
-<!-- <!--   aes(color = speed_14_plus) --> -->
-<!-- <!-- ``` --> -->
-
-<!-- <!-- --- --> -->
-
-
-<!-- <!-- r apply_reveal_nonsequential("non_sequential")` --> -->
-
-
-<!-- --- -->
-
-<!-- # Non-traditional pipelines  -->
-
-<!-- --- -->
-
-<!-- r apply_reveal("logical_indexing")` -->
-
-<!-- ```{r logical_indexing, eval = F, echo = F} -->
-<!-- list(thing_1 = "a", -->
-<!--      thing_2 = matrix(data = 1:5, nrow = 2)) -> -->
-<!-- my_named_list -->
-<!-- list("a", -->
-<!-- 1:5, -->
-<!-- my_named_list) %>% -->
-<!-- .[[3]] %>% -->
-<!-- .$thing_2 %>% -->
-<!-- .[3] -->
-<!-- ``` -->
-
-
-
-<!-- --- -->
-
-<!-- # data.table -->
-
-
-
-<!-- --- -->
-
-<!-- # Multiple realizations -->
-
-
-<!-- --- -->
-
-<!-- ```{r many_realizations, eval = F, echo = F} -->
-<!-- tibble(tail_length = rnorm(n = 50),  -->
-<!--        brain_weight = rnorm(n = 50)) -> -->
-<!-- my_data; my_data %>% slice(1:3) -->
-
-<!-- ggplot(data = my_data) + -->
-<!--   aes(x = tail_length) + -->
-<!--   aes(y = brain_weight) + -->
-<!--   geom_point(alpha = .8, -->
-<!--              color = "steelblue", -->
-<!--              shape = 21, -->
-<!--              size = 6) + -->
-<!--   theme_minimal() + -->
-<!--   coord_cartesian(xlim = c(-3,3), -->
-<!--                   ylim = c(-3,3)) -->
-
-<!-- cor.test(x = my_data$tail_length, -->
-<!--          y = my_data$brain_weight) -->
-<!-- ``` -->
-
-
-<!-- *** apply_repeat_reveal(chunk_name = "many_realizations", num_reveal = 10)` -->
-
-
-<!-- --- -->
-
-<!-- # Acknowledgements and Thanks -->
-
-<!-- Flipbooker visionaries and developers -->
-
-<!-- - Emi Tanaka -->
-<!-- - Garrick Aden-Buie -->
-<!-- - Ryan Granier -->
-<!-- - Suraj Tharpa -->
-
-<!-- Key Infrastructure -->
-
-<!-- - Yihui Xie (Rmarkdown, Xaringan), Allison Pres Hill -->
-<!-- - Hadley Wickham (ggplot, tidyverse) -->
-<!-- - Stefan Milton Bache (magrittr %>%) -->
-<!-- - Claus Wilke (cowplot::plot_grid()) -->
-<!-- - Romain Francois - getParseData -->
-
-<!-- --- -->
-
-<!-- More influences -->
-
-<!-- - Jesse Mostipak -->
-<!-- - Eva Murry & Andy Kriebel -->
-<!-- - #MakeoverMonday -->
-<!-- - #TidyTuesday -->
-<!-- - Mara Averick -->
-<!-- - Matt Blackwell -->
-<!-- - Women Summer School  -->
-<!-- - Roger Peng -->
-<!-- - Edward Tufte -->
-<!-- - Matt Dowle -->
-<!-- - Norm Matloff -->
-<!-- - Elio Campitelli -->
-<!-- - BITSS -->
-
-
-
-<!-- --- -->
-
-<!-- # So meta... -->
-
-<!-- Using flipbooking on the flipbook parser code -->
-
-
-<!-- --- -->
-
-<!-- ```{r, eval = F} -->
-<!-- local_code <- # for testing w/o knitting -->
-<!--   "cars %>%             # the data  #REVEAL -->
-<!-- filter(speed > 4) %>%  # subset -->
-<!-- ggplot() +              # pipe to ggplot -->
-<!-- aes(x = speed) + -->
-<!-- aes(y = dist) + -->
-<!-- # Describing what follows #REVEAL2 -->
-<!-- geom_point(alpha = .3) + #REVEAL -->
-<!-- aes(color = -->
-<!-- speed > 14 -->
-<!-- ) %+% -->
-<!-- cars -> -->
-<!-- my_plot " -->
-<!-- ``` -->
 
 
 

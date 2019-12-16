@@ -216,11 +216,22 @@ calc_lines_to_highlight <- function(which_show = list(c(1,2), c(1,2,3,4)), break
 #   parse_code() %>%
 #   calc_lines_to_show(break_type = "non_seq") %>%
 #   calc_lines_to_highlight(break_type = "non_seq")
-
-
-
-
-
+#
+# local_code %>%
+#   parse_code() %>%
+#   calc_lines_to_show(break_type = 5) %>%
+#   calc_lines_to_highlight(break_type = 5)
+#
+#
+# local_code %>%
+#   parse_code() %>%
+#   calc_lines_to_show(break_type = "auto") %>%
+#   calc_lines_to_highlight(break_type = "auto")
+#
+# local_code %>%
+#   parse_code() %>%
+#   calc_lines_to_show(break_type = "user") %>%
+#   calc_lines_to_highlight(break_type = "user")
 
 # calc_lines_to_highlight()
 
@@ -248,32 +259,7 @@ show_and_highlight_pane_classic <- function(parsed, which_show = 1:3, which_high
 
 }
 
-
-# local_code %>%
-#   parse_code() %>%
-#   show_and_highlight_pane_classic()
-
-#' #' reveal_code_nonsequential(code = local_code_non_sequential)	#' #' reveal_code_nonsequential(code = local_code_non_sequential)
-#' reveal_code_nonsequential <- function(code = local_code_non_sequential,	#' reveal_code_nonsequential <- function(code = local_code_non_sequential,
-#'                                       which_supress = 2:5,	#'                                         which_supress = 2:5,
-#'                                       which_highlight = 6){	#'                                         which_highlight = 6){
-#'
-#'   #'
-#'   parsed <- parse_code(code = code)	#'   parsed <- parse_code(code = code)
-#'
-#'   #'
-#'   parsed %>%	#'   parsed %>%
-#'     dplyr::mutate(reveal = ifelse(dplyr::row_number() %in% which_supress, "", raw_code)) %>%	#'     dplyr::mutate(reveal = ifelse(dplyr::row_number() %in% which_supress, "", raw_code)) %>%
-#'     dplyr::mutate(reveal = stringr::str_remove(reveal, "#REVEAL\\d+")) %>%	#'     dplyr::mutate(reveal = stringr::str_remove(reveal, "#REVEAL\\d+")) %>%
-#'     dplyr::mutate(highlight = ifelse(dplyr::row_number() %in% which_highlight, "#<<", "")) %>%	#'     dplyr::mutate(highlight = ifelse(dplyr::row_number() %in% which_highlight, "#<<", "")) %>%
-#'     dplyr::mutate(out = paste0(reveal, "  ", comment, highlight)) %>%	#'     dplyr::mutate(out = paste0(reveal, "  ", comment, highlight)) %>%
-#'     dplyr::select(out) %>%	#'     dplyr::select(out) %>%
-#'     dplyr::filter(!str_detect(out, "^\\s+$")) ->	#'     dplyr::filter(!str_detect(out, "^\\s+$")) ->
-#'     up_to_result	#'     up_to_result
-#'   up_to_result$out	#'   up_to_result$out
-#'
-#'   #'
-#'                                       }
+# show_and_highlight_pane_classic(parsed = parse_code(local_code))
 
 
 # example
@@ -290,6 +276,8 @@ show_and_highlight_pane_reg_assign <- function(parsed, which_show = 1:3, which_h
     c(the_reveal, " ", paste(object_to_track, "# print object"))
 
 }
+
+# show_and_highlight_pane_reg_assign(parsed = parse_code(local_code_regular_assignment))
 
 # example reveal_pane(parsed = parse_code(local_code))
 partial_code <- function(parsed, which_show = 1:3, which_highlight = 3, reg_assign = F){
@@ -431,7 +419,7 @@ if (display_type == "both") {
 # partially_knit_chunks()
 
 
-#' Apply reveal in Rmarkdown file, to be used in line
+#' Apply reveal in Rmarkdown file, to be used in-line
 #'
 #' @param chunk_name a character string which is a chunk name
 #' @param user_reveal a logical for if breaks should be automatically determined or have been defined manually with "#REVEAL" message
@@ -443,7 +431,7 @@ if (display_type == "both") {
 #' @export
 #'
 #' @examples
-apply_reveal <- function(chunk_name, display_type = "both", break_type = "auto", title = "", reg_assign = F, split = 40){
+flipbookify <- function(chunk_name, display_type = "both", break_type = "auto", title = "", reg_assign = F, split = 40){
 
   paste(knitr::knit(text =
                       partially_knit_chunks(chunk_name,

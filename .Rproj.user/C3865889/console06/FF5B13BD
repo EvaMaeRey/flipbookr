@@ -1667,3 +1667,16 @@ remote: Resolving deltas:   0% (0/6)[Kremote: Resolving deltas:  16% (1/6)[K
 To https://github.com/EvaMaeRey/flipbookr.git
    90bcabb..aa04a21  master -> master
 ]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ [KEvangelines-Air:flipbookr evangelinereynolds$ git add .
+]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git commit -m "fixed highlighting for non-sequential reveal, and wored [K[K[Kked on skeleto n.Rmd [K  [Kth[K[K[K, the e[Ktmep[K[K[Kemplac[Kte fro[K[Kor the Rstu[K[K[KStudio add in"
+[master 44333c2] fixed highlighting for non-sequential reveal, and worked on skeleton.Rmd, the template for the RStudio add in
+ 6 files changed, 115 insertions(+), 56 deletions(-)
+]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git puch[K[Ksh
+Counting objects: 24, done.
+Delta compression using up to 4 threads.
+Compressing objects:   6% (1/15)   Compressing objects:  13% (2/15)   Compressing objects:  20% (3/15)   Compressing objects:  26% (4/15)   Compressing objects:  33% (5/15)   Compressing objects:  40% (6/15)   Compressing objects:  46% (7/15)   Compressing objects:  53% (8/15)   Compressing objects:  60% (9/15)   Compressing objects:  66% (10/15)   Compressing objects:  73% (11/15)   Compressing objects:  80% (12/15)   Compressing objects:  86% (13/15)   Compressing objects:  93% (14/15)   Compressing objects: 100% (15/15)   Compressing objects: 100% (15/15), done.
+Writing objects:   4% (1/24)   Writing objects:   8% (2/24)   Writing objects:  12% (3/24)   Writing objects:  16% (4/24)   Writing objects:  20% (5/24)   Writing objects:  25% (6/24)   Writing objects:  29% (7/24)   Writing objects:  33% (8/24)   Writing objects:  37% (9/24)   Writing objects:  41% (10/24)   Writing objects:  45% (11/24)   Writing objects:  50% (12/24)   Writing objects:  54% (13/24)   Writing objects:  58% (14/24)   Writing objects:  62% (15/24)   Writing objects:  66% (16/24)   Writing objects:  70% (17/24)   Writing objects:  75% (18/24)   Writing objects:  79% (19/24)   Writing objects:  83% (20/24)   Writing objects:  87% (21/24)   Writing objects:  91% (22/24)   Writing objects:  95% (23/24)   Writing objects: 100% (24/24)   Writing objects: 100% (24/24), 2.55 KiB | 326.00 KiB/s, done.
+Total 24 (delta 8), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/8)[Kremote: Resolving deltas:  12% (1/8)[Kremote: Resolving deltas:  25% (2/8)[Kremote: Resolving deltas:  37% (3/8)[Kremote: Resolving deltas:  50% (4/8)[Kremote: Resolving deltas:  62% (5/8)[Kremote: Resolving deltas:  75% (6/8)[Kremote: Resolving deltas:  87% (7/8)[Kremote: Resolving deltas: 100% (8/8)[Kremote: Resolving deltas: 100% (8/8), completed with 8 local objects.[K
+To https://github.com/EvaMaeRey/flipbookr.git
+   aa04a21..44333c2  master -> master
+]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ [KEvangelines-Air:flipbookr evangelinereynolds$ [KEvangelines-Air:flipbookr evangelinereynolds$ [KEvangelines-Air:flipbookr evangelinereynolds$ git add .
