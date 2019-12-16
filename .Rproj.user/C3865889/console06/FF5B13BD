@@ -1654,3 +1654,16 @@ remote: Resolving deltas:   0% (0/10)[Kremote: Resolving deltas:  10% (1/10)[
 To https://github.com/EvaMaeRey/flipbookr.git
    c10d813..90bcabb  master -> master
 ]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git s[Kadd .
+]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ gip[Kt commit - m[K[Km "add dplyr::n()"
+[master aa04a21] add dplyr::n()
+ 4 files changed, 660 insertions(+), 6 deletions(-)
+]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git push
+Counting objects: 15, done.
+Delta compression using up to 4 threads.
+Compressing objects:   9% (1/11)   Compressing objects:  18% (2/11)   Compressing objects:  27% (3/11)   Compressing objects:  36% (4/11)   Compressing objects:  45% (5/11)   Compressing objects:  54% (6/11)   Compressing objects:  63% (7/11)   Compressing objects:  72% (8/11)   Compressing objects:  81% (9/11)   Compressing objects:  90% (10/11)   Compressing objects: 100% (11/11)   Compressing objects: 100% (11/11), done.
+Writing objects:   6% (1/15)   Writing objects:  13% (2/15)   Writing objects:  20% (3/15)   Writing objects:  26% (4/15)   Writing objects:  33% (5/15)   Writing objects:  40% (6/15)   Writing objects:  46% (7/15)   Writing objects:  53% (8/15)   Writing objects:  60% (9/15)   Writing objects:  66% (10/15)   Writing objects:  73% (11/15)   Writing objects:  80% (12/15)   Writing objects:  86% (13/15)   Writing objects:  93% (14/15)   Writing objects: 100% (15/15)   Writing objects: 100% (15/15), 5.13 KiB | 1.03 MiB/s, done.
+Total 15 (delta 6), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/6)[Kremote: Resolving deltas:  16% (1/6)[Kremote: Resolving deltas:  33% (2/6)[Kremote: Resolving deltas:  50% (3/6)[Kremote: Resolving deltas:  66% (4/6)[Kremote: Resolving deltas:  83% (5/6)[Kremote: Resolving deltas: 100% (6/6)[Kremote: Resolving deltas: 100% (6/6), completed with 6 local objects.[K
+To https://github.com/EvaMaeRey/flipbookr.git
+   90bcabb..aa04a21  master -> master
+]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ [KEvangelines-Air:flipbookr evangelinereynolds$ git add .

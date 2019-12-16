@@ -127,7 +127,7 @@ parse_code <- function(code) {
 
 
 
-calc_which_lines_to_show <- function(parsed, break_type = "user"){
+calc_lines_to_show <- function(parsed, break_type = "user"){
 
   if (break_type == "auto") {
 
@@ -165,10 +165,10 @@ calc_which_lines_to_show <- function(parsed, break_type = "user"){
   which_show
 
 }
-# calc_which_lines_to_show(parsed = parse_code(local_code), break_type = "user")
-# calc_which_lines_to_show(parsed = parse_code(local_code), break_type = "auto")
-# calc_which_lines_to_show(parsed = parse_code(local_code), break_type = "non_seq")
-# calc_which_lines_to_show(parsed = parse_code(local_code), break_type = 6)
+# calc_lines_to_show(parsed = parse_code(local_code), break_type = "user")
+# calc_lines_to_show(parsed = parse_code(local_code), break_type = "auto")
+# calc_lines_to_show(parsed = parse_code(local_code), break_type = "non_seq")
+# calc_lines_to_show(parsed = parse_code(local_code), break_type = 6)
 
 # calc_lines_to_highlight()
 calc_lines_to_highlight <- function(which_show = list(c(1,2), c(1,2,3,4)), break_type = "auto"){
@@ -176,7 +176,7 @@ calc_lines_to_highlight <- function(which_show = list(c(1,2), c(1,2,3,4)), break
 
   which_highlight <- list()
 
-  if (break_type == "user" | break_type == "auto" | break_type == "non_seq"){
+  if (break_type == "user" | break_type == "auto"){
 
   which_highlight[[1]] <- which_show[[1]]
 
@@ -194,6 +194,18 @@ calc_lines_to_highlight <- function(which_show = list(c(1,2), c(1,2,3,4)), break
 
       }
 
+  } else if (break_type == "non_seq") {
+
+
+    which_highlight[[1]] <- as.integer(c())
+
+    for (i in 2:length(which_show)) {
+
+      which_highlight[[i]] <- which_show[[i]][!(which_show[[i]] %in% which_show[[i - 1]])]
+
+    }
+
+
     }
 
   which_highlight
@@ -202,9 +214,9 @@ calc_lines_to_highlight <- function(which_show = list(c(1,2), c(1,2,3,4)), break
 
 # local_code %>%
 #   parse_code() %>%
-#   calc_which_lines_to_show(break_type = "non_seq") %>%
+#   calc_lines_to_show(break_type = "non_seq") %>%
 #   calc_lines_to_highlight(break_type = "non_seq")
-#
+
 
 
 
@@ -235,6 +247,11 @@ show_and_highlight_pane_classic <- function(parsed, which_show = 1:3, which_high
 
 
 }
+
+
+# local_code %>%
+#   parse_code() %>%
+#   show_and_highlight_pane_classic()
 
 #' #' reveal_code_nonsequential(code = local_code_non_sequential)	#' #' reveal_code_nonsequential(code = local_code_non_sequential)
 #' reveal_code_nonsequential <- function(code = local_code_non_sequential,	#' reveal_code_nonsequential <- function(code = local_code_non_sequential,
@@ -383,7 +400,7 @@ partially_knit_chunks <- function(chunk_name = "example_chunk_name",
     parse_code() ->
   parsed
 
-which_show <- calc_which_lines_to_show(parsed = parsed, break_type)
+which_show <- calc_lines_to_show(parsed = parsed, break_type)
 
 which_highlight <- calc_lines_to_highlight(which_show = which_show,
                                            break_type = break_type)

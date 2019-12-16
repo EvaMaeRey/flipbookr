@@ -142,7 +142,7 @@ ggplot(data = my_data) +
 Okay. Let's load the the `flipbookr` and the `tidyverse` packages.
 
 ```{r, cache = F}
-library(flipbookr)
+# library(flipbookr)
 library(tidyverse)
 ```
 
@@ -151,7 +151,7 @@ And load the data from the tidytuesday github page.
 ```{r, cache = F}
 # nobel_winners <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-14/nobel_winners.csv")
 # source("../../../../../R/flipbook_mini.R")
-# source("../../../../../R/base_parse_reveal_xaringan.R")
+source("../../../../../R/base_parse_reveal_xaringan.R")
 # source("../../../../../R/non_sequential_reveal.R")
 ```
 
@@ -190,13 +190,6 @@ cars %>%             # the data
   aes(size = speed) #REVEAL
 ```
 
----
-
-# User
-
----
-
-`r apply_reveal("cars", break_type = "user")`
 
 ---
 
@@ -206,6 +199,13 @@ cars %>%             # the data
 
 `r apply_reveal("cars", break_type = "auto")`
 
+---
+
+# User
+
+---
+
+`r apply_reveal("cars", break_type = "user")`
 
 ---
 
@@ -217,82 +217,6 @@ cars %>%             # the data
 
 ---
 
-# Multiverse
-
----
-
-`r apply_reveal("cars", break_type = 5)`
-
-
----
-
-
-
-
----
-
-# Multiverse
-
----
-
-`r apply_reveal("cars_multi", break_type = 5)`
-
----
-
-
-```{r cars_multi, echo = F, eval = T, fig.height=5}
-tibble(speed = rnorm(5),
-       dist = rnorm(5)) %>%             # the data 
-  ggplot() +              # pipe to ggplot
-  aes(x = speed) +
-  aes(y = dist) +
-  # Describing what follows
-  geom_point(
-    alpha = .3,
-    color = "blue" #REVEAL2
-    ) + 
-  aes(size = speed)
-```
-
-
-
- 
-
----
-
-# Regular assignment
-
----
-
-`r apply_reveal("reg_assign", break_type = "auto", display_type = "both", reg_assign = T)`
-
-
-```{r reg_assign, echo = F, eval = T}
-my_object <- cars %>%             # the data  
-  filter(speed > 4) %>%  # subset
-  ggplot() +              # pipe to ggplot
-  aes(x = speed) +
-  aes(y = dist) 
-```
-
----
-
-
-```{r}
-my_local <- "cars %>%             # the data  #REVEAL
-  filter(speed > 4) %>%  # subset
-  ggplot() +              # pipe to ggplot
-  aes(x = speed) +
-  aes(y = dist) +
-  # Describing what follows
-  geom_point(alpha = .3) + #REVEAL
-  aes(color =
-  speed > 14
-  ) %+%
-  cars"
-```
-
----
 
 # Output only
 
@@ -307,6 +231,111 @@ my_local <- "cars %>%             # the data  #REVEAL
 ---
 
 `r apply_reveal("cars", break_type = "auto", display_type = "code")`
+
+---
+
+# Multiverse
+
+---
+
+`r apply_reveal("cars_multi", break_type = 5)`
+
+
+```{r cars_multi, echo = F, eval = F, fig.height=5}
+cars %>% 
+  sample_frac(size = 1, replace = T) %>%             
+  ggplot() +              # pipe to ggplot
+  aes(x = speed) +
+  aes(y = dist) +
+  # Describing what follows
+  geom_count(
+    alpha = .3,
+    color = "blue" #REVEAL2
+    ) + 
+  geom_smooth(method = lm, se = F) +
+  coord_cartesian(xlim = range(cars$speed),
+                  ylim = range(cars$dist))
+```
+
+
+
+
+
+
+ 
+
+---
+
+# Regular assignment
+
+---
+
+`r apply_reveal("reg_assign_example", break_type = "auto", display_type = "both", reg_assign = T)`
+
+
+```{r reg_assign_example, echo = F, eval = T}
+my_object <- cars %>%   # the data  
+  filter(speed > 4) %>%  # subset
+  ggplot() +              # pipe to ggplot
+  aes(x = speed) +
+  aes(y = dist) 
+```
+
+<!-- --- -->
+
+
+<!-- # Under the hood of flipbookr -->
+
+
+<!-- ```{r} -->
+<!-- my_local <- "cars %>%             # the data  #REVEAL -->
+<!--   filter(speed > 4) %>%  # subset -->
+<!--   ggplot() +              # pipe to ggplot -->
+<!--   aes(x = speed) + -->
+<!--   aes(y = dist) + -->
+<!--   # Describing what follows -->
+<!--   geom_point(alpha = .3) + #REVEAL -->
+<!--   aes(color = -->
+<!--   speed > 14 -->
+<!--   ) %+% -->
+<!--   cars" -->
+<!-- ``` -->
+
+
+
+<!-- --- -->
+
+<!-- r apply_reveal("calc_panes")` -->
+
+
+<!-- ```{r calc_panes, eval = F, echo = F} -->
+<!-- flipbookr:::local_code %>% -->
+<!--   parse_code() %>% -->
+<!--   calc_lines_to_show(break_type = "user") %>% -->
+<!--   calc_lines_to_highlight(break_type = "user") -->
+<!-- ``` -->
+
+<!-- --- -->
+
+<!-- `r apply_reveal("return_partial_code")` -->
+
+<!-- ```{r return_partial_code, eval = F, echo = F} -->
+<!-- flipbookr:::local_code %>% -->
+<!--   parse_code() %>%  -->
+<!--   partial_code(which_show = 1:5, which_highlight = 5) -->
+<!-- ``` -->
+
+<!-- --- -->
+
+<!-- ```{r} -->
+<!-- return_partial_chunks_template() -->
+<!-- ``` -->
+
+
+<!-- --- -->
+
+<!-- Sequential workflow that provides feedback and reassurance.  -->
+
 
 ---
 
