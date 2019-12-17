@@ -21,54 +21,58 @@ output:
 
 --
 
-- Yes, it's still under construction (thus, the dramatic fragile and perilous)
+- Yes, it's still under construction (thus, the dramatic "fragile" and "perilous")
 
 --
 
-- Yes, you can help by contributing at https://github.com/EvaMaeRey/flipbookr and letting us know if/how it breaks and frustrates you!
+- Yes, you can help make it less fragile and perilous by contributing at https://github.com/EvaMaeRey/flipbookr and letting us know if/how it breaks and frustrates you!  
+
+--
+
+- Then we'll retitle this book!
+
+
 
 ---
 
 # "Flipbooks" you say? 
 
-“Flipbooks” are tools that present side-by-side, aligned, incremental code-output evolution via automated code parsing and reconstruction. More about Flipbooks [here](https://evamaerey.github.io/little_flipbooks_library/about/what_the_flipbook).  There now exists a package for making Flipbooks for R: flipbookr.  This is underdevelopment, but you are welcome to try it out by installing from github:
+“Flipbooks” are tools that present side-by-side, aligned, incremental code-output evolution via automated code parsing and reconstruction. More about Flipbooks [here](https://evamaerey.github.io/little_flipbooks_library/about/what_the_flipbook).  There now exists a package for making Flipbooks for R: `flipbookr`.  This is under development, but you are welcome to try it out by installing from github:
 
 ``` r
 devtools::install_github("EvaMaeRey/flipbookr")
 ```
 
-Once you install the package, a template for making the flipbook that you are looking at will be available for selection from within RStudio, File -> New File -> R Markdown -> From Template -> A Minimal Flipbook.
+You can see the template that was used to build this flipbook that you are looking at right now  [here](https://raw.githubusercontent.com/EvaMaeRey/flipbookr/master/inst/rmarkdown/templates/template-name/skeleton/skeleton.Rmd).
 
-Or you can find the .Rmd template for this flipbook [here](https://raw.githubusercontent.com/EvaMaeRey/flipbookr/master/inst/rmarkdown/templates/template-name/skeleton/skeleton.Rmd).
+
+And once you install the package, a template for making the flipbook that you are looking at will also be available from within RStudio, File -> New File -> R Markdown -> From Template -> "A Minimal Flipbook".
+
 
 ---
 
-# Set up
+# Critical infrastructure
 
-The flipbook you will be building here uses the Rmarkdown (comingles code and prose) and Xaringan (html slideshows) infrastructure.  Here I set the code chunk options for the code chunks that follow.
+The flipbook you will be building here uses the [rmarkdown](https://rmarkdown.rstudio.com/lesson-1.html) and [Xaringan](https://github.com/yihui/xaringan) (html slideshow) infrastructure.  
 
+Dynamic documents like `rmarkdown` documents allow you to comingle code and prose in a single document.  Flipbooks walk through code by spawning new *partial* code chunks from a single, user-input code chunk.  The partial code chunks build up and are displayed consecutively in a slide show --- along side it's output --- which yeilds a movie-like experience, and allows for easier understanding of each step.
 
-```{r setup}
-knitr::opts_chunk$set(fig.width = 6, message = F, warning = F, 
-                      comment = "", cache = F)
-```
+---
 
-You'll also use the flipbookr package, of course!
+We use the flipbookr package, of course! This does the work of disassembling a single code chuck and creating the "build" of multiple partial-code chunks.  
 
-```{r}
+```{r, cache = F}
 library(flipbookr)
 ```
 
+Also, I set *code chunk* options for the code chunks that follow.  These will apply to the spawned code chunks.
 
-
-
-```{r}
-library(tidyverse)
+```{r setup}
+knitr::opts_chunk$set(fig.width = 6, message = F, warning = F, comment = "", cache = T)
 ```
 
 
-
-<!-- To work more interactively, I still am making the script available for myself-->
+<!-- So that I can sometimes work interactively on the package, I still am making the source script available for myself.-->
 
 
 ```{r, cache = F, echo = F}
@@ -80,33 +84,47 @@ library(tidyverse)
 
 ---
 
-# Xaringan look and feel
+## Change slide show look and feel
 
 To quickly change the look and feel of your xaringan slide show, I'd recommend that you use the [xaringanthemer](https://github.com/gadenbuie/xaringanthemer) package.  The code below creates a css file for you that will be used to style your slide show; you can see it referenced at the beginning of this document in the "YMAL" --- the introductory materials that you see at the top of this document.   
 
 ```{r xaringan_look}
 xaringanthemer::mono_accent(
-  code_highlight_color = "rgba(266, 266, 50, .35)",
-  base_color = "#63418A")
+  code_highlight_color = "rgba(255, 211, 0, .35)",
+  base_color = "#03418A")
 ```
 
-
----
-
-
-
-
+It may be obvious by now, if you are following along with the source template, that slide breaks are indicated with `---` (be careful trailing white space is not allowed). 
 
 
 ---
 
-# Using flipbookr::flipbookify()
+# Using `flipbookr::reveal()`
 
-There are several modalities that you might be interested in using for "flipbooking" your code and the next section is dedicated to demoing some of them. 
+You will use the `reveal()` function [inline](https://rmarkdown.rstudio.com/lesson-4.html) to generate the derivitive code chunks, rather than inside of a code chunk, so that the text that is generated is interpreted correctly when rendered.  The inline code will look something like this:
 
-We'll apply our flipbooking to the below input code - the code chunk is named "cars".  For now I set echo = TRUE for this code chunk, so you can see the code content but sometimes you might like to set echo to FALSE. 
+```markdown
+``r "r flipbookr::reveal(chunk_name = \"cars\")"``
+``` 
+
+<!-- The above is for the rendered version, Just look at the examples below if you are in the source! -->
+
+There are several modalities that you might be interested in using for "flipbookifying" your code and the next section is dedicated to demoing some of them below.
 
 
+- **break type** -- *which lines of code should be revealed when*, `break_type` defaults to "auto"
+- **display type** -- *display code and output, or just output, or just code?*, `display_type` defaults to "both"
+- **assignment type** -- *does code chunk use regular assignment?*, `reg_assign` defaults to FALSE
+
+
+
+---
+
+At first we'll apply our flipbooking to the below input code - the code chunk is named "cars".  For now I set echo = TRUE for this code chunk, so you can see the code content but sometimes you might like to set echo to FALSE. This code uses tidyverse tools, so we'll load that too in a previous code chunk. 
+
+```{r}
+library(tidyverse)
+```
 
 ```{r cars, echo = T, eval = F, fig.height=5}
 cars %>%             # the data 
@@ -122,54 +140,63 @@ cars %>%             # the data
   aes(size = speed) #REVEAL
 ```
 
-Notice the regular comments and the special #REVEAL comments.
+---
+
+# `break_type`
+
+
+
+Notice the regular comments and the special #REVEAL comments, these will be used for a couple of the different "break type" modalities.
+
+
+```{r, code = knitr::knit_code$get("cars"), eval = F, echo = T}
+```
+
+<!-- Also notice how we've created a new code chunk with the code from the previous chunk. -->
+<!-- This slide is also about giving you some intuition about how flipbooking works in the background. -->
+<!-- (more on this [here](https://emitanaka.rbind.io/post/knitr-knitr-code/)) -->
+
 
 ---
 
-## Slide breaks in-line call. 
-
-
-
----
-
-## Auto
+## break_type = "auto"
 
 One parameter of flipbooking is the break_type.  The default is "auto", in which appropriate breakpoints are determined automatically --- by finding where parentheses are balanced. 
 
 ---
 
-`r flipbookify("cars", break_type = "auto")`
+`r reveal("cars", break_type = "auto")`
 
 ---
 
-## User
+## break_type = "user"
 
 If the break_type is set to "user", the breakpoints are those indicated by the user with the special comment #REVEAL
 
 ---
 
-`r flipbookify("cars", break_type = "user")`
+`r reveal("cars", break_type = "user")`
 
 ---
 
-## User, nonsequential
+## break_type = "non_seq"
 
-If the break_type is set to "non_seq", the breakpoints are those indicated by the user with the special comment #REVEAL2, #REVEAL3 etc to indicate at which point in time the code should appear.  
-
----
-
-`r flipbookify("cars", break_type = "non_seq")`
-
+If the break_type is set to "non_seq", the breakpoints are those indicated by the user with the special numeric comment #REVEAL2, #REVEAL3 etc to indicate at which point in time the code should appear.  
 
 ---
 
-## Multiverse - multiple realizations for the same code
+`r reveal("cars", break_type = "non_seq")`
+
+
+---
+
+## `break_type = 5` *(or entering the multiverse)*
 
 Another modality is to set break_type equal to a positive integer, indicating that you want the same code chunk to be displayed multiple times.  This makes the most sense in a setting where there is some randomization or random sampling and you want to see different realizations. 
 
 ---
 
-`r flipbookify("cars_multi", break_type = 3)`
+`r reveal("cars_multi", break_type = 3)`
 
 
 ```{r cars_multi, echo = F, eval = F, fig.height=5}
@@ -194,47 +221,51 @@ cars %>%
 
 ---
 
-# display_type
+# `display_type`
 
 There are also different display modalities.  Namely you can indicate if you want "both" the code and the output displayed in your flipbookification, or just the "output" (perhaps to be used in a traditional presentation), or just the "code" (which might be used to kind of test student expectations about some code).  You have already seen the default where the parameter display_type is set to "both", but let's have a look at "output" and "code" only.
 
 
 ---
 
-## Output only
+## `display_type = "output"`
 
 
 
 ---
 
-`r flipbookify("cars", break_type = "user", display_type = "output")`
+`r reveal("cars", break_type = "user", display_type = "output")`
 
 ---
 
-## Code only
+## `display_type = "code"`
 
 ---
 
-`r flipbookify("cars", break_type = "auto", display_type = "code")`
+`r reveal("cars", break_type = "auto", display_type = "code")`
 
-
-
----
-
-# assignment and interchunk dependencies
-
----
-
-## regular and reverse assignment (reg_assign = T or reg_assign = F)
-
-flipbooking works most naturally with chains of manipualtions and reverse assignment.  Working sequentially with a pipeline of code, you get feedback all along the way until you get to the point of assigning all of what you have done to a new object. Thus the parameter reg_assign is by default set to FALSE.
-
-But, setting the reg_assign paramter to T and using regular assignment, you can still create a meaningful flipbook.   When reg_assign = T, the first object that is created prints at the end of the derivative code chunks. 
 
 
 ---
 
-`r flipbookify("reg_assign", break_type = "auto", display_type = "both", reg_assign = T)`
+# `reg_assign`
+
+
+
+
+---
+
+
+# `reg_assign = TRUE`
+
+flipbooking works most naturally with chains of manipualtions which might include *reverse assignment*.  Working sequentially with a pipeline of code, you get feedback all along the way until you get to the point of assigning all of what you have done to a new object.  With assignment in R, you don't get any feedback, so flipbooking prefers this step at the end of a pipeline, so we can enjoy all the nice feedback. So the parameter reg_assign is by default set to FALSE.
+
+But, setting the reg_assign paramter to T and using regular assignment, you can still create a meaningful flipbook that gives you feedback.   When reg_assign = T, the first object that is created prints at the end of the derivative code chunks. 
+
+
+---
+
+`r reveal("reg_assign", break_type = "auto", display_type = "both", reg_assign = T)`
 
 
 ```{r reg_assign, echo = F, eval = F}
@@ -251,13 +282,15 @@ my_plot <- cars %>%   # the data
 
 ---
 
-## interchunk dependencies
+# Managing source code chunks
+
+So, it is pretty cool that we can create a bunch of derivative code chunks from one input code chunk (more on this [here](https://emitanaka.rbind.io/post/knitr-knitr-code/)).  But there are some considerations then for this source chunk.  What should its chunk options be? 
 
 If there are dependenceies between code chunks, you may need to turn the code chunk option `eval` to TRUE (and usually echo = F).  This may be the case when you create an object in one code chunk that you use in a subsequent code chunk.  
 
 ---
 
-`r flipbookify("plot_object")`
+`r flipbookr::reveal("plot_object")`
 
 ```{r plot_object, eval = T, echo = F}
 cars %>% 
@@ -272,7 +305,7 @@ cars_plot
 ---
 
 
-`r flipbookify("further_building")`
+`r flipbookr::reveal("further_building")`
 
 ```{r further_building, echo = F, eval = F}
 cars_plot +
@@ -296,13 +329,13 @@ But base R techniques and other popular tools can certainly also be employed.
 
 ---
 
-`r flipbookify("reg_assign2", break_type = "auto", display_type = "both", reg_assign = T)`
+`r flipbookr::reveal("reg_assign2", break_type = "auto", display_type = "both", reg_assign = T)`
 
 
 ```{r reg_assign2, echo = F, eval = F}
 cars_mod <- cars
 names(cars_mod)[2] <- "distance"
-cars_mod <- cars_mod[cars_mod$distance > 10, ]
+cars_mod <- cars_mod[cars_mod$distance > 10,]
 cars_mod <- cars_mod["distance"]
 ```
 
@@ -316,7 +349,7 @@ Flipbooking can also be applied to logical indexing workflows if the steps are b
 
 ---
 
-`r flipbookify("dot_notation")`
+`r flipbookr::reveal("dot_notation")`
 
 ```{r dot_notation, echo = F, eval = T}
 cars %>% 
@@ -335,7 +368,7 @@ It has been a while since I've done much plotting with base R, but I think it is
 
 ---
 
-`r flipbookify("base_r_plotting")`
+`r flipbookr::reveal("base_r_plotting")`
 
 ```{r base_r_plotting, echo = F, eval = F}
 plot(cars, xlab = "Speed (mph)", 
@@ -351,7 +384,7 @@ title(sub = "Data is from Ezekiel's (1930) 'Methods of Correlation Analysis'.")
 
 ---
 
-`r flipbookify("cars_anova")`
+`r flipbookr::reveal("cars_anova")`
 
 ```{r cars_anova, eval = T, echo = F, fig.keep='none'}
 ## An example of polynomial regression
@@ -377,7 +410,7 @@ for (degree in 1:4) {
 
 # Sharing your flipbooks
 
-
+A place for some guidance...
 
 
 

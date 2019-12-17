@@ -395,8 +395,8 @@ which_highlight <- calc_lines_to_highlight(which_show = which_show,
 
 if (display_type == "both") {
 
-  return_partial_side_by_side_code_output_chunks(chunk_name,
-                                                 title,
+  return_partial_side_by_side_code_output_chunks(chunk_name = chunk_name,
+                                                 title = title,
                                                  break_type = break_type,
                                                  which_show = which_show,
                                                  which_highlight = which_highlight,
@@ -405,9 +405,9 @@ if (display_type == "both") {
 
 } else {
 
-  return_partial_code_or_output_chunks(chunk_name,
-                                       title,
-                                       display_type,
+  return_partial_code_or_output_chunks(chunk_name = chunk_name,
+                                       title = title,
+                                       display_type = display_type,
                                        break_type = break_type,
                                        which_show = which_show,
                                        which_highlight = which_highlight,
@@ -431,15 +431,15 @@ if (display_type == "both") {
 #' @export
 #'
 #' @examples
-flipbookify <- function(chunk_name, display_type = "both", break_type = "auto", title = "", reg_assign = F, split = 40){
+reveal <- function(chunk_name, display_type = "both", break_type = "auto", title = "", reg_assign = F, split = 40){
 
   paste(knitr::knit(text =
-                      partially_knit_chunks(chunk_name,
-                                            title,
+                      partially_knit_chunks(chunk_name = chunk_name,
+                                            title = title,
                                             reg_assign = reg_assign,
-                                            display_type,
+                                            display_type = display_type,
                                             break_type = break_type,
-                                            split)),
+                                            split = split)),
         collapse = "\n")
 }
 
