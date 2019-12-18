@@ -1,32 +1,4 @@
 
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_5_f974db6cdcda97fb498503f2b5b6d3b3.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_5_f974db6cdcda97fb498503f2b5b6d3b3.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_6_2368b0af19d5e14e4c42fe65bcede969.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_6_2368b0af19d5e14e4c42fe65bcede969.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_6_2368b0af19d5e14e4c42fe65bcede969.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_6_7cb584cf716ccf2d95a1705469eb08bf.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_7_a21a746dd452e6ccd324ecc5e44909b5.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_7_a21a746dd452e6ccd324ecc5e44909b5.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_7_a21a746dd452e6ccd324ecc5e44909b5.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_7_c2b99de874c4b286fec8309d49e4e5e9.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_1_963e402104dcc152e35c7d3cbcc69073.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_1_963e402104dcc152e35c7d3cbcc69073.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_1_963e402104dcc152e35c7d3cbcc69073.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_1_auto_b5bb3fcb5811fce0c2053b2abf46d6d2.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_1_auto_b5bb3fcb5811fce0c2053b2abf46d6d2.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_1_auto_b5bb3fcb5811fce0c2053b2abf46d6d2.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_2_auto_bfc67bb8ae8a0adbc57d1c7fa081c5df.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_2_auto_bfc67bb8ae8a0adbc57d1c7fa081c5df.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_2_auto_bfc67bb8ae8a0adbc57d1c7fa081c5df.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_2_f28f7f84183141bfc8c8d2d272ee6dd8.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_2_f28f7f84183141bfc8c8d2d272ee6dd8.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_2_f28f7f84183141bfc8c8d2d272ee6dd8.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_3_7d591611a0319bdcb56f06dd0940efb6.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_3_7d591611a0319bdcb56f06dd0940efb6.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_3_7d591611a0319bdcb56f06dd0940efb6.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_3_auto_7da95972e7851508908144bb6bdbb4d2.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_3_auto_7da95972e7851508908144bb6bdbb4d2.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_3_auto_7da95972e7851508908144bb6bdbb4d2.rdx
  create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_4_3447a5719e11666d4a9aff22960446e9.RData
  create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_4_3447a5719e11666d4a9aff22960446e9.rdb
  create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_4_3447a5719e11666d4a9aff22960446e9.rdx
@@ -1000,3 +972,31 @@ remote: Resolving deltas:   0% (0/11)[Kremote: Resolving deltas:   9% (1/11)[
 To https://github.com/EvaMaeRey/flipbookr.git
    9e1faeb..9a31fa7  master -> master
 [Kmyers-screen-3:flipbookr evangelinereynolds$ git pushcommit -m "renders the flipbook template that is provided in the flipbookr package"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpush[K[Kgit p[K[K add .
+]0;~/Google Drive/r_packages/flipbookrmyers-screen-3:flipbookr evangelinereynolds$ git commit -m some et[K[K[K[K[K[K[K"some edits to the template"
+[master f13f0b7] some edits to the template
+ 22 files changed, 86 insertions(+), 955 deletions(-)
+ rewrite .Rproj.user/C3865889/console06/INDEX001 (97%)
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/__packages
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/cars_d357aa336c40c737627436c3a820650e.RData
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/cars_d357aa336c40c737627436c3a820650e.rdb
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/cars_d357aa336c40c737627436c3a820650e.rdx
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-3_df2507356176b595ad732cceea445b98.RData
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-3_df2507356176b595ad732cceea445b98.rdb
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-3_df2507356176b595ad732cceea445b98.rdx
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-4_eae25fcbc9e19161de0214158f1bcf68.RData
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-4_eae25fcbc9e19161de0214158f1bcf68.rdb
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-4_eae25fcbc9e19161de0214158f1bcf68.rdx
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/xaringan_look_f4cad376c1e0d012e07a56814c490dd6.RData
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/xaringan_look_f4cad376c1e0d012e07a56814c490dd6.rdb
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/xaringan_look_f4cad376c1e0d012e07a56814c490dd6.rdx
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/xaringan-themer.css
+]0;~/Google Drive/r_packages/flipbookrmyers-screen-3:flipbookr evangelinereynolds$ ti [K[K[Kk[Kgit push
+Counting objects: 23, done.
+Delta compression using up to 4 threads.
+Compressing objects:   5% (1/17)   Compressing objects:  11% (2/17)   Compressing objects:  17% (3/17)   Compressing objects:  23% (4/17)   Compressing objects:  29% (5/17)   Compressing objects:  35% (6/17)   Compressing objects:  41% (7/17)   Compressing objects:  47% (8/17)   Compressing objects:  52% (9/17)   Compressing objects:  58% (10/17)   Compressing objects:  64% (11/17)   Compressing objects:  70% (12/17)   Compressing objects:  76% (13/17)   Compressing objects:  82% (14/17)   Compressing objects:  88% (15/17)   Compressing objects:  94% (16/17)   Compressing objects: 100% (17/17)   Compressing objects: 100% (17/17), done.
+Writing objects:   4% (1/23)   Writing objects:   8% (2/23)   Writing objects:  13% (3/23)   Writing objects:  17% (4/23)   Writing objects:  21% (5/23)   Writing objects:  26% (6/23)   Writing objects:  30% (7/23)   Writing objects:  34% (8/23)   Writing objects:  39% (9/23)   Writing objects:  43% (10/23)   Writing objects:  47% (11/23)   Writing objects:  52% (12/23)   Writing objects:  56% (13/23)   Writing objects:  60% (14/23)   Writing objects:  65% (15/23)   Writing objects:  69% (16/23)   Writing objects:  73% (17/23)   Writing objects:  78% (18/23)   Writing objects:  82% (19/23)   Writing objects:  86% (20/23)   Writing objects:  91% (21/23)   Writing objects:  95% (22/23)   Writing objects: 100% (23/23)   Writing objects: 100% (23/23), 3.89 KiB | 166.00 KiB/s, done.
+Total 23 (delta 9), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/9)[Kremote: Resolving deltas:  11% (1/9)[Kremote: Resolving deltas:  22% (2/9)[Kremote: Resolving deltas:  33% (3/9)[Kremote: Resolving deltas:  44% (4/9)[Kremote: Resolving deltas:  55% (5/9)[Kremote: Resolving deltas:  66% (6/9)[Kremote: Resolving deltas:  77% (7/9)[Kremote: Resolving deltas:  88% (8/9)[Kremote: Resolving deltas: 100% (9/9)[Kremote: Resolving deltas: 100% (9/9), completed with 9 local objects.[K
+To https://github.com/EvaMaeRey/flipbookr.git
+   9a31fa7..f13f0b7  master -> master
+[Kmyers-screen-3:flipbookr evangelinereynolds$ [Kmyers-screen-3:flipbookr evangelinereynolds$ git put[K[K[K[K add .

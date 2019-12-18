@@ -104,12 +104,12 @@ parse_code <- function(code) {
     dplyr::mutate(code = ifelse(comment != "", stringr::str_remove(raw_code, comment), raw_code)) %>%
     dplyr::mutate(connector = stringr::str_extract(stringr::str_trim(code), "%>%$|\\+$|->$|%\\+%")) %>%
     dplyr::mutate(connector = tidyr::replace_na(connector, "")) %>%
-    dplyr::mutate(user_non_seq = stringr::str_extract(comment, "#REVEAL-?\\d+")) %>%
-    dplyr::mutate(user_non_seq = stringr::str_extract(user_non_seq, "-?\\d+")) %>%
-    dplyr::mutate(user_non_seq = as.numeric(user_non_seq)) %>%
-    dplyr::mutate(user_non_seq = tidyr::replace_na(user_non_seq, 1)) %>%
+    dplyr::mutate(non_seq = stringr::str_extract(comment, "#REVEAL-?\\d+")) %>%
+    dplyr::mutate(non_seq = stringr::str_extract(non_seq, "-?\\d+")) %>%
+    dplyr::mutate(non_seq = as.numeric(non_seq)) %>%
+    dplyr::mutate(non_seq = tidyr::replace_na(non_seq, 1)) %>%
     dplyr::mutate(comment = stringr::str_remove(comment, "#REVEAL\\d+")) %>%
-    dplyr::mutate(user_reveal = stringr::str_detect(comment, "#REVEAL")) %>%
+    dplyr::mutate(user = stringr::str_detect(comment, "#REVEAL")) %>%
     dplyr::mutate(comment = stringr::str_remove(comment, "#REVEAL")) %>%
     dplyr::mutate(code = stringr::str_remove(stringi::stri_trim_right(code), "%>%$|\\+$|->$|%\\+%")) %>%
     dplyr::mutate(balanced_paren = (cumsum(num_open_par) - cumsum(num_closed_par)) == 0) %>%
@@ -117,7 +117,7 @@ parse_code <- function(code) {
     dplyr::mutate(balanced_square = (cumsum(num_open_square) - cumsum(num_closed_square)) == 0) %>%
     dplyr::mutate(balanced_par = balanced_paren & balanced_curly & balanced_square &
              code != "") %>%
-    dplyr::select(line, raw_code, code, connector, comment, user_non_seq, user_reveal, balanced_par)
+    dplyr::select(line, raw_code, code, connector, comment, non_seq, user, balanced_par)
     # dplyr::mutate(balanced_par = (cumsum(num_open_par) - cumsum(num_closed_par)) == 0 &
     #          code != "")
 
@@ -136,13 +136,13 @@ calc_lines_to_show <- function(parsed, break_type = "user"){
 
   } else if (break_type == "user") {
 
-    code_order <- cumsum(parsed$user_reveal) + 1 - parsed$user_reveal
+    code_order <- cumsum(parsed$user) + 1 - parsed$user
     num_panes <- max(code_order)
 
   } else if (break_type == "non_seq") {
 
     # make flexible by allowing non integers here.
-    code_order <- parsed$user_non_seq
+    code_order <- parsed$non_seq
     num_panes <- max(code_order)
 
   } else if (is.numeric(break_type)) {  # multiverse case
