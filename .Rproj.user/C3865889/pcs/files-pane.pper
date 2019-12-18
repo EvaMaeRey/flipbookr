@@ -1,8 +1,8 @@
 {
-    "path" : "~/Google Drive/r_packages/flipbookr",
+    "path" : "~/Google Drive/2019_directed_research/flipbooks/flipbookr_package_template",
     "sortOrder" : [
         {
-            "ascending" : true,
+            "ascending" : false,
             "columnIndex" : 2
         }
     ]

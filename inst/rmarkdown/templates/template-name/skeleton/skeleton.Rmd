@@ -25,7 +25,7 @@ output:
 
 --
 
-- Yes, you can help make it less fragile and perilous by contributing at https://github.com/EvaMaeRey/flipbookr and letting us know if/how it breaks and frustrates you!  
+- Yes, you can help make it less fragile and perilous by letting us know if/how it breaks and frustrates you and/or contributing at https://github.com/EvaMaeRey/flipbookr!  
 
 --
 
@@ -35,7 +35,7 @@ output:
 
 ---
 
-# "Flipbooks" you say? 
+# "Flipbooks"? 
 
 “Flipbooks” are tools that present side-by-side, aligned, incremental code-output evolution via automated code parsing and reconstruction. More about Flipbooks [here](https://evamaerey.github.io/little_flipbooks_library/about/what_the_flipbook).  There now exists a package for making Flipbooks for R: `flipbookr`.  This is under development, but you are welcome to try it out by installing from github:
 
@@ -46,18 +46,20 @@ devtools::install_github("EvaMaeRey/flipbookr")
 You can see the template that was used to build this flipbook that you are looking at right now  [here](https://raw.githubusercontent.com/EvaMaeRey/flipbookr/master/inst/rmarkdown/templates/template-name/skeleton/skeleton.Rmd).
 
 
-And once you install the package, a template for making the flipbook that you are looking at will also be available from within RStudio, File -> New File -> R Markdown -> From Template -> "A Minimal Flipbook".
+Or, once you install the package (and restart RStudio?) a template for making the flipbook that you are looking at will also be available from within RStudio, File -> New File -> R Markdown -> From Template -> "A Minimal Flipbook".
 
 
 ---
 
-# Critical infrastructure
+# How Flipbooking with Xaringan works
 
-The flipbook you will be building here uses the [rmarkdown](https://rmarkdown.rstudio.com/lesson-1.html) and [Xaringan](https://github.com/yihui/xaringan) (html slideshow) infrastructure.  
+The flipbook you will be building here uses a member of the [rmarkdown](https://rmarkdown.rstudio.com/lesson-1.html) family called [Xaringan (presentation ninja)](https://github.com/yihui/xaringan), which creates a slideshow in html.  Dynamic documents like `rmarkdown` documents allow you to comingle code and prose in a single document.  
 
-Dynamic documents like `rmarkdown` documents allow you to comingle code and prose in a single document.  Flipbooks walk through code by spawning new *partial* code chunks from a single, user-input code chunk.  The partial code chunks build up and are displayed consecutively in a slide show --- along side it's output --- which yeilds a movie-like experience, and allows for easier understanding of each step.
+Flipbooks are built by spawning new *partial* code chunks from a single, user-input code chunk.  The partial code chunks build up and are display consecutively in a slide show --- along side it's output --- which yeilds a movie-like experience; this should make each step easier to understand.  
 
 ---
+
+## Set-up
 
 We use the flipbookr package, of course! This does the work of disassembling a single code chuck and creating the "build" of multiple partial-code chunks.  
 
@@ -86,7 +88,7 @@ knitr::opts_chunk$set(fig.width = 6, message = F, warning = F, comment = "", cac
 
 ## Change slide show look and feel
 
-To quickly change the look and feel of your xaringan slide show, I'd recommend that you use the [xaringanthemer](https://github.com/gadenbuie/xaringanthemer) package.  The code below creates a css file for you that will be used to style your slide show; you can see it referenced at the beginning of this document in the "YMAL" --- the introductory materials that you see at the top of this document.   
+To quickly change the look and feel of your xaringan slide show, I'd recommend that you use the [xaringanthemer](https://github.com/gadenbuie/xaringanthemer) package.  The code below creates a css file for you that will be used to style your slide show; you can see `xaringan-themer.css`, which the following code chunk creates, referenced at the beginning of this document, in the ["YMAL"](https://en.wikipedia.org/wiki/YAML).   
 
 ```{r xaringan_look}
 xaringanthemer::mono_accent(
@@ -103,11 +105,14 @@ It may be obvious by now, if you are following along with the source template, t
 
 You will use the `reveal()` function [inline](https://rmarkdown.rstudio.com/lesson-4.html) to generate the derivitive code chunks, rather than inside of a code chunk, so that the text that is generated is interpreted correctly when rendered.  The inline code will look something like this:
 
+
+
+
+<!-- The above is for the html output version, just look at the examples below if you are in the source! -->
 ```markdown
-``r "r flipbookr::reveal(chunk_name = \"cars\")"``
+``r "r reveal(chunk_name = \"cars\", break_type = \"user\", display_tye = \"both\", reg_assign = F)"``
 ``` 
 
-<!-- The above is for the rendered version, Just look at the examples below if you are in the source! -->
 
 There are several modalities that you might be interested in using for "flipbookifying" your code and the next section is dedicated to demoing some of them below.
 
@@ -173,6 +178,11 @@ One parameter of flipbooking is the break_type.  The default is "auto", in which
 
 If the break_type is set to "user", the breakpoints are those indicated by the user with the special comment #REVEAL
 
+```{r, code = knitr::knit_code$get("cars"), eval = F, echo = T}
+```
+
+
+
 ---
 
 `r reveal("cars", break_type = "user")`
@@ -183,6 +193,11 @@ If the break_type is set to "user", the breakpoints are those indicated by the u
 
 If the break_type is set to "non_seq", the breakpoints are those indicated by the user with the special numeric comment #REVEAL2, #REVEAL3 etc to indicate at which point in time the code should appear.  
 
+```{r, code = knitr::knit_code$get("cars"), eval = F, echo = T}
+```
+
+
+
 ---
 
 `r reveal("cars", break_type = "non_seq")`
@@ -192,23 +207,17 @@ If the break_type is set to "non_seq", the breakpoints are those indicated by th
 
 ## `break_type = 5` *(or entering the multiverse)*
 
-Another modality is to set break_type equal to a positive integer, indicating that you want the same code chunk to be displayed multiple times.  This makes the most sense in a setting where there is some randomization or random sampling and you want to see different realizations. 
+Another modality is to set break_type equal to a positive integer, indicating that you want the same code chunk to be displayed multiple times.  This makes the most sense in a setting where there is some randomization or random sampling and you want to see different realizations. Let's see this used on the user input code chunk "cars_multi", whose first step is to randomly sample rows from the data set cars with replacement.  
 
----
-
-`r reveal("cars_multi", break_type = 3)`
-
-
-```{r cars_multi, echo = F, eval = F, fig.height=5}
+```{r cars_multi, echo = T, eval = F, fig.height=5}
 cars %>% 
-  sample_frac(size = 1, replace = T) %>%             
-  ggplot() +              # pipe to ggplot
+  sample_frac(size = 1, replace = T) %>%      
+  ggplot() +              
   aes(x = speed) +
   aes(y = dist) +
-  # Describing what follows
   geom_count(
     alpha = .3,
-    color = "blue" #REVEAL2
+    color = "blue" 
     ) + 
   geom_smooth(method = lm, se = F) +
   coord_cartesian(xlim = range(cars$speed),
@@ -217,6 +226,9 @@ cars %>%
 ```
 
 
+---
+
+`r reveal("cars_multi", break_type = 3)`
 
 
 ---
@@ -230,6 +242,7 @@ There are also different display modalities.  Namely you can indicate if you wan
 
 ## `display_type = "output"`
 
+Let's look at where only the *output* is displayed for the "cars" code chunk.
 
 
 ---
@@ -240,6 +253,9 @@ There are also different display modalities.  Namely you can indicate if you wan
 
 ## `display_type = "code"`
 
+And now where only the *code* is displayed for the "cars" code chunk.
+
+
 ---
 
 `r reveal("cars", break_type = "auto", display_type = "code")`
@@ -248,8 +264,9 @@ There are also different display modalities.  Namely you can indicate if you wan
 
 ---
 
-# `reg_assign`
+# Assignment
 
+If you want to create an object in your flipbooks, it is most "natural" to use [reverse assignment](https://stat.ethz.ch/R-manual/R-devel/library/base/html/assignOps.html).  Working sequentially with a pipeline of code, you get feedback all along the way until you get to the point of assigning all of what you have done to a new object with reverse assignment.  With regular assignment in R, you don't get any feedback, so flipbooking prefers this step at the end of a pipeline, so we can enjoy all the nice feedback. So the parameter reg_assign is by default set to FALSE.
 
 
 
@@ -258,7 +275,6 @@ There are also different display modalities.  Namely you can indicate if you wan
 
 # `reg_assign = TRUE`
 
-flipbooking works most naturally with chains of manipualtions which might include *reverse assignment*.  Working sequentially with a pipeline of code, you get feedback all along the way until you get to the point of assigning all of what you have done to a new object.  With assignment in R, you don't get any feedback, so flipbooking prefers this step at the end of a pipeline, so we can enjoy all the nice feedback. So the parameter reg_assign is by default set to FALSE.
 
 But, setting the reg_assign paramter to T and using regular assignment, you can still create a meaningful flipbook that gives you feedback.   When reg_assign = T, the first object that is created prints at the end of the derivative code chunks. 
 
@@ -271,7 +287,7 @@ But, setting the reg_assign paramter to T and using regular assignment, you can 
 ```{r reg_assign, echo = F, eval = F}
 my_plot <- cars %>%   # the data  
   filter(speed > 4) %>%  # subset
-  ggplot() +              # pipe to ggplot
+  ggplot() +       # pipe to ggplot
   aes(x = speed) +
   aes(y = dist) +
   geom_point()
@@ -334,6 +350,7 @@ But base R techniques and other popular tools can certainly also be employed.
 
 ```{r reg_assign2, echo = F, eval = F}
 cars_mod <- cars
+cars_mod$half_dist <- cars$dist / 2
 names(cars_mod)[2] <- "distance"
 cars_mod <- cars_mod[cars_mod$distance > 10,]
 cars_mod <- cars_mod["distance"]
@@ -410,7 +427,8 @@ for (degree in 1:4) {
 
 # Sharing your flipbooks
 
-A place for some guidance...
+- zip and ship
+- get it on github
 
 
 
