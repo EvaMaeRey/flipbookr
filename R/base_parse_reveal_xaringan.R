@@ -95,11 +95,6 @@ parse_code <- function(code) {
       num_open_square = sum(open_square),
       num_closed_square = sum(closed_square)
               ) %>%
-    # dplyr::summarise(num_open_par = sum(num_open_par),
-    #           num_closed_par = sum(num_closed_par),
-    #           full_line = paste0(text, collapse = ""),
-    #           comment = stringr::str_trim(paste0(ifelse(token == "COMMENT", text, ""),
-    #                                     collapse = " "))) %>%
     dplyr::left_join(raw_code_table) %>%
     dplyr::mutate(code = ifelse(comment != "", stringr::str_remove(raw_code, comment), raw_code)) %>%
     dplyr::mutate(connector = stringr::str_extract(stringr::str_trim(code), "%>%$|\\+$|->$|%\\+%")) %>%
@@ -115,11 +110,9 @@ parse_code <- function(code) {
     dplyr::mutate(balanced_paren = (cumsum(num_open_par) - cumsum(num_closed_par)) == 0) %>%
     dplyr::mutate(balanced_curly = (cumsum(num_open_curly) - cumsum(num_closed_curly)) == 0) %>%
     dplyr::mutate(balanced_square = (cumsum(num_open_square) - cumsum(num_closed_square)) == 0) %>%
-    dplyr::mutate(balanced_par = balanced_paren & balanced_curly & balanced_square &
+    dplyr::mutate(auto = balanced_paren & balanced_curly & balanced_square &
              code != "") %>%
-    dplyr::select(line, raw_code, code, connector, comment, non_seq, user, balanced_par)
-    # dplyr::mutate(balanced_par = (cumsum(num_open_par) - cumsum(num_closed_par)) == 0 &
-    #          code != "")
+    dplyr::select(line, raw_code, code, connector, comment, auto, user, non_seq)
 
 }
 # parse_code(code = local_code)
@@ -131,7 +124,7 @@ calc_lines_to_show <- function(parsed, break_type = "user"){
 
   if (break_type == "auto") {
 
-    code_order <- cumsum(parsed$balanced_par) + 1 - parsed$balanced_par
+    code_order <- cumsum(parsed$auto) + 1 - parsed$auto
     num_panes <- max(code_order)
 
   } else if (break_type == "user") {

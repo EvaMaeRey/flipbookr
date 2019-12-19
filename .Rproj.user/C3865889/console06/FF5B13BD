@@ -1000,3 +1000,18 @@ remote: Resolving deltas:   0% (0/9)[Kremote: Resolving deltas:  11% (1/9)[K
 To https://github.com/EvaMaeRey/flipbookr.git
    9a31fa7..f13f0b7  master -> master
 [Kmyers-screen-3:flipbookr evangelinereynolds$ [Kmyers-screen-3:flipbookr evangelinereynolds$ git put[K[K[K[K add .
+]0;~/Google Drive/r_packages/flipbookrmyers-screen-3:flipbookr evangelinereynolds$ git push[K[K[K[K"[Kcommit -m "hell[K[K[K[Kwe wat[Knt you![K[K[K[K[K[K[K[K[K[K[K[Khow about some [K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kgoing with shorter column names in the parser[K_code function, '[K"[K'user"[K', "[K'nno[K[Kon'[K-seq' and 'auto'"," "m"a"t"c"h"i"n"g" "p"a"r"a"t"e"[1P"[1P"m"e"t"e"r" "n"a"m"e"s"
+[master f51f48b] going with shorter column names in the parse_code function, 'user', 'non-seq' and 'auto', matching parameter names
+ 8 files changed, 56 insertions(+), 53 deletions(-)
+ rewrite .Rproj.user/C3865889/console06/INDEX001 (97%)
+ rewrite .Rproj.user/C3865889/rmd-outputs (64%)
+]0;~/Google Drive/r_packages/flipbookrmyers-screen-3:flipbookr evangelinereynolds$ git push
+Counting objects: 15, done.
+Delta compression using up to 4 threads.
+Compressing objects:   6% (1/15)   Compressing objects:  13% (2/15)   Compressing objects:  20% (3/15)   Compressing objects:  26% (4/15)   Compressing objects:  33% (5/15)   Compressing objects:  40% (6/15)   Compressing objects:  46% (7/15)   Compressing objects:  53% (8/15)   Compressing objects:  60% (9/15)   Compressing objects:  66% (10/15)   Compressing objects:  73% (11/15)   Compressing objects:  80% (12/15)   Compressing objects:  86% (13/15)   Compressing objects:  93% (14/15)   Compressing objects: 100% (15/15)   Compressing objects: 100% (15/15), done.
+Writing objects:   6% (1/15)   Writing objects:  13% (2/15)   Writing objects:  20% (3/15)   Writing objects:  26% (4/15)   Writing objects:  33% (5/15)   Writing objects:  40% (6/15)   Writing objects:  46% (7/15)   Writing objects:  53% (8/15)   Writing objects:  60% (9/15)   Writing objects:  66% (10/15)   Writing objects:  73% (11/15)   Writing objects:  80% (12/15)   Writing objects:  86% (13/15)   Writing objects:  93% (14/15)   Writing objects: 100% (15/15)   Writing objects: 100% (15/15), 2.30 KiB | 52.00 KiB/s, done.
+Total 15 (delta 8), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/8)[Kremote: Resolving deltas:  12% (1/8)[Kremote: Resolving deltas:  25% (2/8)[Kremote: Resolving deltas:  37% (3/8)[Kremote: Resolving deltas:  50% (4/8)[Kremote: Resolving deltas:  62% (5/8)[Kremote: Resolving deltas:  75% (6/8)[Kremote: Resolving deltas:  87% (7/8)[Kremote: Resolving deltas: 100% (8/8)[Kremote: Resolving deltas: 100% (8/8), completed with 8 local objects.[K
+To https://github.com/EvaMaeRey/flipbookr.git
+   f13f0b7..f51f48b  master -> master
+]0;~/Google Drive/r_packages/flipbookrmyers-screen-3:flipbookr evangelinereynolds$ [Kmyers-screen-3:flipbookr evangelinereynolds$ [Kmyers-screen-3:flipbookr evangelinereynolds$ [Kmyers-screen-3:flipbookr evangelinereynolds$ [Kmyers-screen-3:flipbookr evangelinereynolds$ git[K[K[Kgit add .
