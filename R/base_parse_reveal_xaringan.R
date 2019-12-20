@@ -1,39 +1,6 @@
 # Emi Tanaka (@statsgen) and Garrick Aden-Buie (@grrrck) and Evangeline Reynolds (@EvaMaeRey)
 # have contributed to this code
 
-local_code <- # for testing w/o knitting
-  "cars %>%             # the data  #REVEAL
-filter(speed > 4) %>%  # subset
-ggplot() +              # pipe to ggplot
-aes(x = speed) +
-aes(y = dist) +
-# Describing what follows
-geom_point(alpha = .3) + #REVEAL
-geom_point(alpha = 1) + #REVEAL2
-geom_jitter(alpha = .5) + #REVEAL3
-aes(color =
-speed > 14
-) %+%
-cars ->
-my_plot  #REVEAL"
-
-
-local_code_regular_assignment <- # for testing w/o knitting
-  "my_cars <- cars %>%             # the data  #REVEAL
-filter(speed > 4) %>%  # subset
-ggplot() +              # pipe to ggplot
-aes(x = speed) +
-aes(y = dist) +
-# Describing what follows
-geom_point(alpha = .3) + #REVEAL
-aes(color =
-paste(\"speed\",
-speed > 14)
-) %+%
-cars"
-
-
-
 #' Code chunk as text
 #'
 #' @param chunk_name a character string which is a chunk name

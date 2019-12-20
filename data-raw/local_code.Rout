@@ -1,0 +1,71 @@
+
+R version 3.6.2 (2019-12-12) -- "Dark and Stormy Night"
+Copyright (C) 2019 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> local_code <- # for testing w/o knitting
++   "cars %>%             # the data  #REVEAL
++ filter(speed > 4) %>%  # subset
++ ggplot() +              # pipe to ggplot
++ aes(x = speed) +
++ aes(y = dist) +
++ # Describing what follows
++ geom_point(alpha = .3) + #REVEAL
++ geom_point(alpha = 1) + #REVEAL2
++ geom_jitter(alpha = .5) + #REVEAL3
++ aes(color =
++ speed > 14
++ ) %+%
++ cars ->
++ my_plot  #REVEAL"
+> 
+> local_code_regular_assignment <- # for testing w/o knitting
++   "my_cars <- cars %>%             # the data  #REVEAL
++ filter(speed > 4) %>%  # subset
++ ggplot() +              # pipe to ggplot
++ aes(x = speed) +
++ aes(y = dist) +
++ # Describing what follows
++ geom_point(alpha = .3) + #REVEAL
++ aes(color =
++ paste(\"speed\",
++ speed > 14)
++ ) %+%
++ cars"
+> 
+> save(local_code, file = "../data/local_code.rda")
+> save(local_code_regular_assignment, file = "../data/local_code_regular_assignment.rda")
+> 
+> cat("#' Local Code",
++     "#'",
++     "#' Code for examples in the flipbookr package.",
++     "#'",
++     "#' @name local_code",
++     "NULL",
++     "",
++     "#' @rdname local_code",
++     "\"local_code\"",
++     "",
++     "#' @rdname local_code",
++     "\"local_code_regular_assignment\"",
++     sep = "\n",
++     file = "../R/local_code.R")
+> 
+> 
+> proc.time()
+   user  system elapsed 
+  0.280   0.185   0.229 
