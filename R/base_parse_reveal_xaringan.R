@@ -6,9 +6,11 @@
 #' @param chunk_name a character string which is a chunk name
 #'
 #' @return the code in the chunk as a string
-#' @export
 #'
 #' @examples
+#' # To be written
+#'
+#' @export
 chunk_as_text <- function(chunk_name){
 
   paste(knitr::knit_code$get(chunk_name), collapse = "\n")
@@ -24,10 +26,10 @@ chunk_as_text <- function(chunk_name){
 #' @param code code as a character string
 #'
 #' @return parsed code
-#' @export
 #'
 #' @examples
 #' parse_code(code = local_code)
+#' @export
 parse_code <- function(code) {
 
   # code <- paste(knitr::knit_code$get("the_code"), collapse = "\n")
@@ -203,9 +205,10 @@ calc_lines_to_highlight <- function(which_show = list(c(1,2), c(1,2,3,4)), break
 #' @param highlight integers indicating which lines of code to highlight
 #'
 #' @return Partial code with indicators for highlight
-#' @export
 #'
 #' @examples
+#' # to be written
+#' @export
 show_and_highlight_pane_classic <- function(parsed, which_show = 1:3, which_highlight = 3){
 
   parsed %>%
@@ -388,9 +391,10 @@ if (display_type == "both") {
 #' @param reg_assign logical set to T if output of some object created at beginning of code chunk should be displayed
 #'
 #' @return a character string to be interpreted as .Rmd content
-#' @export
 #'
 #' @examples
+#' # to be written
+#' @export
 reveal <- function(chunk_name, display_type = "both", break_type = "auto", title = "", reg_assign = F, split = 40){
 
   paste(knitr::knit(text =

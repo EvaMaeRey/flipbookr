@@ -4,8 +4,14 @@
 \alias{reveal}
 \title{Apply reveal in Rmarkdown file, to be used in-line}
 \usage{
-reveal(chunk_name, display_type = "both", break_type = "auto",
-  title = "", reg_assign = F, split = 40)
+reveal(
+  chunk_name,
+  display_type = "both",
+  break_type = "auto",
+  title = "",
+  reg_assign = F,
+  split = 40
+)
 }
 \arguments{
 \item{chunk_name}{a character string which is a chunk name}
@@ -23,4 +29,7 @@ a character string to be interpreted as .Rmd content
 }
 \description{
 Apply reveal in Rmarkdown file, to be used in-line
+}
+\examples{
+# to be written
 }

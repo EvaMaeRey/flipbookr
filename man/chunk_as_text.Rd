@@ -15,3 +15,7 @@ the code in the chunk as a string
 \description{
 Code chunk as text
 }
+\examples{
+# To be written
+
+}
