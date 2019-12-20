@@ -1,2 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^data-raw/*
+^\.document\.Rout$
+^\.install_dev_deps\.Rout$
+^Makefile$

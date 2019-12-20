@@ -4,23 +4,34 @@
 \alias{reveal}
 \title{Apply reveal in Rmarkdown file, to be used in-line}
 \usage{
-reveal(chunk_name, display_type = "both", break_type = "auto",
-  title = "", reg_assign = F, split = 40)
+reveal(
+  chunk_name,
+  display_type = "both",
+  break_type = "auto",
+  title = "",
+  reg_assign = F,
+  split = 40
+)
 }
 \arguments{
 \item{chunk_name}{a character string which is a chunk name}
+
+\item{display_type}{default to \code{"both"}}
+
+\item{break_type}{default to \code{"auto"}}
 
 \item{title}{a character string for a title for all the slides to display code-output evolution, default is an empty string}
 
 \item{reg_assign}{logical set to T if output of some object created at beginning of code chunk should be displayed}
 
-\item{user_reveal}{a logical for if breaks should be automatically determined or have been defined manually with "#REVEAL" message}
-
-\item{show_code}{a logical for if the code should be displayed or not, default is TRUE}
+\item{split}{default to \code{40}}
 }
 \value{
 a character string to be interpreted as .Rmd content
 }
 \description{
 Apply reveal in Rmarkdown file, to be used in-line
+}
+\examples{
+# to be written
 }

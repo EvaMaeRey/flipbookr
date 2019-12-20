@@ -1,47 +1,16 @@
 # Emi Tanaka (@statsgen) and Garrick Aden-Buie (@grrrck) and Evangeline Reynolds (@EvaMaeRey)
 # have contributed to this code
 
-local_code <- # for testing w/o knitting
-  "cars %>%             # the data  #REVEAL
-filter(speed > 4) %>%  # subset
-ggplot() +              # pipe to ggplot
-aes(x = speed) +
-aes(y = dist) +
-# Describing what follows
-geom_point(alpha = .3) + #REVEAL
-geom_point(alpha = 1) + #REVEAL2
-geom_jitter(alpha = .5) + #REVEAL3
-aes(color =
-speed > 14
-) %+%
-cars ->
-my_plot  #REVEAL"
-
-
-local_code_regular_assignment <- # for testing w/o knitting
-  "my_cars <- cars %>%             # the data  #REVEAL
-filter(speed > 4) %>%  # subset
-ggplot() +              # pipe to ggplot
-aes(x = speed) +
-aes(y = dist) +
-# Describing what follows
-geom_point(alpha = .3) + #REVEAL
-aes(color =
-paste(\"speed\",
-speed > 14)
-) %+%
-cars"
-
-
-
 #' Code chunk as text
 #'
 #' @param chunk_name a character string which is a chunk name
 #'
 #' @return the code in the chunk as a string
-#' @export
 #'
 #' @examples
+#' # To be written
+#'
+#' @export
 chunk_as_text <- function(chunk_name){
 
   paste(knitr::knit_code$get(chunk_name), collapse = "\n")
@@ -57,10 +26,10 @@ chunk_as_text <- function(chunk_name){
 #' @param code code as a character string
 #'
 #' @return parsed code
-#' @export
 #'
 #' @examples
 #' parse_code(code = local_code)
+#' @export
 parse_code <- function(code) {
 
   # code <- paste(knitr::knit_code$get("the_code"), collapse = "\n")
@@ -72,47 +41,46 @@ parse_code <- function(code) {
 
   sf <- srcfile(code)
   try(parse(text = code, srcfile = sf))
-  getParseData(sf) %>%
-    dplyr::rename(line = line1) %>%
-    dplyr::mutate(open_par = text == "(") %>%
-    dplyr::mutate(closed_par = text == ")") %>%
-    dplyr::mutate(open_curly = text == "{") %>%
-    dplyr::mutate(closed_curly = text == "}") %>%
-    dplyr::mutate(open_square = text == "[") %>%
-    dplyr::mutate(open_square = ifelse(text == "[[", 2, open_square)) %>%
-    dplyr::mutate(closed_square = text == "]") %>%
+  utils::getParseData(sf) %>%
+    dplyr::rename(line = .data$line1) %>%
+    dplyr::mutate(open_par = .data$text == "(") %>%
+    dplyr::mutate(closed_par = .data$text == ")") %>%
+    dplyr::mutate(open_curly = .data$text == "{") %>%
+    dplyr::mutate(closed_curly = .data$text == "}") %>%
+    dplyr::mutate(open_square = .data$text == "[") %>%
+    dplyr::mutate(open_square = ifelse(.data$text == "[[", 2, .data$open_square)) %>%
+    dplyr::mutate(closed_square = .data$text == "]") %>%
     # dplyr::mutate(num_open_par = stringr::str_count(token, "\\(|\\{|\\[")) %>% # Counting open parentheses
     # dplyr::mutate(num_closed_par = stringr::str_count(token, "\\)|\\}|\\]"))  %>% # Counting closed parentheses
-    dplyr::group_by(line) %>%
+    dplyr::group_by(.data$line) %>%
     dplyr::summarise(
-      full_line = paste0(text, collapse = ""),
-      comment = stringr::str_trim(paste0(ifelse(token == "COMMENT", text, ""),
-                                         collapse = " ")),
-      num_open_par = sum(open_par),
-      num_closed_par = sum(closed_par),
-      num_open_curly = sum(open_curly),
-      num_closed_curly = sum(closed_curly),
-      num_open_square = sum(open_square),
-      num_closed_square = sum(closed_square)
+      full_line = paste0(.data$text, collapse = ""),
+      comment = stringr::str_trim(paste0(ifelse(.data$token == "COMMENT", .data$text, ""), collapse = " ")),
+      num_open_par = sum(.data$open_par),
+      num_closed_par = sum(.data$closed_par),
+      num_open_curly = sum(.data$open_curly),
+      num_closed_curly = sum(.data$closed_curly),
+      num_open_square = sum(.data$open_square),
+      num_closed_square = sum(.data$closed_square)
               ) %>%
     dplyr::left_join(raw_code_table) %>%
-    dplyr::mutate(code = ifelse(comment != "", stringr::str_remove(raw_code, comment), raw_code)) %>%
-    dplyr::mutate(connector = stringr::str_extract(stringr::str_trim(code), "%>%$|\\+$|->$|%\\+%")) %>%
-    dplyr::mutate(connector = tidyr::replace_na(connector, "")) %>%
-    dplyr::mutate(non_seq = stringr::str_extract(comment, "#REVEAL-?\\d+")) %>%
-    dplyr::mutate(non_seq = stringr::str_extract(non_seq, "-?\\d+")) %>%
-    dplyr::mutate(non_seq = as.numeric(non_seq)) %>%
-    dplyr::mutate(non_seq = tidyr::replace_na(non_seq, 1)) %>%
-    dplyr::mutate(comment = stringr::str_remove(comment, "#REVEAL\\d+")) %>%
-    dplyr::mutate(user = stringr::str_detect(comment, "#REVEAL")) %>%
-    dplyr::mutate(comment = stringr::str_remove(comment, "#REVEAL")) %>%
-    dplyr::mutate(code = stringr::str_remove(stringi::stri_trim_right(code), "%>%$|\\+$|->$|%\\+%")) %>%
-    dplyr::mutate(balanced_paren = (cumsum(num_open_par) - cumsum(num_closed_par)) == 0) %>%
-    dplyr::mutate(balanced_curly = (cumsum(num_open_curly) - cumsum(num_closed_curly)) == 0) %>%
-    dplyr::mutate(balanced_square = (cumsum(num_open_square) - cumsum(num_closed_square)) == 0) %>%
-    dplyr::mutate(auto = balanced_paren & balanced_curly & balanced_square &
+    dplyr::mutate(code = ifelse(.data$comment != "", stringr::str_remove(.data$raw_code, comment), .data$raw_code)) %>%
+    dplyr::mutate(connector = stringr::str_extract(stringr::str_trim(.data$code), "%>%$|\\+$|->$|%\\+%")) %>%
+    dplyr::mutate(connector = tidyr::replace_na(.data$connector, "")) %>%
+    dplyr::mutate(non_seq = stringr::str_extract(.data$comment, "#REVEAL-?\\d+")) %>%
+    dplyr::mutate(non_seq = stringr::str_extract(.data$non_seq, "-?\\d+")) %>%
+    dplyr::mutate(non_seq = as.numeric(.data$non_seq)) %>%
+    dplyr::mutate(non_seq = tidyr::replace_na(.data$non_seq, 1)) %>%
+    dplyr::mutate(comment = stringr::str_remove(.data$comment, "#REVEAL\\d+")) %>%
+    dplyr::mutate(user = stringr::str_detect(.data$comment, "#REVEAL")) %>%
+    dplyr::mutate(comment = stringr::str_remove(.data$comment, "#REVEAL")) %>%
+    dplyr::mutate(code = stringr::str_remove(stringi::stri_trim_right(.data$code), "%>%$|\\+$|->$|%\\+%")) %>%
+    dplyr::mutate(balanced_paren = (cumsum(.data$num_open_par) - cumsum(.data$num_closed_par)) == 0) %>%
+    dplyr::mutate(balanced_curly = (cumsum(.data$num_open_curly) - cumsum(.data$num_closed_curly)) == 0) %>%
+    dplyr::mutate(balanced_square = (cumsum(.data$num_open_square) - cumsum(.data$num_closed_square)) == 0) %>%
+    dplyr::mutate(auto = .data$balanced_paren & .data$balanced_curly & .data$balanced_square &
              code != "") %>%
-    dplyr::select(line, raw_code, code, connector, comment, auto, user, non_seq)
+    dplyr::select(.data$line, .data$raw_code, .data$code, .data$connector, .data$comment, .data$auto, .data$user, .data$non_seq)
 
 }
 # parse_code(code = local_code)
@@ -232,21 +200,22 @@ calc_lines_to_highlight <- function(which_show = list(c(1,2), c(1,2,3,4)), break
 #' Partially reveal parsed code
 #'
 #' @param parsed the output resulting from parsing code
-#' @param break_point a integer indicating the line of code
-#' @param highlight integers indicating which lines of code to highlight
+#' @param which_show default to \code{1:3}
+#' @param which_highlight default to \code{3}
 #'
 #' @return Partial code with indicators for highlight
-#' @export
 #'
 #' @examples
+#' # to be written
+#' @export
 show_and_highlight_pane_classic <- function(parsed, which_show = 1:3, which_highlight = 3){
 
   parsed %>%
     dplyr::filter(1:dplyr::n() %in% which_show) %>%
     dplyr::mutate(connector = dplyr::case_when(1:dplyr::n() == dplyr::n() ~ "",
-                                               1:dplyr::n() != dplyr::n() ~ connector)) %>%
+                                               1:dplyr::n() != dplyr::n() ~ .data$connector)) %>%
     dplyr::mutate(highlight = ifelse(1:dplyr::n() %in% which_highlight, "#<<", "" )) %>%
-    dplyr::mutate(out = paste0(code, "", connector, "  ", comment, highlight)) %>%
+    dplyr::mutate(out = paste0(.data$code, "", .data$connector, "  ", .data$comment, .data$highlight)) %>%
     dplyr::pull()
 
 
@@ -415,15 +384,17 @@ if (display_type == "both") {
 #' Apply reveal in Rmarkdown file, to be used in-line
 #'
 #' @param chunk_name a character string which is a chunk name
-#' @param user_reveal a logical for if breaks should be automatically determined or have been defined manually with "#REVEAL" message
-#' @param show_code a logical for if the code should be displayed or not, default is TRUE
+#' @param display_type default to \code{"both"}
+#' @param break_type default to \code{"auto"}
+#' @param split default to \code{40}
 #' @param title a character string for a title for all the slides to display code-output evolution, default is an empty string
 #' @param reg_assign logical set to T if output of some object created at beginning of code chunk should be displayed
 #'
 #' @return a character string to be interpreted as .Rmd content
-#' @export
 #'
 #' @examples
+#' # to be written
+#' @export
 reveal <- function(chunk_name, display_type = "both", break_type = "auto", title = "", reg_assign = F, split = 40){
 
   paste(knitr::knit(text =
