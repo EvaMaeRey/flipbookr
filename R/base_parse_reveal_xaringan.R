@@ -200,8 +200,8 @@ calc_lines_to_highlight <- function(which_show = list(c(1,2), c(1,2,3,4)), break
 #' Partially reveal parsed code
 #'
 #' @param parsed the output resulting from parsing code
-#' @param break_point a integer indicating the line of code
-#' @param highlight integers indicating which lines of code to highlight
+#' @param which_show default to \code{1:3}
+#' @param which_highlight default to \code{3}
 #'
 #' @return Partial code with indicators for highlight
 #'
@@ -384,8 +384,9 @@ if (display_type == "both") {
 #' Apply reveal in Rmarkdown file, to be used in-line
 #'
 #' @param chunk_name a character string which is a chunk name
-#' @param user_reveal a logical for if breaks should be automatically determined or have been defined manually with "#REVEAL" message
-#' @param show_code a logical for if the code should be displayed or not, default is TRUE
+#' @param display_type default to \code{"both"}
+#' @param break_type default to \code{"auto"}
+#' @param split default to \code{40}
 #' @param title a character string for a title for all the slides to display code-output evolution, default is an empty string
 #' @param reg_assign logical set to T if output of some object created at beginning of code chunk should be displayed
 #'

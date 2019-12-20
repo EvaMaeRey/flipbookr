@@ -9,9 +9,9 @@ show_and_highlight_pane_classic(parsed, which_show = 1:3, which_highlight = 3)
 \arguments{
 \item{parsed}{the output resulting from parsing code}
 
-\item{break_point}{a integer indicating the line of code}
+\item{which_show}{default to \code{1:3}}
 
-\item{highlight}{integers indicating which lines of code to highlight}
+\item{which_highlight}{default to \code{3}}
 }
 \value{
 Partial code with indicators for highlight
