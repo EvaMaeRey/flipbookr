@@ -42,7 +42,7 @@ parse_code <- function(code) {
   sf <- srcfile(code)
   try(parse(text = code, srcfile = sf))
   utils::getParseData(sf) %>%
-    dplyr::rename(line = line1) %>%
+    dplyr::rename(line = .data$line1) %>%
     dplyr::mutate(open_par = text == "(") %>%
     dplyr::mutate(closed_par = text == ")") %>%
     dplyr::mutate(open_curly = text == "{") %>%

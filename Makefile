@@ -28,14 +28,14 @@ all: $(PKG_NAME)_$(PKG_VERSION).tar.gz
 		-e "invisible(file.create('$(PKG_ROOT)/$@', showWarnings = FALSE))"
 
 .document.Rout: $(RFILES) $(SRC) $(EXAMPLES) $(RAWDATAR) $(VIGNETTES) $(PKG_ROOT)/DESCRIPTION
-	if [ -e "$(PKG_ROOT)/data-raw/makefile" ]; then $(MAKE) -C $(PKG_ROOT)/data-raw/; else echo "Nothing to do"; fi
+	if [ -e "$(PKG_ROOT)/data-raw/Makefile" ]; then $(MAKE) -C $(PKG_ROOT)/data-raw/; else echo "Nothing to do"; fi
 	Rscript --vanilla --quiet -e "options(repo = c('$(CRAN)', '$(BIOC)'))" \
 		-e "options(warn = 2)" \
 		-e "devtools::document('$(PKG_ROOT)')" \
 		-e "invisible(file.create('$(PKG_ROOT)/$@', showWarnings = FALSE))"
 
 $(PKG_NAME)_$(PKG_VERSION).tar.gz: .install_dev_deps.Rout .document.Rout $(TESTS)
-	if [ -e "$(PKG_ROOT)/vignette-spinners/makefile" ]; then $(MAKE) -C $(PKG_ROOT)/vignette-spinners/; else echo "Nothing to do"; fi
+	if [ -e "$(PKG_ROOT)/vignette-spinners/Makefile" ]; then $(MAKE) -C $(PKG_ROOT)/vignette-spinners/; else echo "Nothing to do"; fi
 	R CMD build --md5 $(build-options) $(PKG_ROOT)
 
 check: $(PKG_NAME)_$(PKG_VERSION).tar.gz
