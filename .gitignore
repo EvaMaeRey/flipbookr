@@ -1,6 +1,7 @@
-.Rproj.user
+.Rproj.user/*
 .Rhistory
 .RData
 .Ruserdata
 *.Rout
 *.tar.gz
+*\.Rcheck
