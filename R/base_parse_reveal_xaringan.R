@@ -213,9 +213,9 @@ show_and_highlight_pane_classic <- function(parsed, which_show = 1:3, which_high
   parsed %>%
     dplyr::filter(1:dplyr::n() %in% which_show) %>%
     dplyr::mutate(connector = dplyr::case_when(1:dplyr::n() == dplyr::n() ~ "",
-                                               1:dplyr::n() != dplyr::n() ~ connector)) %>%
+                                               1:dplyr::n() != dplyr::n() ~ .data$connector)) %>%
     dplyr::mutate(highlight = ifelse(1:dplyr::n() %in% which_highlight, "#<<", "" )) %>%
-    dplyr::mutate(out = paste0(code, "", connector, "  ", comment, highlight)) %>%
+    dplyr::mutate(out = paste0(.data$code, "", .data$connector, "  ", .data$comment, .data$highlight)) %>%
     dplyr::pull()
 
 
