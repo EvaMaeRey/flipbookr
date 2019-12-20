@@ -21,6 +21,7 @@ Imports:
     stringi,
     knitr,
     glue,
+Suggests:
     usethis,
     cowplot
 RoxygenNote: 7.0.2
