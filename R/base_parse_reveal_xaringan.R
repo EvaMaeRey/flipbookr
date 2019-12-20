@@ -41,7 +41,7 @@ parse_code <- function(code) {
 
   sf <- srcfile(code)
   try(parse(text = code, srcfile = sf))
-  getParseData(sf) %>%
+  utils::getParseData(sf) %>%
     dplyr::rename(line = line1) %>%
     dplyr::mutate(open_par = text == "(") %>%
     dplyr::mutate(closed_par = text == ")") %>%
