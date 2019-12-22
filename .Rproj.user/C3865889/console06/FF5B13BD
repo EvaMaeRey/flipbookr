@@ -1,32 +1,4 @@
 
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_4_3447a5719e11666d4a9aff22960446e9.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_4_3447a5719e11666d4a9aff22960446e9.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_4_3447a5719e11666d4a9aff22960446e9.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_4_auto_a7c7ecddac1f2fb57619a5a08e26fe52.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_4_auto_a7c7ecddac1f2fb57619a5a08e26fe52.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_4_auto_a7c7ecddac1f2fb57619a5a08e26fe52.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_5_6d6c40fb35dec28f01fe45077991679f.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_5_6d6c40fb35dec28f01fe45077991679f.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_5_6d6c40fb35dec28f01fe45077991679f.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_5_auto_61fa9263682a404f1d4c59b1cd6721a3.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_5_auto_61fa9263682a404f1d4c59b1cd6721a3.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_5_auto_61fa9263682a404f1d4c59b1cd6721a3.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_6_ab2358c29810189f979ab0842613892b.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_6_ab2358c29810189f979ab0842613892b.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_6_ab2358c29810189f979ab0842613892b.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_6_auto_2eb376a0e5a8c2c752e480aae4ee2b81.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_6_auto_2eb376a0e5a8c2c752e480aae4ee2b81.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_6_auto_2eb376a0e5a8c2c752e480aae4ee2b81.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_7_5dccf1070c8ff37f3445c60e5c2af18e.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_7_5dccf1070c8ff37f3445c60e5c2af18e.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_7_5dccf1070c8ff37f3445c60e5c2af18e.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_7_auto_20562fabc2027b8f510f88d4c16ff122.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_7_auto_20562fabc2027b8f510f88d4c16ff122.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_7_auto_20562fabc2027b8f510f88d4c16ff122.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_1_5_f203dc9d631744950f2a10e74cdcd440.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_1_5_f203dc9d631744950f2a10e74cdcd440.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_1_5_f203dc9d631744950f2a10e74cdcd440.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_1_a2899a984e34e192c914d6f38a677fcc.RData
  create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_1_a2899a984e34e192c914d6f38a677fcc.rdb
  create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_1_a2899a984e34e192c914d6f38a677fcc.rdx
  create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_2_5_7a4967b8596132e1696fa11646413c69.RData
@@ -1015,3 +987,16 @@ remote: Resolving deltas:   0% (0/8)[Kremote: Resolving deltas:  12% (1/8)[K
 To https://github.com/EvaMaeRey/flipbookr.git
    f13f0b7..f51f48b  master -> master
 ]0;~/Google Drive/r_packages/flipbookrmyers-screen-3:flipbookr evangelinereynolds$ [Kmyers-screen-3:flipbookr evangelinereynolds$ [Kmyers-screen-3:flipbookr evangelinereynolds$ [Kmyers-screen-3:flipbookr evangelinereynolds$ [Kmyers-screen-3:flipbookr evangelinereynolds$ git[K[K[Kgit add .
+]0;~/Google Drive/r_packages/flipbookrmyers-screen-3:flipbookr evangelinereynolds$ git commit -m "maybe didn't get all the way there with last comim[K[Kmit. auto should be comlumn title for parsed t[Kdf"
+[master af7cffb] maybe didn't get all the way there with last commit. auto should be comlumn title for parsed df
+ 3 files changed, 21 insertions(+), 13 deletions(-)
+]0;~/Google Drive/r_packages/flipbookrmyers-screen-3:flipbookr evangelinereynolds$ git push
+Counting objects: 9, done.
+Delta compression using up to 4 threads.
+Compressing objects:  11% (1/9)   Compressing objects:  22% (2/9)   Compressing objects:  33% (3/9)   Compressing objects:  44% (4/9)   Compressing objects:  55% (5/9)   Compressing objects:  66% (6/9)   Compressing objects:  77% (7/9)   Compressing objects:  88% (8/9)   Compressing objects: 100% (9/9)   Compressing objects: 100% (9/9), done.
+Writing objects:  11% (1/9)   Writing objects:  22% (2/9)   Writing objects:  33% (3/9)   Writing objects:  44% (4/9)   Writing objects:  55% (5/9)   Writing objects:  66% (6/9)   Writing objects:  77% (7/9)   Writing objects:  88% (8/9)   Writing objects: 100% (9/9)   Writing objects: 100% (9/9), 1.29 KiB | 1.29 MiB/s, done.
+Total 9 (delta 5), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/5)[Kremote: Resolving deltas:  20% (1/5)[Kremote: Resolving deltas:  40% (2/5)[Kremote: Resolving deltas:  60% (3/5)[Kremote: Resolving deltas:  80% (4/5)[Kremote: Resolving deltas: 100% (5/5)[Kremote: Resolving deltas: 100% (5/5), completed with 5 local objects.[K
+To https://github.com/EvaMaeRey/flipbookr.git
+   f51f48b..af7cffb  master -> master
+[KEvangelines-Air:flipbookr evangelinereynolds$ git[K[K[Kgit add .

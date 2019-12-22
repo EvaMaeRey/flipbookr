@@ -1,8 +1,9 @@
 # Emi Tanaka (@statsgen) and Garrick Aden-Buie (@grrrck) and Evangeline Reynolds (@EvaMaeRey)
 # have contributed to this code
 
-local_code <- # for testing w/o knitting
-  "cars %>%             # the data  #REVEAL
+create_local_code <- function(){ # for testing w/o knitting
+
+"cars %>%             # the data  #REVEAL
 filter(speed > 4) %>%  # subset
 ggplot() +              # pipe to ggplot
 aes(x = speed) +
@@ -17,8 +18,11 @@ speed > 14
 cars ->
 my_plot  #REVEAL"
 
+  }
 
-local_code_regular_assignment <- # for testing w/o knitting
+create_local_code_regular_assignment <- function(){
+
+# for testing w/o knitting
   "my_cars <- cars %>%             # the data  #REVEAL
 filter(speed > 4) %>%  # subset
 ggplot() +              # pipe to ggplot
@@ -32,6 +36,7 @@ speed > 14)
 ) %+%
 cars"
 
+}
 
 
 #' Code chunk as text
@@ -39,9 +44,6 @@ cars"
 #' @param chunk_name a character string which is a chunk name
 #'
 #' @return the code in the chunk as a string
-#' @export
-#'
-#' @examples
 chunk_as_text <- function(chunk_name){
 
   paste(knitr::knit_code$get(chunk_name), collapse = "\n")
@@ -49,22 +51,16 @@ chunk_as_text <- function(chunk_name){
 }
 
 
-# New - using parser
-# We want to take just text (scalar), parse it and return a useful dataframe
-
 #' Parse code
 #'
 #' @param code code as a character string
 #'
 #' @return parsed code
-#' @export
 #'
 #' @examples
+#' local_code <- create_local_code()
 #' parse_code(code = local_code)
 parse_code <- function(code) {
-
-  # code <- paste(knitr::knit_code$get("the_code"), collapse = "\n")
-  # code <- local_code
 
   raw_code_table <- tibble::tibble(raw_code =
                                      stringr::str_split(code, "\n")[[1]]) %>%
@@ -72,7 +68,7 @@ parse_code <- function(code) {
 
   sf <- srcfile(code)
   try(parse(text = code, srcfile = sf))
-  getParseData(sf) %>%
+  utils::getParseData(sf) %>%
     dplyr::rename(line = line1) %>%
     dplyr::mutate(open_par = text == "(") %>%
     dplyr::mutate(closed_par = text == ")") %>%
@@ -81,8 +77,6 @@ parse_code <- function(code) {
     dplyr::mutate(open_square = text == "[") %>%
     dplyr::mutate(open_square = ifelse(text == "[[", 2, open_square)) %>%
     dplyr::mutate(closed_square = text == "]") %>%
-    # dplyr::mutate(num_open_par = stringr::str_count(token, "\\(|\\{|\\[")) %>% # Counting open parentheses
-    # dplyr::mutate(num_closed_par = stringr::str_count(token, "\\)|\\}|\\]"))  %>% # Counting closed parentheses
     dplyr::group_by(line) %>%
     dplyr::summarise(
       full_line = paste0(text, collapse = ""),
@@ -115,7 +109,6 @@ parse_code <- function(code) {
     dplyr::select(line, raw_code, code, connector, comment, auto, user, non_seq)
 
 }
-# parse_code(code = local_code)
 
 
 
@@ -164,12 +157,13 @@ calc_lines_to_show <- function(parsed, break_type = "user"){
 # calc_lines_to_show(parsed = parse_code(local_code), break_type = 6)
 
 # calc_lines_to_highlight()
-calc_lines_to_highlight <- function(which_show = list(c(1,2), c(1,2,3,4)), break_type = "auto"){
+calc_lines_to_highlight <- function(which_show = list(c(1, 2), c(1, 2, 3, 4)),
+                                    break_type = "auto"){
 
 
   which_highlight <- list()
 
-  if (break_type == "user" | break_type == "auto"){
+  if (break_type == "user" | break_type == "auto") {
 
   which_highlight[[1]] <- which_show[[1]]
 
@@ -239,13 +233,15 @@ calc_lines_to_highlight <- function(which_show = list(c(1,2), c(1,2,3,4)), break
 #' @export
 #'
 #' @examples
-show_and_highlight_pane_classic <- function(parsed, which_show = 1:3, which_highlight = 3){
+show_and_highlight_pane_classic <- function(parsed,
+                                            which_show_frame = 1:3,
+                                            which_highlight_frame = 3){
 
   parsed %>%
-    dplyr::filter(1:dplyr::n() %in% which_show) %>%
+    dplyr::filter(1:dplyr::n() %in% which_show_frame) %>%
     dplyr::mutate(connector = dplyr::case_when(1:dplyr::n() == dplyr::n() ~ "",
                                                1:dplyr::n() != dplyr::n() ~ connector)) %>%
-    dplyr::mutate(highlight = ifelse(1:dplyr::n() %in% which_highlight, "#<<", "" )) %>%
+    dplyr::mutate(highlight = ifelse(1:dplyr::n() %in% which_highlight_frame, "#<<", "" )) %>%
     dplyr::mutate(out = paste0(code, "", connector, "  ", comment, highlight)) %>%
     dplyr::pull()
 
@@ -256,9 +252,13 @@ show_and_highlight_pane_classic <- function(parsed, which_show = 1:3, which_high
 
 
 # example
-show_and_highlight_pane_reg_assign <- function(parsed, which_show = 1:3, which_highlight = 3){
+show_and_highlight_pane_reg_assign <- function(parsed,
+                                               which_show_frame = 1:3,
+                                               which_highlight_frame = 3){
 
-  the_reveal <- show_and_highlight_pane_classic(parsed, which_show, which_highlight)
+  the_reveal <- show_and_highlight_pane_classic(parsed,
+                                                which_show_frame,
+                                                which_highlight_frame)
 
   the_reveal[1] %>%
       stringr::str_extract(".+\\<-") %>%
@@ -273,23 +273,25 @@ show_and_highlight_pane_reg_assign <- function(parsed, which_show = 1:3, which_h
 # show_and_highlight_pane_reg_assign(parsed = parse_code(local_code_regular_assignment))
 
 # example reveal_pane(parsed = parse_code(local_code))
-partial_code <- function(parsed, which_show = 1:3, which_highlight = 3, reg_assign = F){
+partial_code <- function(parsed,
+                         which_show_frame = 1:3,
+                         which_highlight_frame = 3, reg_assign = F){
 
   if (reg_assign == F) {
-    show_and_highlight_pane_classic(parsed, which_show, which_highlight)
+    show_and_highlight_pane_classic(parsed, which_show_frame, which_highlight_frame)
   }else{
-    show_and_highlight_pane_reg_assign(parsed, which_show, which_highlight)
+    show_and_highlight_pane_reg_assign(parsed, which_show_frame, which_highlight_frame)
   }
 
 }
 
 
-partial_chunk <- function(chunk_name, which_show = 1:3, which_highlight = 3, reg_assign = F){
+partial_chunk <- function(chunk_name, which_show_frame = 1:3, which_highlight_frame = 3, reg_assign = F){
 
   chunk_name %>%
     chunk_as_text() %>%
     parse_code() %>%
-    partial_code(which_show, which_highlight, reg_assign)
+    partial_code(which_show_frame, which_highlight_frame, reg_assign)
 
 }
 
@@ -298,7 +300,7 @@ return_partial_chunks_template <- function(display_type = "output",
                                   eval = display_type == "output",
                                   echo = display_type == "code") {
 
-  glue::glue("```{r {{{display_type}}}_{{chunk_name}}_{{breaks}}_{{{break_type}}}, eval={{{eval}}}, echo = {{{echo}}}, code=partial_chunk('{{chunk_name}}', which_show = {{which_show}}, which_highlight = {{which_highlight}}, reg_assign = {{reg_assign}})}",
+  glue::glue("```{r {{chunk_name}}_{{{break_type}}}_{{breaks}}_{{{display_type}}}, eval={{{eval}}}, echo = {{{echo}}}, code = partial_chunk('{{chunk_name}}', which_show_frame = {{which_show}}, which_highlight_frame = {{which_highlight}}, reg_assign = {{reg_assign}})}",
              "```",
              .open = "{{{", .close = "}}}", .sep = "\n")
 }
@@ -370,6 +372,8 @@ return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
 # uses above code, but calculates breaks and highlight
 partially_knit_chunks <- function(chunk_name = "example_chunk_name",
                                   title = "My Title",
+                                  which_show = NULL,
+                                  which_highlight = NULL,
                                   reg_assign = F,
                                   display_type = "both",
                                   break_type = "auto",
@@ -381,10 +385,19 @@ partially_knit_chunks <- function(chunk_name = "example_chunk_name",
     parse_code() ->
   parsed
 
+if (is.null(which_show)){
+
 which_show <- calc_lines_to_show(parsed = parsed, break_type)
+
+}
+
+if (is.null(which_highlight)){
+
 
 which_highlight <- calc_lines_to_highlight(which_show = which_show,
                                            break_type = break_type)
+
+}
 
 if (display_type == "both") {
 
@@ -424,7 +437,12 @@ if (display_type == "both") {
 #' @export
 #'
 #' @examples
-reveal <- function(chunk_name, display_type = "both", break_type = "auto", title = "", reg_assign = F, split = 40){
+reveal <- function(chunk_name,
+                   display_type = "both",
+                   break_type = "auto",
+                   title = "",
+                   reg_assign = F,
+                   split = 40){
 
   paste(knitr::knit(text =
                       partially_knit_chunks(chunk_name = chunk_name,

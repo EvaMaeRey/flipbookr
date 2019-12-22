@@ -4,8 +4,8 @@
 \alias{show_and_highlight_pane_classic}
 \title{Partially reveal parsed code}
 \usage{
-show_and_highlight_pane_classic(parsed, which_show = 1:3,
-  which_highlight = 3)
+show_and_highlight_pane_classic(parsed, which_show_frame = 1:3,
+  which_highlight_frame = 3)
 }
 \arguments{
 \item{parsed}{the output resulting from parsing code}

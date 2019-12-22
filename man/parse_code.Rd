@@ -16,5 +16,6 @@ parsed code
 Parse code
 }
 \examples{
+local_code <- create_local_code()
 parse_code(code = local_code)
 }

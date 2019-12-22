@@ -70,7 +70,7 @@ library(flipbookr)
 Also, I set *code chunk* options for the code chunks that follow.  These will apply to the spawned code chunks.
 
 ```{r setup}
-knitr::opts_chunk$set(fig.width = 6, message = F, warning = F, comment = "", cache = T)
+knitr::opts_chunk$set(fig.width = 6, message = F, warning = F, comment = "", cache = F, fig.retina = 3)
 ```
 
 
@@ -78,7 +78,7 @@ knitr::opts_chunk$set(fig.width = 6, message = F, warning = F, comment = "", cac
 
 
 ```{r, cache = F, echo = F}
-# source("../../../../../R/base_parse_reveal_xaringan.R")
+#source("../../../../../R/base_parse_reveal_xaringan.R")
 ```
 
 
@@ -168,6 +168,12 @@ Notice the regular comments and the special #REVEAL comments, these will be used
 
 One parameter of flipbooking is the break_type.  The default is "auto", in which appropriate breakpoints are determined automatically --- by finding where parentheses are balanced. 
 
+<!-- display the user input code as a refresher -->
+```{r, code = knitr::knit_code$get("cars"), eval = F, echo = T}
+```
+
+
+
 ---
 
 `r reveal("cars", break_type = "auto")`
@@ -178,10 +184,9 @@ One parameter of flipbooking is the break_type.  The default is "auto", in which
 
 If the break_type is set to "user", the breakpoints are those indicated by the user with the special comment #REVEAL
 
+<!-- display the user input code as a refresher -->
 ```{r, code = knitr::knit_code$get("cars"), eval = F, echo = T}
 ```
-
-
 
 ---
 
@@ -193,12 +198,14 @@ If the break_type is set to "user", the breakpoints are those indicated by the u
 
 If the break_type is set to "non_seq", the breakpoints are those indicated by the user with the special numeric comment #REVEAL2, #REVEAL3 etc to indicate at which point in time the code should appear.  
 
+<!-- display the user input code as a refresher -->
 ```{r, code = knitr::knit_code$get("cars"), eval = F, echo = T}
 ```
 
 
 
 ---
+
 
 `r reveal("cars", break_type = "non_seq")`
 
@@ -306,7 +313,7 @@ If there are dependenceies between code chunks, you may need to turn the code ch
 
 ---
 
-`r flipbookr::reveal("plot_object")`
+`r reveal("plot_object")`
 
 ```{r plot_object, eval = T, echo = F}
 cars %>% 
@@ -321,7 +328,7 @@ cars_plot
 ---
 
 
-`r flipbookr::reveal("further_building")`
+`r reveal("further_building")`
 
 ```{r further_building, echo = F, eval = F}
 cars_plot +
@@ -345,7 +352,7 @@ But base R techniques and other popular tools can certainly also be employed.
 
 ---
 
-`r flipbookr::reveal("reg_assign2", break_type = "auto", display_type = "both", reg_assign = T)`
+`r reveal("reg_assign2", break_type = "auto", display_type = "both", reg_assign = T)`
 
 
 ```{r reg_assign2, echo = F, eval = F}
@@ -366,7 +373,7 @@ Flipbooking can also be applied to logical indexing workflows if the steps are b
 
 ---
 
-`r flipbookr::reveal("dot_notation")`
+`r reveal("dot_notation")`
 
 ```{r dot_notation, echo = F, eval = T}
 cars %>% 
@@ -385,7 +392,7 @@ It has been a while since I've done much plotting with base R, but I think it is
 
 ---
 
-`r flipbookr::reveal("base_r_plotting")`
+`r reveal("base_r_plotting")`
 
 ```{r base_r_plotting, echo = F, eval = F}
 plot(cars, xlab = "Speed (mph)", 
@@ -401,7 +408,7 @@ title(sub = "Data is from Ezekiel's (1930) 'Methods of Correlation Analysis'.")
 
 ---
 
-`r flipbookr::reveal("cars_anova")`
+`r reveal("cars_anova")`
 
 ```{r cars_anova, eval = T, echo = F, fig.keep='none'}
 ## An example of polynomial regression
