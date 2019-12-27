@@ -1,6 +1,5 @@
 # Emi Tanaka (@statsgen) and Garrick Aden-Buie (@grrrck) and Evangeline Reynolds (@EvaMaeRey)
 # have contributed to this code
-
 create_local_code <- function(){ # for testing w/o knitting
 
 "cars %>%             # the data  #REVEAL
@@ -18,7 +17,18 @@ speed > 14
 cars ->
 my_plot  #REVEAL"
 
-  }
+}
+
+
+create_local_code_short <- function(){ # for testing w/o knitting
+
+  "cars %>%             # the data
+  filter(speed > 4) %>%  # subset #REVEAL
+  ggplot() #REVEAL"
+
+}
+
+
 
 create_local_code_regular_assignment <- function(){
 
@@ -151,15 +161,11 @@ calc_lines_to_show <- function(parsed, break_type = "user"){
   which_show
 
 }
-# calc_lines_to_show(parsed = parse_code(local_code), break_type = "user")
-# calc_lines_to_show(parsed = parse_code(local_code), break_type = "auto")
-# calc_lines_to_show(parsed = parse_code(local_code), break_type = "non_seq")
-# calc_lines_to_show(parsed = parse_code(local_code), break_type = 6)
+
 
 # calc_lines_to_highlight()
 calc_lines_to_highlight <- function(which_show = list(c(1, 2), c(1, 2, 3, 4)),
                                     break_type = "auto"){
-
 
   which_highlight <- list()
 
@@ -199,41 +205,8 @@ calc_lines_to_highlight <- function(which_show = list(c(1, 2), c(1, 2, 3, 4)),
 
   }
 
-# local_code %>%
-#   parse_code() %>%
-#   calc_lines_to_show(break_type = "non_seq") %>%
-#   calc_lines_to_highlight(break_type = "non_seq")
-#
-# local_code %>%
-#   parse_code() %>%
-#   calc_lines_to_show(break_type = 5) %>%
-#   calc_lines_to_highlight(break_type = 5)
-#
-#
-# local_code %>%
-#   parse_code() %>%
-#   calc_lines_to_show(break_type = "auto") %>%
-#   calc_lines_to_highlight(break_type = "auto")
-#
-# local_code %>%
-#   parse_code() %>%
-#   calc_lines_to_show(break_type = "user") %>%
-#   calc_lines_to_highlight(break_type = "user")
 
-# calc_lines_to_highlight()
-
-
-#' Partially reveal parsed code
-#'
-#' @param parsed the output resulting from parsing code
-#' @param break_point a integer indicating the line of code
-#' @param highlight integers indicating which lines of code to highlight
-#'
-#' @return Partial code with indicators for highlight
-#' @export
-#'
-#' @examples
-show_and_highlight_pane_classic <- function(parsed,
+show_and_highlight_frame_classic <- function(parsed,
                                             which_show_frame = 1:3,
                                             which_highlight_frame = 3){
 
@@ -245,18 +218,14 @@ show_and_highlight_pane_classic <- function(parsed,
     dplyr::mutate(out = paste0(code, "", connector, "  ", comment, highlight)) %>%
     dplyr::pull()
 
-
 }
 
-# show_and_highlight_pane_classic(parsed = parse_code(local_code))
 
-
-# example
-show_and_highlight_pane_reg_assign <- function(parsed,
+show_and_highlight_frame_reg_assign <- function(parsed,
                                                which_show_frame = 1:3,
                                                which_highlight_frame = 3){
 
-  the_reveal <- show_and_highlight_pane_classic(parsed,
+  the_reveal <- show_and_highlight_frame_classic(parsed,
                                                 which_show_frame,
                                                 which_highlight_frame)
 
@@ -270,58 +239,100 @@ show_and_highlight_pane_reg_assign <- function(parsed,
 
 }
 
-# show_and_highlight_pane_reg_assign(parsed = parse_code(local_code_regular_assignment))
 
-# example reveal_pane(parsed = parse_code(local_code))
-partial_code <- function(parsed,
-                         which_show_frame = 1:3,
-                         which_highlight_frame = 3, reg_assign = F){
+show_and_highlight_code_frames <- function(parsed,
+                         break_type = "auto",
+                         which_show = calc_lines_to_show(parsed = parsed, break_type = break_type),
+                         which_highlight = calc_lines_to_highlight(which_show = which_show, break_type = break_type),
+                         reg_assign = F){
+
+  partial_code_frames <- list()
+
+  for (i in 1:length(which_show)) {
+
 
   if (reg_assign == F) {
-    show_and_highlight_pane_classic(parsed, which_show_frame, which_highlight_frame)
+    partial_code_frames[[i]] <- show_and_highlight_frame_classic(parsed, which_show_frame = which_show[[i]], which_highlight_frame = which_highlight[[i]])
   }else{
-    show_and_highlight_pane_reg_assign(parsed, which_show_frame, which_highlight_frame)
+    partial_code_frames[[i]] <- show_and_highlight_frame_reg_assign(parsed, which_show_frame = which_show[[i]], which_highlight_frame = which_highlight[[i]])
   }
 
+  }
+
+  partial_code_frames
+
+}
+
+
+
+get_partial_codes_from_chunk <- function(chunk_name,
+                                         break_type = "auto",
+                                         reg_assign = F){
+
+chunk_name %>%
+  chunk_as_text() %>%
+  parse_code() %>%
+  show_and_highlight_code_frames(break_type = break_type,
+                                 reg_assign = reg_assign)
+
 }
 
 
-partial_chunk <- function(chunk_name, which_show_frame = 1:3, which_highlight_frame = 3, reg_assign = F){
-
-  chunk_name %>%
-    chunk_as_text() %>%
-    parse_code() %>%
-    partial_code(which_show_frame, which_highlight_frame, reg_assign)
-
-}
 
 return_partial_chunks_template <- function(display_type = "output",
                                            break_type = "auto",
                                   eval = display_type == "output",
                                   echo = display_type == "code") {
 
-  glue::glue("```{r {{chunk_name}}_{{{break_type}}}_{{breaks}}_{{{display_type}}}, eval={{{eval}}}, echo = {{{echo}}}, code = partial_chunk('{{chunk_name}}', which_show_frame = {{which_show}}, which_highlight_frame = {{which_highlight}}, reg_assign = {{reg_assign}})}",
+  glue::glue("```{r {{chunk_name}}_{{{break_type}}}_{{breaks}}_{{{display_type}}}, eval={{{eval}}}, echo = {{{echo}}}, code = the_code[[{{breaks}}]]}",
              "```",
              .open = "{{{", .close = "}}}", .sep = "\n")
 }
-# return_partial_chunks_template()
+
+
+
+
+return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
+                                                 break_type = "auto",
+                                                 reg_assign = F,
+                                                 the_code = get_partial_codes_from_chunk(chunk_name = chunk_name,
+                                                                              break_type = break_type,
+                                                                              reg_assign = reg_assign),
+                                                 display_type = "output") {
+
+
+
+  breaks <- 1:length(the_code)  # number of temporal breakpoints
+
+
+  partial_knit_steps <- glue::glue(
+    "count: false",
+    return_partial_chunks_template(eval = display_type == "output",
+                                   echo = display_type == "code",
+                                   display_type = display_type,
+                                   break_type = break_type),
+    .open = "{{", .close = "}}", .sep = "\n"
+  )
+
+  glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
+
+}
 
 
 
 return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk_name",
                                                            break_type = "auto",
-                                           which_show = list(1, 1:2, 1:3),
-                                           which_highlight = list(1, 2, 3),
-                                           title = "My Title",
-                                           reg_assign = F,
-                                           split = 40) {
+                                                           reg_assign = F,
+                                                           the_code = get_partial_codes_from_chunk(chunk_name = chunk_name,
+                                                                                       break_type = break_type,
+                                                                                       reg_assign = reg_assign),
+                                                           split = 40) {
 
-  breaks <- 1:length(which_show)  # number of temporal breakpoints
+  breaks <- 1:length(the_code)  # number of temporal breakpoints
 
   partial_knit_steps <- glue::glue(
     "class: split-{{split}}",
     "count: false",
-    "{{title}}",
     ".column[.content[",
     return_partial_chunks_template(display_type = "code",
                                    break_type = break_type),
@@ -337,101 +348,44 @@ return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk
   glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
 
 }
-# return_partial_side_by_side_code_output_chunks()
 
-
-
-return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
-                                                 break_type = "auto",
-                                                 which_show = list(1, 1:2, 1:3),
-                                                 which_highlight = list(1, 2, 3),
-                                               title = "My Title",
-                                               reg_assign = F,
-                                               display_type = "output") {
-
-  breaks <- 1:length(which_show)  # number of temporal breakpoints
-
-
-  partial_knit_steps <- glue::glue(
-    "count: false",
-    "{{title}}",
-    return_partial_chunks_template(eval = display_type == "output",
-                                   echo = display_type == "code",
-                                   display_type = display_type,
-                                   break_type = break_type),
-    .open = "{{", .close = "}}", .sep = "\n"
-  )
-
-  glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
-
-}
-# return_partial_code_or_output_chunks()
-
-
-
-# uses above code, but calculates breaks and highlight
 partially_knit_chunks <- function(chunk_name = "example_chunk_name",
-                                  title = "My Title",
-                                  which_show = NULL,
-                                  which_highlight = NULL,
-                                  reg_assign = F,
-                                  display_type = "both",
                                   break_type = "auto",
+                                  reg_assign = F,
+                                  the_code = get_partial_codes_from_chunk(chunk_name = chunk_name,
+                                                                          break_type = break_type,
+                                                                          reg_assign = reg_assign),
+                                  display_type = "both",
                                   split = 40){
 
-
-  chunk_name %>%
-    chunk_as_text() %>%
-    parse_code() ->
-  parsed
-
-if (is.null(which_show)){
-
-which_show <- calc_lines_to_show(parsed = parsed, break_type)
-
-}
-
-if (is.null(which_highlight)){
-
-
-which_highlight <- calc_lines_to_highlight(which_show = which_show,
-                                           break_type = break_type)
-
-}
 
 if (display_type == "both") {
 
   return_partial_side_by_side_code_output_chunks(chunk_name = chunk_name,
-                                                 title = title,
                                                  break_type = break_type,
-                                                 which_show = which_show,
-                                                 which_highlight = which_highlight,
-                                                 reg_assign = reg_assign,
-                                                 split = 40)
+                                                 the_code = the_code,
+                                                 split = split)
 
 } else {
 
   return_partial_code_or_output_chunks(chunk_name = chunk_name,
-                                       title = title,
-                                       display_type = display_type,
                                        break_type = break_type,
-                                       which_show = which_show,
-                                       which_highlight = which_highlight,
-                                       reg_assign = reg_assign)
+                                       the_code = the_code,
+                                       display_type = display_type)
 
 }
 
 }
-# partially_knit_chunks()
 
 
-#' Apply reveal in Rmarkdown file, to be used in-line
+#' reveal in Rmarkdown file, to be used in-line
 #'
 #' @param chunk_name a character string which is a chunk name
-#' @param user_reveal a logical for if breaks should be automatically determined or have been defined manually with "#REVEAL" message
-#' @param show_code a logical for if the code should be displayed or not, default is TRUE
-#' @param title a character string for a title for all the slides to display code-output evolution, default is an empty string
+#' @param break_type "auto", "user", "non_seq" or numeric
+#' @param display_type string "both", "code", "output", default is "both"
+#' @param the_code list of string vectors containing the partial code, computes automatically
 #' @param reg_assign logical set to T if output of some object created at beginning of code chunk should be displayed
+#' @param split percent split between code and output if both
 #'
 #' @return a character string to be interpreted as .Rmd content
 #' @export
@@ -440,13 +394,13 @@ if (display_type == "both") {
 reveal <- function(chunk_name,
                    display_type = "both",
                    break_type = "auto",
-                   title = "",
+                   the_code = get_partial_codes_from_chunk(chunk_name, break_type, reg_assign),
                    reg_assign = F,
                    split = 40){
 
   paste(knitr::knit(text =
                       partially_knit_chunks(chunk_name = chunk_name,
-                                            title = title,
+                                            the_code = the_code,
                                             reg_assign = reg_assign,
                                             display_type = display_type,
                                             break_type = break_type,

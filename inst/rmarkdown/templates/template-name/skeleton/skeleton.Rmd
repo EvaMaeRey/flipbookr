@@ -64,7 +64,7 @@ Flipbooks are built by spawning new *partial* code chunks from a single, user-in
 We use the flipbookr package, of course! This does the work of disassembling a single code chuck and creating the "build" of multiple partial-code chunks.  
 
 ```{r, cache = F}
-library(flipbookr)
+# library(flipbookr)
 ```
 
 Also, I set *code chunk* options for the code chunks that follow.  These will apply to the spawned code chunks.
@@ -78,7 +78,7 @@ knitr::opts_chunk$set(fig.width = 6, message = F, warning = F, comment = "", cac
 
 
 ```{r, cache = F, echo = F}
-#source("../../../../../R/base_parse_reveal_xaringan.R")
+source("../../../../../R/base_parse_reveal_xaringan.R")
 ```
 
 
@@ -434,7 +434,7 @@ for (degree in 1:4) {
 
 # Sharing your flipbooks
 
-- zip and ship
+- flip, zip, and ship
 - get it on github
 
 
