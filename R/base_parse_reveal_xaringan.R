@@ -349,12 +349,13 @@ return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk
 
 }
 
-partially_knit_chunks <- function(chunk_name = "example_chunk_name",
-                                  break_type = "auto",
-                                  reg_assign = F,
-                                  the_code = get_partial_codes_from_chunk(chunk_name = chunk_name,
+partially_knit_chunks <- function(the_code = get_partial_codes_from_chunk(chunk_name = chunk_name,
                                                                           break_type = break_type,
                                                                           reg_assign = reg_assign),
+                                  chunk_name = "example_chunk_name",
+                                  break_type = "auto",
+                                  reg_assign = F,
+
                                   display_type = "both",
                                   split = 40){
 
