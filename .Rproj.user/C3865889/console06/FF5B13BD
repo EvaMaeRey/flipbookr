@@ -1043,3 +1043,34 @@ remote: Resolving deltas:   0% (0/12)[Kremote: Resolving deltas:   8% (1/12)[
 To https://github.com/EvaMaeRey/flipbookr.git
    827bd19..1612463  master -> master
 ]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ [KEvangelines-Air:flipbookr evangelinereynolds$ [KEvangelines-Air:flipbookr evangelinereynolds$ git add .
+]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git pus[K[K[Kcommit -m "I [K[KI wat th[K[K[K[K[Kant the first argument to[K[Kin partial kit [K[K[K[Kn[Kknit chunks [K[K[K[K[K[K[K[K[K[K[K[K[K[Kl_l[Kkin[K[Knit_chunks to be the partial code"[K"[K, so we a[Kcan pipe into it"
+[master d408303] I want the first argument in partial_knit_chunks to be the partial code, so we can pipe into it
+ 4 files changed, 22 insertions(+), 7 deletions(-)
+]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git push
+Counting objects: 15, done.
+Delta compression using up to 4 threads.
+Compressing objects:   9% (1/11)   Compressing objects:  18% (2/11)   Compressing objects:  27% (3/11)   Compressing objects:  36% (4/11)   Compressing objects:  45% (5/11)   Compressing objects:  54% (6/11)   Compressing objects:  63% (7/11)   Compressing objects:  72% (8/11)   Compressing objects:  81% (9/11)   Compressing objects:  90% (10/11)   Compressing objects: 100% (11/11)   Compressing objects: 100% (11/11), done.
+Writing objects:   6% (1/15)   Writing objects:  13% (2/15)   Writing objects:  20% (3/15)   Writing objects:  26% (4/15)   Writing objects:  33% (5/15)   Writing objects:  40% (6/15)   Writing objects:  46% (7/15)   Writing objects:  53% (8/15)   Writing objects:  60% (9/15)   Writing objects:  66% (10/15)   Writing objects:  73% (11/15)   Writing objects:  80% (12/15)   Writing objects:  86% (13/15)   Writing objects:  93% (14/15)   Writing objects: 100% (15/15)   Writing objects: 100% (15/15), 1.64 KiB | 558.00 KiB/s, done.
+Total 15 (delta 6), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/6)[Kremote: Resolving deltas:  16% (1/6)[Kremote: Resolving deltas:  33% (2/6)[Kremote: Resolving deltas:  50% (3/6)[Kremote: Resolving deltas:  66% (4/6)[Kremote: Resolving deltas:  83% (5/6)[Kremote: Resolving deltas: 100% (6/6)[Kremote: Resolving deltas: 100% (6/6), completed with 6 local objects.[K
+To https://github.com/EvaMaeRey/flipbookr.git
+   1612463..d408303  master -> master
+]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git commit -m "a[Kwanted some more functions to be exported so that we can see how the fu[K[Kfunctions worlk[K[Kk together in a book ."
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Changes not staged for commit:
+	[31mmodified:   .Rproj.user/C3865889/console06/FF5B13BD[m
+	[31mmodified:   .Rproj.user/C3865889/sources/prop/INDEX[m
+	[31mmodified:   .Rproj.user/shared/notebooks/paths[m
+	[31mmodified:   R/base_parse_reveal_xaringan.R[m
+
+Untracked files:
+	[31mman/create_local_code_short.Rd[m
+	[31mman/partially_knit_chunks.Rd[m
+	[31mman/show_and_highlight_code_frames.Rd[m
+
+no changes added to commit
+]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git commit -m "wanted some more functions to be exported so that we can see how the functions work together in a book.."[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpush[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccommit -m "wanted some more functions to be exported so that we can see how the functions work together in a book.."[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpush[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[Kadd .

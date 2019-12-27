@@ -20,6 +20,12 @@ my_plot  #REVEAL"
 }
 
 
+#' Title
+#'
+#' @return
+#' @export
+#'
+#' @examples
 create_local_code_short <- function(){ # for testing w/o knitting
 
   "cars %>%             # the data
@@ -240,6 +246,18 @@ show_and_highlight_frame_reg_assign <- function(parsed,
 }
 
 
+#' Title
+#'
+#' @param parsed
+#' @param break_type
+#' @param which_show
+#' @param which_highlight
+#' @param reg_assign
+#'
+#' @return
+#' @export
+#'
+#' @examples
 show_and_highlight_code_frames <- function(parsed,
                          break_type = "auto",
                          which_show = calc_lines_to_show(parsed = parsed, break_type = break_type),
@@ -349,6 +367,19 @@ return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk
 
 }
 
+#' Title
+#'
+#' @param the_code
+#' @param chunk_name
+#' @param break_type
+#' @param reg_assign
+#' @param display_type
+#' @param split
+#'
+#' @return
+#' @export
+#'
+#' @examples
 partially_knit_chunks <- function(the_code = get_partial_codes_from_chunk(chunk_name = chunk_name,
                                                                           break_type = break_type,
                                                                           reg_assign = reg_assign),
