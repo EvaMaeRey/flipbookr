@@ -1,6 +1,6 @@
 # Emi Tanaka (@statsgen) and Garrick Aden-Buie (@grrrck) and Evangeline Reynolds (@EvaMaeRey)
 # have contributed to this code
-create_local_code <- function(){ # for testing w/o knitting
+create_code <- function(){ # for testing w/o knitting
 
 "cars %>%             # the data  #REVEAL
 filter(speed > 4) %>%  # subset
@@ -26,7 +26,7 @@ my_plot  #REVEAL"
 #' @export
 #'
 #' @examples
-create_local_code_short <- function(){ # for testing w/o knitting
+create_short_code <- function(){ # for testing w/o knitting
 
   "cars %>%             # the data
   filter(speed > 4) %>%  # subset #REVEAL
@@ -36,7 +36,7 @@ create_local_code_short <- function(){ # for testing w/o knitting
 
 
 
-create_local_code_regular_assignment <- function(){
+code_create_reg_assign <- function(){
 
 # for testing w/o knitting
   "my_cars <- cars %>%             # the data  #REVEAL
@@ -45,12 +45,7 @@ ggplot() +              # pipe to ggplot
 aes(x = speed) +
 aes(y = dist) +
 # Describing what follows
-geom_point(alpha = .3) + #REVEAL
-aes(color =
-paste(\"speed\",
-speed > 14)
-) %+%
-cars"
+geom_point(alpha = .3)"
 
 }
 
@@ -60,7 +55,7 @@ cars"
 #' @param chunk_name a character string which is a chunk name
 #'
 #' @return the code in the chunk as a string
-chunk_as_text <- function(chunk_name){
+chunk_code_get <- function(chunk_name){
 
   paste(knitr::knit_code$get(chunk_name), collapse = "\n")
 
@@ -74,9 +69,7 @@ chunk_as_text <- function(chunk_name){
 #' @return parsed code
 #'
 #' @examples
-#' local_code <- create_local_code()
-#' parse_code(code = local_code)
-parse_code <- function(code) {
+code_parse <- function(code) {
 
   raw_code_table <- tibble::tibble(raw_code =
                                      stringr::str_split(code, "\n")[[1]]) %>%
@@ -129,7 +122,7 @@ parse_code <- function(code) {
 
 
 
-calc_lines_to_show <- function(parsed, break_type = "user"){
+parsed_calc_show <- function(parsed, break_type = "user"){
 
   if (break_type == "auto") {
 
@@ -169,8 +162,8 @@ calc_lines_to_show <- function(parsed, break_type = "user"){
 }
 
 
-# calc_lines_to_highlight()
-calc_lines_to_highlight <- function(which_show = list(c(1, 2), c(1, 2, 3, 4)),
+# shown_lines_calc_highlight()
+shown_lines_calc_highlight <- function(which_show = list(c(1, 2), c(1, 2, 3, 4)),
                                     break_type = "auto"){
 
   which_highlight <- list()
@@ -212,7 +205,7 @@ calc_lines_to_highlight <- function(which_show = list(c(1, 2), c(1, 2, 3, 4)),
   }
 
 
-show_and_highlight_frame_classic <- function(parsed,
+parsed_return_partial_code <- function(parsed,
                                             which_show_frame = 1:3,
                                             which_highlight_frame = 3){
 
@@ -227,11 +220,11 @@ show_and_highlight_frame_classic <- function(parsed,
 }
 
 
-show_and_highlight_frame_reg_assign <- function(parsed,
+parsed_reg_assign_return_partial_code <- function(parsed,
                                                which_show_frame = 1:3,
                                                which_highlight_frame = 3){
 
-  the_reveal <- show_and_highlight_frame_classic(parsed,
+  the_reveal <- parsed_return_partial_code(parsed,
                                                 which_show_frame,
                                                 which_highlight_frame)
 
@@ -258,10 +251,10 @@ show_and_highlight_frame_reg_assign <- function(parsed,
 #' @export
 #'
 #' @examples
-show_and_highlight_code_frames <- function(parsed,
+parsed_return_partial_code_sequence <- function(parsed,
                          break_type = "auto",
-                         which_show = calc_lines_to_show(parsed = parsed, break_type = break_type),
-                         which_highlight = calc_lines_to_highlight(which_show = which_show, break_type = break_type),
+                         which_show = parsed_calc_show(parsed = parsed, break_type = break_type),
+                         which_highlight = shown_lines_calc_highlight(which_show = which_show, break_type = break_type),
                          reg_assign = F){
 
   partial_code_frames <- list()
@@ -270,9 +263,9 @@ show_and_highlight_code_frames <- function(parsed,
 
 
   if (reg_assign == F) {
-    partial_code_frames[[i]] <- show_and_highlight_frame_classic(parsed, which_show_frame = which_show[[i]], which_highlight_frame = which_highlight[[i]])
+    partial_code_frames[[i]] <- parsed_return_partial_code(parsed, which_show_frame = which_show[[i]], which_highlight_frame = which_highlight[[i]])
   }else{
-    partial_code_frames[[i]] <- show_and_highlight_frame_reg_assign(parsed, which_show_frame = which_show[[i]], which_highlight_frame = which_highlight[[i]])
+    partial_code_frames[[i]] <- parsed_reg_assign_return_partial_code(parsed, which_show_frame = which_show[[i]], which_highlight_frame = which_highlight[[i]])
   }
 
   }
@@ -282,23 +275,43 @@ show_and_highlight_code_frames <- function(parsed,
 }
 
 
-
-get_partial_codes_from_chunk <- function(chunk_name,
-                                         break_type = "auto",
-                                         reg_assign = F){
+#' Title
+#'
+#' @param chunk_name
+#' @param break_type
+#' @param reg_assign
+#'
+#' @return
+#' @export
+chunk_name_return_code_sequence <- function(chunk_name,
+                                            break_type = "auto",
+                                            reg_assign = F){
 
 chunk_name %>%
-  chunk_as_text() %>%
-  parse_code() %>%
-  show_and_highlight_code_frames(break_type = break_type,
+  chunk_code_get() %>%
+  code_parse() %>%
+  parsed_return_partial_code_sequence(break_type = break_type,
                                  reg_assign = reg_assign)
 
 }
 
 
 
-return_partial_chunks_template <- function(display_type = "output",
-                                           break_type = "auto",
+#' Title
+#'
+#' @param display_type
+#' @param break_type
+#' @param eval
+#' @param echo
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' return_partial_chunks_template()
+#' return_partial_chunks_template(break_type = "auto", display_type = "output")
+return_partial_chunks_template <- function(break_type = "auto",
+                                           display_type = "output",
                                   eval = display_type == "output",
                                   echo = display_type == "code") {
 
@@ -310,17 +323,30 @@ return_partial_chunks_template <- function(display_type = "output",
 
 
 
+#' Title
+#'
+#' @param chunk_name
+#' @param break_type
+#' @param reg_assign
+#' @param the_code
+#' @param breaks
+#' @param display_type
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' return_partial_code_or_output_chunks(breaks = 1:3)
+#' return_partial_code_or_output_chunks(display_type = "code", breaks = 1:3)
 return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
                                                  break_type = "auto",
                                                  reg_assign = F,
-                                                 the_code = get_partial_codes_from_chunk(chunk_name = chunk_name,
+                                                 the_code = chunk_name_return_code_sequence(chunk_name = chunk_name,
                                                                               break_type = break_type,
                                                                               reg_assign = reg_assign),
+                                                 breaks = 1:length(the_code),
                                                  display_type = "output") {
 
-
-
-  breaks <- 1:length(the_code)  # number of temporal breakpoints
 
 
   partial_knit_steps <- glue::glue(
@@ -338,15 +364,29 @@ return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
 
 
 
+#' Title
+#'
+#' @param chunk_name
+#' @param break_type
+#' @param reg_assign
+#' @param the_code
+#' @param breaks
+#' @param split
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' return_partial_side_by_side_code_output_chunks(breaks = 1:3)
 return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk_name",
                                                            break_type = "auto",
                                                            reg_assign = F,
-                                                           the_code = get_partial_codes_from_chunk(chunk_name = chunk_name,
+                                                           the_code = chunk_name_return_code_sequence(chunk_name = chunk_name,
                                                                                        break_type = break_type,
                                                                                        reg_assign = reg_assign),
+                                                           breaks = 1:length(the_code),
                                                            split = 40) {
 
-  breaks <- 1:length(the_code)  # number of temporal breakpoints
 
   partial_knit_steps <- glue::glue(
     "class: split-{{split}}",
@@ -380,15 +420,15 @@ return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk
 #' @export
 #'
 #' @examples
-partially_knit_chunks <- function(the_code = get_partial_codes_from_chunk(chunk_name = chunk_name,
+#' code_sequence_return_partial_chunks(the_code = c("ggplot(cars) +", "aes(x = speed)"))
+code_sequence_return_partial_chunks <- function(the_code = chunk_name_return_code_sequence(chunk_name = chunk_name,
                                                                           break_type = break_type,
                                                                           reg_assign = reg_assign),
-                                  chunk_name = "example_chunk_name",
-                                  break_type = "auto",
-                                  reg_assign = F,
-
-                                  display_type = "both",
-                                  split = 40){
+                                                chunk_name = "example_chunk_name",
+                                                break_type = "auto",
+                                                reg_assign = F,
+                                                display_type = "both",
+                                                split = 40){
 
 
 if (display_type == "both") {
@@ -426,12 +466,12 @@ if (display_type == "both") {
 reveal <- function(chunk_name,
                    display_type = "both",
                    break_type = "auto",
-                   the_code = get_partial_codes_from_chunk(chunk_name, break_type, reg_assign),
+                   the_code = chunk_name_return_code_sequence(chunk_name, break_type, reg_assign),
                    reg_assign = F,
                    split = 40){
 
   paste(knitr::knit(text =
-                      partially_knit_chunks(chunk_name = chunk_name,
+                      code_sequence_return_partial_chunks(chunk_name = chunk_name,
                                             the_code = the_code,
                                             reg_assign = reg_assign,
                                             display_type = display_type,
