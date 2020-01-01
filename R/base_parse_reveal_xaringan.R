@@ -336,8 +336,8 @@ return_partial_chunks_template <- function(break_type = "auto",
 #' @export
 #'
 #' @examples
-#' return_partial_code_or_output_chunks(num_breaks = 1:3)
-#' return_partial_code_or_output_chunks(display_type = "code", num_breaks = 1:3)
+#' return_partial_code_or_output_chunks(num_breaks = 3)
+#' return_partial_code_or_output_chunks(display_type = "code", num_breaks = 3)
 return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
                                                  break_type = "auto",
                                                  reg_assign = F,
@@ -376,7 +376,7 @@ return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
 #' @export
 #'
 #' @examples
-#' return_partial_side_by_side_code_output_chunks(num_breaks = 1:3)
+#' return_partial_side_by_side_code_output_chunks(num_breaks = 3)
 return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk_name",
                                                            break_type = "auto",
                                                            reg_assign = F,
