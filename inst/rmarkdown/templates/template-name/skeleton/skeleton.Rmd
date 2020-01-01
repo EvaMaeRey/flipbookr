@@ -55,13 +55,13 @@ Or, once you install the package (and restart RStudio?) a template for making th
 
 The flipbook you will be building here uses a member of the [rmarkdown](https://rmarkdown.rstudio.com/lesson-1.html) family called [Xaringan (presentation ninja)](https://github.com/yihui/xaringan), which creates a slideshow in html.  Dynamic documents like `rmarkdown` documents allow you to comingle code and prose in a single document.  
 
-Flipbooks are built by spawning new *partial* code chunks from a single, user-input code chunk.  The partial code chunks build up and are display consecutively in a slide show --- along side it's output --- which yeilds a movie-like experience; this should make each step easier to understand.  
+Flipbooks are built by spawning new *partial* code chunks from a single, user-input code chunk.  The partial code chunks build up and are display consecutively in a slide show alongside its output which yields a movie-like experience; this should make each step easier to understand.  
 
 ---
 
 ## Set-up
 
-We use the flipbookr package, of course! This does the work of disassembling a single code chuck and creating the "build" of multiple partial-code chunks.  
+We use the flipbookr package, of course! This does the work of disassembling a single code chunk and creating the "build" of multiple partial-code chunks.  
 
 ```{r, cache = F}
 library(flipbookr)
@@ -88,7 +88,7 @@ knitr::opts_chunk$set(fig.width = 6, message = F, warning = F, comment = "", cac
 
 ## Change slide show look and feel
 
-To quickly change the look and feel of your xaringan slide show, I'd recommend that you use the [xaringanthemer](https://github.com/gadenbuie/xaringanthemer) package.  The code below creates a css file for you that will be used to style your slide show; you can see `xaringan-themer.css`, which the following code chunk creates, referenced at the beginning of this document, in the ["YMAL"](https://en.wikipedia.org/wiki/YAML).   
+To quickly change the look and feel of your xaringan slide show, I'd recommend that you use the [xaringanthemer](https://github.com/gadenbuie/xaringanthemer) package.  The code below creates a css file for you that will be used to style your slide show; you can see `xaringan-themer.css`, which the following code chunk creates, referenced at the beginning of this document, in the ["YAML"](https://en.wikipedia.org/wiki/YAML).   
 
 ```{r xaringan_look}
 xaringanthemer::mono_accent(
@@ -105,9 +105,6 @@ It may be obvious by now, if you are following along with the source template, t
 
 You will use the `reveal()` function [inline](https://rmarkdown.rstudio.com/lesson-4.html) to generate the derivitive code chunks, rather than inside of a code chunk, so that the text that is generated is interpreted correctly when rendered.  The inline code will look something like this:
 
-
-
-
 <!-- The above is for the html output version, just look at the examples below if you are in the source! -->
 ```markdown
 ``r "r reveal(chunk_name = \"cars\", break_type = \"user\", display_tye = \"both\", reg_assign = F)"``
@@ -115,7 +112,6 @@ You will use the `reveal()` function [inline](https://rmarkdown.rstudio.com/less
 
 
 There are several modalities that you might be interested in using for "flipbookifying" your code and the next section is dedicated to demoing some of them below.
-
 
 - **break type** -- *which lines of code should be revealed when*, `break_type` defaults to "auto"
 - **display type** -- *display code and output, or just output, or just code?*, `display_type` defaults to "both"

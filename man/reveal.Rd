@@ -5,7 +5,7 @@
 \title{reveal in Rmarkdown file, to be used in-line}
 \usage{
 reveal(chunk_name, display_type = "both", break_type = "auto",
-  the_code = get_partial_codes_from_chunk(chunk_name, break_type,
+  the_code = chunk_name_return_code_sequence(chunk_name, break_type,
   reg_assign), reg_assign = F, split = 40)
 }
 \arguments{
