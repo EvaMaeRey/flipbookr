@@ -1,74 +1,4 @@
 
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_user_3_0e4defa153632c66b023f8834aac8121.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_user_3_auto_1b281059c69519d1cef6ab7b5925a49a.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_user_3_auto_1b281059c69519d1cef6ab7b5925a49a.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_user_3_auto_1b281059c69519d1cef6ab7b5925a49a.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_user_3_user_87119c71a4eaa7173c69a5ed5b172415.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_user_3_user_87119c71a4eaa7173c69a5ed5b172415.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_user_3_user_87119c71a4eaa7173c69a5ed5b172415.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_user_4_auto_d1c5ae6b9052c68469eafa7c123ec1d6.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_user_4_auto_d1c5ae6b9052c68469eafa7c123ec1d6.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_user_4_auto_d1c5ae6b9052c68469eafa7c123ec1d6.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_user_5_auto_87955686ced65c83cccfb0d37bc5499e.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_user_5_auto_87955686ced65c83cccfb0d37bc5499e.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_user_5_auto_87955686ced65c83cccfb0d37bc5499e.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_user_6_auto_c915accad3301c6bc10385826a018ac3.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_user_6_auto_c915accad3301c6bc10385826a018ac3.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_user_6_auto_c915accad3301c6bc10385826a018ac3.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_user_7_auto_8f68745793ae9c7de1ec00a681284b5f.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_user_7_auto_8f68745793ae9c7de1ec00a681284b5f.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_user_7_auto_8f68745793ae9c7de1ec00a681284b5f.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_1_4a93187be6d11a512c30aee58d35c873.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_1_4a93187be6d11a512c30aee58d35c873.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_1_4a93187be6d11a512c30aee58d35c873.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_1_auto_e8d2234b4bb04017e695f12c2618bc02.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_1_auto_e8d2234b4bb04017e695f12c2618bc02.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_1_auto_e8d2234b4bb04017e695f12c2618bc02.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_2_52ca527ce0b0d7086e5b86a34f030633.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_2_52ca527ce0b0d7086e5b86a34f030633.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_2_52ca527ce0b0d7086e5b86a34f030633.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_2_auto_ac3a023efaf647e6d9fef9eaddb56cf3.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_2_auto_ac3a023efaf647e6d9fef9eaddb56cf3.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_2_auto_ac3a023efaf647e6d9fef9eaddb56cf3.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_3_auto_5ec8c5863f3c845a6951b3d3dac73e77.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_3_auto_5ec8c5863f3c845a6951b3d3dac73e77.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_3_auto_5ec8c5863f3c845a6951b3d3dac73e77.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_3_fc2fe37615d82a1e650b49b49fcaeee1.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_3_fc2fe37615d82a1e650b49b49fcaeee1.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_3_fc2fe37615d82a1e650b49b49fcaeee1.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_4_9d466563a1e0755c1cfcf28f3d968938.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_4_9d466563a1e0755c1cfcf28f3d968938.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_4_9d466563a1e0755c1cfcf28f3d968938.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_4_auto_dfca20ba0dd66dfc8edb7c7b03f1460d.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_4_auto_dfca20ba0dd66dfc8edb7c7b03f1460d.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_4_auto_dfca20ba0dd66dfc8edb7c7b03f1460d.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_5_a8c463d01feb0725131f66236fd5f9eb.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_5_a8c463d01feb0725131f66236fd5f9eb.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_5_a8c463d01feb0725131f66236fd5f9eb.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_5_auto_04f84795dbc07845a2ccf20d1bd6ffa6.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_5_auto_04f84795dbc07845a2ccf20d1bd6ffa6.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_5_auto_04f84795dbc07845a2ccf20d1bd6ffa6.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/reg_assign_3b4a3ad01a90e1d3e08b426419332811.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/reg_assign_3b4a3ad01a90e1d3e08b426419332811.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/reg_assign_3b4a3ad01a90e1d3e08b426419332811.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-6_13278e7972402ac09a2a51099bd22126.RData
- rename inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/{output_cars_1_e2c2cf978ceb9ad470576b9d98d41c46.RData => unnamed-chunk-6_f2b5abf6ffb1443b2fb4b6263b6264bb.RData} (91%)
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-6_f2b5abf6ffb1443b2fb4b6263b6264bb.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-6_f2b5abf6ffb1443b2fb4b6263b6264bb.rdx
- rewrite inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_multi-1.png (93%)
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_1_user-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_2_user-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_3_user-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_auto_3_auto-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_auto_4_auto-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_auto_5_auto-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_auto_6_auto-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_auto_7_auto-1.png
- rewrite inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_multi_1-1.png (93%)
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_multi_1_5-1.png
- rewrite inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_multi_2-1.png (92%)
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_multi_2_5-1.png
- rewrite inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_multi_3-1.png (93%)
  create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_multi_3_5-1.png
  rewrite inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_multi_4-1.png (93%)
  create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_multi_4_5-1.png
@@ -1057,3 +987,16 @@ remote: Resolving deltas:   0% (0/5)[Kremote: Resolving deltas:  20% (1/5)[K
 To https://github.com/EvaMaeRey/flipbookr.git
    4ca5193..6449d03  master -> master
 ]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git pushcommit -m "a few more instructions on needed packages"add .[K
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit -m "should [K[K[K[K[K[K[Kchanged the_code to code_q[Kseq"
+[master 131077a] changed the_code to code_seq
+ 2 files changed, 29 insertions(+), 15 deletions(-)
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ tig[K[K[Kgit push
+Counting objects: 8, done.
+Delta compression using up to 4 threads.
+Compressing objects:  12% (1/8)   Compressing objects:  25% (2/8)   Compressing objects:  37% (3/8)   Compressing objects:  50% (4/8)   Compressing objects:  62% (5/8)   Compressing objects:  75% (6/8)   Compressing objects:  87% (7/8)   Compressing objects: 100% (8/8)   Compressing objects: 100% (8/8), done.
+Writing objects:  12% (1/8)   Writing objects:  25% (2/8)   Writing objects:  37% (3/8)   Writing objects:  50% (4/8)   Writing objects:  62% (5/8)   Writing objects:  75% (6/8)   Writing objects:  87% (7/8)   Writing objects: 100% (8/8)   Writing objects: 100% (8/8), 1.23 KiB | 1.23 MiB/s, done.
+Total 8 (delta 4), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/4)[Kremote: Resolving deltas:  25% (1/4)[Kremote: Resolving deltas:  50% (2/4)[Kremote: Resolving deltas:  75% (3/4)[Kremote: Resolving deltas: 100% (4/4)[Kremote: Resolving deltas: 100% (4/4), completed with 4 local objects.[K
+To https://github.com/EvaMaeRey/flipbookr.git
+   6449d03..131077a  master -> master
+[KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .

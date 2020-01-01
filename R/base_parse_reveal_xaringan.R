@@ -234,7 +234,7 @@ parsed_reg_assign_return_partial_code <- function(parsed,
       stringr::str_trim() ->
     object_to_track  # this is the object created at the beginning of the code chunk
 
-    c(the_reveal, " ", paste(object_to_track, "# print object"))
+    c(the_reveal, " ", paste(object_to_track, "# tracked object"))
 
 }
 
@@ -329,25 +329,24 @@ return_partial_chunks_template <- function(break_type = "auto",
 #' @param break_type
 #' @param reg_assign
 #' @param code_seq
-#' @param breaks
+#' @param num_breaks
 #' @param display_type
 #'
 #' @return
 #' @export
 #'
 #' @examples
-#' return_partial_code_or_output_chunks(breaks = 1:3)
-#' return_partial_code_or_output_chunks(display_type = "code", breaks = 1:3)
+#' return_partial_code_or_output_chunks(num_breaks = 1:3)
+#' return_partial_code_or_output_chunks(display_type = "code", num_breaks = 1:3)
 return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
                                                  break_type = "auto",
                                                  reg_assign = F,
                                                  code_seq = chunk_name_return_code_sequence(chunk_name = chunk_name,
                                                                               break_type = break_type,
                                                                               reg_assign = reg_assign),
-                                                 breaks = 1:length(code_seq),
+                                                 num_breaks = length(code_seq),
                                                  display_type = "output") {
-
-
+  breaks <- 1:num_breaks
 
   partial_knit_steps <- glue::glue(
     "count: false",
@@ -370,23 +369,24 @@ return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
 #' @param break_type
 #' @param reg_assign
 #' @param code_seq
-#' @param breaks
+#' @param num_breaks
 #' @param split
 #'
 #' @return
 #' @export
 #'
 #' @examples
-#' return_partial_side_by_side_code_output_chunks(breaks = 1:3)
+#' return_partial_side_by_side_code_output_chunks(num_breaks = 1:3)
 return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk_name",
                                                            break_type = "auto",
                                                            reg_assign = F,
                                                            code_seq = chunk_name_return_code_sequence(chunk_name = chunk_name,
                                                                                        break_type = break_type,
                                                                                        reg_assign = reg_assign),
-                                                           breaks = 1:length(code_seq),
+                                                           num_breaks = length(code_seq),
                                                            split = 40) {
 
+  breaks <- 1:num_breaks
 
   partial_knit_steps <- glue::glue(
     "class: split-{{split}}",
