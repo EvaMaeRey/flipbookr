@@ -41,23 +41,11 @@ The package includes a template for building a flipbook that
 demonstrates various flipbooking modalities; the template can also be
 accessed
 [here](https://raw.githubusercontent.com/EvaMaeRey/flipbookr/master/inst/rmarkdown/templates/template-name/skeleton/skeleton.Rmd).
-The resultant flipbook is
-[here](https://evamaerey.github.io/little_flipbooks_library/flipbookr/skeleton#1)
-and can be previewed
-below:
-
-<iframe src="https://evamaerey.github.io/little_flipbooks_library/flipbookr/skeleton#1" width="100%" height="400px">
-
-</iframe>
+The resultant flipbook can be viewed
+[here](https://evamaerey.github.io/little_flipbooks_library/flipbookr/skeleton#1).
 
 ## Intuition about how it works
 
 We believe in communicating with flipbooks, so we use the tool to
 describe the functions that are at work within the package
 [here](https://evamaerey.github.io/little_flipbooks_library/flipbookr/flipbookr_building_blocks#1)
-and previewed
-below:
-
-<iframe src="https://evamaerey.github.io/little_flipbooks_library/flipbookr/flipbookr_building_blocks#1" width="100%" height="400px">
-
-</iframe>
