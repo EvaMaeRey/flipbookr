@@ -35,11 +35,26 @@ You can install the development version of flipbookr from
 devtools::install_github("EvaMaeRey/flipbookr")
 ```
 
+You will most likely use this package with the rmarkdown presentation
+tool, Xaringan, which is avaiable on CRAN:
+
+``` r
+install.packages("xaringan")
+```
+
+In the template below, we style the slides with the xaringanthemer
+package, which is available on github:
+
+``` r
+devtools::install_github("gadenbuie/xaringanthemer")
+```
+
 ## Template
 
 The package includes a template for building a flipbook that
 demonstrates various flipbooking modalities; the template can also be
-accessed
+accessed from within RStudio (New File -\> RMarkdown -\> From Template
+-\> A Minimal Flipbook)
 [here](https://raw.githubusercontent.com/EvaMaeRey/flipbookr/master/inst/rmarkdown/templates/template-name/skeleton/skeleton.Rmd).
 The resultant flipbook can be viewed
 [here](https://evamaerey.github.io/little_flipbooks_library/flipbookr/skeleton#1).
