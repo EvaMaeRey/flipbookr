@@ -315,7 +315,7 @@ return_partial_chunks_template <- function(break_type = "auto",
                                   eval = display_type == "output",
                                   echo = display_type == "code") {
 
-  glue::glue("```{r {{chunk_name}}_{{{break_type}}}_{{breaks}}_{{{display_type}}}, eval={{{eval}}}, echo = {{{echo}}}, code = the_code[[{{breaks}}]]}",
+  glue::glue("```{r {{chunk_name}}_{{{break_type}}}_{{breaks}}_{{{display_type}}}, eval={{{eval}}}, echo = {{{echo}}}, code = code_seq[[{{breaks}}]]}",
              "```",
              .open = "{{{", .close = "}}}", .sep = "\n")
 }
@@ -328,7 +328,7 @@ return_partial_chunks_template <- function(break_type = "auto",
 #' @param chunk_name
 #' @param break_type
 #' @param reg_assign
-#' @param the_code
+#' @param code_seq
 #' @param breaks
 #' @param display_type
 #'
@@ -341,10 +341,10 @@ return_partial_chunks_template <- function(break_type = "auto",
 return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
                                                  break_type = "auto",
                                                  reg_assign = F,
-                                                 the_code = chunk_name_return_code_sequence(chunk_name = chunk_name,
+                                                 code_seq = chunk_name_return_code_sequence(chunk_name = chunk_name,
                                                                               break_type = break_type,
                                                                               reg_assign = reg_assign),
-                                                 breaks = 1:length(the_code),
+                                                 breaks = 1:length(code_seq),
                                                  display_type = "output") {
 
 
@@ -369,7 +369,7 @@ return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
 #' @param chunk_name
 #' @param break_type
 #' @param reg_assign
-#' @param the_code
+#' @param code_seq
 #' @param breaks
 #' @param split
 #'
@@ -381,10 +381,10 @@ return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
 return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk_name",
                                                            break_type = "auto",
                                                            reg_assign = F,
-                                                           the_code = chunk_name_return_code_sequence(chunk_name = chunk_name,
+                                                           code_seq = chunk_name_return_code_sequence(chunk_name = chunk_name,
                                                                                        break_type = break_type,
                                                                                        reg_assign = reg_assign),
-                                                           breaks = 1:length(the_code),
+                                                           breaks = 1:length(code_seq),
                                                            split = 40) {
 
 
@@ -409,7 +409,7 @@ return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk
 
 #' Title
 #'
-#' @param the_code
+#' @param code_seq
 #' @param chunk_name
 #' @param break_type
 #' @param reg_assign
@@ -420,8 +420,8 @@ return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk
 #' @export
 #'
 #' @examples
-#' code_sequence_return_partial_chunks(the_code = c("ggplot(cars) +", "aes(x = speed)"))
-code_sequence_return_partial_chunks <- function(the_code = chunk_name_return_code_sequence(chunk_name = chunk_name,
+#' code_sequence_return_partial_chunks(code_seq = c("ggplot(cars) +", "aes(x = speed)"))
+code_sequence_return_partial_chunks <- function(code_seq = chunk_name_return_code_sequence(chunk_name = chunk_name,
                                                                           break_type = break_type,
                                                                           reg_assign = reg_assign),
                                                 chunk_name = "example_chunk_name",
@@ -435,14 +435,14 @@ if (display_type == "both") {
 
   return_partial_side_by_side_code_output_chunks(chunk_name = chunk_name,
                                                  break_type = break_type,
-                                                 the_code = the_code,
+                                                 code_seq = code_seq,
                                                  split = split)
 
 } else {
 
   return_partial_code_or_output_chunks(chunk_name = chunk_name,
                                        break_type = break_type,
-                                       the_code = the_code,
+                                       code_seq = code_seq,
                                        display_type = display_type)
 
 }
@@ -455,7 +455,7 @@ if (display_type == "both") {
 #' @param chunk_name a character string which is a chunk name
 #' @param break_type "auto", "user", "non_seq" or numeric
 #' @param display_type string "both", "code", "output", default is "both"
-#' @param the_code list of string vectors containing the partial code, computes automatically
+#' @param code_seq list of string vectors containing the partial code, computes automatically
 #' @param reg_assign logical set to T if output of some object created at beginning of code chunk should be displayed
 #' @param split percent split between code and output if both
 #'
@@ -466,13 +466,13 @@ if (display_type == "both") {
 reveal <- function(chunk_name,
                    display_type = "both",
                    break_type = "auto",
-                   the_code = chunk_name_return_code_sequence(chunk_name, break_type, reg_assign),
+                   code_seq = chunk_name_return_code_sequence(chunk_name, break_type, reg_assign),
                    reg_assign = F,
                    split = 40){
 
   paste(knitr::knit(text =
                       code_sequence_return_partial_chunks(chunk_name = chunk_name,
-                                            the_code = the_code,
+                                            code_seq = code_seq,
                                             reg_assign = reg_assign,
                                             display_type = display_type,
                                             break_type = break_type,
