@@ -1,0 +1,97 @@
+---
+title: "Korbel Letter and Teaching Statement"
+subtitle: "With flipbookr and xaringan"
+author: "Gina Reynolds, January 1 2020"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["xaringan-themer.css", ninjutsu]
+    nature:
+      ratio: 16:10
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+
+
+
+```{r, cache = F}
+library(flipbookr)
+```
+
+---
+
+I am writing to apply for the position of Teaching Assistant Professor of Quantitative Methods at the Korbel School of International Studies, where I am currently teach quantitative methodology as a Visiting Teaching Assistant Professor.  With my background, teaching experience and growing knowledge of the Korbel School, I am well prepared to continue contributing the teaching team at Korbel, teaching the six class course load and in addition to taking a coordinationa and leadership roll for methodology curriculum development, in addition to student advising and other academica and administrative service.
+
+---
+
+\\section{Additional Experience}
+
+<!-- My teaching is aimed at furnishing students with tools of inquiry and empowering them to design and execute their research agendas.  -->
+
+In addition to teaching at the University of Denver --- both the undergraduate and graduate level ---
+<!-- - Evidence of teaching excellence, preferably at the graduate and undergraduate levels. -->
+I have also taught an introductory course on data science and statistics at the Technische Universität in Dresden, Germany.  
+Moreover, I worked at the Univeristy of Illinois as the Political Science Departament-wide Methods Teaching assistant, which involved direct support of incoming PhD students, and general availablity to help with methods related questions.  Additionally at Illinois, I worked in the statistical consulting group, Applied Technologies for Language Arts and Science, providing support for researchers and teachers, including providing several workshops per semester. 
+
+I engage regularly with the quantitative analysis and computational social science communities, at conferences such as that of the Society for Political Methodology, 
+
+
+
+
+
+
+My quantitative analysis courses introduce students to data collection and management, visualization, reproducibility, workflow, research design, statistical analysis, causal inference strategies.  I also introduce students to panel data, text, network and spatial analysis in these classes, and I would be delighted to teach full quarter-length courses on any of these topics. 
+
+---
+
+My Ph.D. is in Political Science from the University of Illinois, Urbana-Champaign, where my dissertation on international law and compliance won the Department of Political Science Award for Best Dissertation during the 2016-2017 period. 
+
+
+- We are especially interested in applicants who have a demonstrated commitment to or experience working with diverse populations and disciplinary perspectives. 
+
+
+- Demonstrated capacity to design and coordinate quantitative methods curricula appropriate for the multiple degrees at JKSIS.
+- Experience with traditional and on-line classes.
+
+- Demonstrated ability to mentor students.
+
+- Teach 6 ten-week courses during the academic year
+- Assist in the oversight and monitoring of quantitative courses offered across degree programs, and recommendations in curricular reforms in the same
+- Advise and mentor students
+- Serve as a good academic citizen within the Department, the DU community and the profession through service on committees, panels or forums
+- Required Qualifications
+
+
+%To get an idea of the quality of support I provide my students --- most of whom are newcomers to ideas of reproducibility and working programmatically --- please visit the webpage I've created with coding resources for my current students: https://evamaerey.github.io/fall_2019/fall_2019.  I also enjoy teaching on more classical topics in International Relations, and have developed my own courses on intergovernmental institutions, and have provided teaching assistance for several IR and comparative politics classes while a graduate student.  
+
+\\section{Research}
+
+Substantively, my research focuses on international institutions and on Latin American politics. In my research projects, I employ a broad range of quantitative methodologies, giving me practical experience and insights on research designs and using analytic tools. 
+
+<!-- - Demonstrated engagement with current debates and cutting-edge technologies for quantitative methods in the social sciences and familiar with a range of quantitative software applications. -->
+
+
+In ongoing and published research I use randomization inference to provide evidence for a causal relationship between non-permanent participation on the United Nations Security Council (UNSC) and (a) compliance with UNSC resolutions and (b) foreign aid flows (with Matthew Winters of the University of Illinois, published in *Research & Politics*). In another project, focused on deepening our understanding of UNSC activities, coauthors (Felix Bethke, Cologne Center for Comparative Politics; Felix Haass, GIGA Institute Hamburg) and I use text-analysis tools to create and analyze a cleaned, machine-readable corpus of UNSC resolutions.  I also have experience in survey writing, implementation, and analysis through my dissertation and a related project.  In my dissertation, I conducted an elite level survey of Brazilian legislators. Later, with a set of coauthors (Amancio Olivera, University of Sao Paulo; Janina Onuki, University of Sao Paulo; and Matthew Winters, University of Illinois) I wrote, fielded, and analysed a population-level survey on attitudes toward international law (some analysis of which was published in  *International Interactions*). 
+
+I am increasingly interested in computational and statistical pedagogy research. One of my plans in this area is to pursue a project on learning via statistics games as introductions to concepts new to students.  I developed simple prototypes that I use in my own classroom (https://evangelinereynolds.shinyapps.io/EyeBallIt/ and https://evangelinereynolds.shinyapps.io/building_ols_intuition/), and plan to develop these further.  I am interested in systematically testing their effectiveness in building statistical intuition.  A second area of interest is communication of statistical concepts and formulas via visual methods in addition to focusing on mathematical notation.  (See https://evangelinereynolds.netlify.com/post/variance-and-sd-visualization/ and https://evangelinereynolds.netlify.com/post/geometric-covariance/) This is another area that I'd like to study more systematically.  I would like to know if such an approach leads to better internalization of these formulas and concepts.
+
+Additionally, I am a co-creator and lead developer of the \"Flipbooks\" project, new tools that present side-by-side, aligned, incremental code-output evolution via automated code parsing and reconstruction.  Shared code tends to either demonstrate a complete code pipeline that accomplishes a realistic task or instead demonstrate a minimal example which clarifies the behavior of a particular function, but how it might be used in a larger project isn't clear. Flipbooks help address this problem, allowing people to build a real work product *and* allowing consumers to walk incrementally through a code pipeline, at their own pace, focusing on any unfamiliar steps. Developing this promising educational, communication, and reference medium has been a major focus of my recent work.  In my classes I've found these books empowering for many students --- who are new comers to programming.  It is easy for them to follow along with the code and output evolution and identify what \"move\" they might like or need to make in their own project.  One student recently told me:  \"When I was looking through one of the books, it just clicked for me:  I can do this too.\"  
+
+\\vspace{.4cm}
+
+My references are Dr. Xinyuan Dai, Dr. Brian Gaines, and Dr. Matthew Winters. Please do not hesitate to contact me with any questions you might have about my application, and please also visit my website to find out more about my projects: https://evangelinereynolds.netlify.com/
+
+\\bigskip
+\\noindent Sincerely, 
+
+\\vspace{.2cm}
+\\noindent Evangeline Reynolds, Ph.D.
+
+
+
+```{css, eval = TRUE, echo = F}
+.remark-code{line-height: 1.5; font-size: 80%}
+```

@@ -5,7 +5,7 @@
 \title{reveal in Rmarkdown file, to be used in-line}
 \usage{
 reveal(chunk_name, display_type = "both", break_type = "auto",
-  the_code = chunk_name_return_code_sequence(chunk_name, break_type,
+  code_seq = chunk_name_return_code_sequence(chunk_name, break_type,
   reg_assign), reg_assign = F, split = 40)
 }
 \arguments{
@@ -15,7 +15,7 @@ reveal(chunk_name, display_type = "both", break_type = "auto",
 
 \item{break_type}{"auto", "user", "non_seq" or numeric}
 
-\item{the_code}{list of string vectors containing the partial code, computes automatically}
+\item{code_seq}{list of string vectors containing the partial code, computes automatically}
 
 \item{reg_assign}{logical set to T if output of some object created at beginning of code chunk should be displayed}
 

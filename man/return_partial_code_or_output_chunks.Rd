@@ -6,9 +6,9 @@
 \usage{
 return_partial_code_or_output_chunks(chunk_name = "a_chunk_name",
   break_type = "auto", reg_assign = F,
-  the_code = chunk_name_return_code_sequence(chunk_name = chunk_name,
+  code_seq = chunk_name_return_code_sequence(chunk_name = chunk_name,
   break_type = break_type, reg_assign = reg_assign),
-  breaks = 1:length(the_code), display_type = "output")
+  num_breaks = length(code_seq), display_type = "output")
 }
 \arguments{
 \item{display_type}{}
@@ -17,6 +17,6 @@ return_partial_code_or_output_chunks(chunk_name = "a_chunk_name",
 Title
 }
 \examples{
-return_partial_code_or_output_chunks(breaks = 1:3)
-return_partial_code_or_output_chunks(display_type = "code", breaks = 1:3)
+return_partial_code_or_output_chunks(num_breaks = 3)
+return_partial_code_or_output_chunks(display_type = "code", num_breaks = 3)
 }

@@ -5,7 +5,7 @@
 \title{Title}
 \usage{
 
-  code_sequence_return_partial_chunks(the_code = chunk_name_return_code_sequence(chunk_name
+  code_sequence_return_partial_chunks(code_seq = chunk_name_return_code_sequence(chunk_name
   = chunk_name, break_type = break_type, reg_assign = reg_assign),
   chunk_name = "example_chunk_name", break_type = "auto",
   reg_assign = F, display_type = "both", split = 40)
@@ -17,5 +17,5 @@
 Title
 }
 \examples{
-code_sequence_return_partial_chunks(the_code = c("ggplot(cars) +", "aes(x = speed)"))
+code_sequence_return_partial_chunks(code_seq = c("ggplot(cars) +", "aes(x = speed)"))
 }

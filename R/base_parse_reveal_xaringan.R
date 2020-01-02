@@ -309,13 +309,12 @@ chunk_name %>%
 #'
 #' @examples
 #' return_partial_chunks_template()
-#' return_partial_chunks_template(break_type = "auto", display_type = "output")
-return_partial_chunks_template <- function(break_type = "auto",
-                                           display_type = "output",
+#' return_partial_chunks_template(display_type = "output")
+return_partial_chunks_template <- function(display_type = "output",
                                   eval = display_type == "output",
                                   echo = display_type == "code") {
 
-  glue::glue("```{r {{chunk_name}}_{{{break_type}}}_{{breaks}}_{{{display_type}}}, eval={{{eval}}}, echo = {{{echo}}}, code = code_seq[[{{breaks}}]]}",
+  glue::glue("```{r {{chunk_name}}_{{break_type}}_{{breaks}}_{{{display_type}}}, eval={{{eval}}}, echo = {{{echo}}}, code = code_seq[[{{breaks}}]]}",
              "```",
              .open = "{{{", .close = "}}}", .sep = "\n")
 }
@@ -340,11 +339,7 @@ return_partial_chunks_template <- function(break_type = "auto",
 #' return_partial_code_or_output_chunks(display_type = "code", num_breaks = 3)
 return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
                                                  break_type = "auto",
-                                                 reg_assign = F,
-                                                 code_seq = chunk_name_return_code_sequence(chunk_name = chunk_name,
-                                                                              break_type = break_type,
-                                                                              reg_assign = reg_assign),
-                                                 num_breaks = length(code_seq),
+                                                 num_breaks = 2,
                                                  display_type = "output") {
   breaks <- 1:num_breaks
 
@@ -352,8 +347,7 @@ return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
     "count: false",
     return_partial_chunks_template(eval = display_type == "output",
                                    echo = display_type == "code",
-                                   display_type = display_type,
-                                   break_type = break_type),
+                                   display_type = display_type),
     .open = "{{", .close = "}}", .sep = "\n"
   )
 
@@ -379,11 +373,7 @@ return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
 #' return_partial_side_by_side_code_output_chunks(num_breaks = 3)
 return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk_name",
                                                            break_type = "auto",
-                                                           reg_assign = F,
-                                                           code_seq = chunk_name_return_code_sequence(chunk_name = chunk_name,
-                                                                                       break_type = break_type,
-                                                                                       reg_assign = reg_assign),
-                                                           num_breaks = length(code_seq),
+                                                           num_breaks = 2,
                                                            split = 40) {
 
   breaks <- 1:num_breaks
@@ -392,12 +382,10 @@ return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk
     "class: split-{{split}}",
     "count: false",
     ".column[.content[",
-    return_partial_chunks_template(display_type = "code",
-                                   break_type = break_type),
+    return_partial_chunks_template(display_type = "code"),
     "]]",
     ".column[.content[",
-    return_partial_chunks_template(display_type = "output",
-                                   break_type = break_type),
+    return_partial_chunks_template(display_type = "output"),
     "]]",
     " ",
     .open = "{{", .close = "}}", .sep = "\n"
@@ -420,29 +408,26 @@ return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk
 #' @export
 #'
 #' @examples
-#' code_sequence_return_partial_chunks(code_seq = c("ggplot(cars) +", "aes(x = speed)"))
-code_sequence_return_partial_chunks <- function(code_seq = chunk_name_return_code_sequence(chunk_name = chunk_name,
-                                                                          break_type = break_type,
-                                                                          reg_assign = reg_assign),
-                                                chunk_name = "example_chunk_name",
-                                                break_type = "auto",
-                                                reg_assign = F,
-                                                display_type = "both",
-                                                split = 40){
+#' return_partial_chunks()
+return_partial_chunks <- function(chunk_name = "example_chunk_name",
+                                  break_type = "auto",
+                                  display_type = "both",
+                                  num_breaks = 2,
+                                  split = 40){
 
 
 if (display_type == "both") {
 
   return_partial_side_by_side_code_output_chunks(chunk_name = chunk_name,
                                                  break_type = break_type,
-                                                 code_seq = code_seq,
+                                                 num_breaks = num_breaks,
                                                  split = split)
 
 } else {
 
   return_partial_code_or_output_chunks(chunk_name = chunk_name,
                                        break_type = break_type,
-                                       code_seq = code_seq,
+                                       num_breaks = num_breaks,
                                        display_type = display_type)
 
 }
@@ -464,18 +449,19 @@ if (display_type == "both") {
 #'
 #' @examples
 reveal <- function(chunk_name,
-                   display_type = "both",
                    break_type = "auto",
-                   code_seq = chunk_name_return_code_sequence(chunk_name, break_type, reg_assign),
                    reg_assign = F,
+                   code_seq = chunk_name_return_code_sequence(chunk_name, break_type, reg_assign),
+                   num_breaks = length(code_seq),
+                   display_type = "both",
                    split = 40){
 
-  paste(knitr::knit(text =
-                      code_sequence_return_partial_chunks(chunk_name = chunk_name,
-                                            code_seq = code_seq,
-                                            reg_assign = reg_assign,
-                                            display_type = display_type,
+  # code_seq <- code_seq
+
+  paste(knitr::knit(text = return_partial_chunks(chunk_name = chunk_name,
                                             break_type = break_type,
+                                            display_type = display_type,
+                                            num_breaks = num_breaks,
                                             split = split)),
         collapse = "\n")
 }

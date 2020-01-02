@@ -64,7 +64,7 @@ Flipbooks are built by spawning new *partial* code chunks from a single, user-in
 We use the flipbookr package, of course! This does the work of disassembling a single code chunk and creating the "build" of multiple partial-code chunks.  
 
 ```{r, cache = F}
-#library(flipbookr)
+library(flipbookr)
 ```
 
 Also, I set *code chunk* options for the code chunks that follow.  These will apply to the spawned code chunks.

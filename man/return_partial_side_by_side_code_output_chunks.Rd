@@ -7,9 +7,9 @@
 
   return_partial_side_by_side_code_output_chunks(chunk_name = "a_chunk_name",
   break_type = "auto", reg_assign = F,
-  the_code = chunk_name_return_code_sequence(chunk_name = chunk_name,
+  code_seq = chunk_name_return_code_sequence(chunk_name = chunk_name,
   break_type = break_type, reg_assign = reg_assign),
-  breaks = 1:length(the_code), split = 40)
+  num_breaks = length(code_seq), split = 40)
 }
 \arguments{
 \item{split}{}
@@ -18,5 +18,5 @@
 Title
 }
 \examples{
-return_partial_side_by_side_code_output_chunks(breaks = 1:3)
+return_partial_side_by_side_code_output_chunks(num_breaks = 3)
 }
