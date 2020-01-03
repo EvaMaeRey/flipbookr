@@ -2,29 +2,17 @@
 % Please edit documentation in R/base_parse_reveal_xaringan.R
 \name{reveal}
 \alias{reveal}
-\title{reveal in Rmarkdown file, to be used in-line}
+\title{Title}
 \usage{
-reveal(chunk_name, break_type = "auto", reg_assign = F,
+reveal(chunk_name = "example_name", break_type = "auto",
+  reg_assign = F,
   code_seq = chunk_name_return_code_sequence(chunk_name, break_type,
   reg_assign), num_breaks = length(code_seq), display_type = "both",
   split = 40)
 }
 \arguments{
-\item{chunk_name}{a character string which is a chunk name}
-
-\item{break_type}{"auto", "user", "non_seq" or numeric}
-
-\item{reg_assign}{logical set to T if output of some object created at beginning of code chunk should be displayed}
-
-\item{code_seq}{list of string vectors containing the partial code, computes automatically}
-
-\item{display_type}{string "both", "code", "output", default is "both"}
-
-\item{split}{percent split between code and output if both}
-}
-\value{
-a character string to be interpreted as .Rmd content
+\item{split}{}
 }
 \description{
-reveal in Rmarkdown file, to be used in-line
+Title
 }

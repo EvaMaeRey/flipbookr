@@ -4,9 +4,8 @@
 \alias{return_partial_chunks}
 \title{Title}
 \usage{
-return_partial_chunks(chunk_name = "example_chunk_name",
-  break_type = "auto", display_type = "both", num_breaks = 2,
-  split = 40)
+return_partial_chunks(break_type = "auto", display_type = "both",
+  num_breaks = 2, split = 40)
 }
 \arguments{
 \item{split}{}

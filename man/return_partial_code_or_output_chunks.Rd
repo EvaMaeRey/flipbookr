@@ -4,8 +4,8 @@
 \alias{return_partial_code_or_output_chunks}
 \title{Title}
 \usage{
-return_partial_code_or_output_chunks(chunk_name = "a_chunk_name",
-  break_type = "auto", num_breaks = 2, display_type = "output")
+return_partial_code_or_output_chunks(break_type = "auto",
+  num_breaks = 2, display_type = "output")
 }
 \arguments{
 \item{display_type}{}

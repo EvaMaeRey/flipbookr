@@ -4,9 +4,8 @@
 \alias{return_partial_side_by_side_code_output_chunks}
 \title{Title}
 \usage{
-
-  return_partial_side_by_side_code_output_chunks(chunk_name = "a_chunk_name",
-  break_type = "auto", num_breaks = 2, split = 40)
+return_partial_side_by_side_code_output_chunks(break_type = "auto",
+  num_breaks = 2, split = 40)
 }
 \arguments{
 \item{split}{}
