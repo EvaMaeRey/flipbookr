@@ -4,20 +4,21 @@
 \alias{reveal}
 \title{reveal in Rmarkdown file, to be used in-line}
 \usage{
-reveal(chunk_name, display_type = "both", break_type = "auto",
+reveal(chunk_name, break_type = "auto", reg_assign = F,
   code_seq = chunk_name_return_code_sequence(chunk_name, break_type,
-  reg_assign), reg_assign = F, split = 40)
+  reg_assign), num_breaks = length(code_seq), display_type = "both",
+  split = 40)
 }
 \arguments{
 \item{chunk_name}{a character string which is a chunk name}
 
-\item{display_type}{string "both", "code", "output", default is "both"}
-
 \item{break_type}{"auto", "user", "non_seq" or numeric}
+
+\item{reg_assign}{logical set to T if output of some object created at beginning of code chunk should be displayed}
 
 \item{code_seq}{list of string vectors containing the partial code, computes automatically}
 
-\item{reg_assign}{logical set to T if output of some object created at beginning of code chunk should be displayed}
+\item{display_type}{string "both", "code", "output", default is "both"}
 
 \item{split}{percent split between code and output if both}
 }

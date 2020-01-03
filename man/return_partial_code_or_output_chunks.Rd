@@ -5,10 +5,7 @@
 \title{Title}
 \usage{
 return_partial_code_or_output_chunks(chunk_name = "a_chunk_name",
-  break_type = "auto", reg_assign = F,
-  code_seq = chunk_name_return_code_sequence(chunk_name = chunk_name,
-  break_type = break_type, reg_assign = reg_assign),
-  num_breaks = length(code_seq), display_type = "output")
+  break_type = "auto", num_breaks = 2, display_type = "output")
 }
 \arguments{
 \item{display_type}{}

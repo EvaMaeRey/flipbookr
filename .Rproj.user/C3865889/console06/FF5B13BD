@@ -1000,3 +1000,56 @@ remote: Resolving deltas:   0% (0/7)[Kremote: Resolving deltas:  14% (1/7)[K
 To https://github.com/EvaMaeRey/flipbookr.git
    9ccdd09..1ff354a  master -> master
 [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ gt[Kit commit -m "twar[K[K[Koward more[K[K[K[Keven im[K[Ksimpler code"
+[master 959c1d9] toward even simpler code
+ 53 files changed, 372 insertions(+), 97 deletions(-)
+ rewrite .Rproj.user/C3865889/console06/INDEX001 (97%)
+ rewrite .Rproj.user/C3865889/rmd-outputs (98%)
+ create mode 100644 Untitled/Untitled.Rmd
+ create mode 100644 Untitled/Untitled.html
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/libs/remark-css-0.0.1/ninjutsu.css (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton.html (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/base_r_plotting_auto_1_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/base_r_plotting_auto_2_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/base_r_plotting_auto_3_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/base_r_plotting_auto_4_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_anova_auto_1_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_anova_auto_2_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_anova_auto_3_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_anova_auto_4_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_auto_3_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_auto_4_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_auto_5_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_auto_6_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_auto_7_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_multi_3_1_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_multi_3_2_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_multi_3_3_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_non_seq_1_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_non_seq_2_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_non_seq_3_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_user_1_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_user_2_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_user_3_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/further_building_auto_1_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/further_building_auto_2_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/further_building_auto_3_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/plot_object_auto_2_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/plot_object_auto_3_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/plot_object_auto_4_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/plot_object_auto_5_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/reg_assign_auto_3_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/reg_assign_auto_4_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/reg_assign_auto_5_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/reg_assign_auto_6_output-1.png (100%)
+ rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/xaringan-themer.css (100%)
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git [K[K[K[Kgit push
+Counting objects: 35, done.
+Delta compression using up to 4 threads.
+Compressing objects:   3% (1/29)   Compressing objects:   6% (2/29)   Compressing objects:  10% (3/29)   Compressing objects:  13% (4/29)   Compressing objects:  17% (5/29)   Compressing objects:  20% (6/29)   Compressing objects:  24% (7/29)   Compressing objects:  27% (8/29)   Compressing objects:  31% (9/29)   Compressing objects:  34% (10/29)   Compressing objects:  37% (11/29)   Compressing objects:  41% (12/29)   Compressing objects:  44% (13/29)   Compressing objects:  48% (14/29)   Compressing objects:  51% (15/29)   Compressing objects:  55% (16/29)   Compressing objects:  58% (17/29)   Compressing objects:  62% (18/29)   Compressing objects:  65% (19/29)   Compressing objects:  68% (20/29)   Compressing objects:  72% (21/29)   Compressing objects:  75% (22/29)   Compressing objects:  79% (23/29)   Compressing objects:  82% (24/29)   Compressing objects:  86% (25/29)   Compressing objects:  89% (26/29)   Compressing objects:  93% (27/29)   Compressing objects:  96% (28/29)   Compressing objects: 100% (29/29)   Compressing objects: 100% (29/29), done.
+Writing objects:   2% (1/35)   Writing objects:   5% (2/35)   Writing objects:   8% (3/35)   Writing objects:  11% (4/35)   Writing objects:  14% (5/35)   Writing objects:  17% (6/35)   Writing objects:  20% (7/35)   Writing objects:  22% (8/35)   Writing objects:  25% (9/35)   Writing objects:  28% (10/35)   Writing objects:  31% (11/35)   Writing objects:  34% (12/35)   Writing objects:  37% (13/35)   Writing objects:  40% (14/35)   Writing objects:  42% (15/35)   Writing objects:  45% (16/35)   Writing objects:  48% (17/35)   Writing objects:  51% (18/35)   Writing objects:  54% (19/35)   Writing objects:  57% (20/35)   Writing objects:  60% (21/35)   Writing objects:  62% (22/35)   Writing objects:  68% (24/35)   Writing objects:  71% (25/35)   Writing objects:  74% (26/35)   Writing objects:  77% (27/35)   Writing objects:  80% (28/35)   Writing objects:  82% (29/35)   Writing objects:  85% (30/35)   Writing objects:  88% (31/35)   Writing objects:  91% (32/35)   Writing objects:  94% (33/35)   Writing objects:  97% (34/35)   Writing objects: 100% (35/35)   Writing objects: 100% (35/35), 9.19 KiB | 181.00 KiB/s, done.
+Total 35 (delta 17), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/17)[Kremote: Resolving deltas:   5% (1/17)[Kremote: Resolving deltas:  11% (2/17)[Kremote: Resolving deltas:  17% (3/17)[Kremote: Resolving deltas:  23% (4/17)[Kremote: Resolving deltas:  29% (5/17)[Kremote: Resolving deltas:  35% (6/17)[Kremote: Resolving deltas:  41% (7/17)[Kremote: Resolving deltas:  47% (8/17)[Kremote: Resolving deltas:  52% (9/17)[Kremote: Resolving deltas:  58% (10/17)[Kremote: Resolving deltas:  64% (11/17)[Kremote: Resolving deltas:  70% (12/17)[Kremote: Resolving deltas:  76% (13/17)[Kremote: Resolving deltas:  82% (14/17)[Kremote: Resolving deltas:  94% (16/17)[Kremote: Resolving deltas: 100% (17/17)[Kremote: Resolving deltas: 100% (17/17), completed with 15 local objects.[K
+To https://github.com/EvaMaeRey/flipbookr.git
+   1ff354a..959c1d9  master -> master
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git .[Kadd .

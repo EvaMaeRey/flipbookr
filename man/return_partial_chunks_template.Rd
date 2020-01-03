@@ -4,9 +4,8 @@
 \alias{return_partial_chunks_template}
 \title{Title}
 \usage{
-return_partial_chunks_template(break_type = "auto",
-  display_type = "output", eval = display_type == "output",
-  echo = display_type == "code")
+return_partial_chunks_template(display_type = "output",
+  eval = display_type == "output", echo = display_type == "code")
 }
 \arguments{
 \item{echo}{}
@@ -16,5 +15,5 @@ Title
 }
 \examples{
 return_partial_chunks_template()
-return_partial_chunks_template(break_type = "auto", display_type = "output")
+return_partial_chunks_template(display_type = "output")
 }

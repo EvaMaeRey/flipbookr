@@ -310,15 +310,62 @@ chunk_name %>%
 #' @examples
 #' return_partial_chunks_template()
 #' return_partial_chunks_template(display_type = "output")
-return_partial_chunks_template <- function(display_type = "output",
-                                  eval = display_type == "output",
-                                  echo = display_type == "code") {
+return_partial_chunks_template <- function(display_type = "output"){
 
-  glue::glue("```{r {{chunk_name}}_{{break_type}}_{{breaks}}_{{{display_type}}}, eval={{{eval}}}, echo = {{{echo}}}, code = code_seq[[{{breaks}}]]}",
-             "```",
-             .open = "{{{", .close = "}}}", .sep = "\n")
+  "```{r {{chunk_name}}_{{{break_type}}}_{{{breaks}}}_{{{{display_type}}}}, eval = {{{{eval}}}}, echo = {{{{echo}}}}, code = code_seq[[{{{breaks}}}]]}
+  ```"
+
 }
 
+  # glue::glue("```{r {{chunk_name}}_{{break_type}}_{{breaks}}_{{{display_type}}}, eval = {{eval}}, echo = {{echo}}, code = code_seq[[{{breaks}}]]}",
+  #            "```",
+  #            .open = "{{{", .close = "}}}", .sep = "\n")
+
+# }
+
+
+#' Title
+#'
+#' @param display_type
+#' @param echo
+#' @param eval
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' return_partial_chunks_template_code()
+return_partial_chunks_template_code <- function(){
+
+  display_type = "code"
+  echo = T
+  eval = F
+
+  glue::glue(return_partial_chunks_template(),
+             .open = "{{{{", .close = "}}}}", .sep = "\n")
+
+
+}
+
+
+#' Title
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' return_partial_chunks_template_output()
+return_partial_chunks_template_output <- function(){
+
+  display_type = "output"
+  echo = F
+  eval = T
+
+  glue::glue(return_partial_chunks_template(),
+             .open = "{{{{", .close = "}}}}", .sep = "\n")
+
+
+}
 
 
 
@@ -337,18 +384,26 @@ return_partial_chunks_template <- function(display_type = "output",
 #' @examples
 #' return_partial_code_or_output_chunks(num_breaks = 3)
 #' return_partial_code_or_output_chunks(display_type = "code", num_breaks = 3)
-return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
-                                                 break_type = "auto",
+return_partial_code_or_output_chunks <- function(break_type = "auto",
                                                  num_breaks = 2,
                                                  display_type = "output") {
   breaks <- 1:num_breaks
 
+  if (display_type == "output") {
+
+    chunk <- return_partial_chunks_template_output()
+
+  } else {
+
+    chunk <- return_partial_chunks_template_code()
+
+  }
+
+
   partial_knit_steps <- glue::glue(
     "count: false",
-    return_partial_chunks_template(eval = display_type == "output",
-                                   echo = display_type == "code",
-                                   display_type = display_type),
-    .open = "{{", .close = "}}", .sep = "\n"
+    chunk,
+    .open = "{{{", .close = "}}}", .sep = "\n"
   )
 
   glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
@@ -371,8 +426,7 @@ return_partial_code_or_output_chunks <- function(chunk_name = "a_chunk_name",
 #'
 #' @examples
 #' return_partial_side_by_side_code_output_chunks(num_breaks = 3)
-return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk_name",
-                                                           break_type = "auto",
+return_partial_side_by_side_code_output_chunks <- function(break_type = "auto",
                                                            num_breaks = 2,
                                                            split = 40) {
 
@@ -382,13 +436,13 @@ return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk
     "class: split-{{split}}",
     "count: false",
     ".column[.content[",
-    return_partial_chunks_template(display_type = "code"),
+    return_partial_chunks_template_code(),
     "]]",
     ".column[.content[",
-    return_partial_chunks_template(display_type = "output"),
+    return_partial_chunks_template_output(),
     "]]",
     " ",
-    .open = "{{", .close = "}}", .sep = "\n"
+    .open = "{{{", .close = "}}}", .sep = "\n"
     )
 
   glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
@@ -409,8 +463,7 @@ return_partial_side_by_side_code_output_chunks <- function(chunk_name = "a_chunk
 #'
 #' @examples
 #' return_partial_chunks()
-return_partial_chunks <- function(chunk_name = "example_chunk_name",
-                                  break_type = "auto",
+return_partial_chunks <- function(break_type = "auto",
                                   display_type = "both",
                                   num_breaks = 2,
                                   split = 40){
@@ -418,15 +471,13 @@ return_partial_chunks <- function(chunk_name = "example_chunk_name",
 
 if (display_type == "both") {
 
-  return_partial_side_by_side_code_output_chunks(chunk_name = chunk_name,
-                                                 break_type = break_type,
+  return_partial_side_by_side_code_output_chunks(break_type = break_type,
                                                  num_breaks = num_breaks,
                                                  split = split)
 
 } else {
 
-  return_partial_code_or_output_chunks(chunk_name = chunk_name,
-                                       break_type = break_type,
+  return_partial_code_or_output_chunks(break_type = break_type,
                                        num_breaks = num_breaks,
                                        display_type = display_type)
 
@@ -447,8 +498,45 @@ if (display_type == "both") {
 #' @return a character string to be interpreted as .Rmd content
 #' @export
 #'
+#' @examples chunk_expand()
+chunk_expand <- function(chunk_name = "example_name",
+                   break_type = "auto",
+                   reg_assign = F,
+                   # code_seq = chunk_name_return_code_sequence(chunk_name, break_type, reg_assign),
+                   num_breaks = 2,
+                   display_type = "both",
+                   split = 40){
+
+
+
+  # code_seq <- code_seq
+
+  glue::glue(return_partial_chunks(break_type = break_type,
+                                display_type = display_type,
+                                num_breaks = num_breaks,
+                                split = split),
+               .open = "{{",
+               .close = "}}", .sep = "\n")
+
+}
+
+
+
+#' Title
+#'
+#' @param chunk_name
+#' @param break_type
+#' @param reg_assign
+#' @param code_seq
+#' @param num_breaks
+#' @param display_type
+#' @param split
+#'
+#' @return
+#' @export
+#'
 #' @examples
-reveal <- function(chunk_name,
+reveal <- function(chunk_name = "example_name",
                    break_type = "auto",
                    reg_assign = F,
                    code_seq = chunk_name_return_code_sequence(chunk_name, break_type, reg_assign),
@@ -456,13 +544,16 @@ reveal <- function(chunk_name,
                    display_type = "both",
                    split = 40){
 
-  # code_seq <- code_seq
+  text <- chunk_expand(chunk_name = chunk_name,
+                       break_type = break_type,
+                       reg_assign = reg_assign,
+                       # code_seq = code_seq,
+                       num_breaks = num_breaks,
+                       display_type = display_type,
+                       split = split)
 
-  paste(knitr::knit(text = return_partial_chunks(chunk_name = chunk_name,
-                                            break_type = break_type,
-                                            display_type = display_type,
-                                            num_breaks = num_breaks,
-                                            split = split)),
-        collapse = "\n")
+  paste(knitr::knit(text = text), collapse = "\n")
+
+
 }
 
