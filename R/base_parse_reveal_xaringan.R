@@ -297,31 +297,6 @@ chunk_name %>%
 
 
 
-#' Title
-#'
-#' @param display_type
-#' @param break_type
-#' @param eval
-#' @param echo
-#'
-#' @return
-#' @export
-#'
-#' @examples
-#' return_partial_chunks_template()
-#' return_partial_chunks_template(display_type = "output")
-return_partial_chunks_template <- function(display_type = "output"){
-
-  "```{r {{chunk_name}}_{{{break_type}}}_{{{breaks}}}_{{{{display_type}}}}, eval = {{{{eval}}}}, echo = {{{{echo}}}}, code = code_seq[[{{{breaks}}}]]}
-  ```"
-
-}
-
-  # glue::glue("```{r {{chunk_name}}_{{break_type}}_{{breaks}}_{{{display_type}}}, eval = {{eval}}, echo = {{echo}}, code = code_seq[[{{breaks}}]]}",
-  #            "```",
-  #            .open = "{{{", .close = "}}}", .sep = "\n")
-
-# }
 
 
 #' Title
@@ -337,13 +312,8 @@ return_partial_chunks_template <- function(display_type = "output"){
 #' return_partial_chunks_template_code()
 return_partial_chunks_template_code <- function(){
 
-  display_type = "code"
-  echo = T
-  eval = F
-
-  glue::glue(return_partial_chunks_template(),
-             .open = "{{{{", .close = "}}}}", .sep = "\n")
-
+  "```{r {{chunk_name}}_{{{break_type}}}_{{{breaks}}}_code, eval = FALSE, echo = TRUE, code = code_seq[[{{{breaks}}}]]}
+```"
 
 }
 
@@ -357,97 +327,12 @@ return_partial_chunks_template_code <- function(){
 #' return_partial_chunks_template_output()
 return_partial_chunks_template_output <- function(){
 
-  display_type = "output"
-  echo = F
-  eval = T
-
-  glue::glue(return_partial_chunks_template(),
-             .open = "{{{{", .close = "}}}}", .sep = "\n")
-
+"```{r {{chunk_name}}_{{{break_type}}}_{{{breaks}}}_output, eval = TRUE, echo = FALSE, code = code_seq[[{{{breaks}}}]]}
+```"
 
 }
 
 
-
-#' Title
-#'
-#' @param chunk_name
-#' @param break_type
-#' @param reg_assign
-#' @param code_seq
-#' @param num_breaks
-#' @param display_type
-#'
-#' @return
-#' @export
-#'
-#' @examples
-#' return_partial_code_or_output_chunks(num_breaks = 3)
-#' return_partial_code_or_output_chunks(display_type = "code", num_breaks = 3)
-return_partial_code_or_output_chunks <- function(break_type = "auto",
-                                                 num_breaks = 2,
-                                                 display_type = "output") {
-  breaks <- 1:num_breaks
-
-  if (display_type == "output") {
-
-    chunk <- return_partial_chunks_template_output()
-
-  } else {
-
-    chunk <- return_partial_chunks_template_code()
-
-  }
-
-
-  partial_knit_steps <- glue::glue(
-    "count: false",
-    chunk,
-    .open = "{{{", .close = "}}}", .sep = "\n"
-  )
-
-  glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
-
-}
-
-
-
-#' Title
-#'
-#' @param chunk_name
-#' @param break_type
-#' @param reg_assign
-#' @param code_seq
-#' @param num_breaks
-#' @param split
-#'
-#' @return
-#' @export
-#'
-#' @examples
-#' return_partial_side_by_side_code_output_chunks(num_breaks = 3)
-return_partial_side_by_side_code_output_chunks <- function(break_type = "auto",
-                                                           num_breaks = 2,
-                                                           split = 40) {
-
-  breaks <- 1:num_breaks
-
-  partial_knit_steps <- glue::glue(
-    "class: split-{{split}}",
-    "count: false",
-    ".column[.content[",
-    return_partial_chunks_template_code(),
-    "]]",
-    ".column[.content[",
-    return_partial_chunks_template_output(),
-    "]]",
-    " ",
-    .open = "{{{", .close = "}}}", .sep = "\n"
-    )
-
-  glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
-
-}
 
 #' Title
 #'
@@ -463,25 +348,51 @@ return_partial_side_by_side_code_output_chunks <- function(break_type = "auto",
 #'
 #' @examples
 #' return_partial_chunks()
+#' return_partial_chunks(break_type = "user", display_type = "code")
+#' return_partial_chunks(break_type = "non_seq", display_type = "output")
 return_partial_chunks <- function(break_type = "auto",
                                   display_type = "both",
                                   num_breaks = 2,
                                   split = 40){
 
+breaks <- 1:num_breaks
 
 if (display_type == "both") {
 
-  return_partial_side_by_side_code_output_chunks(break_type = break_type,
-                                                 num_breaks = num_breaks,
-                                                 split = split)
+  partial_knit_steps <- glue::glue(
+    "class: split-{{split}}",
+    "count: false",
+    ".column[.content[",
+    return_partial_chunks_template_code(),
+    "]]",
+    ".column[.content[",
+    return_partial_chunks_template_output(),
+    "]]",
+    " ",
+    .open = "{{{", .close = "}}}", .sep = "\n"
+  )
 
-} else {
+} else if (display_type == "code" | display_type == "output") {
 
-  return_partial_code_or_output_chunks(break_type = break_type,
-                                       num_breaks = num_breaks,
-                                       display_type = display_type)
+  if (display_type == "output") {
+
+    chunk <- return_partial_chunks_template_output()
+
+  } else {
+
+    chunk <- return_partial_chunks_template_code()
+
+  }
+
+  partial_knit_steps <- glue::glue(
+    "count: false",
+    chunk,
+    .open = "{{{", .close = "}}}", .sep = "\n"
+  )
 
 }
+
+glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
 
 }
 

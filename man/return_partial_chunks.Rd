@@ -15,4 +15,6 @@ Title
 }
 \examples{
 return_partial_chunks()
+return_partial_chunks(break_type = "user", display_type = "code")
+return_partial_chunks(break_type = "non_seq", display_type = "output")
 }
