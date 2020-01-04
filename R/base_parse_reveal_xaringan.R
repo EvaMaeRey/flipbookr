@@ -413,7 +413,7 @@ glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
 #' @export
 #'
 #' @examples
-chunk_reveal <- function(chunk_name = "example_name",
+reveal <- function(chunk_name = "example_name",
                    break_type = "auto",
                    reg_assign = F,
                    code_seq = chunk_name_return_code_sequence(chunk_name, break_type, reg_assign),
