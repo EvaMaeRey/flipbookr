@@ -1123,3 +1123,54 @@ remote: Resolving deltas:   0% (0/11)[Kremote: Resolving deltas:   9% (1/11)[
 To https://github.com/EvaMaeRey/flipbookr.git
    a925e61..79d9689  master -> master
 ]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add [K[K[K[K[K[K[K[Kgit add . [K
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit -m "tightening up the delev[K[Kivery of coe[Kde i nto xaringa [Kn slides [K -- it is tight!"
+bash: !": event not found
+Evangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .[1Ppushadd .[Kgit commit - m"[K "tightening up delivery of code into  xaringan slides. Now just one function to makd [K[Ke ou[K[Kcode templay[Ke[Kte[K[K[K[K[K[K[K[Kchunk template, on[K[K[K[K; one to mae [K[Kke code c[K[K[K[K[K[Koutput chunk template"[K [K, a nd then onto building slides[K[K[K[K[K[Kset of slip[Kdes tha[K[K[Kfor tracking evolution"
+error: pathspec '-' did not match any file(s) known to git.
+error: pathspec 'm' did not match any file(s) known to git.
+error: pathspec 'tightening up delivery of code into xaringan slides. Now just one function to make code chunk template; one to make output chunk template, and then onto building set of slides for tracking evolution' did not match any file(s) known to git.
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit - m "tightening up delivery of code into  xaringan slides. Now just one function to make code chunk template; one to make output chunk template, annd then onto building set of slides for tracking evolution"[K";evolution"9evolution"Devolution"[1Pevolution"[1Pevolution"[1Pevolution"[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cm "tightening up delivery of code into xaringan slides. Now just one function to make code chunk template; one to make output chunk template, and[1P[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+
+
+[master 5f700b7] tightening up delivery of code into xaringan slides. Now just one function to make code chunk template; one to make output chunk template, and then onto building set of slides for tracking evolution
+ 43 files changed, 49 insertions(+), 3803 deletions(-)
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/libs/remark-css-0.0.1/ninjutsu.css
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton.html
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/base_r_plotting_auto_1_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/base_r_plotting_auto_2_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/base_r_plotting_auto_3_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/base_r_plotting_auto_4_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_anova_auto_1_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_anova_auto_2_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_anova_auto_3_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_anova_auto_4_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_auto_3_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_auto_4_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_auto_5_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_auto_6_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_auto_7_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_multi_3_1_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_multi_3_2_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_multi_3_3_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_non_seq_1_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_non_seq_2_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_non_seq_3_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_user_1_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_user_2_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_user_3_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/further_building_auto_1_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/further_building_auto_2_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/further_building_auto_3_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/plot_object_auto_2_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/plot_object_auto_3_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/plot_object_auto_4_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/plot_object_auto_5_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/reg_assign_auto_3_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/reg_assign_auto_4_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/reg_assign_auto_5_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/reg_assign_auto_6_output-1.png
+ delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/xaringan-themer.css
+ delete mode 100644 man/return_partial_chunks_template.Rd
+ delete mode 100644 man/return_partial_code_or_output_chunks.Rd
+ delete mode 100644 man/return_partial_side_by_side_code_output_chunks.Rd
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git c[Kcom[K[K[Kadd .

@@ -312,7 +312,7 @@ chunk_name %>%
 #' return_partial_chunks_template_code()
 return_partial_chunks_template_code <- function(){
 
-  "```{r {{chunk_name}}_{{{break_type}}}_{{{breaks}}}_code, eval = FALSE, echo = TRUE, code = code_seq[[{{{breaks}}}]]}
+"```{r {{{chunk_name}}}_{{{break_type}}}_{{{breaks}}}_code, eval = FALSE, echo = TRUE, code = code_seq[[{{{breaks}}}]]}
 ```"
 
 }
@@ -327,7 +327,7 @@ return_partial_chunks_template_code <- function(){
 #' return_partial_chunks_template_output()
 return_partial_chunks_template_output <- function(){
 
-"```{r {{chunk_name}}_{{{break_type}}}_{{{breaks}}}_output, eval = TRUE, echo = FALSE, code = code_seq[[{{{breaks}}}]]}
+"```{r {{{chunk_name}}}_{{{break_type}}}_{{{breaks}}}_output, eval = TRUE, echo = FALSE, code = code_seq[[{{{breaks}}}]]}
 ```"
 
 }
@@ -347,10 +347,11 @@ return_partial_chunks_template_output <- function(){
 #' @export
 #'
 #' @examples
-#' return_partial_chunks()
-#' return_partial_chunks(break_type = "user", display_type = "code")
-#' return_partial_chunks(break_type = "non_seq", display_type = "output")
-return_partial_chunks <- function(break_type = "auto",
+#' chunk_expand()
+#' chunk_expand(break_type = "user", display_type = "code")
+#' chunk_expand(break_type = "non_seq", display_type = "output")
+chunk_expand <- function(chunk_name = "example",
+                                  break_type = "auto",
                                   display_type = "both",
                                   num_breaks = 2,
                                   split = 40){
@@ -360,7 +361,7 @@ breaks <- 1:num_breaks
 if (display_type == "both") {
 
   partial_knit_steps <- glue::glue(
-    "class: split-{{split}}",
+    "class: split-{{{split}}}",
     "count: false",
     ".column[.content[",
     return_partial_chunks_template_code(),
@@ -397,41 +398,6 @@ glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
 }
 
 
-#' reveal in Rmarkdown file, to be used in-line
-#'
-#' @param chunk_name a character string which is a chunk name
-#' @param break_type "auto", "user", "non_seq" or numeric
-#' @param display_type string "both", "code", "output", default is "both"
-#' @param code_seq list of string vectors containing the partial code, computes automatically
-#' @param reg_assign logical set to T if output of some object created at beginning of code chunk should be displayed
-#' @param split percent split between code and output if both
-#'
-#' @return a character string to be interpreted as .Rmd content
-#' @export
-#'
-#' @examples chunk_expand()
-chunk_expand <- function(chunk_name = "example_name",
-                   break_type = "auto",
-                   reg_assign = F,
-                   # code_seq = chunk_name_return_code_sequence(chunk_name, break_type, reg_assign),
-                   num_breaks = 2,
-                   display_type = "both",
-                   split = 40){
-
-
-
-  # code_seq <- code_seq
-
-  glue::glue(return_partial_chunks(break_type = break_type,
-                                display_type = display_type,
-                                num_breaks = num_breaks,
-                                split = split),
-               .open = "{{",
-               .close = "}}", .sep = "\n")
-
-}
-
-
 
 #' Title
 #'
@@ -447,7 +413,7 @@ chunk_expand <- function(chunk_name = "example_name",
 #' @export
 #'
 #' @examples
-reveal <- function(chunk_name = "example_name",
+chunk_reveal <- function(chunk_name = "example_name",
                    break_type = "auto",
                    reg_assign = F,
                    code_seq = chunk_name_return_code_sequence(chunk_name, break_type, reg_assign),
@@ -457,8 +423,6 @@ reveal <- function(chunk_name = "example_name",
 
   text <- chunk_expand(chunk_name = chunk_name,
                        break_type = break_type,
-                       reg_assign = reg_assign,
-                       # code_seq = code_seq,
                        num_breaks = num_breaks,
                        display_type = display_type,
                        split = split)
