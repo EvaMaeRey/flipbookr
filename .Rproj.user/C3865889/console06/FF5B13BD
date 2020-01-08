@@ -1000,3 +1000,56 @@ remote: Resolving deltas:   0% (0/6)[Kremote: Resolving deltas:  16% (1/6)[K
 To https://github.com/EvaMaeRey/flipbookr.git
    127c198..fe8f480  master -> master
 [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit -m "remo[K[K[K[Kclean up"
+[master a11dea7] clean up
+ 44 files changed, 33 insertions(+), 4146 deletions(-)
+ rewrite .Rproj.user/C3865889/console06/INDEX001 (97%)
+ rewrite .Rproj.user/C3865889/rmd-outputs (98%)
+ delete mode 100644 Untitled/Untitled.Rmd
+ delete mode 100644 Untitled/Untitled.html
+ delete mode 100644 Untitled/libs/remark-css-0.0.1/ninjutsu.css
+ delete mode 100644 Untitled/skeleton.html
+ delete mode 100644 Untitled/skeleton_files/figure-html/base_r_plotting_auto_1_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/base_r_plotting_auto_2_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/base_r_plotting_auto_3_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/base_r_plotting_auto_4_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/cars_anova_auto_1_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/cars_anova_auto_2_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/cars_anova_auto_3_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/cars_anova_auto_4_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/cars_auto_3_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/cars_auto_4_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/cars_auto_5_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/cars_auto_6_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/cars_auto_7_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/cars_multi_3_1_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/cars_multi_3_2_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/cars_multi_3_3_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/cars_non_seq_1_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/cars_non_seq_2_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/cars_non_seq_3_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/cars_user_1_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/cars_user_2_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/cars_user_3_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/further_building_auto_1_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/further_building_auto_2_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/further_building_auto_3_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/plot_object_auto_2_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/plot_object_auto_3_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/plot_object_auto_4_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/plot_object_auto_5_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/reg_assign_auto_3_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/reg_assign_auto_4_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/reg_assign_auto_5_output-1.png
+ delete mode 100644 Untitled/skeleton_files/figure-html/reg_assign_auto_6_output-1.png
+ delete mode 100644 Untitled/xaringan-themer.css
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
+Counting objects: 12, done.
+Delta compression using up to 4 threads.
+Compressing objects:   8% (1/12)   Compressing objects:  16% (2/12)   Compressing objects:  25% (3/12)   Compressing objects:  33% (4/12)   Compressing objects:  41% (5/12)   Compressing objects:  50% (6/12)   Compressing objects:  58% (7/12)   Compressing objects:  66% (8/12)   Compressing objects:  75% (9/12)   Compressing objects:  83% (10/12)   Compressing objects:  91% (11/12)   Compressing objects: 100% (12/12)   Compressing objects: 100% (12/12), done.
+Writing objects:   8% (1/12)   Writing objects:  16% (2/12)   Writing objects:  25% (3/12)   Writing objects:  33% (4/12)   Writing objects:  41% (5/12)   Writing objects:  50% (6/12)   Writing objects:  58% (7/12)   Writing objects:  66% (8/12)   Writing objects:  75% (9/12)   Writing objects:  83% (10/12)   Writing objects:  91% (11/12)   Writing objects: 100% (12/12)   Writing objects: 100% (12/12), 1.58 KiB | 1.58 MiB/s, done.
+Total 12 (delta 4), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/4)[Kremote: Resolving deltas:  25% (1/4)[Kremote: Resolving deltas:  50% (2/4)[Kremote: Resolving deltas:  75% (3/4)[Kremote: Resolving deltas: 100% (4/4)[Kremote: Resolving deltas: 100% (4/4), completed with 4 local objects.[K
+To https://github.com/EvaMaeRey/flipbookr.git
+   fe8f480..a11dea7  master -> master
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .
