@@ -4,10 +4,10 @@
 \alias{reveal}
 \title{Title}
 \usage{
-reveal(chunk_name = "example_name", break_type = "auto",
-  reg_assign = F,
-  code_seq = chunk_name_return_code_sequence(chunk_name, break_type,
-  reg_assign), num_breaks = length(code_seq), display_type = "both",
+reveal(chunk_name = "example_name", reveal_type = "auto",
+  left_assign = F,
+  code_seq = chunk_name_return_code_sequence(chunk_name, reveal_type,
+  left_assign), num_breaks = length(code_seq), display_type = "both",
   split = 40)
 }
 \arguments{

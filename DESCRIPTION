@@ -17,7 +17,5 @@ Imports:
     tidyr,
     stringi,
     knitr,
-    glue,
-    usethis,
-    cowplot
+    glue
 RoxygenNote: 6.1.1

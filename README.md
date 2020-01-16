@@ -28,8 +28,8 @@ pipelines into substeps is automated.
 
 ## Installation
 
-You can install the development version of flipbookr from
-[CRAN](https://CRAN.R-project.org) with:
+You can install the development version of flipbookr with devtools as
+follows:
 
 ``` r
 devtools::install_github("EvaMaeRey/flipbookr")

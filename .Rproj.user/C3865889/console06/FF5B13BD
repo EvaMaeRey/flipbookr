@@ -1,107 +1,4 @@
 
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_nobel_1_d3df5acc530aea7f0ebb5dc73aebabed.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_nobel_2_32256fa20359a9507dd8ae74c931f74a.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_nobel_2_32256fa20359a9507dd8ae74c931f74a.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_nobel_2_32256fa20359a9507dd8ae74c931f74a.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_1_a18b1e89f10b604b0debaed1f3c9b937.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_1_a18b1e89f10b604b0debaed1f3c9b937.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_1_a18b1e89f10b604b0debaed1f3c9b937.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_1_auto_f18bcd666f0544794ffe95d1e06955fa.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_1_auto_f18bcd666f0544794ffe95d1e06955fa.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_1_auto_f18bcd666f0544794ffe95d1e06955fa.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_2_auto_4bdc6856217b7c06efcaedbd63822cca.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_2_auto_4bdc6856217b7c06efcaedbd63822cca.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_2_auto_4bdc6856217b7c06efcaedbd63822cca.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_2_e80c50be990b67d77553a8b08bf6809a.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_2_e80c50be990b67d77553a8b08bf6809a.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_2_e80c50be990b67d77553a8b08bf6809a.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_3_5e89cff0d5395de37943f1c343b00d2c.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_3_5e89cff0d5395de37943f1c343b00d2c.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_3_5e89cff0d5395de37943f1c343b00d2c.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_3_auto_195337cb54b3ef90aed07722be9a3a64.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_3_auto_195337cb54b3ef90aed07722be9a3a64.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_3_auto_195337cb54b3ef90aed07722be9a3a64.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_4_2f54b139d328b18590f87ff24cb3b592.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_4_2f54b139d328b18590f87ff24cb3b592.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_4_2f54b139d328b18590f87ff24cb3b592.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_4_auto_6a132d55c9ca2049635c5c1293f77b22.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_4_auto_6a132d55c9ca2049635c5c1293f77b22.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_4_auto_6a132d55c9ca2049635c5c1293f77b22.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_5_05b2ecf06f66a71539ed3b1bf70314a7.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_5_05b2ecf06f66a71539ed3b1bf70314a7.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_5_05b2ecf06f66a71539ed3b1bf70314a7.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_5_auto_3036ad3d23652ad5e247eb5d45639a0d.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_5_auto_3036ad3d23652ad5e247eb5d45639a0d.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/code_reg_assign_5_auto_3036ad3d23652ad5e247eb5d45639a0d.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_1_39d98139830b38806952881b89efe692.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_1_39d98139830b38806952881b89efe692.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_1_39d98139830b38806952881b89efe692.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_1_user_b823b9c1e5e1887a19406f84e65a02ec.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_1_user_b823b9c1e5e1887a19406f84e65a02ec.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_1_user_b823b9c1e5e1887a19406f84e65a02ec.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_2_aea58b9e07c2df3c616927a585e0e93a.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_2_aea58b9e07c2df3c616927a585e0e93a.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_2_aea58b9e07c2df3c616927a585e0e93a.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_2_user_03ee45f752e21c41b851baf77f85b2f7.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_2_user_03ee45f752e21c41b851baf77f85b2f7.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_2_user_03ee45f752e21c41b851baf77f85b2f7.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_3_a750552078ee64a3245723d9149e1735.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_3_a750552078ee64a3245723d9149e1735.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_3_a750552078ee64a3245723d9149e1735.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_3_user_047f10ce02ab7b86050476c01d0f78a4.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_3_user_047f10ce02ab7b86050476c01d0f78a4.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_3_user_047f10ce02ab7b86050476c01d0f78a4.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_4_2e371cfc94a4e71ca0e69c4f7dae5e3b.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_4_2e371cfc94a4e71ca0e69c4f7dae5e3b.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_4_2e371cfc94a4e71ca0e69c4f7dae5e3b.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_5_f974db6cdcda97fb498503f2b5b6d3b3.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_5_f974db6cdcda97fb498503f2b5b6d3b3.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_5_f974db6cdcda97fb498503f2b5b6d3b3.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_6_2368b0af19d5e14e4c42fe65bcede969.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_6_2368b0af19d5e14e4c42fe65bcede969.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_6_2368b0af19d5e14e4c42fe65bcede969.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_7_a21a746dd452e6ccd324ecc5e44909b5.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_7_a21a746dd452e6ccd324ecc5e44909b5.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_7_a21a746dd452e6ccd324ecc5e44909b5.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_8_d69dd1f2881cd4f5dce9c092fb6ffa28.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_8_d69dd1f2881cd4f5dce9c092fb6ffa28.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_8_d69dd1f2881cd4f5dce9c092fb6ffa28.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_1_963e402104dcc152e35c7d3cbcc69073.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_1_963e402104dcc152e35c7d3cbcc69073.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_1_963e402104dcc152e35c7d3cbcc69073.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_1_auto_b5bb3fcb5811fce0c2053b2abf46d6d2.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_1_auto_b5bb3fcb5811fce0c2053b2abf46d6d2.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_1_auto_b5bb3fcb5811fce0c2053b2abf46d6d2.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_2_auto_bfc67bb8ae8a0adbc57d1c7fa081c5df.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_2_auto_bfc67bb8ae8a0adbc57d1c7fa081c5df.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_2_auto_bfc67bb8ae8a0adbc57d1c7fa081c5df.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_2_f28f7f84183141bfc8c8d2d272ee6dd8.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_2_f28f7f84183141bfc8c8d2d272ee6dd8.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_2_f28f7f84183141bfc8c8d2d272ee6dd8.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_3_7d591611a0319bdcb56f06dd0940efb6.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_3_7d591611a0319bdcb56f06dd0940efb6.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_3_7d591611a0319bdcb56f06dd0940efb6.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_3_auto_7da95972e7851508908144bb6bdbb4d2.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_3_auto_7da95972e7851508908144bb6bdbb4d2.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_3_auto_7da95972e7851508908144bb6bdbb4d2.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_4_3447a5719e11666d4a9aff22960446e9.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_4_3447a5719e11666d4a9aff22960446e9.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_4_3447a5719e11666d4a9aff22960446e9.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_4_auto_a7c7ecddac1f2fb57619a5a08e26fe52.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_4_auto_a7c7ecddac1f2fb57619a5a08e26fe52.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_4_auto_a7c7ecddac1f2fb57619a5a08e26fe52.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_5_6d6c40fb35dec28f01fe45077991679f.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_5_6d6c40fb35dec28f01fe45077991679f.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_5_6d6c40fb35dec28f01fe45077991679f.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_5_auto_61fa9263682a404f1d4c59b1cd6721a3.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_5_auto_61fa9263682a404f1d4c59b1cd6721a3.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_5_auto_61fa9263682a404f1d4c59b1cd6721a3.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_6_ab2358c29810189f979ab0842613892b.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_6_ab2358c29810189f979ab0842613892b.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_6_ab2358c29810189f979ab0842613892b.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_6_auto_2eb376a0e5a8c2c752e480aae4ee2b81.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_6_auto_2eb376a0e5a8c2c752e480aae4ee2b81.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_6_auto_2eb376a0e5a8c2c752e480aae4ee2b81.rdx
  delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_7_5dccf1070c8ff37f3445c60e5c2af18e.RData
  delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_7_5dccf1070c8ff37f3445c60e5c2af18e.rdb
  delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_7_5dccf1070c8ff37f3445c60e5c2af18e.rdx
@@ -1053,3 +950,53 @@ remote: Resolving deltas:   0% (0/4)[Kremote: Resolving deltas:  25% (1/4)[K
 To https://github.com/EvaMaeRey/flipbookr.git
    fe8f480..a11dea7  master -> master
 ]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit-[K - [Km "deleting so me more exta[Kranious things"
+[master 994db16] deleting some more extranious things
+ 4 files changed, 55 insertions(+), 1517 deletions(-)
+ delete mode 100644 libs/remark-css-0.0.1/kunoichi.css
+ delete mode 100644 libs/remark-css-0.0.1/ninjutsu.css
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
+Counting objects: 7, done.
+Delta compression using up to 4 threads.
+Compressing objects:  14% (1/7)   Compressing objects:  28% (2/7)   Compressing objects:  42% (3/7)   Compressing objects:  57% (4/7)   Compressing objects:  71% (5/7)   Compressing objects:  85% (6/7)   Compressing objects: 100% (7/7)   Compressing objects: 100% (7/7), done.
+Writing objects:  14% (1/7)   Writing objects:  28% (2/7)   Writing objects:  42% (3/7)   Writing objects:  57% (4/7)   Writing objects:  71% (5/7)   Writing objects:  85% (6/7)   Writing objects: 100% (7/7)   Writing objects: 100% (7/7), 1.23 KiB | 631.00 KiB/s, done.
+Total 7 (delta 4), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/4)[Kremote: Resolving deltas:  25% (1/4)[Kremote: Resolving deltas:  50% (2/4)[Kremote: Resolving deltas:  75% (3/4)[Kremote: Resolving deltas: 100% (4/4)[Kremote: Resolving deltas: 100% (4/4), completed with 4 local objects.[K
+To https://github.com/EvaMaeRey/flipbookr.git
+   a11dea7..994db16  master -> master
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
+Everything up-to-date
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git[K[K[K[KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git  [K[KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git m[Krm -[K.[K./[K[K..Rproj.user[1PRproj.user
+fatal: not removing '.Rproj.user' recursively without -r
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git rm .Rproj.user[C .Rproj.user- .Rproj.userr .Rproj.user[C .Rproj.user
+error: the following files have local modifications:
+    .Rproj.user/C3865889/console06/FF5B13BD
+    .Rproj.user/C3865889/console06/INDEX001
+    .Rproj.user/C3865889/sources/prop/INDEX
+(use --cached to keep the file, or -f to force removal)
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git [K[K[K[Kgo[Kit commit -m "removing .R[K[Krprojuser"
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Changes not staged for commit:
+	[31mmodified:   .Rproj.user/C3865889/console06/FF5B13BD[m
+	[31mmodified:   .Rproj.user/C3865889/console06/INDEX001[m
+	[31mmodified:   .Rproj.user/C3865889/sources/prop/INDEX[m
+	[31mmodified:   inst/rmarkdown/templates/template-name/skeleton/skeleton.Rmd[m
+
+Untracked files:
+	[31minst/rmarkdown/templates/template-name/skeleton/libs/[m
+	[31minst/rmarkdown/templates/template-name/skeleton/skeleton.html[m
+	[31minst/rmarkdown/templates/template-name/skeleton/skeleton_files/[m
+	[31minst/rmarkdown/templates/template-name/skeleton/xaringan-themer.css[m
+
+no changes added to commit
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit -m "removing rprojuser"[12Prm -r  .Rproj.user[4P.Rproj.user-r  .Rproj.user[K[K[K[K[K[K[K[K[K[K[K[K.r[KRproj.user/
+error: the following files have local modifications:
+    .Rproj.user/C3865889/console06/FF5B13BD
+    .Rproj.user/C3865889/console06/INDEX001
+    .Rproj.user/C3865889/sources/prop/INDEX
+(use --cached to keep the file, or -f to force removal)
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git pull
+Already up-to-date.
+[KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .

@@ -5,7 +5,7 @@ author: "Gina Reynolds, December 2019"
 output:
   xaringan::moon_reader:
     lib_dir: libs
-    css: ["xaringan-themer.css", ninjutsu]
+    css: [default, hygge, ninjutsu]
     nature:
       ratio: 16:10
       highlightStyle: github
@@ -18,15 +18,12 @@ output:
 # Welcome
 
 - Yes, there is now a package called `flipbookr`
-
 --
 
 - Yes, it's still under construction (thus, the dramatic "fragile" and "perilous")
-
 --
 
 - Yes, you can help make it less fragile and perilous by letting us know if/how it breaks and frustrates you and/or contributing at https://github.com/EvaMaeRey/flipbookr!  
-
 --
 
 - Then we'll retitle this book!
@@ -55,7 +52,15 @@ Or, once you install the package (and restart RStudio?) a template for making th
 
 The flipbook you will be building here uses a member of the [rmarkdown](https://rmarkdown.rstudio.com/lesson-1.html) family called [Xaringan (presentation ninja)](https://github.com/yihui/xaringan), which creates a slideshow in html.  Dynamic documents like `rmarkdown` documents allow you to comingle code and prose in a single document.  
 
+It may be obvious by now, if you are following along with the source template, that slide breaks are indicated with `---` (be careful trailing white space is not allowed)
+
+---
+
+
 Flipbooks are built by spawning new *partial* code chunks from a single, user-input code chunk.  The partial code chunks build up and are display consecutively in a slide show alongside its output which yields a movie-like experience; this should make each step easier to understand.  
+
+As you begin with flipbooks, I'd recommend using the code chunk option `include = F` for your "source" code chunks, and with no caching throughout.  As you begin to get more comfortable with flipbooking, you might change these choices.
+
 
 ---
 
@@ -63,40 +68,28 @@ Flipbooks are built by spawning new *partial* code chunks from a single, user-in
 
 We use the flipbookr package, of course! This does the work of disassembling a single code chunk and creating the "build" of multiple partial-code chunks.  
 
-```{r, cache = F}
+```{r, cache = FALSE}
 library(flipbookr)
 ```
 
 Also, I set *code chunk* options for the code chunks that follow.  These will apply to the spawned code chunks.
 
 ```{r setup}
-knitr::opts_chunk$set(fig.width = 6, message = F, warning = F, comment = "", cache = F, fig.retina = 3)
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = FALSE, fig.retina = 3)
 ```
 
 
 <!-- So that I can sometimes work interactively on the package, I still am making the source script available for myself.-->
 
 
-```{r, cache = F, echo = F}
+```{r, cache = FALSE, echo = FALSE}
 try(source("../../../../../R/base_parse_reveal_xaringan.R"))
 ```
 
 
 
 
----
 
-## Change slide show look and feel
-
-To quickly change the look and feel of your xaringan slide show, I'd recommend that you use the [xaringanthemer](https://github.com/gadenbuie/xaringanthemer) package.  The code below creates a css file for you that will be used to style your slide show; you can see `xaringan-themer.css`, which the following code chunk creates, referenced at the beginning of this document, in the ["YAML"](https://en.wikipedia.org/wiki/YAML).   
-
-```{r xaringan_look}
-xaringanthemer::mono_accent(
-  code_highlight_color = "rgba(255, 211, 0, .35)",
-  base_color = "#03418A")
-```
-
-It may be obvious by now, if you are following along with the source template, that slide breaks are indicated with `---` (be careful trailing white space is not allowed). 
 
 
 ---
@@ -107,15 +100,15 @@ You will use the `reveal()` function [inline](https://rmarkdown.rstudio.com/less
 
 <!-- The above is for the html output version, just look at the examples below if you are in the source! -->
 ```markdown
-``r "r reveal(chunk_name = \"cars\", break_type = \"user\", display_tye = \"both\", reg_assign = F)"``
+``r "r reveal(chunk_name = \"cars\", reveal_type = \"user\", display_type = \"both\", left_assign = FALSE)"``
 ``` 
 
 
 There are several modalities that you might be interested in using for "flipbookifying" your code and the next section is dedicated to demoing some of them below.
 
-- **break type** -- *which lines of code should be revealed when*, `break_type` defaults to "auto"
+- **reveal type** -- *which lines of code should be revealed when*, `reveal_type` defaults to "auto"
 - **display type** -- *display code and output, or just output, or just code?*, `display_type` defaults to "both"
-- **assignment type** -- *does code chunk use regular assignment?*, `reg_assign` defaults to FALSE
+- **assignment type** -- *does code chunk use left assignment?*, `left_assign` defaults to FALSE
 
 
 
@@ -127,13 +120,12 @@ At first we'll apply our flipbooking to the below input code - the code chunk is
 library(tidyverse)
 ```
 
-```{r cars, echo = T, eval = F, fig.height=5}
-cars %>%             # the data 
-  filter(speed > 4) %>%  # subset
-  ggplot() +              # pipe to ggplot
+```{r cars, include = FALSE}
+cars %>%
+  filter(speed > 4) %>%
+  ggplot() +
   aes(x = speed) +
   aes(y = dist) + #REVEAL
-  # Describing what follows
   geom_point(
     alpha = .3, #REVEAL2
     color = "blue" #REVEAL3
@@ -143,14 +135,14 @@ cars %>%             # the data
 
 ---
 
-# `break_type`
+# `reveal_type`
 
 
 
-Notice the regular comments and the special #REVEAL comments, these will be used for a couple of the different "break type" modalities.
+Notice the regular comments and the special #REVEAL comments, these will be used for a couple of the different "reveal type" modalities.
 
 
-```{r, code = knitr::knit_code$get("cars"), eval = F, echo = T}
+```{r, code = knitr::knit_code$get("cars"), eval = FALSE, echo = TRUE}
 ```
 
 <!-- Also notice how we've created a new code chunk with the code from the previous chunk. -->
@@ -160,42 +152,42 @@ Notice the regular comments and the special #REVEAL comments, these will be used
 
 ---
 
-## break_type = "auto"
+## reveal_type = "auto"
 
-One parameter of flipbooking is the break_type.  The default is "auto", in which appropriate breakpoints are determined automatically --- by finding where parentheses are balanced. 
+One parameter of flipbooking is the reveal_type.  The default is "auto", in which appropriate revealpoints are determined automatically --- by finding where parentheses are balanced. 
 
 <!-- display the user input code as a refresher -->
-```{r, code = knitr::knit_code$get("cars"), eval = F, echo = T}
+```{r, code = knitr::knit_code$get("cars"), eval = FALSE, echo = TRUE}
 ```
 
 
 
 ---
 
-`r reveal("cars", break_type = "auto")`
+`r reveal("cars", reveal_type = "auto")`
 
 ---
 
-## break_type = "user"
+## reveal_type = "user", with #REVEAL
 
-If the break_type is set to "user", the breakpoints are those indicated by the user with the special comment #REVEAL
+If the reveal_type is set to "user", the revealpoints are those indicated by the user with the special comment #REVEAL
 
 <!-- display the user input code as a refresher -->
-```{r, code = knitr::knit_code$get("cars"), eval = F, echo = T}
+```{r, code = knitr::knit_code$get("cars"), eval = FALSE, echo = TRUE}
 ```
 
 ---
 
-`r reveal("cars", break_type = "user")`
+`r reveal("cars", reveal_type = "user")`
 
 ---
 
-## break_type = "non_seq"
+## reveal_type = "non_seq", with #REVEAL2, #REVEAL3
 
-If the break_type is set to "non_seq", the breakpoints are those indicated by the user with the special numeric comment #REVEAL2, #REVEAL3 etc to indicate at which point in time the code should appear.  
+If the reveal_type is set to "non_seq", the revealpoints are those indicated by the user with the special numeric comment #REVEAL2, #REVEAL3 etc to indicate at which point in time the code should appear.  
 
 <!-- display the user input code as a refresher -->
-```{r, code = knitr::knit_code$get("cars"), eval = F, echo = T}
+```{r, code = knitr::knit_code$get("cars"), eval = FALSE, echo = TRUE}
 ```
 
 
@@ -203,18 +195,18 @@ If the break_type is set to "non_seq", the breakpoints are those indicated by th
 ---
 
 
-`r reveal("cars", break_type = "non_seq")`
+`r reveal("cars", reveal_type = "non_seq")`
 
 
 ---
 
-## `break_type = 5` *(or entering the multiverse)*
+## `reveal_type = 5` (or "entering the multiverse")
 
-Another modality is to set break_type equal to a positive integer, indicating that you want the same code chunk to be displayed multiple times.  This makes the most sense in a setting where there is some randomization or random sampling and you want to see different realizations. Let's see this used on the user input code chunk "cars_multi", whose first step is to randomly sample rows from the data set cars with replacement.  
+Another modality is to set reveal_type equal to a positive integer, indicating that you want the same code chunk to be displayed multiple times.  This makes the most sense in a setting where there is some randomization or random sampling and you want to see different realizations. Let's see this used on the user input code chunk "cars_multi", whose first step is to randomly sample rows from the data set cars with replacement.  
 
-```{r cars_multi, echo = T, eval = F, fig.height=5}
+```{r cars_multi, include = FALSE, fig.height=5}
 cars %>% 
-  sample_frac(size = 1, replace = T) %>%      
+  sample_frac(size = 1, replace = TRUE) %>%      
   ggplot() +              
   aes(x = speed) +
   aes(y = dist) +
@@ -222,7 +214,7 @@ cars %>%
     alpha = .3,
     color = "blue" 
     ) + 
-  geom_smooth(method = lm, se = F) +
+  geom_smooth(method = lm, se = FALSE) +
   coord_cartesian(xlim = range(cars$speed),
                   ylim = range(cars$dist)) +
   theme(legend.position = c(.9, .2))
@@ -231,7 +223,7 @@ cars %>%
 
 ---
 
-`r reveal("cars_multi", break_type = 3)`
+`r reveal("cars_multi", reveal_type = 3)`
 
 
 ---
@@ -250,7 +242,7 @@ Let's look at where only the *output* is displayed for the "cars" code chunk.
 
 ---
 
-`r reveal("cars", break_type = "user", display_type = "output")`
+`r reveal("cars", reveal_type = "user", display_type = "output")`
 
 ---
 
@@ -261,7 +253,7 @@ And now where only the *code* is displayed for the "cars" code chunk.
 
 ---
 
-`r reveal("cars", break_type = "auto", display_type = "code")`
+`r reveal("cars", reveal_type = "auto", display_type = "code")`
 
 
 
@@ -269,25 +261,25 @@ And now where only the *code* is displayed for the "cars" code chunk.
 
 # Assignment
 
-If you want to create an object in your flipbooks, it is most "natural" to use [reverse assignment](https://stat.ethz.ch/R-manual/R-devel/library/base/html/assignOps.html).  Working sequentially with a pipeline of code, you get feedback all along the way until you get to the point of assigning all of what you have done to a new object with reverse assignment.  With regular assignment in R, you don't get any feedback, so flipbooking prefers this step at the end of a pipeline, so we can enjoy all the nice feedback. So the parameter reg_assign is by default set to FALSE.
+If you want to create an object in your flipbooks, it is most "natural" to use [right assignment](https://stat.ethz.ch/R-manual/R-devel/library/base/html/assignOps.html).  Working sequentially with a pipeline of code, you get feedback all along the way until you get to the point of assigning all of what you have done to a new object with right assignment.  With left assignment in R, you don't get any feedback, so flipbooking prefers this step at the end of a pipeline, so we can enjoy all the nice feedback. So the parameter left_assign is by default set to FALSE.
 
 
 
 ---
 
 
-# `reg_assign = TRUE`
+# `left_assign = TRUE`
 
 
-But, setting the reg_assign paramter to T and using regular assignment, you can still create a meaningful flipbook that gives you feedback.   When reg_assign = T, the first object that is created prints at the end of the derivative code chunks. 
+But, setting the left_assign paramter to T and using left assignment, you can still create a meaningful flipbook that gives you feedback.   When left_assign = TRUE, the first object that is created prints at the end of the derivative code chunks. 
 
 
 ---
 
-`r reveal("reg_assign", break_type = "auto", display_type = "both", reg_assign = T)`
+`r reveal("left_assign", reveal_type = "auto", display_type = "both", left_assign = TRUE)`
 
 
-```{r reg_assign, echo = F, eval = F}
+```{r left_assign, include = FALSE}
 my_plot <- cars %>%   # the data  
   filter(speed > 4) %>%  # subset
   ggplot() +       # pipe to ggplot
@@ -305,13 +297,13 @@ my_plot <- cars %>%   # the data
 
 So, it is pretty cool that we can create a bunch of derivative code chunks from one input code chunk (more on this [here](https://emitanaka.rbind.io/post/knitr-knitr-code/)).  But there are some considerations then for this source chunk.  What should its chunk options be? 
 
-If there are dependenceies between code chunks, you may need to turn the code chunk option `eval` to TRUE (and usually echo = F).  This may be the case when you create an object in one code chunk that you use in a subsequent code chunk.  
+If there are dependenceies between code chunks, you may need to turn the code chunk option `eval` to TRUE (and usually echo = FALSE).  This may be the case when you create an object in one code chunk that you use in a subsequent code chunk.  
 
 ---
 
 `r reveal("plot_object")`
 
-```{r plot_object, eval = T, echo = F}
+```{r plot_object, include = FALSE}
 cars %>% 
   ggplot() +
   aes(x = speed) +
@@ -326,7 +318,7 @@ cars_plot
 
 `r reveal("further_building")`
 
-```{r further_building, echo = F, eval = F}
+```{r further_building, include = FALSE}
 cars_plot +
   labs(x = "Speed (mph)") + 
   labs(y = "Stopping distance (ft)")
@@ -348,10 +340,10 @@ But base R techniques and other popular tools can certainly also be employed.
 
 ---
 
-`r reveal("reg_assign2", break_type = "auto", display_type = "both", reg_assign = T)`
+`r reveal("left_assign2", reveal_type = "auto", display_type = "both", left_assign = TRUE)`
 
 
-```{r reg_assign2, echo = F, eval = F}
+```{r left_assign2, include = FALSE}
 cars_mod <- cars
 cars_mod$half_dist <- cars$dist / 2
 names(cars_mod)[2] <- "distance"
@@ -371,7 +363,7 @@ Flipbooking can also be applied to logical indexing workflows if the steps are b
 
 `r reveal("dot_notation")`
 
-```{r dot_notation, echo = F, eval = T}
+```{r dot_notation, include = FALSE}
 cars %>% 
   .[cars$speed > median(cars$speed),] %>% 
   .["speed"] %>% 
@@ -390,7 +382,7 @@ It has been a while since I've done much plotting with base R, but I think it is
 
 `r reveal("base_r_plotting")`
 
-```{r base_r_plotting, echo = F, eval = F}
+```{r base_r_plotting, include = FALSE}
 plot(cars, xlab = "Speed (mph)", 
      ylab = "Stopping distance (ft)",
      las = 1)
@@ -406,24 +398,32 @@ title(sub = "Data is from Ezekiel's (1930) 'Methods of Correlation Analysis'.")
 
 `r reveal("cars_anova")`
 
-```{r cars_anova, eval = T, echo = F, fig.keep='none'}
+```{r cars_anova, include = FALSE, fig.keep='none'}
 ## An example of polynomial regression
 plot(cars, xlab = "Speed (mph)", 
      ylab = "Stopping distance (ft)",
     las = 1, xlim = c(0, 25))
-seq(0, 25, length.out = 200) ->
-  d
-for (degree in 1:4) {
-  model <- lm(dist ~ poly(speed, degree), 
-           data = cars)
-  lines(d, 
-        predict(model, 
-                data.frame(speed = d)), 
-        col = degree)
-}
+lm(dist ~ poly(speed, 3), 
+   data = cars) -> 
+model
+seq(0, 25, length.out = 25) ->
+inputs_of_x  
+predict(model, 
+        data.frame(speed = inputs_of_x)) ->
+prediction_y
+lines(inputs_of_x, 
+      prediction_y, 
+      col = "blue")
 ```
 
 
+---
+
+## Change slide show look and feel
+
+To quickly change the look and feel of your xaringan slide show, you might check out the [available themes](https://github.com/yihui/xaringan/wiki/Themes#avaliable-themes) from the xaringan packaga and [xaringanthemer](https://github.com/gadenbuie/xaringanthemer) package.
+
+Another extremely useful resource for xaringan styling is Alison Hill's ["Meet xaringan: Making slides in R Markdown"](https://arm.rbind.io/slides/xaringan.html).
 
 
 ---
@@ -436,6 +436,6 @@ for (degree in 1:4) {
 
 
 
-```{css, eval = TRUE, echo = F}
+```{css, eval = TRUE, echo = FALSE}
 .remark-code{line-height: 1.5; font-size: 80%}
 ```

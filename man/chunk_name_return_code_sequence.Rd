@@ -4,11 +4,8 @@
 \alias{chunk_name_return_code_sequence}
 \title{Title}
 \usage{
-chunk_name_return_code_sequence(chunk_name, break_type = "auto",
-  reg_assign = F)
-}
-\arguments{
-\item{reg_assign}{}
+chunk_name_return_code_sequence(chunk_name, reveal_type = "auto",
+  left_assign = F)
 }
 \description{
 Title

@@ -3,19 +3,19 @@
 create_code <- function(){ # for testing w/o knitting
 
 "cars %>%             # the data  #REVEAL
-filter(speed > 4) %>%  # subset
-ggplot() +              # pipe to ggplot
-aes(x = speed) +
-aes(y = dist) +
-# Describing what follows
-geom_point(alpha = .3) + #REVEAL
-geom_point(alpha = 1) + #REVEAL2
-geom_jitter(alpha = .5) + #REVEAL3
-aes(color =
-speed > 14
-) %+%
-cars ->
-my_plot  #REVEAL"
+  filter(speed > 4) %>%  # subset
+  ggplot() +              # pipe to ggplot
+  aes(x = speed) +
+  aes(y = dist) +
+  # Describing what follows
+  geom_point(alpha = .3) + #REVEAL
+  geom_point(alpha = 1) + #REVEAL2
+  geom_jitter(alpha = .5) + #REVEAL3
+  aes(color =
+  speed > 14
+  ) %+%
+  cars ->
+  my_plot  #REVEAL"
 
 }
 
@@ -35,8 +35,18 @@ create_short_code <- function(){ # for testing w/o knitting
 }
 
 
+create_ggplot_code <- function(){ # for testing w/o knitting
 
-code_create_reg_assign <- function(){
+  "ggplot2::ggplot(cars) +  # initiate ggplot
+  ggplot2::aes(x = speed) +
+  ggplot2::aes(y = dist) +
+  # Describing what follows
+  ggplot2::geom_point(alpha = .3) "
+
+}
+
+
+code_create_left_assign <- function(){
 
 # for testing w/o knitting
   "my_cars <- cars %>%             # the data  #REVEAL
@@ -122,29 +132,29 @@ code_parse <- function(code) {
 
 
 
-parsed_calc_show <- function(parsed, break_type = "user"){
+parsed_calc_show <- function(parsed, reveal_type = "user"){
 
-  if (break_type == "auto") {
+  if (reveal_type == "auto") {
 
     code_order <- cumsum(parsed$auto) + 1 - parsed$auto
     num_panes <- max(code_order)
 
-  } else if (break_type == "user") {
+  } else if (reveal_type == "user") {
 
     code_order <- cumsum(parsed$user) + 1 - parsed$user
     num_panes <- max(code_order)
 
-  } else if (break_type == "non_seq") {
+  } else if (reveal_type == "non_seq") {
 
     # make flexible by allowing non integers here.
     code_order <- parsed$non_seq
     num_panes <- max(code_order)
 
-  } else if (is.numeric(break_type)) {  # multiverse case
+  } else if (is.numeric(reveal_type)) {  # multiverse case
 
 
     code_order <- rep(1, nrow(parsed))
-    num_panes <- break_type
+    num_panes <- reveal_type
 
   }
 
@@ -164,11 +174,11 @@ parsed_calc_show <- function(parsed, break_type = "user"){
 
 # shown_lines_calc_highlight()
 shown_lines_calc_highlight <- function(which_show = list(c(1, 2), c(1, 2, 3, 4)),
-                                    break_type = "auto"){
+                                    reveal_type = "auto"){
 
   which_highlight <- list()
 
-  if (break_type == "user" | break_type == "auto") {
+  if (reveal_type == "user" | reveal_type == "auto") {
 
   which_highlight[[1]] <- which_show[[1]]
 
@@ -178,7 +188,7 @@ shown_lines_calc_highlight <- function(which_show = list(c(1, 2), c(1, 2, 3, 4))
 
     }
 
-  }  else if (is.numeric(break_type)) {
+  }  else if (is.numeric(reveal_type)) {
 
       for (i in 1:length(which_show)) {
 
@@ -186,7 +196,7 @@ shown_lines_calc_highlight <- function(which_show = list(c(1, 2), c(1, 2, 3, 4))
 
       }
 
-  } else if (break_type == "non_seq") {
+  } else if (reveal_type == "non_seq") {
 
 
     which_highlight[[1]] <- as.integer(c())
@@ -220,7 +230,7 @@ parsed_return_partial_code <- function(parsed,
 }
 
 
-parsed_reg_assign_return_partial_code <- function(parsed,
+parsed_left_assign_return_partial_code <- function(parsed,
                                                which_show_frame = 1:3,
                                                which_highlight_frame = 3){
 
@@ -242,30 +252,39 @@ parsed_reg_assign_return_partial_code <- function(parsed,
 #' Title
 #'
 #' @param parsed
-#' @param break_type
+#' @param reveal_type
 #' @param which_show
 #' @param which_highlight
-#' @param reg_assign
+#' @param left_assign
 #'
 #' @return
 #' @export
 #'
 #' @examples
 parsed_return_partial_code_sequence <- function(parsed,
-                         break_type = "auto",
-                         which_show = parsed_calc_show(parsed = parsed, break_type = break_type),
-                         which_highlight = shown_lines_calc_highlight(which_show = which_show, break_type = break_type),
-                         reg_assign = F){
+                         reveal_type = "auto",
+                         which_show = parsed_calc_show(parsed = parsed,
+                                                       reveal_type = reveal_type),
+                         which_highlight =
+                           shown_lines_calc_highlight(which_show = which_show,
+                                                      reveal_type = reveal_type),
+                         left_assign = F){
 
   partial_code_frames <- list()
 
   for (i in 1:length(which_show)) {
 
 
-  if (reg_assign == F) {
-    partial_code_frames[[i]] <- parsed_return_partial_code(parsed, which_show_frame = which_show[[i]], which_highlight_frame = which_highlight[[i]])
+  if (left_assign == F) {
+    partial_code_frames[[i]] <-
+      parsed_return_partial_code(parsed,
+                                 which_show_frame = which_show[[i]],
+                                 which_highlight_frame = which_highlight[[i]])
   }else{
-    partial_code_frames[[i]] <- parsed_reg_assign_return_partial_code(parsed, which_show_frame = which_show[[i]], which_highlight_frame = which_highlight[[i]])
+    partial_code_frames[[i]] <-
+      parsed_left_assign_return_partial_code(parsed,
+                                            which_show_frame = which_show[[i]],
+                                            which_highlight_frame = which_highlight[[i]])
   }
 
   }
@@ -276,22 +295,17 @@ parsed_return_partial_code_sequence <- function(parsed,
 
 
 #' Title
-#'
-#' @param chunk_name
-#' @param break_type
-#' @param reg_assign
-#'
 #' @return
 #' @export
 chunk_name_return_code_sequence <- function(chunk_name,
-                                            break_type = "auto",
-                                            reg_assign = F){
+                                            reveal_type = "auto",
+                                            left_assign = F){
 
 chunk_name %>%
   chunk_code_get() %>%
   code_parse() %>%
-  parsed_return_partial_code_sequence(break_type = break_type,
-                                 reg_assign = reg_assign)
+  parsed_return_partial_code_sequence(reveal_type = reveal_type,
+                                 left_assign = left_assign)
 
 }
 
@@ -312,10 +326,36 @@ chunk_name %>%
 #' return_partial_chunks_template_code()
 return_partial_chunks_template_code <- function(){
 
-"```{r {{{chunk_name}}}_{{{break_type}}}_{{{breaks}}}_code, eval = FALSE, echo = TRUE, code = code_seq[[{{{breaks}}}]]}
-```"
+  "```{r {{{chunk_name}}}_{{{reveal_type}}}_{{{breaks}}}_code, eval = FALSE, echo = TRUE, code = code_seq[[{{{breaks}}}]]}
+  ```"
 
 }
+
+
+
+# Thinking about delivery to sweave/beamer
+# return_partial_chunks_template_code <-
+#   function(type = "code", delivery = "rmd") {
+#
+#     chunk_name_and_options <-
+#       glue::glue(
+#         "{{{chunk_name}}}_{{{reveal_type}}}_{{{breaks}}}_{{{{type}}}},",
+#         "eval = FALSE, echo = TRUE, code = code_seq[[{{{breaks}}}]]",
+#         .open = "{{{{",
+#         .close = "}}}}"
+#       )
+#
+#     if (delivery == "rmd" | delivery == "Rmd") {
+#       paste0("```{r}", chunk_name_and_options, "\n```")
+#
+#     } else if (delivery == "sweave") {
+#       paste0("<<", chunk_name_and_options, ">>=\n@")
+#
+#
+#     }
+#
+#   }
+
 
 
 #' Title
@@ -327,7 +367,7 @@ return_partial_chunks_template_code <- function(){
 #' return_partial_chunks_template_output()
 return_partial_chunks_template_output <- function(){
 
-"```{r {{{chunk_name}}}_{{{break_type}}}_{{{breaks}}}_output, eval = TRUE, echo = FALSE, code = code_seq[[{{{breaks}}}]]}
+"```{r {{{chunk_name}}}_{{{reveal_type}}}_{{{breaks}}}_output, eval = TRUE, echo = FALSE, code = code_seq[[{{{breaks}}}]]}
 ```"
 
 }
@@ -336,10 +376,9 @@ return_partial_chunks_template_output <- function(){
 
 #' Title
 #'
-#' @param code_seq
 #' @param chunk_name
-#' @param break_type
-#' @param reg_assign
+#' @param reveal_type
+#' @param left_assign
 #' @param display_type
 #' @param split
 #'
@@ -348,10 +387,10 @@ return_partial_chunks_template_output <- function(){
 #'
 #' @examples
 #' chunk_expand()
-#' chunk_expand(break_type = "user", display_type = "code")
-#' chunk_expand(break_type = "non_seq", display_type = "output")
+#' chunk_expand(reveal_type = "user", display_type = "code")
+#' chunk_expand(reveal_type = "non_seq", display_type = "output")
 chunk_expand <- function(chunk_name = "example",
-                                  break_type = "auto",
+                                  reveal_type = "auto",
                                   display_type = "both",
                                   num_breaks = 2,
                                   split = 40){
@@ -399,11 +438,15 @@ glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
 
 
 
+
+
+
+
 #' Title
 #'
 #' @param chunk_name
-#' @param break_type
-#' @param reg_assign
+#' @param reveal_type
+#' @param left_assign
 #' @param code_seq
 #' @param num_breaks
 #' @param display_type
@@ -414,15 +457,15 @@ glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
 #'
 #' @examples
 reveal <- function(chunk_name = "example_name",
-                   break_type = "auto",
-                   reg_assign = F,
-                   code_seq = chunk_name_return_code_sequence(chunk_name, break_type, reg_assign),
+                   reveal_type = "auto",
+                   left_assign = F,
+                   code_seq = chunk_name_return_code_sequence(chunk_name, reveal_type, left_assign),
                    num_breaks = length(code_seq),
                    display_type = "both",
                    split = 40){
 
   text <- chunk_expand(chunk_name = chunk_name,
-                       break_type = break_type,
+                       reveal_type = reveal_type,
                        num_breaks = num_breaks,
                        display_type = display_type,
                        split = split)
@@ -432,3 +475,155 @@ reveal <- function(chunk_name = "example_name",
 
 }
 
+
+
+
+
+#'
+#' # flipbook mini - build a gif flipbook using cowplot.
+#'
+#' #' Title
+#' #'
+#' #' @param code
+#' #' @param upto
+#' #' @param highlight
+#' #'
+#' #' @return
+#' #' @export
+#' #'
+#' #' @examples
+#' # create_ggplot_code() %>%
+#' # code_parse() %>%
+#' # parsed_return_partial_code_sequence() %>%
+#' # .[[2]] %>%
+#' # build_partial_code_plot()
+#' build_partial_code_plot_mini <- function(code_w_highlight, upto = 8, highlight = 1:8){
+#'
+#'   writeLines(text = code_w_highlight,
+#'              con  = "tmp.R")
+#'   source("tmp.R")
+#'
+#' }
+#'
+#'
+#'
+#' #' Title
+#' #'
+#' #' @param code
+#' #' @param upto
+#' #' @param highlight
+#' #' @param highlight_color
+#' #' @param font_size
+#' #'
+#' #' @return
+#' #' @export
+#' #'
+#' #' @examples
+#' # create_ggplot_code() %>%
+#' # code_parse() %>%
+#' # parsed_return_partial_code_sequence() %>%
+#' # .[[4]] %>%
+#' # build_partial_code_text_plot_mini(num_lines = 8, font_size = 6)
+#' build_partial_code_text_plot_mini <- function(code_w_highlight,
+#'                                          highlight_color = "plum4",
+#'                                          font_size = 4,
+#'                                          num_lines = 16) {
+#'
+#'   code_w_highlight %>%
+#'     dplyr::tibble() %>%
+#'     dplyr::mutate(highlight = stringr::str_detect(., "#<<")) %>%
+#'     dplyr::mutate(code_as_text = stringr::str_remove(., "#<<")) %>%
+#'     dplyr::mutate(n = 1:dplyr::n()) ->
+#'   prepped
+#'
+#'   width <- 74
+#'   height <- 1
+#'
+#'   ggplot2::ggplot(data = prepped) +
+#'     ggplot2::aes(x = 40) +
+#'     ggplot2::aes(y = n) +
+#'     ggplot2::scale_y_reverse(limits = c(num_lines, 0)) +
+#'     ggplot2::scale_x_continuous(limits = c(0, 80), expand = c(0, 0)) +
+#'     ggplot2::coord_fixed(ratio = 3.5) +
+#'     ggplot2::aes(label = code_as_text) +
+#'     # grey background
+#'     ggplot2::geom_rect(ggplot2::aes(ymin = n - .8, ymax = n + .8),
+#'                        fill = "grey95",
+#'                        xmin = 0, xmax = 78) +
+#'     ggplot2::geom_rect(ggplot2::aes(ymin = n - .6, ymax = n + .6),
+#'                        fill = "grey90",
+#'                        xmin = 1, xmax = 77) +
+#'     # highlighting
+#'     ggplot2::geom_rect(data = prepped %>% dplyr::filter(highlight),
+#'                        ggplot2::aes(ymin = n - .5, ymax = n + .5),
+#'                        xmin = 1.5, xmax = 76.5,
+#'                        fill = highlight_color,
+#'                        width = width - 2,
+#'                        height = 1,
+#'                        alpha = .5) +
+#'     ggplot2::labs(fill = NULL) +
+#'     ggplot2::geom_text(x = 3, hjust = 0, family = "mono",
+#'                        size = font_size, color = "grey22") +
+#'     ggplot2::theme_void() +
+#'     ggplot2::theme(plot.margin = ggplot2::margin(0, 0, 0, 0, "cm"))
+#'
+#' }
+#'
+#' #' Title
+#' #'
+#' #' @param code_w_highlight
+#' #'
+#' #' @return
+#' #' @export
+#' #'
+#' #' @examples
+#' #' create_ggplot_code() %>%
+#' #' code_parse() %>%
+#' #' parsed_return_partial_code_sequence() %>%
+#' #' .[[2]] %>%
+#' #' create_cow_frame()
+#' create_cow_frame <- function(code_w_highlight, title = "flipbook mini") {
+#'
+#'   the_plot <- build_partial_code_plot_mini(code_w_highlight)[[1]]
+#'
+#'   text_plot <- build_partial_code_text_plot_mini(code_w_highlight)
+#'
+#'   a_title <- cowplot::ggdraw() +
+#'     cowplot::draw_label(label = title, fontface = 'bold')
+#'
+#'   # the case of code and plots
+#'   if (show_code == T) {
+#'
+#'     side_by_side <- cowplot::plot_grid(text_plot,
+#'                                        the_plot,
+#'                                        rel_widths = c(1, 1))
+#'     cowplot::plot_grid(a_title,
+#'                        side_by_side,
+#'                        rel_heights = c(0.1, 1),
+#'                        ncol = 1)
+#'
+#'
+#'   }
+#'
+#' }
+#'
+#'
+#'
+#' pngs_to_gif <- function(path, file_out){
+#'
+#'   files <- list.files(path = path, pattern = paste(".png"))
+#'   files_path <- paste0(path, "/", files)
+#'
+#'   files_path %>%
+#'     file.info() %>%
+#'     rownames_to_column(var = "file") %>%
+#'     arrange(mtime) %>% # sort them by time modified
+#'     pull(file) %>%
+#'     purrr::map(magick::image_read) %>% # reads each path file
+#'     magick::image_join() %>% # joins image
+#'     magick::image_animate(fps = 1) %>% # animates
+#'     magick::image_write(path = file_out)
+#'
+#' }
+#'
+#'

@@ -4,7 +4,7 @@
 \alias{chunk_expand}
 \title{Title}
 \usage{
-chunk_expand(chunk_name = "example", break_type = "auto",
+chunk_expand(chunk_name = "example", reveal_type = "auto",
   display_type = "both", num_breaks = 2, split = 40)
 }
 \arguments{
@@ -15,6 +15,6 @@ Title
 }
 \examples{
 chunk_expand()
-chunk_expand(break_type = "user", display_type = "code")
-chunk_expand(break_type = "non_seq", display_type = "output")
+chunk_expand(reveal_type = "user", display_type = "code")
+chunk_expand(reveal_type = "non_seq", display_type = "output")
 }
