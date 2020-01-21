@@ -1,40 +1,4 @@
 
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_7_5dccf1070c8ff37f3445c60e5c2af18e.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_7_5dccf1070c8ff37f3445c60e5c2af18e.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_7_5dccf1070c8ff37f3445c60e5c2af18e.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_7_auto_20562fabc2027b8f510f88d4c16ff122.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_7_auto_20562fabc2027b8f510f88d4c16ff122.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_auto_7_auto_20562fabc2027b8f510f88d4c16ff122.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_1_5_f203dc9d631744950f2a10e74cdcd440.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_1_5_f203dc9d631744950f2a10e74cdcd440.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_1_5_f203dc9d631744950f2a10e74cdcd440.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_1_a2899a984e34e192c914d6f38a677fcc.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_1_a2899a984e34e192c914d6f38a677fcc.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_1_a2899a984e34e192c914d6f38a677fcc.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_2_5_7a4967b8596132e1696fa11646413c69.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_2_5_7a4967b8596132e1696fa11646413c69.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_2_5_7a4967b8596132e1696fa11646413c69.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_2_733cadba2650663e3bb914541a9c9cae.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_2_733cadba2650663e3bb914541a9c9cae.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_2_733cadba2650663e3bb914541a9c9cae.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_3_5_db0457b06edd92a9167e65186d2de990.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_3_5_db0457b06edd92a9167e65186d2de990.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_3_5_db0457b06edd92a9167e65186d2de990.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_3_9a411dd20cb3b62035424cfb5ebdbbfd.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_3_9a411dd20cb3b62035424cfb5ebdbbfd.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_3_9a411dd20cb3b62035424cfb5ebdbbfd.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_4_018ff8b7f38296987e47c28a4aeb1582.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_4_018ff8b7f38296987e47c28a4aeb1582.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_4_018ff8b7f38296987e47c28a4aeb1582.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_4_5_f7924b72545502ee417a83ab22e77dd6.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_4_5_f7924b72545502ee417a83ab22e77dd6.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_4_5_f7924b72545502ee417a83ab22e77dd6.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_5_5_fae3edb78a2a8f463c09580ab3132f00.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_5_5_fae3edb78a2a8f463c09580ab3132f00.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_5_5_fae3edb78a2a8f463c09580ab3132f00.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_5_7e04ea96fc202e63dec6118bd672a4d9.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_5_7e04ea96fc202e63dec6118bd672a4d9.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_multi_5_7e04ea96fc202e63dec6118bd672a4d9.rdx
  delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_non_seq_1_5_10dd15240a57754701187e85c2cb9abc.RData
  delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_non_seq_1_5_10dd15240a57754701187e85c2cb9abc.rdb
  delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_non_seq_1_5_10dd15240a57754701187e85c2cb9abc.rdx
@@ -1000,3 +964,39 @@ error: the following files have local modifications:
 ]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git pull
 Already up-to-date.
 [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git comment "[K[K[K[K[Kut[K[Kit -m "chaning [K[K[K[Kgning [K[K[K[K[King recommenta[K[Kdation to inclue[Kde ez[Kquals false, [K[K. breaks[K[K[K[K[K[Kand changing breaks to reaveal[K[K[K[K[Kveal. and changing re[K[Kreg and reverse assignmen t to left and right assignment"
+[master 87359e7] changing recommendation to include equals false. and changing breaks to reveal. and changing reg and reverse assignment to left and right assignment
+ 41 files changed, 3330 insertions(+), 274 deletions(-)
+ rewrite .Rproj.user/C3865889/console06/INDEX001 (97%)
+ create mode 100644 _pkgdown.yml
+ create mode 100644 docs/404.html
+ create mode 100644 docs/LICENSE-text.html
+ create mode 100644 docs/LICENSE.html
+ create mode 100644 docs/authors.html
+ create mode 100644 docs/docsearch.css
+ create mode 100644 docs/docsearch.js
+ create mode 100644 docs/index.html
+ create mode 100644 docs/link.svg
+ create mode 100644 docs/pkgdown.css
+ create mode 100644 docs/pkgdown.js
+ create mode 100644 docs/pkgdown.yml
+ create mode 100644 docs/reference/chunk_code_get.html
+ create mode 100644 docs/reference/chunk_expand.html
+ create mode 100644 docs/reference/chunk_name_return_code_sequence.html
+ create mode 100644 docs/reference/code_parse.html
+ create mode 100644 docs/reference/create_short_code.html
+ create mode 100644 docs/reference/index.html
+ create mode 100644 docs/reference/parsed_return_partial_code_sequence.html
+ create mode 100644 docs/reference/return_partial_chunks_template_code.html
+ create mode 100644 docs/reference/return_partial_chunks_template_output.html
+ create mode 100644 docs/reference/reveal.html
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
+Counting objects: 60, done.
+Delta compression using up to 4 threads.
+Compressing objects:   1% (1/53)   Compressing objects:   3% (2/53)   Compressing objects:   5% (3/53)   Compressing objects:   7% (4/53)   Compressing objects:   9% (5/53)   Compressing objects:  11% (6/53)   Compressing objects:  13% (7/53)   Compressing objects:  15% (8/53)   Compressing objects:  16% (9/53)   Compressing objects:  18% (10/53)   Compressing objects:  20% (11/53)   Compressing objects:  22% (12/53)   Compressing objects:  24% (13/53)   Compressing objects:  26% (14/53)   Compressing objects:  28% (15/53)   Compressing objects:  30% (16/53)   Compressing objects:  32% (17/53)   Compressing objects:  33% (18/53)   Compressing objects:  35% (19/53)   Compressing objects:  37% (20/53)   Compressing objects:  39% (21/53)   Compressing objects:  41% (22/53)   Compressing objects:  43% (23/53)   Compressing objects:  45% (24/53)   Compressing objects:  47% (25/53)   Compressing objects:  49% (26/53)   Compressing objects:  50% (27/53)   Compressing objects:  52% (28/53)   Compressing objects:  54% (29/53)   Compressing objects:  56% (30/53)   Compressing objects:  58% (31/53)   Compressing objects:  60% (32/53)   Compressing objects:  62% (33/53)   Compressing objects:  64% (34/53)   Compressing objects:  66% (35/53)   Compressing objects:  67% (36/53)   Compressing objects:  69% (37/53)   Compressing objects:  71% (38/53)   Compressing objects:  73% (39/53)   Compressing objects:  75% (40/53)   Compressing objects:  77% (41/53)   Compressing objects:  79% (42/53)   Compressing objects:  81% (43/53)   Compressing objects:  83% (44/53)   Compressing objects:  84% (45/53)   Compressing objects:  86% (46/53)   Compressing objects:  88% (47/53)   Compressing objects:  90% (48/53)   Compressing objects:  92% (49/53)   Compressing objects:  94% (50/53)   Compressing objects:  96% (51/53)   Compressing objects:  98% (52/53)   Compressing objects: 100% (53/53)   Compressing objects: 100% (53/53), done.
+Writing objects:   1% (1/60)   Writing objects:   3% (2/60)   Writing objects:   5% (3/60)   Writing objects:   6% (4/60)   Writing objects:   8% (5/60)   Writing objects:  10% (6/60)   Writing objects:  11% (7/60)   Writing objects:  13% (8/60)   Writing objects:  15% (9/60)   Writing objects:  16% (10/60)   Writing objects:  18% (11/60)   Writing objects:  20% (12/60)   Writing objects:  21% (13/60)   Writing objects:  23% (14/60)   Writing objects:  25% (15/60)   Writing objects:  26% (16/60)   Writing objects:  28% (17/60)   Writing objects:  30% (18/60)   Writing objects:  31% (19/60)   Writing objects:  33% (20/60)   Writing objects:  35% (21/60)   Writing objects:  36% (22/60)   Writing objects:  38% (23/60)   Writing objects:  40% (24/60)   Writing objects:  41% (25/60)   Writing objects:  43% (26/60)   Writing objects:  45% (27/60)   Writing objects:  48% (29/60)   Writing objects:  51% (31/60)   Writing objects:  53% (32/60)   Writing objects:  55% (33/60)   Writing objects:  56% (34/60)   Writing objects:  58% (35/60)   Writing objects:  60% (36/60)   Writing objects:  61% (37/60)   Writing objects:  63% (38/60)   Writing objects:  65% (39/60)   Writing objects:  66% (40/60)   Writing objects:  68% (41/60)   Writing objects:  71% (43/60)   Writing objects:  73% (44/60)   Writing objects:  75% (45/60)   Writing objects:  76% (46/60)   Writing objects:  78% (47/60)   Writing objects:  80% (48/60)   Writing objects:  81% (49/60)   Writing objects:  83% (50/60)   Writing objects:  85% (51/60)   Writing objects:  86% (52/60)   Writing objects:  88% (53/60)   Writing objects:  90% (54/60)   Writing objects:  91% (55/60)   Writing objects:  93% (56/60)   Writing objects:  95% (57/60)   Writing objects:  96% (58/60)   Writing objects:  98% (59/60)   Writing objects: 100% (60/60)   Writing objects: 100% (60/60), 27.54 KiB | 271.00 KiB/s, done.
+Total 60 (delta 29), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/29)[Kremote: Resolving deltas:   3% (1/29)[Kremote: Resolving deltas:  41% (12/29)[Kremote: Resolving deltas:  44% (13/29)[Kremote: Resolving deltas:  48% (14/29)[Kremote: Resolving deltas:  51% (15/29)[Kremote: Resolving deltas:  55% (16/29)[Kremote: Resolving deltas:  58% (17/29)[Kremote: Resolving deltas:  62% (18/29)[Kremote: Resolving deltas:  65% (19/29)[Kremote: Resolving deltas:  68% (20/29)[Kremote: Resolving deltas:  72% (21/29)[Kremote: Resolving deltas:  75% (22/29)[Kremote: Resolving deltas:  79% (23/29)[Kremote: Resolving deltas:  82% (24/29)[Kremote: Resolving deltas:  86% (25/29)[Kremote: Resolving deltas:  89% (26/29)[Kremote: Resolving deltas:  93% (27/29)[Kremote: Resolving deltas:  96% (28/29)[Kremote: Resolving deltas: 100% (29/29)[Kremote: Resolving deltas: 100% (29/29), completed with 17 local objects.[K
+To https://github.com/EvaMaeRey/flipbookr.git
+   994db16..87359e7  master -> master
+[KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add.[K .

@@ -9,13 +9,13 @@ create_code <- function(){ # for testing w/o knitting
   aes(y = dist) +
   # Describing what follows
   geom_point(alpha = .3) + #REVEAL
-  geom_point(alpha = 1) + #REVEAL2
-  geom_jitter(alpha = .5) + #REVEAL3
+  geom_point(alpha = 1) + #BREAK2
+  geom_jitter(alpha = .5) + #BREAK3
   aes(color =
   speed > 14
   ) %+%
   cars ->
-  my_plot  #REVEAL"
+  my_plot  #BREAK"
 
 }
 
@@ -29,8 +29,8 @@ create_code <- function(){ # for testing w/o knitting
 create_short_code <- function(){ # for testing w/o knitting
 
   "cars %>%             # the data
-  filter(speed > 4) %>%  # subset #REVEAL
-  ggplot() #REVEAL"
+  filter(speed > 4) %>%  # subset #BREAK
+  ggplot() #BREAK"
 
 }
 
@@ -49,7 +49,7 @@ create_ggplot_code <- function(){ # for testing w/o knitting
 code_create_left_assign <- function(){
 
 # for testing w/o knitting
-  "my_cars <- cars %>%             # the data  #REVEAL
+  "my_cars <- cars %>%             # the data  #BREAK
 filter(speed > 4) %>%  # subset
 ggplot() +              # pipe to ggplot
 aes(x = speed) +
@@ -112,13 +112,13 @@ code_parse <- function(code) {
     dplyr::mutate(code = ifelse(comment != "", stringr::str_remove(raw_code, comment), raw_code)) %>%
     dplyr::mutate(connector = stringr::str_extract(stringr::str_trim(code), "%>%$|\\+$|->$|%\\+%")) %>%
     dplyr::mutate(connector = tidyr::replace_na(connector, "")) %>%
-    dplyr::mutate(non_seq = stringr::str_extract(comment, "#REVEAL-?\\d+")) %>%
+    dplyr::mutate(non_seq = stringr::str_extract(comment, "#BREAK-?\\d+")) %>%
     dplyr::mutate(non_seq = stringr::str_extract(non_seq, "-?\\d+")) %>%
     dplyr::mutate(non_seq = as.numeric(non_seq)) %>%
     dplyr::mutate(non_seq = tidyr::replace_na(non_seq, 1)) %>%
-    dplyr::mutate(comment = stringr::str_remove(comment, "#REVEAL\\d+")) %>%
-    dplyr::mutate(user = stringr::str_detect(comment, "#REVEAL")) %>%
-    dplyr::mutate(comment = stringr::str_remove(comment, "#REVEAL")) %>%
+    dplyr::mutate(comment = stringr::str_remove(comment, "#BREAK\\d+")) %>%
+    dplyr::mutate(user = stringr::str_detect(comment, "#BREAK")) %>%
+    dplyr::mutate(comment = stringr::str_remove(comment, "#BREAK")) %>%
     dplyr::mutate(code = stringr::str_remove(stringi::stri_trim_right(code), "%>%$|\\+$|->$|%\\+%")) %>%
     dplyr::mutate(balanced_paren = (cumsum(num_open_par) - cumsum(num_closed_par)) == 0) %>%
     dplyr::mutate(balanced_curly = (cumsum(num_open_curly) - cumsum(num_closed_curly)) == 0) %>%
@@ -132,29 +132,29 @@ code_parse <- function(code) {
 
 
 
-parsed_calc_show <- function(parsed, reveal_type = "user"){
+parsed_calc_show <- function(parsed, break_type = "user"){
 
-  if (reveal_type == "auto") {
+  if (break_type == "auto") {
 
     code_order <- cumsum(parsed$auto) + 1 - parsed$auto
     num_panes <- max(code_order)
 
-  } else if (reveal_type == "user") {
+  } else if (break_type == "user") {
 
     code_order <- cumsum(parsed$user) + 1 - parsed$user
     num_panes <- max(code_order)
 
-  } else if (reveal_type == "non_seq") {
+  } else if (break_type == "non_seq") {
 
     # make flexible by allowing non integers here.
     code_order <- parsed$non_seq
     num_panes <- max(code_order)
 
-  } else if (is.numeric(reveal_type)) {  # multiverse case
+  } else if (is.numeric(break_type)) {  # multiverse case
 
 
     code_order <- rep(1, nrow(parsed))
-    num_panes <- reveal_type
+    num_panes <- break_type
 
   }
 
@@ -174,11 +174,11 @@ parsed_calc_show <- function(parsed, reveal_type = "user"){
 
 # shown_lines_calc_highlight()
 shown_lines_calc_highlight <- function(which_show = list(c(1, 2), c(1, 2, 3, 4)),
-                                    reveal_type = "auto"){
+                                    break_type = "auto"){
 
   which_highlight <- list()
 
-  if (reveal_type == "user" | reveal_type == "auto") {
+  if (break_type == "user" | break_type == "auto") {
 
   which_highlight[[1]] <- which_show[[1]]
 
@@ -188,7 +188,7 @@ shown_lines_calc_highlight <- function(which_show = list(c(1, 2), c(1, 2, 3, 4))
 
     }
 
-  }  else if (is.numeric(reveal_type)) {
+  }  else if (is.numeric(break_type)) {
 
       for (i in 1:length(which_show)) {
 
@@ -196,7 +196,7 @@ shown_lines_calc_highlight <- function(which_show = list(c(1, 2), c(1, 2, 3, 4))
 
       }
 
-  } else if (reveal_type == "non_seq") {
+  } else if (break_type == "non_seq") {
 
 
     which_highlight[[1]] <- as.integer(c())
@@ -252,7 +252,7 @@ parsed_left_assign_return_partial_code <- function(parsed,
 #' Title
 #'
 #' @param parsed
-#' @param reveal_type
+#' @param break_type
 #' @param which_show
 #' @param which_highlight
 #' @param left_assign
@@ -262,12 +262,12 @@ parsed_left_assign_return_partial_code <- function(parsed,
 #'
 #' @examples
 parsed_return_partial_code_sequence <- function(parsed,
-                         reveal_type = "auto",
+                         break_type = "auto",
                          which_show = parsed_calc_show(parsed = parsed,
-                                                       reveal_type = reveal_type),
+                                                       break_type = break_type),
                          which_highlight =
                            shown_lines_calc_highlight(which_show = which_show,
-                                                      reveal_type = reveal_type),
+                                                      break_type = break_type),
                          left_assign = F){
 
   partial_code_frames <- list()
@@ -298,13 +298,13 @@ parsed_return_partial_code_sequence <- function(parsed,
 #' @return
 #' @export
 chunk_name_return_code_sequence <- function(chunk_name,
-                                            reveal_type = "auto",
+                                            break_type = "auto",
                                             left_assign = F){
 
 chunk_name %>%
   chunk_code_get() %>%
   code_parse() %>%
-  parsed_return_partial_code_sequence(reveal_type = reveal_type,
+  parsed_return_partial_code_sequence(break_type = break_type,
                                  left_assign = left_assign)
 
 }
@@ -326,7 +326,7 @@ chunk_name %>%
 #' return_partial_chunks_template_code()
 return_partial_chunks_template_code <- function(){
 
-  "```{r {{{chunk_name}}}_{{{reveal_type}}}_{{{breaks}}}_code, eval = FALSE, echo = TRUE, code = code_seq[[{{{breaks}}}]]}
+  "```{r {{{chunk_name}}}_{{{break_type}}}_{{{breaks}}}_code, eval = FALSE, echo = TRUE, code = code_seq[[{{{breaks}}}]]}
   ```"
 
 }
@@ -339,7 +339,7 @@ return_partial_chunks_template_code <- function(){
 #
 #     chunk_name_and_options <-
 #       glue::glue(
-#         "{{{chunk_name}}}_{{{reveal_type}}}_{{{breaks}}}_{{{{type}}}},",
+#         "{{{chunk_name}}}_{{{break_type}}}_{{{breaks}}}_{{{{type}}}},",
 #         "eval = FALSE, echo = TRUE, code = code_seq[[{{{breaks}}}]]",
 #         .open = "{{{{",
 #         .close = "}}}}"
@@ -367,7 +367,7 @@ return_partial_chunks_template_code <- function(){
 #' return_partial_chunks_template_output()
 return_partial_chunks_template_output <- function(){
 
-"```{r {{{chunk_name}}}_{{{reveal_type}}}_{{{breaks}}}_output, eval = TRUE, echo = FALSE, code = code_seq[[{{{breaks}}}]]}
+"```{r {{{chunk_name}}}_{{{break_type}}}_{{{breaks}}}_output, eval = TRUE, echo = FALSE, code = code_seq[[{{{breaks}}}]]}
 ```"
 
 }
@@ -377,7 +377,7 @@ return_partial_chunks_template_output <- function(){
 #' Title
 #'
 #' @param chunk_name
-#' @param reveal_type
+#' @param break_type
 #' @param left_assign
 #' @param display_type
 #' @param split
@@ -387,10 +387,10 @@ return_partial_chunks_template_output <- function(){
 #'
 #' @examples
 #' chunk_expand()
-#' chunk_expand(reveal_type = "user", display_type = "code")
-#' chunk_expand(reveal_type = "non_seq", display_type = "output")
+#' chunk_expand(break_type = "user", display_type = "code")
+#' chunk_expand(break_type = "non_seq", display_type = "output")
 chunk_expand <- function(chunk_name = "example",
-                                  reveal_type = "auto",
+                                  break_type = "auto",
                                   display_type = "both",
                                   num_breaks = 2,
                                   split = 40){
@@ -445,7 +445,7 @@ glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
 #' Title
 #'
 #' @param chunk_name
-#' @param reveal_type
+#' @param break_type
 #' @param left_assign
 #' @param code_seq
 #' @param num_breaks
@@ -456,16 +456,16 @@ glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
 #' @export
 #'
 #' @examples
-reveal <- function(chunk_name = "example_name",
-                   reveal_type = "auto",
+chunk_reveal <- function(chunk_name = "example_name",
+                   break_type = "auto",
                    left_assign = F,
-                   code_seq = chunk_name_return_code_sequence(chunk_name, reveal_type, left_assign),
+                   code_seq = chunk_name_return_code_sequence(chunk_name, break_type, left_assign),
                    num_breaks = length(code_seq),
                    display_type = "both",
                    split = 40){
 
   text <- chunk_expand(chunk_name = chunk_name,
-                       reveal_type = reveal_type,
+                       break_type = break_type,
                        num_breaks = num_breaks,
                        display_type = display_type,
                        split = split)

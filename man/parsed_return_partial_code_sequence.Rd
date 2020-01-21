@@ -4,10 +4,10 @@
 \alias{parsed_return_partial_code_sequence}
 \title{Title}
 \usage{
-parsed_return_partial_code_sequence(parsed, reveal_type = "auto",
-  which_show = parsed_calc_show(parsed = parsed, reveal_type =
-  reveal_type), which_highlight = shown_lines_calc_highlight(which_show =
-  which_show, reveal_type = reveal_type), left_assign = F)
+parsed_return_partial_code_sequence(parsed, break_type = "auto",
+  which_show = parsed_calc_show(parsed = parsed, break_type =
+  break_type), which_highlight = shown_lines_calc_highlight(which_show =
+  which_show, break_type = break_type), left_assign = F)
 }
 \arguments{
 \item{left_assign}{}
