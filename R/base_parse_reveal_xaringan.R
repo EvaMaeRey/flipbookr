@@ -2,13 +2,13 @@
 # have contributed to this code
 create_code <- function(){ # for testing w/o knitting
 
-"cars %>%             # the data  #REVEAL
+"cars %>%             # the data  #BREAK
   filter(speed > 4) %>%  # subset
   ggplot() +              # pipe to ggplot
   aes(x = speed) +
   aes(y = dist) +
   # Describing what follows
-  geom_point(alpha = .3) + #REVEAL
+  geom_point(alpha = .3) + #BREAK
   geom_point(alpha = 1) + #BREAK2
   geom_jitter(alpha = .5) + #BREAK3
   aes(color =

@@ -1,20 +1,4 @@
 
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_non_seq_1_5_10dd15240a57754701187e85c2cb9abc.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_non_seq_1_5_10dd15240a57754701187e85c2cb9abc.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_non_seq_1_5_10dd15240a57754701187e85c2cb9abc.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_non_seq_1_auto_fae5c459b6cf003e09b6b5f9a74a814f.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_non_seq_1_auto_fae5c459b6cf003e09b6b5f9a74a814f.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_non_seq_1_auto_fae5c459b6cf003e09b6b5f9a74a814f.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_non_seq_1_b3f030c72144ef931bd8d0daadb907b4.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_non_seq_1_b3f030c72144ef931bd8d0daadb907b4.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_non_seq_1_b3f030c72144ef931bd8d0daadb907b4.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_non_seq_1_non_seq_11e2dcc090132e3c38fd9c8e989d43de.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_non_seq_1_non_seq_11e2dcc090132e3c38fd9c8e989d43de.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_non_seq_1_non_seq_11e2dcc090132e3c38fd9c8e989d43de.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_non_seq_1_user_96d10a04b6412b785fe4f566b00fb663.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_non_seq_1_user_96d10a04b6412b785fe4f566b00fb663.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_non_seq_1_user_96d10a04b6412b785fe4f566b00fb663.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_non_seq_2_29730ae06a6a96b1201a28b669c5d74a.RData
  delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_non_seq_2_29730ae06a6a96b1201a28b669c5d74a.rdb
  delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_non_seq_2_29730ae06a6a96b1201a28b669c5d74a.rdx
  delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_cars_non_seq_2_5_7c42c5e040609d6519b532cf909e39c1.RData
@@ -1000,3 +984,19 @@ remote: Resolving deltas:   0% (0/29)[Kremote: Resolving deltas:   3% (1/29)[
 To https://github.com/EvaMaeRey/flipbookr.git
    994db16..87359e7  master -> master
 [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add.[K .
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit - [Km "We are back to break-[K_type, and s pecial comment will be BREAK, not REVEAL" [K[K [K, also public function w[Kwill be chunk_reveal"
+[master b18d05c] We are back to break_type, and special comment will be BREAK, not REVEAL, also public function will be chunk_reveal
+ 14 files changed, 142 insertions(+), 143 deletions(-)
+ rewrite .Rproj.user/C3865889/console06/INDEX001 (97%)
+ rewrite .Rproj.user/C3865889/rmd-outputs (77%)
+ rename man/{reveal.Rd => chunk_reveal.Rd} (62%)
+]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
+Counting objects: 29, done.
+Delta compression using up to 4 threads.
+Compressing objects:   4% (1/24)   Compressing objects:   8% (2/24)   Compressing objects:  12% (3/24)   Compressing objects:  16% (4/24)   Compressing objects:  20% (5/24)   Compressing objects:  25% (6/24)   Compressing objects:  29% (7/24)   Compressing objects:  33% (8/24)   Compressing objects:  37% (9/24)   Compressing objects:  41% (10/24)   Compressing objects:  45% (11/24)   Compressing objects:  50% (12/24)   Compressing objects:  54% (13/24)   Compressing objects:  58% (14/24)   Compressing objects:  62% (15/24)   Compressing objects:  66% (16/24)   Compressing objects:  70% (17/24)   Compressing objects:  75% (18/24)   Compressing objects:  79% (19/24)   Compressing objects:  83% (20/24)   Compressing objects:  87% (21/24)   Compressing objects:  91% (22/24)   Compressing objects:  95% (23/24)   Compressing objects: 100% (24/24)   Compressing objects: 100% (24/24), done.
+Writing objects:   3% (1/29)   Writing objects:   6% (2/29)   Writing objects:  10% (3/29)   Writing objects:  13% (4/29)   Writing objects:  17% (5/29)   Writing objects:  20% (6/29)   Writing objects:  24% (7/29)   Writing objects:  27% (8/29)   Writing objects:  31% (9/29)   Writing objects:  34% (10/29)   Writing objects:  37% (11/29)   Writing objects:  41% (12/29)   Writing objects:  44% (13/29)   Writing objects:  48% (14/29)   Writing objects:  51% (15/29)   Writing objects:  55% (16/29)   Writing objects:  58% (17/29)   Writing objects:  62% (18/29)   Writing objects:  65% (19/29)   Writing objects:  68% (20/29)   Writing objects:  72% (21/29)   Writing objects:  75% (22/29)   Writing objects:  79% (23/29)   Writing objects:  82% (24/29)   Writing objects:  86% (25/29)   Writing objects:  89% (26/29)   Writing objects:  93% (27/29)   Writing objects:  96% (28/29)   Writing objects: 100% (29/29)   Writing objects: 100% (29/29), 4.65 KiB | 250.00 KiB/s, done.
+Total 29 (delta 15), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/15)[Kremote: Resolving deltas:   6% (1/15)[Kremote: Resolving deltas:  13% (2/15)[Kremote: Resolving deltas:  20% (3/15)[Kremote: Resolving deltas:  26% (4/15)[Kremote: Resolving deltas:  33% (5/15)[Kremote: Resolving deltas:  40% (6/15)[Kremote: Resolving deltas:  46% (7/15)[Kremote: Resolving deltas:  53% (8/15)[Kremote: Resolving deltas:  60% (9/15)[Kremote: Resolving deltas:  66% (10/15)[Kremote: Resolving deltas:  73% (11/15)[Kremote: Resolving deltas:  80% (12/15)[Kremote: Resolving deltas:  86% (13/15)[Kremote: Resolving deltas:  93% (14/15)[Kremote: Resolving deltas: 100% (15/15)[Kremote: Resolving deltas: 100% (15/15), completed with 15 local objects.[K
+To https://github.com/EvaMaeRey/flipbookr.git
+   87359e7..b18d05c  master -> master
+[KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .
