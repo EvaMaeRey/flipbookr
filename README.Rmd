@@ -34,13 +34,6 @@ You will most likely use this package with the rmarkdown presentation tool, Xari
 install.packages("xaringan")
 ```
 
-In the template below, we style the slides with the xaringanthemer package, which is available on github:
-
-``` r
-devtools::install_github("gadenbuie/xaringanthemer")
-```
-
-
 
 ## Template
 

@@ -42,13 +42,6 @@ tool, Xaringan, which is avaiable on CRAN:
 install.packages("xaringan")
 ```
 
-In the template below, we style the slides with the xaringanthemer
-package, which is available on github:
-
-``` r
-devtools::install_github("gadenbuie/xaringanthemer")
-```
-
 ## Template
 
 The package includes a template for building a flipbook that
