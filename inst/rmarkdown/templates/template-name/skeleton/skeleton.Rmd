@@ -408,7 +408,7 @@ lines(inputs_of_x,
 
 ## Change slide show look and feel
 
-To quickly change the look and feel of your xaringan slide show, you might check out the [available themes](https://github.com/yihui/xaringan/wiki/Themes#avaliable-themes) from the xaringan packaga and [xaringanthemer](https://github.com/gadenbuie/xaringanthemer) package.
+To quickly change the look and feel of your xaringan slide show, you might check out the [available themes](https://github.com/yihui/xaringan/wiki/Themes#avaliable-themes) from the xaringan package and [xaringanthemer](https://github.com/gadenbuie/xaringanthemer) package.
 
 Another extremely useful resource for xaringan styling is Alison Hill's ["Meet xaringan: Making slides in R Markdown"](https://arm.rbind.io/slides/xaringan.html).
 
@@ -418,7 +418,7 @@ Another extremely useful resource for xaringan styling is Alison Hill's ["Meet x
 # Sharing your flipbooks
 
 - flip, zip, and ship
-- get it on github
+- get it on github, with github pages
 
 
 

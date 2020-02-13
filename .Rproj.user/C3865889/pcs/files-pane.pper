@@ -1,8 +1,8 @@
 {
-    "path" : "~/Google Drive",
+    "path" : "~/Google Drive/teaching/labs/spatial_big_ben",
     "sortOrder" : [
         {
-            "ascending" : false,
+            "ascending" : true,
             "columnIndex" : 2
         }
     ]

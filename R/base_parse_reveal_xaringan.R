@@ -46,7 +46,7 @@ create_ggplot_code <- function(){ # for testing w/o knitting
 }
 
 
-code_create_left_assign <- function(){
+create_left_assign_code <- function(){
 
 # for testing w/o knitting
   "my_cars <- cars %>%             # the data  #BREAK
@@ -72,6 +72,17 @@ chunk_code_get <- function(chunk_name){
 }
 
 
+code_as_table <- function(code){
+
+  code %>%
+    stringr::str_split(pattern = "\n") %>%
+    .[[1]] %>%
+    tibble::tibble(raw_code = .) %>%
+    dplyr::mutate(line = 1:dplyr::n())
+
+}
+
+
 #' Parse code
 #'
 #' @param code code as a character string
@@ -79,15 +90,23 @@ chunk_code_get <- function(chunk_name){
 #' @return parsed code
 #'
 #' @examples
-code_parse <- function(code) {
-
-  raw_code_table <- tibble::tibble(raw_code =
-                                     stringr::str_split(code, "\n")[[1]]) %>%
-    dplyr::mutate(line = 1:dplyr::n())
+code_base_parse <- function(code) {
 
   sf <- srcfile(code)
   try(parse(text = code, srcfile = sf))
-  utils::getParseData(sf) %>%
+  utils::getParseData(sf)
+
+}
+
+
+
+# create_ggplot_code() %>%
+# code_as_string()
+
+
+base_parsed_count_parentheses <- function(base_parsed){
+
+  base_parsed %>%
     dplyr::rename(line = line1) %>%
     dplyr::mutate(open_par = text == "(") %>%
     dplyr::mutate(closed_par = text == ")") %>%
@@ -108,6 +127,21 @@ code_parse <- function(code) {
       num_open_square = sum(open_square),
       num_closed_square = sum(closed_square)
               ) %>%
+    dplyr::mutate(balanced_paren = (cumsum(num_open_par) - cumsum(num_closed_par)) == 0) %>%
+    dplyr::mutate(balanced_curly = (cumsum(num_open_curly) - cumsum(num_closed_curly)) == 0) %>%
+    dplyr::mutate(balanced_square = (cumsum(num_open_square) - cumsum(num_closed_square)) == 0)
+}
+
+
+code_parse <- function(code){
+
+  raw_code_table <-
+    code %>%
+    code_as_table()
+
+  code %>%
+  code_base_parse() %>%
+    base_parsed_count_parentheses() %>%
     dplyr::left_join(raw_code_table) %>%
     dplyr::mutate(code = ifelse(comment != "", stringr::str_remove(raw_code, comment), raw_code)) %>%
     dplyr::mutate(connector = stringr::str_extract(stringr::str_trim(code), "%>%$|\\+$|->$|%\\+%")) %>%
@@ -120,15 +154,11 @@ code_parse <- function(code) {
     dplyr::mutate(user = stringr::str_detect(comment, "#BREAK")) %>%
     dplyr::mutate(comment = stringr::str_remove(comment, "#BREAK")) %>%
     dplyr::mutate(code = stringr::str_remove(stringi::stri_trim_right(code), "%>%$|\\+$|->$|%\\+%")) %>%
-    dplyr::mutate(balanced_paren = (cumsum(num_open_par) - cumsum(num_closed_par)) == 0) %>%
-    dplyr::mutate(balanced_curly = (cumsum(num_open_curly) - cumsum(num_closed_curly)) == 0) %>%
-    dplyr::mutate(balanced_square = (cumsum(num_open_square) - cumsum(num_closed_square)) == 0) %>%
     dplyr::mutate(auto = balanced_paren & balanced_curly & balanced_square &
-             code != "") %>%
+                    code != "") %>%
     dplyr::select(line, raw_code, code, connector, comment, auto, user, non_seq)
 
 }
-
 
 
 
@@ -148,10 +178,9 @@ parsed_calc_show <- function(parsed, break_type = "user"){
 
     # make flexible by allowing non integers here.
     code_order <- parsed$non_seq
-    num_panes <- max(code_order)
+    num_panes <- max(abs(code_order)) # Matt Gambino change to account for negative as max value
 
   } else if (is.numeric(break_type)) {  # multiverse case
-
 
     code_order <- rep(1, nrow(parsed))
     num_panes <- break_type
@@ -164,6 +193,10 @@ parsed_calc_show <- function(parsed, break_type = "user"){
 
     # fix this for non_sequential to allow removal
     which_show[[i]] <- which(code_order <= i)
+    # Matt Gambino: change pipes to second statement to drop negative values
+    # which_show[[i]] <-
+    #   which( code_order <= i ) %>%
+    #   .[!. %in% which( code_order >= -i & code_order < 0 )]
 
   }
 
@@ -479,31 +512,31 @@ chunk_reveal <- function(chunk_name = "example_name",
 
 
 
+
+# flipbook mini - build a gif flipbook using cowplot.
+
+#' Title
 #'
-#' # flipbook mini - build a gif flipbook using cowplot.
+#' @param code
+#' @param upto
+#' @param highlight
 #'
-#' #' Title
-#' #'
-#' #' @param code
-#' #' @param upto
-#' #' @param highlight
-#' #'
-#' #' @return
-#' #' @export
-#' #'
-#' #' @examples
-#' # create_ggplot_code() %>%
-#' # code_parse() %>%
-#' # parsed_return_partial_code_sequence() %>%
-#' # .[[2]] %>%
-#' # build_partial_code_plot()
-#' build_partial_code_plot_mini <- function(code_w_highlight, upto = 8, highlight = 1:8){
+#' @return
+#' @export
 #'
-#'   writeLines(text = code_w_highlight,
-#'              con  = "tmp.R")
-#'   source("tmp.R")
-#'
-#' }
+#' @examples
+create_ggplot_code() %>%
+code_parse() %>%
+parsed_return_partial_code_sequence() %>%
+.[[2]] %>%
+build_partial_code_plot()
+build_partial_code_plot <- function(code_w_highlight){
+
+  writeLines(text = code_w_highlight,
+             con  = "tmp.R")
+  source("tmp.R")
+
+}
 #'
 #'
 #'
@@ -519,93 +552,95 @@ chunk_reveal <- function(chunk_name = "example_name",
 #' #' @export
 #' #'
 #' #' @examples
-#' # create_ggplot_code() %>%
-#' # code_parse() %>%
-#' # parsed_return_partial_code_sequence() %>%
-#' # .[[4]] %>%
-#' # build_partial_code_text_plot_mini(num_lines = 8, font_size = 6)
-#' build_partial_code_text_plot_mini <- function(code_w_highlight,
-#'                                          highlight_color = "plum4",
-#'                                          font_size = 4,
-#'                                          num_lines = 16) {
+create_ggplot_code() %>%
+code_parse() %>%
+parsed_return_partial_code_sequence() %>%
+.[[4]] %>%
+build_partial_code_text_plot(num_lines = 8, font_size = 6)
+build_partial_code_text_plot <- function(code_w_highlight,
+                                         highlight_color = "plum4",
+                                         font_size = 4,
+                                         num_lines = 16) {
+
+  code_w_highlight %>%
+    dplyr::tibble() %>%
+    dplyr::mutate(highlight = stringr::str_detect(., "#<<")) %>%
+    dplyr::mutate(code_as_text = stringr::str_remove(., "#<<")) %>%
+    dplyr::mutate(n = 1:dplyr::n()) ->
+  prepped
+
+  width <- 74
+  height <- 1
+
+  ggplot2::ggplot(data = prepped) +
+    ggplot2::aes(x = 40) +
+    ggplot2::aes(y = n) +
+    ggplot2::scale_y_reverse(limits = c(num_lines, 0)) +
+    ggplot2::scale_x_continuous(limits = c(0, 80), expand = c(0, 0)) +
+    ggplot2::coord_fixed(ratio = 3.5) +
+    ggplot2::aes(label = code_as_text) +
+    # grey background
+    ggplot2::geom_rect(ggplot2::aes(ymin = n - .8, ymax = n + .8),
+                       fill = "grey95",
+                       xmin = 0, xmax = 78) +
+    ggplot2::geom_rect(ggplot2::aes(ymin = n - .6, ymax = n + .6),
+                       fill = "grey90",
+                       xmin = 1, xmax = 77) +
+    # highlighting
+    ggplot2::geom_rect(data = prepped %>% dplyr::filter(highlight),
+                       ggplot2::aes(ymin = n - .5, ymax = n + .5),
+                       xmin = 1.5, xmax = 76.5,
+                       fill = highlight_color,
+                       width = width - 2,
+                       height = 1,
+                       alpha = .5) +
+    ggplot2::labs(fill = NULL) +
+    ggplot2::geom_text(x = 3, hjust = 0, family = "mono",
+                       size = font_size, color = "grey22") +
+    ggplot2::theme_void() +
+    ggplot2::theme(plot.margin = ggplot2::margin(0, 0, 0, 0, "cm"))
+
+}
+
+
+
+#' Title
 #'
-#'   code_w_highlight %>%
-#'     dplyr::tibble() %>%
-#'     dplyr::mutate(highlight = stringr::str_detect(., "#<<")) %>%
-#'     dplyr::mutate(code_as_text = stringr::str_remove(., "#<<")) %>%
-#'     dplyr::mutate(n = 1:dplyr::n()) ->
-#'   prepped
+#' @param code_w_highlight
 #'
-#'   width <- 74
-#'   height <- 1
+#' @return
+#' @export
 #'
-#'   ggplot2::ggplot(data = prepped) +
-#'     ggplot2::aes(x = 40) +
-#'     ggplot2::aes(y = n) +
-#'     ggplot2::scale_y_reverse(limits = c(num_lines, 0)) +
-#'     ggplot2::scale_x_continuous(limits = c(0, 80), expand = c(0, 0)) +
-#'     ggplot2::coord_fixed(ratio = 3.5) +
-#'     ggplot2::aes(label = code_as_text) +
-#'     # grey background
-#'     ggplot2::geom_rect(ggplot2::aes(ymin = n - .8, ymax = n + .8),
-#'                        fill = "grey95",
-#'                        xmin = 0, xmax = 78) +
-#'     ggplot2::geom_rect(ggplot2::aes(ymin = n - .6, ymax = n + .6),
-#'                        fill = "grey90",
-#'                        xmin = 1, xmax = 77) +
-#'     # highlighting
-#'     ggplot2::geom_rect(data = prepped %>% dplyr::filter(highlight),
-#'                        ggplot2::aes(ymin = n - .5, ymax = n + .5),
-#'                        xmin = 1.5, xmax = 76.5,
-#'                        fill = highlight_color,
-#'                        width = width - 2,
-#'                        height = 1,
-#'                        alpha = .5) +
-#'     ggplot2::labs(fill = NULL) +
-#'     ggplot2::geom_text(x = 3, hjust = 0, family = "mono",
-#'                        size = font_size, color = "grey22") +
-#'     ggplot2::theme_void() +
-#'     ggplot2::theme(plot.margin = ggplot2::margin(0, 0, 0, 0, "cm"))
-#'
-#' }
-#'
-#' #' Title
-#' #'
-#' #' @param code_w_highlight
-#' #'
-#' #' @return
-#' #' @export
-#' #'
-#' #' @examples
-#' #' create_ggplot_code() %>%
-#' #' code_parse() %>%
-#' #' parsed_return_partial_code_sequence() %>%
-#' #' .[[2]] %>%
-#' #' create_cow_frame()
-#' create_cow_frame <- function(code_w_highlight, title = "flipbook mini") {
-#'
-#'   the_plot <- build_partial_code_plot_mini(code_w_highlight)[[1]]
-#'
-#'   text_plot <- build_partial_code_text_plot_mini(code_w_highlight)
-#'
-#'   a_title <- cowplot::ggdraw() +
-#'     cowplot::draw_label(label = title, fontface = 'bold')
-#'
-#'   # the case of code and plots
-#'   if (show_code == T) {
-#'
-#'     side_by_side <- cowplot::plot_grid(text_plot,
-#'                                        the_plot,
-#'                                        rel_widths = c(1, 1))
-#'     cowplot::plot_grid(a_title,
-#'                        side_by_side,
-#'                        rel_heights = c(0.1, 1),
-#'                        ncol = 1)
-#'
-#'
-#'   }
-#'
-#' }
+#' @examples
+create_ggplot_code() %>%
+code_parse() %>%
+parsed_return_partial_code_sequence() %>%
+.[[2]] %>%
+create_cow_frame()
+create_cow_frame <- function(code_w_highlight, title = "flipbook mini") {
+
+  the_plot <- build_partial_code_plot(code_w_highlight)[[1]]
+
+  text_plot <- build_partial_code_text_plot(code_w_highlight)
+
+  a_title <- cowplot::ggdraw() +
+    cowplot::draw_label(label = title, fontface = 'bold')
+
+  # the case of code and plots
+  # if (display_type == "both") {
+
+    side_by_side <- cowplot::plot_grid(text_plot,
+                                       the_plot,
+                                       rel_widths = c(1, 1))
+    cowplot::plot_grid(a_title,
+                       side_by_side,
+                       rel_heights = c(0.1, 1),
+                       ncol = 1)
+
+
+  # }
+
+}
 #'
 #'
 #'
