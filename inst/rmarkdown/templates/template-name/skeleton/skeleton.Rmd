@@ -1,5 +1,5 @@
 ---
-title: "The fragile and perilous art of flipbooking"
+title: "The art of flipbooking"
 subtitle: "With flipbookr and xaringan"
 author: "Gina Reynolds, December 2019"
 output:
@@ -14,9 +14,11 @@ output:
 ---
 
 
-```{r setup}
-knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = FALSE, fig.retina = 3)
 
+```{r setup, include = F}
+# This is the recommended set up for flipbooks
+# you might think about setting cache to TRUE as you gain practice --- building flipbooks from scracth can be time consuming
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = FALSE, fig.retina = 3)
 library(flipbookr)
 library(tidyverse)
 ```
@@ -27,13 +29,10 @@ library(tidyverse)
 - Yes, there is now a package called `flipbookr`
 --
 
-- Yes, it's still under construction (thus, the dramatic "fragile" and "perilous")
+- Yes, it's still under construction (the title of this book used to be the "fragile perilous art")
 --
 
 - Yes, you can help make it less fragile and perilous by letting us know if/how it breaks and frustrates you and/or contributing at https://github.com/EvaMaeRey/flipbookr!  
---
-
-- Then we'll retitle this book!
 
 
 
@@ -77,10 +76,11 @@ We use the flipbookr package, of course! This does the work of disassembling a s
 
 Also, at the top of this template in that "setup" code chunk, I set *code chunk* options for the code chunks that follow.  These will apply to the spawned code chunks.
 
-<!-- So that I can sometimes work interactively on the package, I still am making the local source script available for myself.-->
+<!-- Hi there!  It's me, the developer.  So that I can sometimes work interactively on the package, I still am making the local source script available for myself - the code in the following chunk is for this purpose.  It will just work for your, but because I'm using "try" it won't throw an error for you!-->
 
 ```{r just_for_evamaerey, cache = FALSE, echo = FALSE}
 try(source("../../../../../R/base_parse_reveal_xaringan.R"))
+try(source("../../../../../R/mini.R"))
 ```
 
 
@@ -93,7 +93,7 @@ You will use the `chunk_reveal()` function [inline](https://rmarkdown.rstudio.co
 
 <!-- The above is for the html output version, just look at the examples below if you are in the source! -->
 ```markdown
-``r "r chunk_reveal(chunk_name = \"cars\", break_type = \"user\", display_type = \"both\", left_assign = FALSE)"``
+``r "r chunk_reveal(chunk_name = \"cars\", break_type = \"user\")"``
 ``` 
 
 
@@ -248,7 +248,41 @@ And now where only the *code* is displayed for the "cars" code chunk.
 
 # Assignment
 
-If you want to create an object in your flipbooks, it is most "natural" to use [right assignment](https://stat.ethz.ch/R-manual/R-devel/library/base/html/assignOps.html).  Working sequentially with a pipeline of code, you get feedback all along the way until you get to the point of assigning all of what you have done to a new object with right assignment.  With left assignment in R, you don't get any feedback, so flipbooking prefers this step at the end of a pipeline, so we can enjoy all the nice feedback. So the parameter left_assign is by default set to FALSE.
+If you want to create an object in your flipbooks, it is most "natural" to use [right assignment](https://stat.ethz.ch/R-manual/R-devel/library/base/html/assignOps.html).  Working sequentially with a pipeline of code, you get feedback all along the way until you get to the point of assigning all of what you have done to a new object with right assignment.  Creating objects in one "source" code chunk, means that you can break up a pipeline of tasks into multiple code chunks.  Let's see this in action.
+
+
+---
+
+`r chunk_reveal("plot_object")`
+
+```{r plot_object, include = FALSE}
+cars %>% 
+  ggplot() +
+  aes(x = speed) +
+  aes(y = dist) +
+  geom_point() ->
+cars_plot
+```
+
+
+---
+
+
+`r chunk_reveal("further_building")`
+
+```{r further_building, include = FALSE}
+cars_plot +
+  labs(x = "Speed (mph)") + 
+  labs(y = "Stopping distance (ft)")
+```
+
+
+
+
+
+
+
+
 
 
 
@@ -256,6 +290,9 @@ If you want to create an object in your flipbooks, it is most "natural" to use [
 
 
 # `left_assign = TRUE`
+
+
+With left assignment in R, you don't get any feedback, so flipbooking prefers this step at the end of a pipeline, so we can enjoy all the nice feedback. So the parameter left_assign is by default set to FALSE.
 
 
 But, setting the left_assign paramter to T and using left assignment, you can still create a meaningful flipbook that gives you feedback.   When left_assign = TRUE, the first object that is created prints at the end of the derivative code chunks. 
@@ -282,34 +319,7 @@ my_plot <- cars %>%   # the data
 
 # Managing source code chunks
 
-So, it is pretty cool that we can create a bunch of derivative code chunks from one input code chunk (more on this [here](https://emitanaka.rbind.io/post/knitr-knitr-code/)).  But there are some considerations then for this source chunk.  What should its chunk options be? 
-
-If there are dependenceies between code chunks, you may need to turn the code chunk option `eval` to TRUE (and usually echo = FALSE).  This may be the case when you create an object in one code chunk that you use in a subsequent code chunk.  
-
----
-
-`r chunk_reveal("plot_object")`
-
-```{r plot_object, include = FALSE}
-cars %>% 
-  ggplot() +
-  aes(x = speed) +
-  aes(y = dist) +
-  geom_point() ->
-cars_plot
-```
-
-
----
-
-
-`r chunk_reveal("further_building")`
-
-```{r further_building, include = FALSE}
-cars_plot +
-  labs(x = "Speed (mph)") + 
-  labs(y = "Stopping distance (ft)")
-```
+So, it is pretty cool that we can create a bunch of derivative code chunks from one input code chunk (a foundational blog post by Emi Tanaka on this [here](https://emitanaka.rbind.io/post/knitr-knitr-code/)).  But there are some considerations then for this source chunk.  What should its chunk options be?  The easy way is to set all "source" code chunks to include = F, as I do throughout the book.  However, you might consider a combination of `eval` and `echo` instead; you can come back to this idea as you become a more seasoned flipbooker.    
 
 
 
@@ -406,9 +416,9 @@ lines(inputs_of_x,
 
 ---
 
-## Change slide show look and feel
+## Xaringan slide show look and feel
 
-To quickly change the look and feel of your xaringan slide show, you might check out the [available themes](https://github.com/yihui/xaringan/wiki/Themes#avaliable-themes) from the xaringan package and [xaringanthemer](https://github.com/gadenbuie/xaringanthemer) package.
+To quickly change the look and feel of your {xaringan} slide show, you might check out the [available themes](https://github.com/yihui/xaringan/wiki/Themes#avaliable-themes) from the xaringan package and [xaringanthemer](https://github.com/gadenbuie/xaringanthemer) package.
 
 Another extremely useful resource for xaringan styling is Alison Hill's ["Meet xaringan: Making slides in R Markdown"](https://arm.rbind.io/slides/xaringan.html).
 
@@ -417,8 +427,21 @@ Another extremely useful resource for xaringan styling is Alison Hill's ["Meet x
 
 # Sharing your flipbooks
 
+Flipbooks created with Xaringan are multi-file creations.  The figures produced are stored separately from the main html document.  This presents a little bit of a challenge for sharing your work.  You can zip up all the associated files and share that way.  Alternatively, you can share as a website.  I've shared my work on github with github pages.  
+
 - flip, zip, and ship
-- get it on github, with github pages
+- get it on github, with github pages.  A good walk through is the one that I learned with (to get [the ggplot2 flipbook](https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html) online) by Brian Caffo https://www.youtube.com/watch?v=BBCesiebEuQ  Larger flipbooks will take longer to load online - something to keep in mind as you are building. 
+
+---
+
+# Spread the word and giving feedback
+
+Please help us spread the word about flipbooks.  Let your audience know *how* you created your flipbook with a quick acknowledgement, for example, *The flipbooked portion of this presentation was created with the new {flipbookr} package.  Get it at devtools::install_github("EvaMaeRey/flipbookr")*  
+
+Also consider sharing your work on social media, and let me know what you've built on Twitter with a mention to @EvaMaeRey
+
+Feedback? Contributions? Leave an issue at:  https://github.com/EvaMaeRey/flipbookr 
+
 
 
 

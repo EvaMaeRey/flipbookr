@@ -510,6 +510,3 @@ chunk_reveal <- function(chunk_name = "example_name",
 
 
 
-
-
-
