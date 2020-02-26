@@ -67,7 +67,7 @@ partial_plotting_code_prep_for_plot_text <- function(partial_code_w_highlight){
 #   prepped_partial_plotting_code_plot_text()
 prepped_partial_plotting_code_plot_text <- function(prepped_plotting_code,
                                                     highlight_color = "plum4",
-                                                    font_size = 5,
+                                                    font_size = 7,
                                                     num_lines = 16) {
 
 
@@ -121,8 +121,9 @@ prepped_partial_plotting_code_plot_text <- function(prepped_plotting_code,
 create_cow_frame <- function(partial_code_w_highlight,
                              title = "flipbook mini",
                              highlight_color = "plum4",
-                             font_size = 5,
-                             num_lines = 16) {
+                             font_size = 7,
+                             num_lines = 16,
+                             display_type = "both") {
 
   the_plot <- partial_plotting_code_plot(partial_code_w_highlight)[[1]]
 
@@ -136,7 +137,7 @@ create_cow_frame <- function(partial_code_w_highlight,
     cowplot::draw_label(label = title, fontface = 'bold')
 
   # the case of code and plots
-  # if (display_type == "both") {
+  if (display_type == "both") {
 
   side_by_side <- cowplot::plot_grid(text_plot,
                                      the_plot,
@@ -145,6 +146,14 @@ create_cow_frame <- function(partial_code_w_highlight,
                      side_by_side,
                      rel_heights = c(0.1, 1),
                      ncol = 1)
+
+  } else if (display_type == "code") {
+
+    text_plot
+  } else if (display_type == "output") {
+
+    the_plot
+   }
 
 }
 
@@ -155,11 +164,13 @@ create_cow_frame <- function(partial_code_w_highlight,
 #   parsed_return_partial_code_sequence() %>%
 #   code_seq_build_and_save_all_cow_frames()
 code_seq_build_and_save_all_cow_frames <- function(code_seq,
-                                                   dir = "temp_mini_figures",
+                                                   id = "",
+                                                   dir = paste0("temp_mini_figures", id),
                                                    title = "flipbook mini",
                                                    highlight_color = "plum4",
-                                                   font_size = 5,
-                                                   num_lines = 16){
+                                                   font_size = 7,
+                                                   num_lines = 16,
+                                                   display_type = "both"){
 
 
   dir.create(path = dir)
@@ -171,10 +182,11 @@ code_seq_build_and_save_all_cow_frames <- function(code_seq,
       create_cow_frame(title,
                        highlight_color,
                        font_size,
-                       num_lines) ->
-      the_plot
+                       num_lines,
+                       display_type) ->
+      the_composite_plot
 
-    cowplot::save_plot(filename = paste0(dir, "/frame", i, ".png"), plot = the_plot)
+    cowplot::save_plot(filename = paste0(dir, "/frame", i, ".png"), plot = the_composite_plot)
 
   }
 
@@ -187,7 +199,8 @@ code_seq_build_and_save_all_cow_frames <- function(code_seq,
 # pngs_to_gif()
 pngs_to_gif <- function(dir = "temp_mini_figures",
                         file_out = "temp_mini.gif",
-                        delete_figs_dir = F){
+                        delete_figs_dir = F,
+                        fps = .75){
 
   files <- list.files(path = dir, pattern = paste(".png"))
   files_path <- paste0(dir, "/", files)
@@ -199,7 +212,7 @@ pngs_to_gif <- function(dir = "temp_mini_figures",
     dplyr::pull(file) %>%
     purrr::map(magick::image_read) %>% # reads each path file
     magick::image_join() %>% # joins image
-    magick::image_animate(fps = 1) %>% # animates
+    magick::image_animate(fps = fps) %>% # animates
     magick::image_write(path = file_out)
 
   if (delete_figs_dir) {}
@@ -211,20 +224,22 @@ pngs_to_gif <- function(dir = "temp_mini_figures",
 # create_ggplot_code() %>%
 # code_create_gif_flipbook()
 code_create_gif_flipbook <- function(code,
-                                     dir = "temp_mini_figures",
-                                     file_out = "temp_mini.gif",
+                                     id = "",
+                                     dir = paste0("temp_mini_figures", id),
+                                     file_out = paste0("temp_mini",id,".gif"),
                                      title = "flipbook mini created with {flipbookr}",
                                      highlight_color = "plum4",
-                                     font_size = 2,
+                                     font_size = 3,
                                      num_lines = 16,
+                                     display_type = "both",
                                      break_type = "auto",
                                      which_show = parsed_calc_show(parsed = code_parse(code),
                                                                    break_type = break_type),
                                      which_highlight =
                                        shown_lines_calc_highlight(which_show = which_show,
                                                                   break_type = break_type),
-                                     left_assign = F
-){
+                                     left_assign = F,
+                                     fps = 1){
 
   code %>%
     code_parse() %>%
@@ -232,13 +247,40 @@ code_create_gif_flipbook <- function(code,
                                         which_show,
                                         which_highlight,
                                         left_assign) %>%
-    code_seq_build_and_save_all_cow_frames(dir,
+    code_seq_build_and_save_all_cow_frames(id,
+                                           dir,
                                            title,
                                            highlight_color,
                                            font_size = font_size,
-                                           num_lines)
+                                           num_lines,
+                                           display_type)
 
-  pngs_to_gif()
+  pngs_to_gif(dir = dir,
+              file_out = file_out,
+              delete_figs_dir = F,
+              fps)
+
+}
+
+
+
+chunk_create_gif_flipbook <- function(...){
+
+  chunk_code_get() %>%
+    code_create_gif_flipbook(...)
+
+}
+
+
+
+chunk_gif_flipbook_embed <- function(chunk_name, display_type = "both"){
+
+  chunk_name %>%
+    chunk_code_get() %>%
+    code_create_gif_flipbook(id = chunk_name,
+                             display_type = display_type) # creates temp_mini.gif
+
+  knitr::include_graphics(paste0("temp_mini",chunk_name,".gif"))
 
 }
 

@@ -144,7 +144,7 @@ code_parse <- function(code){
     base_parsed_count_parentheses() %>%
     dplyr::left_join(raw_code_table) %>%
     dplyr::mutate(code = ifelse(comment != "", stringr::str_remove(raw_code, comment), raw_code)) %>%
-    dplyr::mutate(connector = stringr::str_extract(stringr::str_trim(code), "%>%$|\\+$|->$|%\\+%")) %>%
+    dplyr::mutate(connector = stringr::str_extract(stringr::str_trim(code), "%>%$|\\+$|->$|%\\+%|%\\$%")) %>%
     dplyr::mutate(connector = tidyr::replace_na(connector, "")) %>%
     dplyr::mutate(non_seq = stringr::str_extract(comment, "#BREAK-?\\d+")) %>%
     dplyr::mutate(non_seq = stringr::str_extract(non_seq, "-?\\d+")) %>%
@@ -153,7 +153,7 @@ code_parse <- function(code){
     dplyr::mutate(comment = stringr::str_remove(comment, "#BREAK\\d+")) %>%
     dplyr::mutate(user = stringr::str_detect(comment, "#BREAK")) %>%
     dplyr::mutate(comment = stringr::str_remove(comment, "#BREAK")) %>%
-    dplyr::mutate(code = stringr::str_remove(stringi::stri_trim_right(code), "%>%$|\\+$|->$|%\\+%")) %>%
+    dplyr::mutate(code = stringr::str_remove(stringi::stri_trim_right(code), "%>%$|\\+$|->$|%\\+%|%\\$%")) %>%
     dplyr::mutate(auto = balanced_paren & balanced_curly & balanced_square &
                     code != "") %>%
     dplyr::select(line, raw_code, code, connector, comment, auto, user, non_seq)

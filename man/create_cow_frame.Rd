@@ -5,7 +5,8 @@
 \title{Title}
 \usage{
 create_cow_frame(partial_code_w_highlight, title = "flipbook mini",
-  highlight_color = "plum4", font_size = 5, num_lines = 16)
+  highlight_color = "plum4", font_size = 7, num_lines = 16,
+  display_type = "both")
 }
 \arguments{
 \item{partial_code_w_highlight}{}

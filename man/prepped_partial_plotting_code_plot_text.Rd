@@ -16,7 +16,7 @@
 #' @examples}
 \usage{
 prepped_partial_plotting_code_plot_text(prepped_plotting_code,
-  highlight_color = "plum4", font_size = 5, num_lines = 16)
+  highlight_color = "plum4", font_size = 7, num_lines = 16)
 }
 \description{
 #' Title
