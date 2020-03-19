@@ -222,7 +222,7 @@ python_code_full_parse <- function(code){
   code %>%
     code_simple_parse() %>%
     mutate(code = raw_code) %>%
-    mutate(auto = ifelse(rawcode == "", FALSE, TRUE)) %>%
+    mutate(auto = ifelse(raw_code == "", FALSE, TRUE)) %>%
     mutate(connector = "") %>%
     mutate(comment = "")
 
