@@ -5,13 +5,28 @@
 \title{Title}
 \usage{
 chunk_reveal(chunk_name = "example_name", break_type = "auto",
-  left_assign = F,
+  left_assign = F, lang = "r",
   code_seq = chunk_name_return_code_sequence(chunk_name, break_type,
-  left_assign), num_breaks = length(code_seq), display_type = "both",
-  split = 40)
+  left_assign, lang), num_breaks = length(code_seq),
+  display_type = "both", split = 40, title = "")
 }
 \arguments{
-\item{split}{}
+\item{chunk_name}{a character string refering to the name of the source chunk for the flipbooking}
+
+\item{break_type}{"auto" is default finding appropriate breakpoints, "user" can be used with the special comment message #BREAK within the source code chunk, "non_seq" can be used for non sequential display of code with special comment messages #BREAK2 (will show in second frame) and #BREAK3 (will show in third frame), an integer input can be given too, to simply display the source code chunk multiple times which is appropriate for observing multiple realizations of sampling}
+
+\item{left_assign}{a logical, default is FALSE, if TRUE will print the object created in the upper lefthand corner of the source code chunk at the end of each partial reveal}
+
+\item{code_seq}{a list of code as character strings, the list will automatically be created based on the previous three arguments or the user can input code manually}
+
+\item{num_breaks}{an integer, automatically calculated based on the length of the the code_seq list}
+
+\item{display_type}{the default is "both" for code and output to be displayed side-by-side, "output" will create spauned code chunks to only display output, "code" will create spauned code chunks only to show the partial code builds}
+
+\item{split}{is the percentage of the width of the left hand side if both code and output are displayed.}
+}
+\value{
+a string object - will only work in 'knitr' context
 }
 \description{
 Title

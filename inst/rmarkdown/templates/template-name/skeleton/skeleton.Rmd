@@ -105,6 +105,10 @@ There are several modalities that you might be interested in using for "flipbook
 
 
 
+
+
+
+
 ---
 
 At first we'll apply our flipbooking to the below input code - the code chunk is named "cars".  For now I set echo = TRUE for this code chunk, so you can see the code content but sometimes you might like to set echo to FALSE. This code uses tidyverse tools, so we loaded that too in the "setup" code chunk at the beginning of the template. 
@@ -400,18 +404,59 @@ title(sub = "Data is from Ezekiel's (1930) 'Methods of Correlation Analysis'.")
 plot(cars, xlab = "Speed (mph)", 
      ylab = "Stopping distance (ft)",
     las = 1, xlim = c(0, 25))
+
 lm(dist ~ poly(speed, 3), 
    data = cars) -> 
 model
+
 seq(0, 25, length.out = 25) ->
 inputs_of_x  
+
 predict(model, 
         data.frame(speed = inputs_of_x)) ->
 prediction_y
+
 lines(inputs_of_x, 
       prediction_y, 
       col = "blue")
 ```
+
+# And arithmetic operation
+
+---
+
+`r chunk_reveal("arith")`
+
+```{r arith, include = FALSE}
+(4 + 5) /
+  6 *
+  7 -
+  3 
+
+1:10 %%
+  3
+
+1:10 %/% 
+  3
+
+33 %% 
+  15
+
+4 %/%
+  2
+
+4 ^
+  5
+
+matrix(1:4, ncol = 1) %*%
+  matrix(1:4, nrow = 1)
+
+matrix(1:4, ncol = 4) %*%
+  matrix(1:4, nrow = 4)
+```
+
+
+---
 
 
 ---
@@ -436,7 +481,7 @@ Flipbooks created with Xaringan are multi-file creations.  The figures produced 
 
 # Spread the word and giving feedback
 
-Please help us spread the word about flipbooks.  Let your audience know *how* you created your flipbook with a quick acknowledgement, for example, *The flipbooked portion of this presentation was created with the new {flipbookr} package.  Get it at devtools::install_github("EvaMaeRey/flipbookr")*  
+Please help us spread the word about flipbooks.  Let your audience know *how* you created your flipbook with a quick acknowledgement, for example, *The flipbooked portion of this presentation was created with the new {flipbookr} package.  Get it at remotes::install_github("EvaMaeRey/flipbookr")*  
 
 Also consider sharing your work on social media, and let me know what you've built on Twitter with a mention to @EvaMaeRey
 
@@ -444,15 +489,25 @@ Feedback? Contributions? Leave an issue at:  https://github.com/EvaMaeRey/flipbo
 
 ---
 
+A new addition is the %$% pipe from the magrittr library.  And example follows. 
+
+---
+
 `r chunk_reveal("new_pipe")`
 
 ```{r new_pipe, include=F}
 library(magrittr)
+
 cars %$%
   cor(x = speed,
       y = dist)
 ```
 
+
+
+
+
+---
 
 
 

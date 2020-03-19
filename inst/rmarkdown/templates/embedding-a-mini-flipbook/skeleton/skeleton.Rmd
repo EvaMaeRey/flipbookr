@@ -1,0 +1,87 @@
+---
+title: "Embedding a plot flipbook"
+author: "Your Name"
+date: "The Date"
+output: html_document
+---
+
+
+# Experimental!
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
+library(tidyverse)
+library(flipbookr)
+```
+
+<!-- Hi there!  It's me, the developer.  So that I can sometimes work interactively on the package, I still am making the local source script available for myself - the code in the following chunk is for this purpose.  It will just work for your, but because I'm using "try" it won't throw an error for you!-->
+
+```{r just_for_evamaerey, cache = FALSE, echo = FALSE}
+try(source("../../../../../R/base_parse_reveal_xaringan.R"))
+try(source("../../../../../R/mini.R"))
+```
+
+
+You can try a flipbook mini.  At this time, the output can *only* be plots
+
+
+
+
+
+
+```{r my_source_code_chunk, include = F}
+ggplot(data = cars) + 
+  aes(x = speed) +
+  aes(y = dist) +
+  geom_point(shape = 21, 
+             alpha = .8,
+             size = 5,
+             color = "white") +
+  aes(fill = dist) +
+  scale_fill_viridis_c(option = "magma", end = .7) +
+  labs(title = "That cars data again!") +
+  theme_minimal() +
+  theme(plot.background = element_rect(fill = "snow3")) 
+```
+
+----
+
+# Let's see the build
+
+I'm also echoing the code.  It produces the gif (saved externally) and then embeds it in the html file. 
+
+```{r, echo = T}
+chunk_gif_flipbook_embed(chunk_name = "my_source_code_chunk",
+                         title = "Side-by-side co-evolution!") 
+```
+
+----
+
+# Or maybe just output is of interest?
+
+
+```{r, echo = F}
+chunk_gif_flipbook_embed(chunk_name = "my_source_code_chunk",
+                         title = "That's pretty!", 
+                         display_type = "output") 
+```
+
+----
+
+# Or maybe just code is of interest?
+
+
+
+```{r, echo = F}
+chunk_gif_flipbook_embed(chunk_name = "my_source_code_chunk",
+                         title = "What do you think this will build?", 
+                         display_type = "code") 
+```
+
+# Spread the word and giving feedback
+
+Please help us spread the word about flipbooks.  Let your audience know *how* you created your flipbook with a quick acknowledgement, for example: 
+
+
+
+> **The flipbooked portion of this presentation was created with the {flipbookr} package.  Get it at remotes::install_github("EvaMaeRey/flipbookr")**

@@ -1,23 +1,7 @@
 ############################## mini #############################
 
 
-#' # flipbook mini - build a gif flipbook using "cowplot" as presentation delivery
-#'
-#' Title
-#'
-#' @param code
-#' @param upto
-#' @param highlight
-#'
-#' @return
-#' @export
-#'
-#' @examples
-# create_ggplot_code() %>%
-#   code_parse() %>%
-#   parsed_return_partial_code_sequence() %>%
-#   .[[2]] %>%
-#   partial_plotting_code_plot()
+#### create plot from partial code ####
 partial_plotting_code_plot <- function(partial_code_w_highlight){
 
   writeLines(text = partial_code_w_highlight,
@@ -27,12 +11,7 @@ partial_plotting_code_plot <- function(partial_code_w_highlight){
 }
 
 
-# create_ggplot_code() %>%
-#   code_parse() %>%
-#   parsed_return_partial_code_sequence() %>%
-#   .[[2]] %>%
-#   partial_plotting_code_prep_for_plot_text()
-
+#### plotting text of code as a ggplot ####
 partial_plotting_code_prep_for_plot_text <- function(partial_code_w_highlight){
 
   partial_code_w_highlight %>%
@@ -44,27 +23,7 @@ partial_plotting_code_prep_for_plot_text <- function(partial_code_w_highlight){
 
 }
 
-#'
-#'
-#'
-#' #' Title
-#' #'
-#' #' @param code
-#' #' @param upto
-#' #' @param highlight
-#' #' @param highlight_color
-#' #' @param font_size
-#' #'
-#' #' @return
-#' #' @export
-#' #'
-#' #' @examples
-# create_ggplot_code() %>%
-#   code_parse() %>%
-#   parsed_return_partial_code_sequence() %>%
-#   .[[4]] %>%
-#   partial_plotting_code_prep_for_plot_text() %>%
-#   prepped_partial_plotting_code_plot_text()
+
 prepped_partial_plotting_code_plot_text <- function(prepped_plotting_code,
                                                     highlight_color = "plum4",
                                                     font_size = 7,
@@ -104,20 +63,7 @@ prepped_partial_plotting_code_plot_text <- function(prepped_plotting_code,
 }
 
 
-
-#' Title
-#'
-#' @param partial_code_w_highlight
-#'
-#' @return
-#' @export
-#'
-#' @examples
-# create_ggplot_code() %>%
-#   code_parse() %>%
-#   parsed_return_partial_code_sequence() %>%
-#   .[[2]] %>%
-#   create_cow_frame()
+#### Build single frame ####
 create_cow_frame <- function(partial_code_w_highlight,
                              title = "flipbook mini",
                              highlight_color = "plum4",
@@ -158,11 +104,8 @@ create_cow_frame <- function(partial_code_w_highlight,
 }
 
 
+#### Create all the frames ####
 
-# create_ggplot_code() %>%
-#   code_parse() %>%
-#   parsed_return_partial_code_sequence() %>%
-#   code_seq_build_and_save_all_cow_frames()
 code_seq_build_and_save_all_cow_frames <- function(code_seq,
                                                    id = "",
                                                    dir = paste0("temp_mini_figures", id),
@@ -195,15 +138,27 @@ code_seq_build_and_save_all_cow_frames <- function(code_seq,
 }
 
 
-
-# pngs_to_gif()
+#### combine frames into a gif ####
+# "temp_mini_figures" %>%
+#   pngs_to_gif()
 pngs_to_gif <- function(dir = "temp_mini_figures",
                         file_out = "temp_mini.gif",
                         delete_figs_dir = F,
-                        fps = .75){
+                        fps = 1){
 
   files <- list.files(path = dir, pattern = paste(".png"))
   files_path <- paste0(dir, "/", files)
+
+  # png("frame%03d.png")
+  # par(ask = FALSE)
+  # for(i in 1:10)
+  #   plot(rnorm(i * 10), main = i)
+  # dev.off()
+  # png_files <- sprintf("frame%03d.png", 1:10)
+  # gif_file <- gifski::gifski(files_path)
+  # unlink(dir)
+  # utils::browseURL(gif_file)
+  #
 
   files_path %>%
     file.info() %>%
@@ -215,18 +170,18 @@ pngs_to_gif <- function(dir = "temp_mini_figures",
     magick::image_animate(fps = fps) %>% # animates
     magick::image_write(path = file_out)
 
-  if (delete_figs_dir) {}
+  # if (delete_figs_dir) {}
 
 }
 
 
-
+#### code to flipbook mini gif ####
 # create_ggplot_code() %>%
-# code_create_gif_flipbook()
+#  code_create_gif_flipbook()
 code_create_gif_flipbook <- function(code,
                                      id = "",
                                      dir = paste0("temp_mini_figures", id),
-                                     file_out = paste0("temp_mini",id,".gif"),
+                                     file_out = paste0("temp_mini",id,display_type,".gif"),
                                      title = "flipbook mini created with {flipbookr}",
                                      highlight_color = "plum4",
                                      font_size = 3,
@@ -272,15 +227,18 @@ chunk_create_gif_flipbook <- function(...){
 }
 
 
-
-chunk_gif_flipbook_embed <- function(chunk_name, display_type = "both"){
+chunk_gif_flipbook_embed <- function(chunk_name,
+                                     id = chunk_name,
+                                     display_type = "both",
+                                     title = "mini"){
 
   chunk_name %>%
     chunk_code_get() %>%
     code_create_gif_flipbook(id = chunk_name,
-                             display_type = display_type) # creates temp_mini.gif
+                             display_type = display_type,
+                             title = title) # creates temp_mini.gif
 
-  knitr::include_graphics(paste0("temp_mini",chunk_name,".gif"))
+  knitr::include_graphics(paste0("temp_mini", chunk_name, display_type,".gif"))
 
 }
 
@@ -312,3 +270,27 @@ chunk_gif_flipbook_embed <- function(chunk_name, display_type = "both"){
 # knitr::include_graphics("temp_mini.gif")
 # ```
 #
+
+
+
+#
+# You can try a flipbook mini too...
+#
+# ```{r my_source_code_chunk, eval = F}
+# ggplot(data = cars) +
+#   aes(x = speed) +
+#   aes(y = dist) +
+#   geom_point(alpha = .3,
+#              color = "blue")
+# ```
+#
+# ---
+#
+#   ```{r pipeline_to_gif, include = F}
+# # "my_source_code_chunk" %>% # name of source code chunk
+# #   chunk_create_gif_flipbook() # embed flipbook gif in html
+# ```
+#
+# r chunk_reveal("pipeline_to_gif")`
+
+

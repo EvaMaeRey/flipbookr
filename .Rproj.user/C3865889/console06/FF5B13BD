@@ -1,1002 +1,0 @@
-
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_4_auto_dfca20ba0dd66dfc8edb7c7b03f1460d.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_4_auto_dfca20ba0dd66dfc8edb7c7b03f1460d.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_4_auto_dfca20ba0dd66dfc8edb7c7b03f1460d.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_5_a8c463d01feb0725131f66236fd5f9eb.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_5_a8c463d01feb0725131f66236fd5f9eb.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_5_a8c463d01feb0725131f66236fd5f9eb.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_5_auto_04f84795dbc07845a2ccf20d1bd6ffa6.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_5_auto_04f84795dbc07845a2ccf20d1bd6ffa6.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/output_reg_assign_5_auto_04f84795dbc07845a2ccf20d1bd6ffa6.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/reg_assign_3b4a3ad01a90e1d3e08b426419332811.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/reg_assign_3b4a3ad01a90e1d3e08b426419332811.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/reg_assign_3b4a3ad01a90e1d3e08b426419332811.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/regular_assignment_1b2b6de20420c842c220f806829dd1e7.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/regular_assignment_1b2b6de20420c842c220f806829dd1e7.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/regular_assignment_1b2b6de20420c842c220f806829dd1e7.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-10_be1574bb594682490195d6d44a339f29.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-10_be1574bb594682490195d6d44a339f29.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-10_be1574bb594682490195d6d44a339f29.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-11_16b8f68ecbe7da96adcfaebaa8d262b0.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-11_16b8f68ecbe7da96adcfaebaa8d262b0.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-11_16b8f68ecbe7da96adcfaebaa8d262b0.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-12_c533ac34fe1e358415dc1c2696a0f54e.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-12_c533ac34fe1e358415dc1c2696a0f54e.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-12_c533ac34fe1e358415dc1c2696a0f54e.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-1_8d9411d127820c91b14a201dc6d7cff0.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-1_8d9411d127820c91b14a201dc6d7cff0.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-1_8d9411d127820c91b14a201dc6d7cff0.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-2_e7b76cbd07e0835ccea0c46eee99e11f.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-2_e7b76cbd07e0835ccea0c46eee99e11f.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-2_e7b76cbd07e0835ccea0c46eee99e11f.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-4_cecb8cdfe4b0be2c04f2acc972bca3e7.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-4_cecb8cdfe4b0be2c04f2acc972bca3e7.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-4_cecb8cdfe4b0be2c04f2acc972bca3e7.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-5_617479c014f9d701817e65720d0688ea.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-5_617479c014f9d701817e65720d0688ea.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-5_617479c014f9d701817e65720d0688ea.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-6_f2b5abf6ffb1443b2fb4b6263b6264bb.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-6_f2b5abf6ffb1443b2fb4b6263b6264bb.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-6_f2b5abf6ffb1443b2fb4b6263b6264bb.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-7_6287cbea468c93cb30730495a7b80710.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-7_6287cbea468c93cb30730495a7b80710.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-7_6287cbea468c93cb30730495a7b80710.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-8_6168301c13f6a7441a1e6d8ca337d3f7.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-8_6168301c13f6a7441a1e6d8ca337d3f7.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-8_6168301c13f6a7441a1e6d8ca337d3f7.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-9_58e85e229aa003c92ff3d6cbbc352fec.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-9_58e85e229aa003c92ff3d6cbbc352fec.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-9_58e85e229aa003c92ff3d6cbbc352fec.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_auto-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_multi-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_non_seq-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_user-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/nobel-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_1-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_1_user-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_2-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_2_user-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_3-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_3_user-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_4-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_5-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_6-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_7-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_8-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_auto_3-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_auto_3_auto-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_auto_4-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_auto_4_auto-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_auto_5-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_auto_5_auto-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_auto_6-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_auto_6_auto-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_auto_7-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_auto_7_auto-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_multi_1-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_multi_1_5-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_multi_2-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_multi_2_5-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_multi_3-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_multi_3_5-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_multi_4-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_multi_4_5-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_multi_5-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_multi_5_5-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_non_seq_1-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_non_seq_1_5-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_non_seq_1_non_seq-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_non_seq_1_user-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_non_seq_2-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_non_seq_2_5-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_non_seq_2_non_seq-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_non_seq_2_user-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_non_seq_3_5-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_non_seq_3_auto-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_non_seq_3_non_seq-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_non_seq_3_user-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_non_seq_4_5-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_non_seq_4_auto-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_non_seq_5_5-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_non_seq_5_auto-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_non_seq_6_auto-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_non_seq_7_auto-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_user_1-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_user_1_user-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_user_2-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_user_2_user-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_user_3-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_user_3_auto-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_user_3_user-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_user_4_auto-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_user_5_auto-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_user_6_auto-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_cars_user_7_auto-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_nobel_3-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_nobel_4-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_nobel_5-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_nobel_6-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_nobel_7-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_nobel_8-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_reg_assign_3-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_reg_assign_3_auto-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_reg_assign_4-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_reg_assign_4_auto-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_reg_assign_5-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_reg_assign_5_auto-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_regular_assignment_3-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_regular_assignment_4-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_regular_assignment_5-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_regular_assignment_6-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_regular_assignment_7-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_regular_assignment_8-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_slow_traditional_presentation_1-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_slow_traditional_presentation_2-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_slow_traditional_presentation_3-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_slow_traditional_presentation_4-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_slow_traditional_presentation_5-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/output_slow_traditional_presentation_6-1.png
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 20, done.
-Delta compression using up to 4 threads.
-Compressing objects:   6% (1/15)   Compressing objects:  13% (2/15)   Compressing objects:  20% (3/15)   Compressing objects:  26% (4/15)   Compressing objects:  33% (5/15)   Compressing objects:  40% (6/15)   Compressing objects:  46% (7/15)   Compressing objects:  53% (8/15)   Compressing objects:  60% (9/15)   Compressing objects:  66% (10/15)   Compressing objects:  73% (11/15)   Compressing objects:  80% (12/15)   Compressing objects:  86% (13/15)   Compressing objects:  93% (14/15)   Compressing objects: 100% (15/15)   Compressing objects: 100% (15/15), done.
-Writing objects:   5% (1/20)   Writing objects:  10% (2/20)   Writing objects:  15% (3/20)   Writing objects:  20% (4/20)   Writing objects:  25% (5/20)   Writing objects:  30% (6/20)   Writing objects:  35% (7/20)   Writing objects:  40% (8/20)   Writing objects:  45% (9/20)   Writing objects:  50% (10/20)   Writing objects:  55% (11/20)   Writing objects:  60% (12/20)   Writing objects:  65% (13/20)   Writing objects:  70% (14/20)   Writing objects:  75% (15/20)   Writing objects:  80% (16/20)   Writing objects:  85% (17/20)   Writing objects:  90% (18/20)   Writing objects:  95% (19/20)   Writing objects: 100% (20/20)   Writing objects: 100% (20/20), 11.03 KiB | 245.00 KiB/s, done.
-Total 20 (delta 10), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/10)[Kremote: Resolving deltas:  10% (1/10)[Kremote: Resolving deltas:  20% (2/10)[Kremote: Resolving deltas:  30% (3/10)[Kremote: Resolving deltas:  40% (4/10)[Kremote: Resolving deltas:  50% (5/10)[Kremote: Resolving deltas:  60% (6/10)[Kremote: Resolving deltas:  70% (7/10)[Kremote: Resolving deltas:  80% (8/10)[Kremote: Resolving deltas:  90% (9/10)[Kremote: Resolving deltas: 100% (10/10)[Kremote: Resolving deltas: 100% (10/10), completed with 10 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   c10d813..90bcabb  master -> master
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git s[Kadd .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ gip[Kt commit - m[K[Km "add dplyr::n()"
-[master aa04a21] add dplyr::n()
- 4 files changed, 660 insertions(+), 6 deletions(-)
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 15, done.
-Delta compression using up to 4 threads.
-Compressing objects:   9% (1/11)   Compressing objects:  18% (2/11)   Compressing objects:  27% (3/11)   Compressing objects:  36% (4/11)   Compressing objects:  45% (5/11)   Compressing objects:  54% (6/11)   Compressing objects:  63% (7/11)   Compressing objects:  72% (8/11)   Compressing objects:  81% (9/11)   Compressing objects:  90% (10/11)   Compressing objects: 100% (11/11)   Compressing objects: 100% (11/11), done.
-Writing objects:   6% (1/15)   Writing objects:  13% (2/15)   Writing objects:  20% (3/15)   Writing objects:  26% (4/15)   Writing objects:  33% (5/15)   Writing objects:  40% (6/15)   Writing objects:  46% (7/15)   Writing objects:  53% (8/15)   Writing objects:  60% (9/15)   Writing objects:  66% (10/15)   Writing objects:  73% (11/15)   Writing objects:  80% (12/15)   Writing objects:  86% (13/15)   Writing objects:  93% (14/15)   Writing objects: 100% (15/15)   Writing objects: 100% (15/15), 5.13 KiB | 1.03 MiB/s, done.
-Total 15 (delta 6), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/6)[Kremote: Resolving deltas:  16% (1/6)[Kremote: Resolving deltas:  33% (2/6)[Kremote: Resolving deltas:  50% (3/6)[Kremote: Resolving deltas:  66% (4/6)[Kremote: Resolving deltas:  83% (5/6)[Kremote: Resolving deltas: 100% (6/6)[Kremote: Resolving deltas: 100% (6/6), completed with 6 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   90bcabb..aa04a21  master -> master
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ [KEvangelines-Air:flipbookr evangelinereynolds$ git add .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git commit -m "fixed highlighting for non-sequential reveal, and wored [K[K[Kked on skeleto n.Rmd [K  [Kth[K[K[K, the e[Ktmep[K[K[Kemplac[Kte fro[K[Kor the Rstu[K[K[KStudio add in"
-[master 44333c2] fixed highlighting for non-sequential reveal, and worked on skeleton.Rmd, the template for the RStudio add in
- 6 files changed, 115 insertions(+), 56 deletions(-)
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git puch[K[Ksh
-Counting objects: 24, done.
-Delta compression using up to 4 threads.
-Compressing objects:   6% (1/15)   Compressing objects:  13% (2/15)   Compressing objects:  20% (3/15)   Compressing objects:  26% (4/15)   Compressing objects:  33% (5/15)   Compressing objects:  40% (6/15)   Compressing objects:  46% (7/15)   Compressing objects:  53% (8/15)   Compressing objects:  60% (9/15)   Compressing objects:  66% (10/15)   Compressing objects:  73% (11/15)   Compressing objects:  80% (12/15)   Compressing objects:  86% (13/15)   Compressing objects:  93% (14/15)   Compressing objects: 100% (15/15)   Compressing objects: 100% (15/15), done.
-Writing objects:   4% (1/24)   Writing objects:   8% (2/24)   Writing objects:  12% (3/24)   Writing objects:  16% (4/24)   Writing objects:  20% (5/24)   Writing objects:  25% (6/24)   Writing objects:  29% (7/24)   Writing objects:  33% (8/24)   Writing objects:  37% (9/24)   Writing objects:  41% (10/24)   Writing objects:  45% (11/24)   Writing objects:  50% (12/24)   Writing objects:  54% (13/24)   Writing objects:  58% (14/24)   Writing objects:  62% (15/24)   Writing objects:  66% (16/24)   Writing objects:  70% (17/24)   Writing objects:  75% (18/24)   Writing objects:  79% (19/24)   Writing objects:  83% (20/24)   Writing objects:  87% (21/24)   Writing objects:  91% (22/24)   Writing objects:  95% (23/24)   Writing objects: 100% (24/24)   Writing objects: 100% (24/24), 2.55 KiB | 326.00 KiB/s, done.
-Total 24 (delta 8), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/8)[Kremote: Resolving deltas:  12% (1/8)[Kremote: Resolving deltas:  25% (2/8)[Kremote: Resolving deltas:  37% (3/8)[Kremote: Resolving deltas:  50% (4/8)[Kremote: Resolving deltas:  62% (5/8)[Kremote: Resolving deltas:  75% (6/8)[Kremote: Resolving deltas:  87% (7/8)[Kremote: Resolving deltas: 100% (8/8)[Kremote: Resolving deltas: 100% (8/8), completed with 8 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   aa04a21..44333c2  master -> master
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ [KEvangelines-Air:flipbookr evangelinereynolds$ [KEvangelines-Air:flipbookr evangelinereynolds$ [KEvangelines-Air:flipbookr evangelinereynolds$ git add .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git commit -m "[K[K "mostly templac[Kte clean up "
-[master 9e1faeb] mostly template clean up
- 8 files changed, 433 insertions(+), 777 deletions(-)
- rewrite inst/rmarkdown/templates/template-name/skeleton/skeleton.Rmd (91%)
- rename man/{apply_reveal.Rd => flipbookify.Rd} (77%)
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 24, done.
-Delta compression using up to 4 threads.
-Compressing objects:   5% (1/18)   Compressing objects:  11% (2/18)   Compressing objects:  16% (3/18)   Compressing objects:  22% (4/18)   Compressing objects:  27% (5/18)   Compressing objects:  33% (6/18)   Compressing objects:  38% (7/18)   Compressing objects:  44% (8/18)   Compressing objects:  50% (9/18)   Compressing objects:  55% (10/18)   Compressing objects:  61% (11/18)   Compressing objects:  66% (12/18)   Compressing objects:  72% (13/18)   Compressing objects:  77% (14/18)   Compressing objects:  83% (15/18)   Compressing objects:  88% (16/18)   Compressing objects:  94% (17/18)   Compressing objects: 100% (18/18)   Compressing objects: 100% (18/18), done.
-Writing objects:   4% (1/24)   Writing objects:   8% (2/24)   Writing objects:  12% (3/24)   Writing objects:  16% (4/24)   Writing objects:  20% (5/24)   Writing objects:  25% (6/24)   Writing objects:  29% (7/24)   Writing objects:  33% (8/24)   Writing objects:  37% (9/24)   Writing objects:  41% (10/24)   Writing objects:  45% (11/24)   Writing objects:  50% (12/24)   Writing objects:  54% (13/24)   Writing objects:  58% (14/24)   Writing objects:  62% (15/24)   Writing objects:  66% (16/24)   Writing objects:  70% (17/24)   Writing objects:  75% (18/24)   Writing objects:  79% (19/24)   Writing objects:  83% (20/24)   Writing objects:  87% (21/24)   Writing objects:  91% (22/24)   Writing objects:  95% (23/24)   Writing objects: 100% (24/24)   Writing objects: 100% (24/24), 6.71 KiB | 1.34 MiB/s, done.
-Total 24 (delta 11), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/11)[Kremote: Resolving deltas:   9% (1/11)[Kremote: Resolving deltas:  18% (2/11)[Kremote: Resolving deltas:  27% (3/11)[Kremote: Resolving deltas:  36% (4/11)[Kremote: Resolving deltas:  45% (5/11)[Kremote: Resolving deltas:  54% (6/11)[Kremote: Resolving deltas:  63% (7/11)[Kremote: Resolving deltas:  72% (8/11)[Kremote: Resolving deltas:  81% (9/11)[Kremote: Resolving deltas:  90% (10/11)[Kremote: Resolving deltas: 100% (11/11)[Kremote: Resolving deltas: 100% (11/11), completed with 11 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   44333c2..9e1faeb  master -> master
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ [KEvangelines-Air:flipbookr evangelinereynolds$ git p[Kadd .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git pu[K[Kcommit -m "w[Kchaning [K[K[K[Kging function an[K[Knaem [K[K[Kme to reea[K[Kveal, and updating template"
-[master 9a31fa7] changing function name to reveal, and updating template
- 21 files changed, 314 insertions(+), 72 deletions(-)
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/__packages
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/cars_d357aa336c40c737627436c3a820650e.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/cars_d357aa336c40c737627436c3a820650e.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/cars_d357aa336c40c737627436c3a820650e.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-3_df2507356176b595ad732cceea445b98.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-3_df2507356176b595ad732cceea445b98.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-3_df2507356176b595ad732cceea445b98.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-4_eae25fcbc9e19161de0214158f1bcf68.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-4_eae25fcbc9e19161de0214158f1bcf68.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-4_eae25fcbc9e19161de0214158f1bcf68.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/xaringan_look_f4cad376c1e0d012e07a56814c490dd6.RData
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/xaringan_look_f4cad376c1e0d012e07a56814c490dd6.rdb
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/xaringan_look_f4cad376c1e0d012e07a56814c490dd6.rdx
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/xaringan-themer.css
- rename man/{flipbookify.Rd => reveal.Rd} (89%)
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 32, done.
-Delta compression using up to 4 threads.
-Compressing objects:   3% (1/26)   Compressing objects:   7% (2/26)   Compressing objects:  11% (3/26)   Compressing objects:  15% (4/26)   Compressing objects:  19% (5/26)   Compressing objects:  23% (6/26)   Compressing objects:  26% (7/26)   Compressing objects:  30% (8/26)   Compressing objects:  34% (9/26)   Compressing objects:  38% (10/26)   Compressing objects:  42% (11/26)   Compressing objects:  46% (12/26)   Compressing objects:  50% (13/26)   Compressing objects:  53% (14/26)   Compressing objects:  57% (15/26)   Compressing objects:  61% (16/26)   Compressing objects:  65% (17/26)   Compressing objects:  69% (18/26)   Compressing objects:  73% (19/26)   Compressing objects:  76% (20/26)   Compressing objects:  80% (21/26)   Compressing objects:  84% (22/26)   Compressing objects:  88% (23/26)   Compressing objects:  92% (24/26)   Compressing objects:  96% (25/26)   Compressing objects: 100% (26/26)   Compressing objects: 100% (26/26), done.
-Writing objects:   3% (1/32)   Writing objects:   6% (2/32)   Writing objects:   9% (3/32)   Writing objects:  12% (4/32)   Writing objects:  15% (5/32)   Writing objects:  18% (6/32)   Writing objects:  21% (7/32)   Writing objects:  25% (8/32)   Writing objects:  28% (9/32)   Writing objects:  31% (10/32)   Writing objects:  34% (11/32)   Writing objects:  37% (12/32)   Writing objects:  40% (13/32)   Writing objects:  43% (14/32)   Writing objects:  46% (15/32)   Writing objects:  50% (16/32)   Writing objects:  53% (17/32)   Writing objects:  56% (18/32)   Writing objects:  59% (19/32)   Writing objects:  62% (20/32)   Writing objects:  65% (21/32)   Writing objects:  68% (22/32)   Writing objects:  71% (23/32)   Writing objects:  75% (24/32)   Writing objects:  78% (25/32)   Writing objects:  81% (26/32)   Writing objects:  84% (27/32)   Writing objects:  87% (28/32)   Writing objects:  90% (29/32)   Writing objects:  93% (30/32)   Writing objects:  96% (31/32)   Writing objects: 100% (32/32)   Writing objects: 100% (32/32), 15.62 KiB | 290.00 KiB/s, done.
-Total 32 (delta 11), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/11)[Kremote: Resolving deltas:   9% (1/11)[Kremote: Resolving deltas:  18% (2/11)[Kremote: Resolving deltas:  27% (3/11)[Kremote: Resolving deltas:  36% (4/11)[Kremote: Resolving deltas:  45% (5/11)[Kremote: Resolving deltas:  54% (6/11)[Kremote: Resolving deltas:  63% (7/11)[Kremote: Resolving deltas:  72% (8/11)[Kremote: Resolving deltas:  81% (9/11)[Kremote: Resolving deltas:  90% (10/11)[Kremote: Resolving deltas: 100% (11/11)[Kremote: Resolving deltas: 100% (11/11), completed with 11 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   9e1faeb..9a31fa7  master -> master
-[Kmyers-screen-3:flipbookr evangelinereynolds$ git pushcommit -m "renders the flipbook template that is provided in the flipbookr package"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpush[K[Kgit p[K[K add .
-]0;~/Google Drive/r_packages/flipbookrmyers-screen-3:flipbookr evangelinereynolds$ git commit -m some et[K[K[K[K[K[K[K"some edits to the template"
-[master f13f0b7] some edits to the template
- 22 files changed, 86 insertions(+), 955 deletions(-)
- rewrite .Rproj.user/C3865889/console06/INDEX001 (97%)
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/__packages
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/cars_d357aa336c40c737627436c3a820650e.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/cars_d357aa336c40c737627436c3a820650e.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/cars_d357aa336c40c737627436c3a820650e.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-3_df2507356176b595ad732cceea445b98.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-3_df2507356176b595ad732cceea445b98.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-3_df2507356176b595ad732cceea445b98.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-4_eae25fcbc9e19161de0214158f1bcf68.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-4_eae25fcbc9e19161de0214158f1bcf68.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/unnamed-chunk-4_eae25fcbc9e19161de0214158f1bcf68.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/xaringan_look_f4cad376c1e0d012e07a56814c490dd6.RData
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/xaringan_look_f4cad376c1e0d012e07a56814c490dd6.rdb
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_cache/html/xaringan_look_f4cad376c1e0d012e07a56814c490dd6.rdx
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/xaringan-themer.css
-]0;~/Google Drive/r_packages/flipbookrmyers-screen-3:flipbookr evangelinereynolds$ ti [K[K[Kk[Kgit push
-Counting objects: 23, done.
-Delta compression using up to 4 threads.
-Compressing objects:   5% (1/17)   Compressing objects:  11% (2/17)   Compressing objects:  17% (3/17)   Compressing objects:  23% (4/17)   Compressing objects:  29% (5/17)   Compressing objects:  35% (6/17)   Compressing objects:  41% (7/17)   Compressing objects:  47% (8/17)   Compressing objects:  52% (9/17)   Compressing objects:  58% (10/17)   Compressing objects:  64% (11/17)   Compressing objects:  70% (12/17)   Compressing objects:  76% (13/17)   Compressing objects:  82% (14/17)   Compressing objects:  88% (15/17)   Compressing objects:  94% (16/17)   Compressing objects: 100% (17/17)   Compressing objects: 100% (17/17), done.
-Writing objects:   4% (1/23)   Writing objects:   8% (2/23)   Writing objects:  13% (3/23)   Writing objects:  17% (4/23)   Writing objects:  21% (5/23)   Writing objects:  26% (6/23)   Writing objects:  30% (7/23)   Writing objects:  34% (8/23)   Writing objects:  39% (9/23)   Writing objects:  43% (10/23)   Writing objects:  47% (11/23)   Writing objects:  52% (12/23)   Writing objects:  56% (13/23)   Writing objects:  60% (14/23)   Writing objects:  65% (15/23)   Writing objects:  69% (16/23)   Writing objects:  73% (17/23)   Writing objects:  78% (18/23)   Writing objects:  82% (19/23)   Writing objects:  86% (20/23)   Writing objects:  91% (21/23)   Writing objects:  95% (22/23)   Writing objects: 100% (23/23)   Writing objects: 100% (23/23), 3.89 KiB | 166.00 KiB/s, done.
-Total 23 (delta 9), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/9)[Kremote: Resolving deltas:  11% (1/9)[Kremote: Resolving deltas:  22% (2/9)[Kremote: Resolving deltas:  33% (3/9)[Kremote: Resolving deltas:  44% (4/9)[Kremote: Resolving deltas:  55% (5/9)[Kremote: Resolving deltas:  66% (6/9)[Kremote: Resolving deltas:  77% (7/9)[Kremote: Resolving deltas:  88% (8/9)[Kremote: Resolving deltas: 100% (9/9)[Kremote: Resolving deltas: 100% (9/9), completed with 9 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   9a31fa7..f13f0b7  master -> master
-[Kmyers-screen-3:flipbookr evangelinereynolds$ [Kmyers-screen-3:flipbookr evangelinereynolds$ git put[K[K[K[K add .
-]0;~/Google Drive/r_packages/flipbookrmyers-screen-3:flipbookr evangelinereynolds$ git push[K[K[K[K"[Kcommit -m "hell[K[K[K[Kwe wat[Knt you![K[K[K[K[K[K[K[K[K[K[K[Khow about some [K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kgoing with shorter column names in the parser[K_code function, '[K"[K'user"[K', "[K'nno[K[Kon'[K-seq' and 'auto'"," "m"a"t"c"h"i"n"g" "p"a"r"a"t"e"[1P"[1P"m"e"t"e"r" "n"a"m"e"s"
-[master f51f48b] going with shorter column names in the parse_code function, 'user', 'non-seq' and 'auto', matching parameter names
- 8 files changed, 56 insertions(+), 53 deletions(-)
- rewrite .Rproj.user/C3865889/console06/INDEX001 (97%)
- rewrite .Rproj.user/C3865889/rmd-outputs (64%)
-]0;~/Google Drive/r_packages/flipbookrmyers-screen-3:flipbookr evangelinereynolds$ git push
-Counting objects: 15, done.
-Delta compression using up to 4 threads.
-Compressing objects:   6% (1/15)   Compressing objects:  13% (2/15)   Compressing objects:  20% (3/15)   Compressing objects:  26% (4/15)   Compressing objects:  33% (5/15)   Compressing objects:  40% (6/15)   Compressing objects:  46% (7/15)   Compressing objects:  53% (8/15)   Compressing objects:  60% (9/15)   Compressing objects:  66% (10/15)   Compressing objects:  73% (11/15)   Compressing objects:  80% (12/15)   Compressing objects:  86% (13/15)   Compressing objects:  93% (14/15)   Compressing objects: 100% (15/15)   Compressing objects: 100% (15/15), done.
-Writing objects:   6% (1/15)   Writing objects:  13% (2/15)   Writing objects:  20% (3/15)   Writing objects:  26% (4/15)   Writing objects:  33% (5/15)   Writing objects:  40% (6/15)   Writing objects:  46% (7/15)   Writing objects:  53% (8/15)   Writing objects:  60% (9/15)   Writing objects:  66% (10/15)   Writing objects:  73% (11/15)   Writing objects:  80% (12/15)   Writing objects:  86% (13/15)   Writing objects:  93% (14/15)   Writing objects: 100% (15/15)   Writing objects: 100% (15/15), 2.30 KiB | 52.00 KiB/s, done.
-Total 15 (delta 8), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/8)[Kremote: Resolving deltas:  12% (1/8)[Kremote: Resolving deltas:  25% (2/8)[Kremote: Resolving deltas:  37% (3/8)[Kremote: Resolving deltas:  50% (4/8)[Kremote: Resolving deltas:  62% (5/8)[Kremote: Resolving deltas:  75% (6/8)[Kremote: Resolving deltas:  87% (7/8)[Kremote: Resolving deltas: 100% (8/8)[Kremote: Resolving deltas: 100% (8/8), completed with 8 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   f13f0b7..f51f48b  master -> master
-]0;~/Google Drive/r_packages/flipbookrmyers-screen-3:flipbookr evangelinereynolds$ [Kmyers-screen-3:flipbookr evangelinereynolds$ [Kmyers-screen-3:flipbookr evangelinereynolds$ [Kmyers-screen-3:flipbookr evangelinereynolds$ [Kmyers-screen-3:flipbookr evangelinereynolds$ git[K[K[Kgit add .
-]0;~/Google Drive/r_packages/flipbookrmyers-screen-3:flipbookr evangelinereynolds$ git commit -m "maybe didn't get all the way there with last comim[K[Kmit. auto should be comlumn title for parsed t[Kdf"
-[master af7cffb] maybe didn't get all the way there with last commit. auto should be comlumn title for parsed df
- 3 files changed, 21 insertions(+), 13 deletions(-)
-]0;~/Google Drive/r_packages/flipbookrmyers-screen-3:flipbookr evangelinereynolds$ git push
-Counting objects: 9, done.
-Delta compression using up to 4 threads.
-Compressing objects:  11% (1/9)   Compressing objects:  22% (2/9)   Compressing objects:  33% (3/9)   Compressing objects:  44% (4/9)   Compressing objects:  55% (5/9)   Compressing objects:  66% (6/9)   Compressing objects:  77% (7/9)   Compressing objects:  88% (8/9)   Compressing objects: 100% (9/9)   Compressing objects: 100% (9/9), done.
-Writing objects:  11% (1/9)   Writing objects:  22% (2/9)   Writing objects:  33% (3/9)   Writing objects:  44% (4/9)   Writing objects:  55% (5/9)   Writing objects:  66% (6/9)   Writing objects:  77% (7/9)   Writing objects:  88% (8/9)   Writing objects: 100% (9/9)   Writing objects: 100% (9/9), 1.29 KiB | 1.29 MiB/s, done.
-Total 9 (delta 5), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/5)[Kremote: Resolving deltas:  20% (1/5)[Kremote: Resolving deltas:  40% (2/5)[Kremote: Resolving deltas:  60% (3/5)[Kremote: Resolving deltas:  80% (4/5)[Kremote: Resolving deltas: 100% (5/5)[Kremote: Resolving deltas: 100% (5/5), completed with 5 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   f51f48b..af7cffb  master -> master
-[KEvangelines-Air:flipbookr evangelinereynolds$ git[K[K[Kgit add .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ s[Kgit commit - [Km "some delec[Ktions of unused code, [K[K; reordering coe[K[K[Kauto code s[Kchunck  [K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kk  name, a[Kcea[K[Kreate[K[K[K[K[K[Knew parameter for which [K_highlihg[K[K[K[Klight [K_frame and which_show_frame  [K- vector cases"
-[master 10005bf] some deletions of unused code; reordering auto code chunk name, new parameter for which_highlight_frame and which_show_frame - vector cases
- 9 files changed, 90 insertions(+), 77 deletions(-)
- rewrite .Rproj.user/C3865889/console06/INDEX001 (91%)
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 22, done.
-Delta compression using up to 4 threads.
-Compressing objects:   5% (1/18)   Compressing objects:  11% (2/18)   Compressing objects:  16% (3/18)   Compressing objects:  22% (4/18)   Compressing objects:  27% (5/18)   Compressing objects:  33% (6/18)   Compressing objects:  38% (7/18)   Compressing objects:  44% (8/18)   Compressing objects:  50% (9/18)   Compressing objects:  55% (10/18)   Compressing objects:  61% (11/18)   Compressing objects:  66% (12/18)   Compressing objects:  72% (13/18)   Compressing objects:  77% (14/18)   Compressing objects:  83% (15/18)   Compressing objects:  88% (16/18)   Compressing objects:  94% (17/18)   Compressing objects: 100% (18/18)   Compressing objects: 100% (18/18), done.
-Writing objects:   4% (1/22)   Writing objects:   9% (2/22)   Writing objects:  13% (3/22)   Writing objects:  18% (4/22)   Writing objects:  22% (5/22)   Writing objects:  27% (6/22)   Writing objects:  31% (7/22)   Writing objects:  36% (8/22)   Writing objects:  40% (9/22)   Writing objects:  45% (10/22)   Writing objects:  50% (11/22)   Writing objects:  54% (12/22)   Writing objects:  59% (13/22)   Writing objects:  63% (14/22)   Writing objects:  68% (15/22)   Writing objects:  72% (16/22)   Writing objects:  77% (17/22)   Writing objects:  81% (18/22)   Writing objects:  86% (19/22)   Writing objects:  90% (20/22)   Writing objects:  95% (21/22)   Writing objects: 100% (22/22)   Writing objects: 100% (22/22), 3.03 KiB | 86.00 KiB/s, done.
-Total 22 (delta 11), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/11)[Kremote: Resolving deltas:   9% (1/11)[Kremote: Resolving deltas:  18% (2/11)[Kremote: Resolving deltas:  27% (3/11)[Kremote: Resolving deltas:  36% (4/11)[Kremote: Resolving deltas:  45% (5/11)[Kremote: Resolving deltas:  54% (6/11)[Kremote: Resolving deltas:  63% (7/11)[Kremote: Resolving deltas:  72% (8/11)[Kremote: Resolving deltas:  81% (9/11)[Kremote: Resolving deltas:  90% (10/11)[Kremote: Resolving deltas: 100% (11/11)[Kremote: Resolving deltas: 100% (11/11), completed with 11 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   af7cffb..10005bf  master -> master
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git add .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git commit -m "also created functions to c[Kmake some lok[Kcal code[Ke, so [K[K[K[K[K, to play iw [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kwi th interactively [K, per Peter's suggestion"
-[master 827bd19] also created functions to make some local code, to play with interactively, per Peter's suggestion
- 2 files changed, 17 insertions(+), 2 deletions(-)
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 7, done.
-Delta compression using up to 4 threads.
-Compressing objects:  14% (1/7)   Compressing objects:  28% (2/7)   Compressing objects:  42% (3/7)   Compressing objects:  57% (4/7)   Compressing objects:  71% (5/7)   Compressing objects:  85% (6/7)   Compressing objects: 100% (7/7)   Compressing objects: 100% (7/7), done.
-Writing objects:  14% (1/7)   Writing objects:  28% (2/7)   Writing objects:  42% (3/7)   Writing objects:  57% (4/7)   Writing objects:  71% (5/7)   Writing objects:  85% (6/7)   Writing objects: 100% (7/7)   Writing objects: 100% (7/7), 1.19 KiB | 1.19 MiB/s, done.
-Total 7 (delta 4), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/4)[Kremote: Resolving deltas:  25% (1/4)[Kremote: Resolving deltas:  50% (2/4)[Kremote: Resolving deltas:  75% (3/4)[Kremote: Resolving deltas: 100% (4/4)[Kremote: Resolving deltas: 100% (4/4), completed with 4 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   10005bf..827bd19  master -> master
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ [KEvangelines-Air:flipbookr evangelinereynolds$ [KEvangelines-Air:flipbookr evangelinereynolds$ [KEvangelines-Air:flipbookr evangelinereynolds$ [KEvangelines-Air:flipbookr evangelinereynolds$ [KEvangelines-Air:flipbookr evangelinereynolds$ gt[Kit add .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git commit -m "instead of creating the partial code one[K[K[Katt[K the time of [K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kevaluated in a function defined[K[Ke[K[K[Kined in the code chunk options, new se t up is to create all partica[K[Kl[Kal code as a lit[Kst, [K[K, an [Kd have this as an input at one[Kce."
-[master 1612463] instead of creating the partial code evaluated in a function defined in the code chunk options, new set up is to create all partial code as a list, and have this as an input at once.
- 8 files changed, 123 insertions(+), 172 deletions(-)
- delete mode 100644 man/show_and_highlight_pane_classic.Rd
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 23, done.
-Delta compression using up to 4 threads.
-Compressing objects:   5% (1/17)   Compressing objects:  11% (2/17)   Compressing objects:  17% (3/17)   Compressing objects:  23% (4/17)   Compressing objects:  29% (5/17)   Compressing objects:  35% (6/17)   Compressing objects:  41% (7/17)   Compressing objects:  47% (8/17)   Compressing objects:  52% (9/17)   Compressing objects:  58% (10/17)   Compressing objects:  64% (11/17)   Compressing objects:  70% (12/17)   Compressing objects:  76% (13/17)   Compressing objects:  82% (14/17)   Compressing objects:  88% (15/17)   Compressing objects:  94% (16/17)   Compressing objects: 100% (17/17)   Compressing objects: 100% (17/17), done.
-Writing objects:   4% (1/23)   Writing objects:   8% (2/23)   Writing objects:  13% (3/23)   Writing objects:  17% (4/23)   Writing objects:  21% (5/23)   Writing objects:  26% (6/23)   Writing objects:  30% (7/23)   Writing objects:  34% (8/23)   Writing objects:  39% (9/23)   Writing objects:  43% (10/23)   Writing objects:  47% (11/23)   Writing objects:  52% (12/23)   Writing objects:  56% (13/23)   Writing objects:  60% (14/23)   Writing objects:  65% (15/23)   Writing objects:  69% (16/23)   Writing objects:  73% (17/23)   Writing objects:  78% (18/23)   Writing objects:  82% (19/23)   Writing objects:  86% (20/23)   Writing objects:  91% (21/23)   Writing objects:  95% (22/23)   Writing objects: 100% (23/23)   Writing objects: 100% (23/23), 3.22 KiB | 106.00 KiB/s, done.
-Total 23 (delta 12), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/12)[Kremote: Resolving deltas:   8% (1/12)[Kremote: Resolving deltas:  16% (2/12)[Kremote: Resolving deltas:  25% (3/12)[Kremote: Resolving deltas:  33% (4/12)[Kremote: Resolving deltas:  41% (5/12)[Kremote: Resolving deltas:  50% (6/12)[Kremote: Resolving deltas:  58% (7/12)[Kremote: Resolving deltas:  66% (8/12)[Kremote: Resolving deltas:  75% (9/12)[Kremote: Resolving deltas:  83% (10/12)[Kremote: Resolving deltas:  91% (11/12)[Kremote: Resolving deltas: 100% (12/12)[Kremote: Resolving deltas: 100% (12/12), completed with 12 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   827bd19..1612463  master -> master
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ [KEvangelines-Air:flipbookr evangelinereynolds$ [KEvangelines-Air:flipbookr evangelinereynolds$ git add .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git pus[K[K[Kcommit -m "I [K[KI wat th[K[K[K[K[Kant the first argument to[K[Kin partial kit [K[K[K[Kn[Kknit chunks [K[K[K[K[K[K[K[K[K[K[K[K[K[Kl_l[Kkin[K[Knit_chunks to be the partial code"[K"[K, so we a[Kcan pipe into it"
-[master d408303] I want the first argument in partial_knit_chunks to be the partial code, so we can pipe into it
- 4 files changed, 22 insertions(+), 7 deletions(-)
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 15, done.
-Delta compression using up to 4 threads.
-Compressing objects:   9% (1/11)   Compressing objects:  18% (2/11)   Compressing objects:  27% (3/11)   Compressing objects:  36% (4/11)   Compressing objects:  45% (5/11)   Compressing objects:  54% (6/11)   Compressing objects:  63% (7/11)   Compressing objects:  72% (8/11)   Compressing objects:  81% (9/11)   Compressing objects:  90% (10/11)   Compressing objects: 100% (11/11)   Compressing objects: 100% (11/11), done.
-Writing objects:   6% (1/15)   Writing objects:  13% (2/15)   Writing objects:  20% (3/15)   Writing objects:  26% (4/15)   Writing objects:  33% (5/15)   Writing objects:  40% (6/15)   Writing objects:  46% (7/15)   Writing objects:  53% (8/15)   Writing objects:  60% (9/15)   Writing objects:  66% (10/15)   Writing objects:  73% (11/15)   Writing objects:  80% (12/15)   Writing objects:  86% (13/15)   Writing objects:  93% (14/15)   Writing objects: 100% (15/15)   Writing objects: 100% (15/15), 1.64 KiB | 558.00 KiB/s, done.
-Total 15 (delta 6), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/6)[Kremote: Resolving deltas:  16% (1/6)[Kremote: Resolving deltas:  33% (2/6)[Kremote: Resolving deltas:  50% (3/6)[Kremote: Resolving deltas:  66% (4/6)[Kremote: Resolving deltas:  83% (5/6)[Kremote: Resolving deltas: 100% (6/6)[Kremote: Resolving deltas: 100% (6/6), completed with 6 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   1612463..d408303  master -> master
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git commit -m "a[Kwanted some more functions to be exported so that we can see how the fu[K[Kfunctions worlk[K[Kk together in a book ."
-On branch master
-Your branch is up-to-date with 'origin/master'.
-
-Changes not staged for commit:
-	[31mmodified:   .Rproj.user/C3865889/console06/FF5B13BD[m
-	[31mmodified:   .Rproj.user/C3865889/sources/prop/INDEX[m
-	[31mmodified:   .Rproj.user/shared/notebooks/paths[m
-	[31mmodified:   R/base_parse_reveal_xaringan.R[m
-
-Untracked files:
-	[31mman/create_local_code_short.Rd[m
-	[31mman/partially_knit_chunks.Rd[m
-	[31mman/show_and_highlight_code_frames.Rd[m
-
-no changes added to commit
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git commit -m "wanted some more functions to be exported so that we can see how the functions work together in a book.."[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpush[K
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccommit -m "wanted some more functions to be exported so that we can see how the functions work together in a book.."[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpush[K
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[Kadd .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git add .commit -m "wanted some more functions to be exported so that we can see how the functions work together in a book.."
-[master 69ee217] wanted some more functions to be exported so that we can see how the functions work together in a book.
- 7 files changed, 109 insertions(+)
- create mode 100644 man/create_local_code_short.Rd
- create mode 100644 man/partially_knit_chunks.Rd
- create mode 100644 man/show_and_highlight_code_frames.Rd
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git commit -m "wanted some more functions to be exported so that we can see how the functions work together in a book.."[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cadd .[K
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccommit -m "wanted some more functions to be exported so that we can see how the functions work together in a book.."[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cadd .[K
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccommit -m "wanted some more functions to be exported so that we can see how the functions work together in a book.."[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpush[K
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
-Counting objects: 18, done.
-Delta compression using up to 4 threads.
-Compressing objects:   6% (1/16)   Compressing objects:  12% (2/16)   Compressing objects:  18% (3/16)   Compressing objects:  25% (4/16)   Compressing objects:  31% (5/16)   Compressing objects:  37% (6/16)   Compressing objects:  43% (7/16)   Compressing objects:  50% (8/16)   Compressing objects:  56% (9/16)   Compressing objects:  62% (10/16)   Compressing objects:  68% (11/16)   Compressing objects:  75% (12/16)   Compressing objects:  81% (13/16)   Compressing objects:  87% (14/16)   Compressing objects:  93% (15/16)   Compressing objects: 100% (16/16)   Compressing objects: 100% (16/16), done.
-Writing objects:   5% (1/18)   Writing objects:  11% (2/18)   Writing objects:  16% (3/18)   Writing objects:  22% (4/18)   Writing objects:  27% (5/18)   Writing objects:  33% (6/18)   Writing objects:  38% (7/18)   Writing objects:  44% (8/18)   Writing objects:  50% (9/18)   Writing objects:  55% (10/18)   Writing objects:  61% (11/18)   Writing objects:  66% (12/18)   Writing objects:  72% (13/18)   Writing objects:  77% (14/18)   Writing objects:  83% (15/18)   Writing objects:  88% (16/18)   Writing objects:  94% (17/18)   Writing objects: 100% (18/18)   Writing objects: 100% (18/18), 2.89 KiB | 147.00 KiB/s, done.
-Total 18 (delta 8), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/8)[Kremote: Resolving deltas:  12% (1/8)[Kremote: Resolving deltas:  25% (2/8)[Kremote: Resolving deltas:  37% (3/8)[Kremote: Resolving deltas:  50% (4/8)[Kremote: Resolving deltas:  62% (5/8)[Kremote: Resolving deltas:  75% (6/8)[Kremote: Resolving deltas:  87% (7/8)[Kremote: Resolving deltas: 100% (8/8)[Kremote: Resolving deltas: 100% (8/8), completed with 8 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   d408303..69ee217  master -> master
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ [KEvangelines-Air:flipbookr evangelinereynolds$ git commit [K[K[K[K[K[K[Kadd .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git pu[K[Kcommit -m "changing many function names to object_verb form"
-[master cde5165] changing many function names to object_verb form
- 4 files changed, 109 insertions(+), 50 deletions(-)
-]0;~/Google Drive/r_packages/flipbookrEvangelines-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 15, done.
-Delta compression using up to 4 threads.
-Compressing objects:   9% (1/11)   Compressing objects:  18% (2/11)   Compressing objects:  27% (3/11)   Compressing objects:  36% (4/11)   Compressing objects:  45% (5/11)   Compressing objects:  54% (6/11)   Compressing objects:  63% (7/11)   Compressing objects:  72% (8/11)   Compressing objects:  81% (9/11)   Compressing objects:  90% (10/11)   Compressing objects: 100% (11/11)   Compressing objects: 100% (11/11), done.
-Writing objects:   6% (1/15)   Writing objects:  13% (2/15)   Writing objects:  20% (3/15)   Writing objects:  26% (4/15)   Writing objects:  33% (5/15)   Writing objects:  40% (6/15)   Writing objects:  46% (7/15)   Writing objects:  53% (8/15)   Writing objects:  60% (9/15)   Writing objects:  66% (10/15)   Writing objects:  73% (11/15)   Writing objects:  80% (12/15)   Writing objects:  86% (13/15)   Writing objects:  93% (14/15)   Writing objects: 100% (15/15)   Writing objects: 100% (15/15), 2.30 KiB | 472.00 KiB/s, done.
-Total 15 (delta 6), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/6)[Kremote: Resolving deltas:  16% (1/6)[Kremote: Resolving deltas:  33% (2/6)[Kremote: Resolving deltas:  50% (3/6)[Kremote: Resolving deltas:  66% (4/6)[Kremote: Resolving deltas:  83% (5/6)[Kremote: Resolving deltas: 100% (6/6)[Kremote: Resolving deltas: 100% (6/6), completed with 6 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   69ee217..cde5165  master -> master
-[KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit -m "add license and read[K[K[K[Kadditions to readme"
-[master 74be9cb] add license and additions to readme
- 27 files changed, 272 insertions(+), 184 deletions(-)
- rewrite .Rproj.user/C3865889/console06/INDEX001 (97%)
- create mode 100644 LICENSE
- create mode 100644 LICENSE.md
- create mode 100644 README.Rmd
- rewrite README.md (90%)
- rename man/{chunk_as_text.Rd => chunk_code_get.Rd} (80%)
- create mode 100644 man/chunk_name_return_code_sequence.Rd
- rename man/{parse_code.Rd => code_parse.Rd} (64%)
- rename man/{partially_knit_chunks.Rd => code_sequence_return_partial_chunks.Rd} (56%)
- rename man/{create_local_code_short.Rd => create_short_code.Rd} (63%)
- create mode 100644 man/parsed_return_partial_code_sequence.Rd
- create mode 100644 man/return_partial_chunks_template.Rd
- create mode 100644 man/return_partial_code_or_output_chunks.Rd
- create mode 100644 man/return_partial_side_by_side_code_output_chunks.Rd
- delete mode 100644 man/show_and_highlight_code_frames.Rd
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 41, done.
-Delta compression using up to 4 threads.
-Compressing objects:   2% (1/34)   Compressing objects:   5% (2/34)   Compressing objects:   8% (3/34)   Compressing objects:  11% (4/34)   Compressing objects:  14% (5/34)   Compressing objects:  17% (6/34)   Compressing objects:  20% (7/34)   Compressing objects:  23% (8/34)   Compressing objects:  26% (9/34)   Compressing objects:  29% (10/34)   Compressing objects:  32% (11/34)   Compressing objects:  35% (12/34)   Compressing objects:  38% (13/34)   Compressing objects:  41% (14/34)   Compressing objects:  44% (15/34)   Compressing objects:  47% (16/34)   Compressing objects:  50% (17/34)   Compressing objects:  52% (18/34)   Compressing objects:  55% (19/34)   Compressing objects:  58% (20/34)   Compressing objects:  61% (21/34)   Compressing objects:  64% (22/34)   Compressing objects:  67% (23/34)   Compressing objects:  70% (24/34)   Compressing objects:  73% (25/34)   Compressing objects:  76% (26/34)   Compressing objects:  79% (27/34)   Compressing objects:  82% (28/34)   Compressing objects:  85% (29/34)   Compressing objects:  88% (30/34)   Compressing objects:  91% (31/34)   Compressing objects:  94% (32/34)   Compressing objects:  97% (33/34)   Compressing objects: 100% (34/34)   Compressing objects: 100% (34/34), done.
-Writing objects:   2% (1/41)   Writing objects:   4% (2/41)   Writing objects:   7% (3/41)   Writing objects:   9% (4/41)   Writing objects:  12% (5/41)   Writing objects:  14% (6/41)   Writing objects:  17% (7/41)   Writing objects:  19% (8/41)   Writing objects:  21% (9/41)   Writing objects:  24% (10/41)   Writing objects:  26% (11/41)   Writing objects:  29% (12/41)   Writing objects:  31% (13/41)   Writing objects:  34% (14/41)   Writing objects:  36% (15/41)   Writing objects:  39% (16/41)   Writing objects:  41% (17/41)   Writing objects:  43% (18/41)   Writing objects:  46% (19/41)   Writing objects:  48% (20/41)   Writing objects:  51% (21/41)   Writing objects:  53% (22/41)   Writing objects:  56% (23/41)   Writing objects:  58% (24/41)   Writing objects:  60% (25/41)   Writing objects:  63% (26/41)   Writing objects:  65% (27/41)   Writing objects:  68% (28/41)   Writing objects:  70% (29/41)   Writing objects:  73% (30/41)   Writing objects:  75% (31/41)   Writing objects:  78% (32/41)   Writing objects:  82% (34/41)   Writing objects:  85% (35/41)   Writing objects:  87% (36/41)   Writing objects:  90% (37/41)   Writing objects:  92% (38/41)   Writing objects:  95% (39/41)   Writing objects:  97% (40/41)   Writing objects: 100% (41/41)   Writing objects: 100% (41/41), 7.33 KiB | 131.00 KiB/s, done.
-Total 41 (delta 15), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/15)[Kremote: Resolving deltas:   6% (1/15)[Kremote: Resolving deltas:  13% (2/15)[Kremote: Resolving deltas:  20% (3/15)[Kremote: Resolving deltas:  26% (4/15)[Kremote: Resolving deltas:  33% (5/15)[Kremote: Resolving deltas:  40% (6/15)[Kremote: Resolving deltas:  46% (7/15)[Kremote: Resolving deltas:  53% (8/15)[Kremote: Resolving deltas:  60% (9/15)[Kremote: Resolving deltas:  66% (10/15)[Kremote: Resolving deltas:  73% (11/15)[Kremote: Resolving deltas:  80% (12/15)[Kremote: Resolving deltas:  86% (13/15)[Kremote: Resolving deltas:  93% (14/15)[Kremote: Resolving deltas: 100% (15/15)[Kremote: Resolving deltas: 100% (15/15), completed with 12 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   cde5165..74be9cb  master -> master
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git pushcommit -m "add license and additions to readme"add .[K
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git a[K[K[K[K[Kgit add .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit -m "me[K[Kall[K[K[Kremoe[Kved in[K[Kembede[Kded flipbooks in rmd because they don't work in the book[K[K[K[Kreadme"
-[master 4ca5193] removed embedded flipbooks in rmd because they don't workin the readme
- 4 files changed, 36 insertions(+), 25 deletions(-)
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 9, done.
-Delta compression using up to 4 threads.
-Compressing objects:  11% (1/9)   Compressing objects:  22% (2/9)   Compressing objects:  33% (3/9)   Compressing objects:  44% (4/9)   Compressing objects:  55% (5/9)   Compressing objects:  66% (6/9)   Compressing objects:  77% (7/9)   Compressing objects:  88% (8/9)   Compressing objects: 100% (9/9)   Compressing objects: 100% (9/9), done.
-Writing objects:  11% (1/9)   Writing objects:  22% (2/9)   Writing objects:  33% (3/9)   Writing objects:  44% (4/9)   Writing objects:  55% (5/9)   Writing objects:  66% (6/9)   Writing objects:  77% (7/9)   Writing objects:  88% (8/9)   Writing objects: 100% (9/9)   Writing objects: 100% (9/9), 1.90 KiB | 647.00 KiB/s, done.
-Total 9 (delta 6), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/6)[Kremote: Resolving deltas:  16% (1/6)[Kremote: Resolving deltas:  33% (2/6)[Kremote: Resolving deltas:  50% (3/6)[Kremote: Resolving deltas:  66% (4/6)[Kremote: Resolving deltas:  83% (5/6)[Kremote: Resolving deltas: 100% (6/6)[Kremote: Resolving deltas: 100% (6/6), completed with 6 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   74be9cb..4ca5193  master -> master
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git pushcommit -m "removed embedded flipbooks in rmd because they don't workiin the readme"[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cadd .[K
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .[1Ppushcommit -m "removed embedded flipbooks in rmd because they don't workiin the readme"[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpush[K
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[Kcommit -m "a few more instructions on needed packages"
-[master 6449d03] a few more instructions on needed packages
- 3 files changed, 46 insertions(+), 3 deletions(-)
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 8, done.
-Delta compression using up to 4 threads.
-Compressing objects:  12% (1/8)   Compressing objects:  25% (2/8)   Compressing objects:  37% (3/8)   Compressing objects:  50% (4/8)   Compressing objects:  62% (5/8)   Compressing objects:  75% (6/8)   Compressing objects:  87% (7/8)   Compressing objects: 100% (8/8)   Compressing objects: 100% (8/8), done.
-Writing objects:  12% (1/8)   Writing objects:  25% (2/8)   Writing objects:  37% (3/8)   Writing objects:  50% (4/8)   Writing objects:  62% (5/8)   Writing objects:  75% (6/8)   Writing objects:  87% (7/8)   Writing objects: 100% (8/8)   Writing objects: 100% (8/8), 1.49 KiB | 1.49 MiB/s, done.
-Total 8 (delta 5), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/5)[Kremote: Resolving deltas:  20% (1/5)[Kremote: Resolving deltas:  40% (2/5)[Kremote: Resolving deltas:  60% (3/5)[Kremote: Resolving deltas:  80% (4/5)[Kremote: Resolving deltas: 100% (5/5)[Kremote: Resolving deltas: 100% (5/5), completed with 5 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   4ca5193..6449d03  master -> master
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git pushcommit -m "a few more instructions on needed packages"add .[K
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit -m "should [K[K[K[K[K[K[Kchanged the_code to code_q[Kseq"
-[master 131077a] changed the_code to code_seq
- 2 files changed, 29 insertions(+), 15 deletions(-)
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ tig[K[K[Kgit push
-Counting objects: 8, done.
-Delta compression using up to 4 threads.
-Compressing objects:  12% (1/8)   Compressing objects:  25% (2/8)   Compressing objects:  37% (3/8)   Compressing objects:  50% (4/8)   Compressing objects:  62% (5/8)   Compressing objects:  75% (6/8)   Compressing objects:  87% (7/8)   Compressing objects: 100% (8/8)   Compressing objects: 100% (8/8), done.
-Writing objects:  12% (1/8)   Writing objects:  25% (2/8)   Writing objects:  37% (3/8)   Writing objects:  50% (4/8)   Writing objects:  62% (5/8)   Writing objects:  75% (6/8)   Writing objects:  87% (7/8)   Writing objects: 100% (8/8)   Writing objects: 100% (8/8), 1.23 KiB | 1.23 MiB/s, done.
-Total 8 (delta 4), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/4)[Kremote: Resolving deltas:  25% (1/4)[Kremote: Resolving deltas:  50% (2/4)[Kremote: Resolving deltas:  75% (3/4)[Kremote: Resolving deltas: 100% (4/4)[Kremote: Resolving deltas: 100% (4/4), completed with 4 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   6449d03..131077a  master -> master
-[KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit -m "changed breaks argument to num_breaks"
-[master 9ccdd09] changed breaks argument to num_breaks
- 43 files changed, 3667 insertions(+), 95 deletions(-)
- rewrite .Rproj.user/C3865889/console06/INDEX001 (92%)
- rewrite .Rproj.user/C3865889/rmd-outputs (98%)
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/libs/remark-css-0.0.1/ninjutsu.css
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton.html
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/base_r_plotting_auto_1_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/base_r_plotting_auto_2_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/base_r_plotting_auto_3_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/base_r_plotting_auto_4_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_anova_auto_1_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_anova_auto_2_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_anova_auto_3_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_anova_auto_4_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_auto_3_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_auto_4_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_auto_5_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_auto_6_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_auto_7_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_multi_3_1_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_multi_3_2_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_multi_3_3_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_non_seq_1_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_non_seq_2_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_non_seq_3_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_user_1_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_user_2_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_user_3_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/further_building_auto_1_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/further_building_auto_2_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/further_building_auto_3_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/plot_object_auto_2_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/plot_object_auto_3_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/plot_object_auto_4_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/plot_object_auto_5_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/reg_assign_auto_3_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/reg_assign_auto_4_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/reg_assign_auto_5_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/reg_assign_auto_6_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/xaringan-themer.css
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 49, done.
-Delta compression using up to 4 threads.
-Compressing objects:   2% (1/42)   Compressing objects:   4% (2/42)   Compressing objects:   7% (3/42)   Compressing objects:   9% (4/42)   Compressing objects:  11% (5/42)   Compressing objects:  14% (6/42)   Compressing objects:  16% (7/42)   Compressing objects:  19% (8/42)   Compressing objects:  21% (9/42)   Compressing objects:  23% (10/42)   Compressing objects:  26% (11/42)   Compressing objects:  28% (12/42)   Compressing objects:  30% (13/42)   Compressing objects:  33% (14/42)   Compressing objects:  35% (15/42)   Compressing objects:  38% (16/42)   Compressing objects:  40% (17/42)   Compressing objects:  42% (18/42)   Compressing objects:  45% (19/42)   Compressing objects:  47% (20/42)   Compressing objects:  50% (21/42)   Compressing objects:  52% (22/42)   Compressing objects:  54% (23/42)   Compressing objects:  57% (24/42)   Compressing objects:  59% (25/42)   Compressing objects:  61% (26/42)   Compressing objects:  64% (27/42)   Compressing objects:  66% (28/42)   Compressing objects:  69% (29/42)   Compressing objects:  71% (30/42)   Compressing objects:  73% (31/42)   Compressing objects:  76% (32/42)   Compressing objects:  78% (33/42)   Compressing objects:  80% (34/42)   Compressing objects:  83% (35/42)   Compressing objects:  85% (36/42)   Compressing objects:  88% (37/42)   Compressing objects:  90% (38/42)   Compressing objects:  92% (39/42)   Compressing objects:  95% (40/42)   Compressing objects:  97% (41/42)   Compressing objects: 100% (42/42)   Compressing objects: 100% (42/42), done.
-Writing objects:   2% (1/49)   Writing objects:   4% (2/49)   Writing objects:   6% (3/49)   Writing objects:   8% (4/49)   Writing objects:  10% (5/49)   Writing objects:  12% (6/49)   Writing objects:  14% (7/49)   Writing objects:  16% (8/49)   Writing objects:  18% (9/49)   Writing objects:  20% (10/49)   Writing objects:  22% (11/49)   Writing objects:  24% (12/49)   Writing objects:  26% (13/49)   Writing objects:  28% (14/49)   Writing objects:  30% (15/49)   Writing objects:  32% (16/49)   Writing objects:  34% (17/49)   Writing objects:  36% (18/49)   Writing objects:  38% (19/49)   Writing objects:  40% (20/49)   Writing objects:  42% (21/49)   Writing objects:  44% (22/49)   Writing objects:  46% (23/49)   Writing objects:  48% (24/49)   Writing objects:  51% (25/49)   Writing objects:  53% (26/49)   Writing objects:  55% (27/49)   Writing objects:  57% (28/49)   Writing objects:  61% (30/49)   Writing objects:  63% (31/49)   Writing objects:  65% (32/49)   Writing objects:  69% (34/49)   Writing objects:  71% (35/49)   Writing objects:  73% (36/49)   Writing objects:  75% (37/49)   Writing objects:  77% (38/49)   Writing objects:  79% (39/49)   Writing objects:  81% (40/49)   Writing objects:  83% (41/49)   Writing objects:  85% (42/49), 1.07 MiB | 1.83 MiB/s   Writing objects:  87% (43/49), 1.07 MiB | 1.83 MiB/s   Writing objects:  91% (45/49), 1.07 MiB | 1.83 MiB/s   Writing objects:  93% (46/49), 1.07 MiB | 1.83 MiB/s   Writing objects:  95% (47/49), 1.07 MiB | 1.83 MiB/s   Writing objects:  97% (48/49), 1.07 MiB | 1.83 MiB/s   Writing objects: 100% (49/49), 1.07 MiB | 1.83 MiB/s   Writing objects: 100% (49/49), 1.34 MiB | 2.13 MiB/s, done.
-Total 49 (delta 12), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/12)[Kremote: Resolving deltas:   8% (1/12)[Kremote: Resolving deltas:  16% (2/12)[Kremote: Resolving deltas:  25% (3/12)[Kremote: Resolving deltas:  33% (4/12)[Kremote: Resolving deltas:  41% (5/12)[Kremote: Resolving deltas:  50% (6/12)[Kremote: Resolving deltas:  58% (7/12)[Kremote: Resolving deltas:  66% (8/12)[Kremote: Resolving deltas:  75% (9/12)[Kremote: Resolving deltas:  83% (10/12)[Kremote: Resolving deltas:  91% (11/12)[Kremote: Resolving deltas: 100% (12/12)[Kremote: Resolving deltas: 100% (12/12), completed with 9 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   131077a..9ccdd09  master -> master
-git pushcommit -m "updating to be current with package"add ./flipbookr[K
-fatal: pathspec './flipbookr' did not match any files
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add ./flipbookrpush[Kcommit -m "updating to be current with package"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"f"i"s"[1P"x" "t"o" "t"h"e" "n"u"[1P"[1P"e"x"a"m"p"l"e"s"," "n"u"m"_"b"r"e"a"k"s"
-On branch master
-Your branch is up-to-date with 'origin/master'.
-
-Changes not staged for commit:
-	[31mmodified:   .Rproj.user/C3865889/console06/FF5B13BD[m
-	[31mmodified:   .Rproj.user/C3865889/console06/FF5B13BD.env[m
-	[31mmodified:   .Rproj.user/C3865889/console06/INDEX001[m
-	[31mmodified:   .Rproj.user/C3865889/pcs/files-pane.pper[m
-	[31mmodified:   .Rproj.user/C3865889/pcs/source-pane.pper[m
-	[31mmodified:   .Rproj.user/C3865889/pcs/windowlayoutstate.pper[m
-	[31mmodified:   .Rproj.user/C3865889/rmd-outputs[m
-	[31mmodified:   R/base_parse_reveal_xaringan.R[m
-
-no changes added to commit
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit -m "fix to the examples, num_breaks"[28Padd ./flipbookrpush[Kadd ./flipbookr[K[K[K[K[K[K[K[K[K[K
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .commit -m "fix to the examples, num_breaks"[28Padd ./flipbookrcommit -m "fix to the examples, num_breaks"
-[master 1ff354a] fix to the examples, num_breaks
- 8 files changed, 80 insertions(+), 62 deletions(-)
- rewrite .Rproj.user/C3865889/console06/INDEX001 (97%)
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit -m "fix to the examples, num_breaks"add .[Kcommit -m "fix to the examples, num_breaks"[28Padd ./flipbookrpush[K
-Counting objects: 15, done.
-Delta compression using up to 4 threads.
-Compressing objects:   6% (1/15)   Compressing objects:  13% (2/15)   Compressing objects:  20% (3/15)   Compressing objects:  26% (4/15)   Compressing objects:  33% (5/15)   Compressing objects:  40% (6/15)   Compressing objects:  46% (7/15)   Compressing objects:  53% (8/15)   Compressing objects:  60% (9/15)   Compressing objects:  66% (10/15)   Compressing objects:  73% (11/15)   Compressing objects:  80% (12/15)   Compressing objects:  86% (13/15)   Compressing objects:  93% (14/15)   Compressing objects: 100% (15/15)   Compressing objects: 100% (15/15), done.
-Writing objects:   6% (1/15)   Writing objects:  13% (2/15)   Writing objects:  20% (3/15)   Writing objects:  26% (4/15)   Writing objects:  33% (5/15)   Writing objects:  40% (6/15)   Writing objects:  46% (7/15)   Writing objects:  53% (8/15)   Writing objects:  60% (9/15)   Writing objects:  66% (10/15)   Writing objects:  73% (11/15)   Writing objects:  80% (12/15)   Writing objects:  86% (13/15)   Writing objects:  93% (14/15)   Writing objects: 100% (15/15)   Writing objects: 100% (15/15), 2.87 KiB | 183.00 KiB/s, done.
-Total 15 (delta 7), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/7)[Kremote: Resolving deltas:  14% (1/7)[Kremote: Resolving deltas:  28% (2/7)[Kremote: Resolving deltas:  42% (3/7)[Kremote: Resolving deltas:  57% (4/7)[Kremote: Resolving deltas:  71% (5/7)[Kremote: Resolving deltas:  85% (6/7)[Kremote: Resolving deltas: 100% (7/7)[Kremote: Resolving deltas: 100% (7/7), completed with 7 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   9ccdd09..1ff354a  master -> master
-[KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ gt[Kit commit -m "twar[K[K[Koward more[K[K[K[Keven im[K[Ksimpler code"
-[master 959c1d9] toward even simpler code
- 53 files changed, 372 insertions(+), 97 deletions(-)
- rewrite .Rproj.user/C3865889/console06/INDEX001 (97%)
- rewrite .Rproj.user/C3865889/rmd-outputs (98%)
- create mode 100644 Untitled/Untitled.Rmd
- create mode 100644 Untitled/Untitled.html
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/libs/remark-css-0.0.1/ninjutsu.css (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton.html (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/base_r_plotting_auto_1_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/base_r_plotting_auto_2_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/base_r_plotting_auto_3_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/base_r_plotting_auto_4_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_anova_auto_1_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_anova_auto_2_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_anova_auto_3_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_anova_auto_4_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_auto_3_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_auto_4_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_auto_5_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_auto_6_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_auto_7_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_multi_3_1_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_multi_3_2_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_multi_3_3_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_non_seq_1_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_non_seq_2_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_non_seq_3_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_user_1_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_user_2_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/cars_user_3_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/further_building_auto_1_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/further_building_auto_2_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/further_building_auto_3_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/plot_object_auto_2_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/plot_object_auto_3_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/plot_object_auto_4_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/plot_object_auto_5_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/reg_assign_auto_3_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/reg_assign_auto_4_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/reg_assign_auto_5_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/skeleton_files/figure-html/reg_assign_auto_6_output-1.png (100%)
- rename {inst/rmarkdown/templates/template-name/skeleton => Untitled}/xaringan-themer.css (100%)
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git [K[K[K[Kgit push
-Counting objects: 35, done.
-Delta compression using up to 4 threads.
-Compressing objects:   3% (1/29)   Compressing objects:   6% (2/29)   Compressing objects:  10% (3/29)   Compressing objects:  13% (4/29)   Compressing objects:  17% (5/29)   Compressing objects:  20% (6/29)   Compressing objects:  24% (7/29)   Compressing objects:  27% (8/29)   Compressing objects:  31% (9/29)   Compressing objects:  34% (10/29)   Compressing objects:  37% (11/29)   Compressing objects:  41% (12/29)   Compressing objects:  44% (13/29)   Compressing objects:  48% (14/29)   Compressing objects:  51% (15/29)   Compressing objects:  55% (16/29)   Compressing objects:  58% (17/29)   Compressing objects:  62% (18/29)   Compressing objects:  65% (19/29)   Compressing objects:  68% (20/29)   Compressing objects:  72% (21/29)   Compressing objects:  75% (22/29)   Compressing objects:  79% (23/29)   Compressing objects:  82% (24/29)   Compressing objects:  86% (25/29)   Compressing objects:  89% (26/29)   Compressing objects:  93% (27/29)   Compressing objects:  96% (28/29)   Compressing objects: 100% (29/29)   Compressing objects: 100% (29/29), done.
-Writing objects:   2% (1/35)   Writing objects:   5% (2/35)   Writing objects:   8% (3/35)   Writing objects:  11% (4/35)   Writing objects:  14% (5/35)   Writing objects:  17% (6/35)   Writing objects:  20% (7/35)   Writing objects:  22% (8/35)   Writing objects:  25% (9/35)   Writing objects:  28% (10/35)   Writing objects:  31% (11/35)   Writing objects:  34% (12/35)   Writing objects:  37% (13/35)   Writing objects:  40% (14/35)   Writing objects:  42% (15/35)   Writing objects:  45% (16/35)   Writing objects:  48% (17/35)   Writing objects:  51% (18/35)   Writing objects:  54% (19/35)   Writing objects:  57% (20/35)   Writing objects:  60% (21/35)   Writing objects:  62% (22/35)   Writing objects:  68% (24/35)   Writing objects:  71% (25/35)   Writing objects:  74% (26/35)   Writing objects:  77% (27/35)   Writing objects:  80% (28/35)   Writing objects:  82% (29/35)   Writing objects:  85% (30/35)   Writing objects:  88% (31/35)   Writing objects:  91% (32/35)   Writing objects:  94% (33/35)   Writing objects:  97% (34/35)   Writing objects: 100% (35/35)   Writing objects: 100% (35/35), 9.19 KiB | 181.00 KiB/s, done.
-Total 35 (delta 17), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/17)[Kremote: Resolving deltas:   5% (1/17)[Kremote: Resolving deltas:  11% (2/17)[Kremote: Resolving deltas:  17% (3/17)[Kremote: Resolving deltas:  23% (4/17)[Kremote: Resolving deltas:  29% (5/17)[Kremote: Resolving deltas:  35% (6/17)[Kremote: Resolving deltas:  41% (7/17)[Kremote: Resolving deltas:  47% (8/17)[Kremote: Resolving deltas:  52% (9/17)[Kremote: Resolving deltas:  58% (10/17)[Kremote: Resolving deltas:  64% (11/17)[Kremote: Resolving deltas:  70% (12/17)[Kremote: Resolving deltas:  76% (13/17)[Kremote: Resolving deltas:  82% (14/17)[Kremote: Resolving deltas:  94% (16/17)[Kremote: Resolving deltas: 100% (17/17)[Kremote: Resolving deltas: 100% (17/17), completed with 15 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   1ff354a..959c1d9  master -> master
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git .[Kadd .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git comm[Kmit - [Km "h[Khello[K[K[K[K[Kwor[K[K[Krewrote the l ast[K[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K x ari[K[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K d elivery sty[K[Kystem to xaringan, using different glue levels."[C[1@ [1@o[1@f[C[1@ [1@c[1@o[1@d[1@e[C[1@ [1P[C[C[C[C[C[C[C[C[C[C[C[C[1@ [1@s[1@l[1@i[1@d[1@e[1@s[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
-[master a925e61] rewrote the delivery system of code to xaringan slides, using different glue levels.
- 46 files changed, 3838 insertions(+), 73 deletions(-)
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/libs/remark-css-0.0.1/ninjutsu.css
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton.html
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/base_r_plotting_auto_1_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/base_r_plotting_auto_2_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/base_r_plotting_auto_3_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/base_r_plotting_auto_4_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_anova_auto_1_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_anova_auto_2_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_anova_auto_3_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_anova_auto_4_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_auto_3_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_auto_4_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_auto_5_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_auto_6_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_auto_7_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_multi_3_1_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_multi_3_2_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_multi_3_3_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_non_seq_1_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_non_seq_2_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_non_seq_3_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_user_1_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_user_2_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_user_3_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/further_building_auto_1_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/further_building_auto_2_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/further_building_auto_3_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/plot_object_auto_2_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/plot_object_auto_3_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/plot_object_auto_4_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/plot_object_auto_5_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/reg_assign_auto_3_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/reg_assign_auto_4_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/reg_assign_auto_5_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/reg_assign_auto_6_output-1.png
- create mode 100644 inst/rmarkdown/templates/template-name/skeleton/xaringan-themer.css
- delete mode 100644 man/code_sequence_return_partial_chunks.Rd
- create mode 100644 man/return_partial_chunks.Rd
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 27, done.
-Delta compression using up to 4 threads.
-Compressing objects:   4% (1/23)   Compressing objects:   8% (2/23)   Compressing objects:  13% (3/23)   Compressing objects:  17% (4/23)   Compressing objects:  21% (5/23)   Compressing objects:  26% (6/23)   Compressing objects:  30% (7/23)   Compressing objects:  34% (8/23)   Compressing objects:  39% (9/23)   Compressing objects:  43% (10/23)   Compressing objects:  47% (11/23)   Compressing objects:  52% (12/23)   Compressing objects:  56% (13/23)   Compressing objects:  60% (14/23)   Compressing objects:  65% (15/23)   Compressing objects:  69% (16/23)   Compressing objects:  73% (17/23)   Compressing objects:  78% (18/23)   Compressing objects:  82% (19/23)   Compressing objects:  86% (20/23)   Compressing objects:  91% (21/23)   Compressing objects:  95% (22/23)   Compressing objects: 100% (23/23)   Compressing objects: 100% (23/23), done.
-Writing objects:   3% (1/27)   Writing objects:   7% (2/27)   Writing objects:  11% (3/27)   Writing objects:  14% (4/27)   Writing objects:  18% (5/27)   Writing objects:  22% (6/27)   Writing objects:  25% (7/27)   Writing objects:  29% (8/27)   Writing objects:  33% (9/27)   Writing objects:  37% (10/27)   Writing objects:  40% (11/27)   Writing objects:  44% (12/27)   Writing objects:  48% (13/27)   Writing objects:  51% (14/27)   Writing objects:  55% (15/27)   Writing objects:  59% (16/27)   Writing objects:  62% (17/27)   Writing objects:  66% (18/27)   Writing objects:  70% (19/27)   Writing objects:  74% (20/27)   Writing objects:  77% (21/27)   Writing objects:  81% (22/27)   Writing objects:  88% (24/27)   Writing objects:  92% (25/27)   Writing objects:  96% (26/27)   Writing objects: 100% (27/27)   Writing objects: 100% (27/27), 296.54 KiB | 4.94 MiB/s, done.
-Total 27 (delta 12), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/12)[Kremote: Resolving deltas:   8% (1/12)[Kremote: Resolving deltas:  16% (2/12)[Kremote: Resolving deltas:  25% (3/12)[Kremote: Resolving deltas:  33% (4/12)[Kremote: Resolving deltas:  41% (5/12)[Kremote: Resolving deltas:  50% (6/12)[Kremote: Resolving deltas:  58% (7/12)[Kremote: Resolving deltas:  83% (10/12)[Kremote: Resolving deltas:  91% (11/12)[Kremote: Resolving deltas: 100% (12/12)[Kremote: Resolving deltas: 100% (12/12), completed with 10 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   959c1d9..a925e61  master -> master
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git pu[K[K[K[K[K[Kgit add .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit - [Km "forgot to bui ld"
-[master 79d9689] forgot to build
- 9 files changed, 119 insertions(+), 48 deletions(-)
- copy man/{reveal.Rd => chunk_expand.Rd} (77%)
- create mode 100644 man/return_partial_chunks_template_code.Rd
- create mode 100644 man/return_partial_chunks_template_output.Rd
- rewrite man/reveal.Rd (67%)
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 15, done.
-Delta compression using up to 4 threads.
-Compressing objects:   6% (1/15)   Compressing objects:  13% (2/15)   Compressing objects:  20% (3/15)   Compressing objects:  26% (4/15)   Compressing objects:  33% (5/15)   Compressing objects:  40% (6/15)   Compressing objects:  46% (7/15)   Compressing objects:  53% (8/15)   Compressing objects:  60% (9/15)   Compressing objects:  66% (10/15)   Compressing objects:  73% (11/15)   Compressing objects:  80% (12/15)   Compressing objects:  86% (13/15)   Compressing objects:  93% (14/15)   Compressing objects: 100% (15/15)   Compressing objects: 100% (15/15), done.
-Writing objects:   6% (1/15)   Writing objects:  13% (2/15)   Writing objects:  20% (3/15)   Writing objects:  26% (4/15)   Writing objects:  33% (5/15)   Writing objects:  40% (6/15)   Writing objects:  46% (7/15)   Writing objects:  53% (8/15)   Writing objects:  60% (9/15)   Writing objects:  66% (10/15)   Writing objects:  73% (11/15)   Writing objects:  80% (12/15)   Writing objects:  86% (13/15)   Writing objects:  93% (14/15)   Writing objects: 100% (15/15)   Writing objects: 100% (15/15), 2.43 KiB | 47.00 KiB/s, done.
-Total 15 (delta 11), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/11)[Kremote: Resolving deltas:   9% (1/11)[Kremote: Resolving deltas:  18% (2/11)[Kremote: Resolving deltas:  27% (3/11)[Kremote: Resolving deltas:  36% (4/11)[Kremote: Resolving deltas:  54% (6/11)[Kremote: Resolving deltas:  63% (7/11)[Kremote: Resolving deltas:  81% (9/11)[Kremote: Resolving deltas: 100% (11/11)[Kremote: Resolving deltas: 100% (11/11), completed with 8 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   a925e61..79d9689  master -> master
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add [K[K[K[K[K[K[K[Kgit add . [K
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit -m "tightening up the delev[K[Kivery of coe[Kde i nto xaringa [Kn slides [K -- it is tight!"
-bash: !": event not found
-Evangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .[1Ppushadd .[Kgit commit - m"[K "tightening up delivery of code into  xaringan slides. Now just one function to makd [K[Ke ou[K[Kcode templay[Ke[Kte[K[K[K[K[K[K[K[Kchunk template, on[K[K[K[K; one to mae [K[Kke code c[K[K[K[K[K[Koutput chunk template"[K [K, a nd then onto building slides[K[K[K[K[K[Kset of slip[Kdes tha[K[K[Kfor tracking evolution"
-error: pathspec '-' did not match any file(s) known to git.
-error: pathspec 'm' did not match any file(s) known to git.
-error: pathspec 'tightening up delivery of code into xaringan slides. Now just one function to make code chunk template; one to make output chunk template, and then onto building set of slides for tracking evolution' did not match any file(s) known to git.
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit - m "tightening up delivery of code into  xaringan slides. Now just one function to make code chunk template; one to make output chunk template, annd then onto building set of slides for tracking evolution"[K";evolution"9evolution"Devolution"[1Pevolution"[1Pevolution"[1Pevolution"[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cm "tightening up delivery of code into xaringan slides. Now just one function to make code chunk template; one to make output chunk template, and[1P[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
-
-
-[master 5f700b7] tightening up delivery of code into xaringan slides. Now just one function to make code chunk template; one to make output chunk template, and then onto building set of slides for tracking evolution
- 43 files changed, 49 insertions(+), 3803 deletions(-)
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/libs/remark-css-0.0.1/ninjutsu.css
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton.html
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/base_r_plotting_auto_1_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/base_r_plotting_auto_2_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/base_r_plotting_auto_3_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/base_r_plotting_auto_4_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_anova_auto_1_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_anova_auto_2_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_anova_auto_3_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_anova_auto_4_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_auto_3_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_auto_4_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_auto_5_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_auto_6_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_auto_7_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_multi_3_1_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_multi_3_2_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_multi_3_3_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_non_seq_1_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_non_seq_2_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_non_seq_3_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_user_1_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_user_2_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/cars_user_3_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/further_building_auto_1_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/further_building_auto_2_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/further_building_auto_3_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/plot_object_auto_2_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/plot_object_auto_3_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/plot_object_auto_4_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/plot_object_auto_5_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/reg_assign_auto_3_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/reg_assign_auto_4_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/reg_assign_auto_5_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/skeleton_files/figure-html/reg_assign_auto_6_output-1.png
- delete mode 100644 inst/rmarkdown/templates/template-name/skeleton/xaringan-themer.css
- delete mode 100644 man/return_partial_chunks_template.Rd
- delete mode 100644 man/return_partial_code_or_output_chunks.Rd
- delete mode 100644 man/return_partial_side_by_side_code_output_chunks.Rd
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git c[Kcom[K[K[Kadd .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit -m "th[K[KPu[K[Kgot rid of one mor[K[K[Kunnce[K[Kecessary intermediate function for t[Kxaringan delivery"[K.  ya ya[K.[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[Kyay ."
-[master 127c198] got rid of one unnecessary intermediate function for xaringan delivery. yay.
- 6 files changed, 84 insertions(+), 101 deletions(-)
- rewrite man/chunk_expand.Rd (77%)
- rename man/{reveal.Rd => chunk_reveal.Rd} (77%)
- delete mode 100644 man/return_partial_chunks.Rd
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ gut[K[Kit pu[Ks[Kush
-Counting objects: 28, done.
-Delta compression using up to 4 threads.
-Compressing objects:   4% (1/24)   Compressing objects:   8% (2/24)   Compressing objects:  12% (3/24)   Compressing objects:  16% (4/24)   Compressing objects:  20% (5/24)   Compressing objects:  25% (6/24)   Compressing objects:  29% (7/24)   Compressing objects:  33% (8/24)   Compressing objects:  37% (9/24)   Compressing objects:  41% (10/24)   Compressing objects:  45% (11/24)   Compressing objects:  50% (12/24)   Compressing objects:  54% (13/24)   Compressing objects:  58% (14/24)   Compressing objects:  62% (15/24)   Compressing objects:  66% (16/24)   Compressing objects:  70% (17/24)   Compressing objects:  75% (18/24)   Compressing objects:  79% (19/24)   Compressing objects:  83% (20/24)   Compressing objects:  87% (21/24)   Compressing objects:  91% (22/24)   Compressing objects:  95% (23/24)   Compressing objects: 100% (24/24)   Compressing objects: 100% (24/24), done.
-Writing objects:   3% (1/28)   Writing objects:   7% (2/28)   Writing objects:  10% (3/28)   Writing objects:  14% (4/28)   Writing objects:  17% (5/28)   Writing objects:  21% (6/28)   Writing objects:  25% (7/28)   Writing objects:  28% (8/28)   Writing objects:  32% (9/28)   Writing objects:  39% (11/28)   Writing objects:  42% (12/28)   Writing objects:  46% (13/28)   Writing objects:  50% (14/28)   Writing objects:  53% (15/28)   Writing objects:  57% (16/28)   Writing objects:  60% (17/28)   Writing objects:  64% (18/28)   Writing objects:  67% (19/28)   Writing objects:  71% (20/28)   Writing objects:  75% (21/28)   Writing objects:  78% (22/28)   Writing objects:  82% (23/28)   Writing objects:  85% (24/28)   Writing objects:  89% (25/28)   Writing objects:  92% (26/28)   Writing objects:  96% (27/28)   Writing objects: 100% (28/28)   Writing objects: 100% (28/28), 4.13 KiB | 124.00 KiB/s, done.
-Total 28 (delta 13), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/13)[Kremote: Resolving deltas:  15% (2/13)[Kremote: Resolving deltas:  30% (4/13)[Kremote: Resolving deltas:  46% (6/13)[Kremote: Resolving deltas:  61% (8/13)[Kremote: Resolving deltas:  76% (10/13)[Kremote: Resolving deltas:  92% (12/13)[Kremote: Resolving deltas: 100% (13/13)[Kremote: Resolving deltas: 100% (13/13), completed with 7 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   79d9689..127c198  master -> master
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git pu[K[Kadd .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push[K[K[K[Kcommit-[K - [K"[Km "I'm equivocating on the public function name. bac k to reveal"
-[master fe8f480] I'm equivocating on the public function name. back to reveal
- 4 files changed, 22 insertions(+), 5 deletions(-)
- rename man/{chunk_reveal.Rd => reveal.Rd} (77%)
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 11, done.
-Delta compression using up to 4 threads.
-Compressing objects:   9% (1/11)   Compressing objects:  18% (2/11)   Compressing objects:  27% (3/11)   Compressing objects:  36% (4/11)   Compressing objects:  45% (5/11)   Compressing objects:  54% (6/11)   Compressing objects:  63% (7/11)   Compressing objects:  72% (8/11)   Compressing objects:  81% (9/11)   Compressing objects:  90% (10/11)   Compressing objects: 100% (11/11)   Compressing objects: 100% (11/11), done.
-Writing objects:   9% (1/11)   Writing objects:  18% (2/11)   Writing objects:  27% (3/11)   Writing objects:  36% (4/11)   Writing objects:  45% (5/11)   Writing objects:  54% (6/11)   Writing objects:  63% (7/11)   Writing objects:  72% (8/11)   Writing objects:  81% (9/11)   Writing objects:  90% (10/11)   Writing objects: 100% (11/11)   Writing objects: 100% (11/11), 1.93 KiB | 658.00 KiB/s, done.
-Total 11 (delta 6), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/6)[Kremote: Resolving deltas:  16% (1/6)[Kremote: Resolving deltas:  33% (2/6)[Kremote: Resolving deltas:  50% (3/6)[Kremote: Resolving deltas:  66% (4/6)[Kremote: Resolving deltas:  83% (5/6)[Kremote: Resolving deltas: 100% (6/6)[Kremote: Resolving deltas: 100% (6/6), completed with 6 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   127c198..fe8f480  master -> master
-[KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit -m "remo[K[K[K[Kclean up"
-[master a11dea7] clean up
- 44 files changed, 33 insertions(+), 4146 deletions(-)
- rewrite .Rproj.user/C3865889/console06/INDEX001 (97%)
- rewrite .Rproj.user/C3865889/rmd-outputs (98%)
- delete mode 100644 Untitled/Untitled.Rmd
- delete mode 100644 Untitled/Untitled.html
- delete mode 100644 Untitled/libs/remark-css-0.0.1/ninjutsu.css
- delete mode 100644 Untitled/skeleton.html
- delete mode 100644 Untitled/skeleton_files/figure-html/base_r_plotting_auto_1_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/base_r_plotting_auto_2_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/base_r_plotting_auto_3_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/base_r_plotting_auto_4_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/cars_anova_auto_1_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/cars_anova_auto_2_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/cars_anova_auto_3_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/cars_anova_auto_4_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/cars_auto_3_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/cars_auto_4_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/cars_auto_5_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/cars_auto_6_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/cars_auto_7_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/cars_multi_3_1_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/cars_multi_3_2_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/cars_multi_3_3_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/cars_non_seq_1_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/cars_non_seq_2_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/cars_non_seq_3_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/cars_user_1_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/cars_user_2_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/cars_user_3_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/further_building_auto_1_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/further_building_auto_2_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/further_building_auto_3_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/plot_object_auto_2_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/plot_object_auto_3_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/plot_object_auto_4_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/plot_object_auto_5_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/reg_assign_auto_3_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/reg_assign_auto_4_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/reg_assign_auto_5_output-1.png
- delete mode 100644 Untitled/skeleton_files/figure-html/reg_assign_auto_6_output-1.png
- delete mode 100644 Untitled/xaringan-themer.css
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 12, done.
-Delta compression using up to 4 threads.
-Compressing objects:   8% (1/12)   Compressing objects:  16% (2/12)   Compressing objects:  25% (3/12)   Compressing objects:  33% (4/12)   Compressing objects:  41% (5/12)   Compressing objects:  50% (6/12)   Compressing objects:  58% (7/12)   Compressing objects:  66% (8/12)   Compressing objects:  75% (9/12)   Compressing objects:  83% (10/12)   Compressing objects:  91% (11/12)   Compressing objects: 100% (12/12)   Compressing objects: 100% (12/12), done.
-Writing objects:   8% (1/12)   Writing objects:  16% (2/12)   Writing objects:  25% (3/12)   Writing objects:  33% (4/12)   Writing objects:  41% (5/12)   Writing objects:  50% (6/12)   Writing objects:  58% (7/12)   Writing objects:  66% (8/12)   Writing objects:  75% (9/12)   Writing objects:  83% (10/12)   Writing objects:  91% (11/12)   Writing objects: 100% (12/12)   Writing objects: 100% (12/12), 1.58 KiB | 1.58 MiB/s, done.
-Total 12 (delta 4), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/4)[Kremote: Resolving deltas:  25% (1/4)[Kremote: Resolving deltas:  50% (2/4)[Kremote: Resolving deltas:  75% (3/4)[Kremote: Resolving deltas: 100% (4/4)[Kremote: Resolving deltas: 100% (4/4), completed with 4 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   fe8f480..a11dea7  master -> master
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit-[K - [Km "deleting so me more exta[Kranious things"
-[master 994db16] deleting some more extranious things
- 4 files changed, 55 insertions(+), 1517 deletions(-)
- delete mode 100644 libs/remark-css-0.0.1/kunoichi.css
- delete mode 100644 libs/remark-css-0.0.1/ninjutsu.css
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 7, done.
-Delta compression using up to 4 threads.
-Compressing objects:  14% (1/7)   Compressing objects:  28% (2/7)   Compressing objects:  42% (3/7)   Compressing objects:  57% (4/7)   Compressing objects:  71% (5/7)   Compressing objects:  85% (6/7)   Compressing objects: 100% (7/7)   Compressing objects: 100% (7/7), done.
-Writing objects:  14% (1/7)   Writing objects:  28% (2/7)   Writing objects:  42% (3/7)   Writing objects:  57% (4/7)   Writing objects:  71% (5/7)   Writing objects:  85% (6/7)   Writing objects: 100% (7/7)   Writing objects: 100% (7/7), 1.23 KiB | 631.00 KiB/s, done.
-Total 7 (delta 4), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/4)[Kremote: Resolving deltas:  25% (1/4)[Kremote: Resolving deltas:  50% (2/4)[Kremote: Resolving deltas:  75% (3/4)[Kremote: Resolving deltas: 100% (4/4)[Kremote: Resolving deltas: 100% (4/4), completed with 4 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   a11dea7..994db16  master -> master
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
-Everything up-to-date
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git[K[K[K[KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git  [K[KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git m[Krm -[K.[K./[K[K..Rproj.user[1PRproj.user
-fatal: not removing '.Rproj.user' recursively without -r
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git rm .Rproj.user[C .Rproj.user- .Rproj.userr .Rproj.user[C .Rproj.user
-error: the following files have local modifications:
-    .Rproj.user/C3865889/console06/FF5B13BD
-    .Rproj.user/C3865889/console06/INDEX001
-    .Rproj.user/C3865889/sources/prop/INDEX
-(use --cached to keep the file, or -f to force removal)
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git [K[K[K[Kgo[Kit commit -m "removing .R[K[Krprojuser"
-On branch master
-Your branch is up-to-date with 'origin/master'.
-
-Changes not staged for commit:
-	[31mmodified:   .Rproj.user/C3865889/console06/FF5B13BD[m
-	[31mmodified:   .Rproj.user/C3865889/console06/INDEX001[m
-	[31mmodified:   .Rproj.user/C3865889/sources/prop/INDEX[m
-	[31mmodified:   inst/rmarkdown/templates/template-name/skeleton/skeleton.Rmd[m
-
-Untracked files:
-	[31minst/rmarkdown/templates/template-name/skeleton/libs/[m
-	[31minst/rmarkdown/templates/template-name/skeleton/skeleton.html[m
-	[31minst/rmarkdown/templates/template-name/skeleton/skeleton_files/[m
-	[31minst/rmarkdown/templates/template-name/skeleton/xaringan-themer.css[m
-
-no changes added to commit
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit -m "removing rprojuser"[12Prm -r  .Rproj.user[4P.Rproj.user-r  .Rproj.user[K[K[K[K[K[K[K[K[K[K[K[K.r[KRproj.user/
-error: the following files have local modifications:
-    .Rproj.user/C3865889/console06/FF5B13BD
-    .Rproj.user/C3865889/console06/INDEX001
-    .Rproj.user/C3865889/sources/prop/INDEX
-(use --cached to keep the file, or -f to force removal)
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git pull
-Already up-to-date.
-[KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git comment "[K[K[K[K[Kut[K[Kit -m "chaning [K[K[K[Kgning [K[K[K[K[King recommenta[K[Kdation to inclue[Kde ez[Kquals false, [K[K. breaks[K[K[K[K[K[Kand changing breaks to reaveal[K[K[K[K[Kveal. and changing re[K[Kreg and reverse assignmen t to left and right assignment"
-[master 87359e7] changing recommendation to include equals false. and changing breaks to reveal. and changing reg and reverse assignment to left and right assignment
- 41 files changed, 3330 insertions(+), 274 deletions(-)
- rewrite .Rproj.user/C3865889/console06/INDEX001 (97%)
- create mode 100644 _pkgdown.yml
- create mode 100644 docs/404.html
- create mode 100644 docs/LICENSE-text.html
- create mode 100644 docs/LICENSE.html
- create mode 100644 docs/authors.html
- create mode 100644 docs/docsearch.css
- create mode 100644 docs/docsearch.js
- create mode 100644 docs/index.html
- create mode 100644 docs/link.svg
- create mode 100644 docs/pkgdown.css
- create mode 100644 docs/pkgdown.js
- create mode 100644 docs/pkgdown.yml
- create mode 100644 docs/reference/chunk_code_get.html
- create mode 100644 docs/reference/chunk_expand.html
- create mode 100644 docs/reference/chunk_name_return_code_sequence.html
- create mode 100644 docs/reference/code_parse.html
- create mode 100644 docs/reference/create_short_code.html
- create mode 100644 docs/reference/index.html
- create mode 100644 docs/reference/parsed_return_partial_code_sequence.html
- create mode 100644 docs/reference/return_partial_chunks_template_code.html
- create mode 100644 docs/reference/return_partial_chunks_template_output.html
- create mode 100644 docs/reference/reveal.html
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 60, done.
-Delta compression using up to 4 threads.
-Compressing objects:   1% (1/53)   Compressing objects:   3% (2/53)   Compressing objects:   5% (3/53)   Compressing objects:   7% (4/53)   Compressing objects:   9% (5/53)   Compressing objects:  11% (6/53)   Compressing objects:  13% (7/53)   Compressing objects:  15% (8/53)   Compressing objects:  16% (9/53)   Compressing objects:  18% (10/53)   Compressing objects:  20% (11/53)   Compressing objects:  22% (12/53)   Compressing objects:  24% (13/53)   Compressing objects:  26% (14/53)   Compressing objects:  28% (15/53)   Compressing objects:  30% (16/53)   Compressing objects:  32% (17/53)   Compressing objects:  33% (18/53)   Compressing objects:  35% (19/53)   Compressing objects:  37% (20/53)   Compressing objects:  39% (21/53)   Compressing objects:  41% (22/53)   Compressing objects:  43% (23/53)   Compressing objects:  45% (24/53)   Compressing objects:  47% (25/53)   Compressing objects:  49% (26/53)   Compressing objects:  50% (27/53)   Compressing objects:  52% (28/53)   Compressing objects:  54% (29/53)   Compressing objects:  56% (30/53)   Compressing objects:  58% (31/53)   Compressing objects:  60% (32/53)   Compressing objects:  62% (33/53)   Compressing objects:  64% (34/53)   Compressing objects:  66% (35/53)   Compressing objects:  67% (36/53)   Compressing objects:  69% (37/53)   Compressing objects:  71% (38/53)   Compressing objects:  73% (39/53)   Compressing objects:  75% (40/53)   Compressing objects:  77% (41/53)   Compressing objects:  79% (42/53)   Compressing objects:  81% (43/53)   Compressing objects:  83% (44/53)   Compressing objects:  84% (45/53)   Compressing objects:  86% (46/53)   Compressing objects:  88% (47/53)   Compressing objects:  90% (48/53)   Compressing objects:  92% (49/53)   Compressing objects:  94% (50/53)   Compressing objects:  96% (51/53)   Compressing objects:  98% (52/53)   Compressing objects: 100% (53/53)   Compressing objects: 100% (53/53), done.
-Writing objects:   1% (1/60)   Writing objects:   3% (2/60)   Writing objects:   5% (3/60)   Writing objects:   6% (4/60)   Writing objects:   8% (5/60)   Writing objects:  10% (6/60)   Writing objects:  11% (7/60)   Writing objects:  13% (8/60)   Writing objects:  15% (9/60)   Writing objects:  16% (10/60)   Writing objects:  18% (11/60)   Writing objects:  20% (12/60)   Writing objects:  21% (13/60)   Writing objects:  23% (14/60)   Writing objects:  25% (15/60)   Writing objects:  26% (16/60)   Writing objects:  28% (17/60)   Writing objects:  30% (18/60)   Writing objects:  31% (19/60)   Writing objects:  33% (20/60)   Writing objects:  35% (21/60)   Writing objects:  36% (22/60)   Writing objects:  38% (23/60)   Writing objects:  40% (24/60)   Writing objects:  41% (25/60)   Writing objects:  43% (26/60)   Writing objects:  45% (27/60)   Writing objects:  48% (29/60)   Writing objects:  51% (31/60)   Writing objects:  53% (32/60)   Writing objects:  55% (33/60)   Writing objects:  56% (34/60)   Writing objects:  58% (35/60)   Writing objects:  60% (36/60)   Writing objects:  61% (37/60)   Writing objects:  63% (38/60)   Writing objects:  65% (39/60)   Writing objects:  66% (40/60)   Writing objects:  68% (41/60)   Writing objects:  71% (43/60)   Writing objects:  73% (44/60)   Writing objects:  75% (45/60)   Writing objects:  76% (46/60)   Writing objects:  78% (47/60)   Writing objects:  80% (48/60)   Writing objects:  81% (49/60)   Writing objects:  83% (50/60)   Writing objects:  85% (51/60)   Writing objects:  86% (52/60)   Writing objects:  88% (53/60)   Writing objects:  90% (54/60)   Writing objects:  91% (55/60)   Writing objects:  93% (56/60)   Writing objects:  95% (57/60)   Writing objects:  96% (58/60)   Writing objects:  98% (59/60)   Writing objects: 100% (60/60)   Writing objects: 100% (60/60), 27.54 KiB | 271.00 KiB/s, done.
-Total 60 (delta 29), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/29)[Kremote: Resolving deltas:   3% (1/29)[Kremote: Resolving deltas:  41% (12/29)[Kremote: Resolving deltas:  44% (13/29)[Kremote: Resolving deltas:  48% (14/29)[Kremote: Resolving deltas:  51% (15/29)[Kremote: Resolving deltas:  55% (16/29)[Kremote: Resolving deltas:  58% (17/29)[Kremote: Resolving deltas:  62% (18/29)[Kremote: Resolving deltas:  65% (19/29)[Kremote: Resolving deltas:  68% (20/29)[Kremote: Resolving deltas:  72% (21/29)[Kremote: Resolving deltas:  75% (22/29)[Kremote: Resolving deltas:  79% (23/29)[Kremote: Resolving deltas:  82% (24/29)[Kremote: Resolving deltas:  86% (25/29)[Kremote: Resolving deltas:  89% (26/29)[Kremote: Resolving deltas:  93% (27/29)[Kremote: Resolving deltas:  96% (28/29)[Kremote: Resolving deltas: 100% (29/29)[Kremote: Resolving deltas: 100% (29/29), completed with 17 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   994db16..87359e7  master -> master
-[KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add.[K .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit - [Km "We are back to break-[K_type, and s pecial comment will be BREAK, not REVEAL" [K[K [K, also public function w[Kwill be chunk_reveal"
-[master b18d05c] We are back to break_type, and special comment will be BREAK, not REVEAL, also public function will be chunk_reveal
- 14 files changed, 142 insertions(+), 143 deletions(-)
- rewrite .Rproj.user/C3865889/console06/INDEX001 (97%)
- rewrite .Rproj.user/C3865889/rmd-outputs (77%)
- rename man/{reveal.Rd => chunk_reveal.Rd} (62%)
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 29, done.
-Delta compression using up to 4 threads.
-Compressing objects:   4% (1/24)   Compressing objects:   8% (2/24)   Compressing objects:  12% (3/24)   Compressing objects:  16% (4/24)   Compressing objects:  20% (5/24)   Compressing objects:  25% (6/24)   Compressing objects:  29% (7/24)   Compressing objects:  33% (8/24)   Compressing objects:  37% (9/24)   Compressing objects:  41% (10/24)   Compressing objects:  45% (11/24)   Compressing objects:  50% (12/24)   Compressing objects:  54% (13/24)   Compressing objects:  58% (14/24)   Compressing objects:  62% (15/24)   Compressing objects:  66% (16/24)   Compressing objects:  70% (17/24)   Compressing objects:  75% (18/24)   Compressing objects:  79% (19/24)   Compressing objects:  83% (20/24)   Compressing objects:  87% (21/24)   Compressing objects:  91% (22/24)   Compressing objects:  95% (23/24)   Compressing objects: 100% (24/24)   Compressing objects: 100% (24/24), done.
-Writing objects:   3% (1/29)   Writing objects:   6% (2/29)   Writing objects:  10% (3/29)   Writing objects:  13% (4/29)   Writing objects:  17% (5/29)   Writing objects:  20% (6/29)   Writing objects:  24% (7/29)   Writing objects:  27% (8/29)   Writing objects:  31% (9/29)   Writing objects:  34% (10/29)   Writing objects:  37% (11/29)   Writing objects:  41% (12/29)   Writing objects:  44% (13/29)   Writing objects:  48% (14/29)   Writing objects:  51% (15/29)   Writing objects:  55% (16/29)   Writing objects:  58% (17/29)   Writing objects:  62% (18/29)   Writing objects:  65% (19/29)   Writing objects:  68% (20/29)   Writing objects:  72% (21/29)   Writing objects:  75% (22/29)   Writing objects:  79% (23/29)   Writing objects:  82% (24/29)   Writing objects:  86% (25/29)   Writing objects:  89% (26/29)   Writing objects:  93% (27/29)   Writing objects:  96% (28/29)   Writing objects: 100% (29/29)   Writing objects: 100% (29/29), 4.65 KiB | 250.00 KiB/s, done.
-Total 29 (delta 15), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/15)[Kremote: Resolving deltas:   6% (1/15)[Kremote: Resolving deltas:  13% (2/15)[Kremote: Resolving deltas:  20% (3/15)[Kremote: Resolving deltas:  26% (4/15)[Kremote: Resolving deltas:  33% (5/15)[Kremote: Resolving deltas:  40% (6/15)[Kremote: Resolving deltas:  46% (7/15)[Kremote: Resolving deltas:  53% (8/15)[Kremote: Resolving deltas:  60% (9/15)[Kremote: Resolving deltas:  66% (10/15)[Kremote: Resolving deltas:  73% (11/15)[Kremote: Resolving deltas:  80% (12/15)[Kremote: Resolving deltas:  86% (13/15)[Kremote: Resolving deltas:  93% (14/15)[Kremote: Resolving deltas: 100% (15/15)[Kremote: Resolving deltas: 100% (15/15), completed with 15 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   87359e7..b18d05c  master -> master
-[KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git  [K[AEvangelines-MacBook-Air:flipbookr evangelinereynolds$  git commit - [Km "updating some #[K#bre[K[K[KB[KBREAK [K[K[K[K[K[K[Kteh [K[K[Khe c[Ksepe[K[K[Kpecial comment to  #brea[K[K[K[KBREAK"
-[master d3f8c31] updating some the special comment to #BREAK
- 6 files changed, 28 insertions(+), 30 deletions(-)
- rewrite .Rproj.user/C3865889/console06/INDEX001 (92%)
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$  git push
-Counting objects: 13, done.
-Delta compression using up to 4 threads.
-Compressing objects:   7% (1/13)   Compressing objects:  15% (2/13)   Compressing objects:  23% (3/13)   Compressing objects:  30% (4/13)   Compressing objects:  38% (5/13)   Compressing objects:  46% (6/13)   Compressing objects:  53% (7/13)   Compressing objects:  61% (8/13)   Compressing objects:  69% (9/13)   Compressing objects:  76% (10/13)   Compressing objects:  84% (11/13)   Compressing objects:  92% (12/13)   Compressing objects: 100% (13/13)   Compressing objects: 100% (13/13), done.
-Writing objects:   7% (1/13)   Writing objects:  15% (2/13)   Writing objects:  23% (3/13)   Writing objects:  30% (4/13)   Writing objects:  38% (5/13)   Writing objects:  46% (6/13)   Writing objects:  53% (7/13)   Writing objects:  61% (8/13)   Writing objects:  69% (9/13)   Writing objects:  76% (10/13)   Writing objects:  84% (11/13)   Writing objects:  92% (12/13)   Writing objects: 100% (13/13)   Writing objects: 100% (13/13), 1.73 KiB | 1.73 MiB/s, done.
-Total 13 (delta 8), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/8)[Kremote: Resolving deltas:  12% (1/8)[Kremote: Resolving deltas:  25% (2/8)[Kremote: Resolving deltas:  37% (3/8)[Kremote: Resolving deltas:  50% (4/8)[Kremote: Resolving deltas:  62% (5/8)[Kremote: Resolving deltas:  75% (6/8)[Kremote: Resolving deltas:  87% (7/8)[Kremote: Resolving deltas: 100% (8/8)[Kremote: Resolving deltas: 100% (8/8), completed with 8 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   b18d05c..d3f8c31  master -> master
-[KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .re[K[K[Kr[K./re[K[KRea[K[K[KREADME.Rmd 
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add ./Rea[K[KEADME.md
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit -m "just update[King - nt [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Co  need tof [K[K[K[Kfor Xaringan Them[K[K[K[Ktheamer[K[K[K[Kmer[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kxaringantheam[K[Kmer"
-[master 636d6c2] just updating - no need for xaringanthemer
- 2 files changed, 14 deletions(-)
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 4, done.
-Delta compression using up to 4 threads.
-Compressing objects:  25% (1/4)   Compressing objects:  50% (2/4)   Compressing objects:  75% (3/4)   Compressing objects: 100% (4/4)   Compressing objects: 100% (4/4), done.
-Writing objects:  25% (1/4)   Writing objects:  50% (2/4)   Writing objects:  75% (3/4)   Writing objects: 100% (4/4)   Writing objects: 100% (4/4), 397 bytes | 397.00 KiB/s, done.
-Total 4 (delta 3), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/3)[Kremote: Resolving deltas:  33% (1/3)[Kremote: Resolving deltas:  66% (2/3)[Kremote: Resolving deltas: 100% (3/3)[Kremote: Resolving deltas: 100% (3/3), completed with 3 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   d3f8c31..636d6c2  master -> master
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .r[K/R
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ gi [Kt commit -m "not sure if I [K got  thos [Ke code cr[K[K[K[K[Kde_creat [Ke ec[Kdits added"
-On branch master
-Your branch is up-to-date with 'origin/master'.
-
-Changes not staged for commit:
-	[31mmodified:   .Rproj.user/C3865889/console06/FF5B13BD[m
-	[31mmodified:   .Rproj.user/C3865889/console06/FF5B13BD.env[m
-	[31mmodified:   .Rproj.user/C3865889/console06/INDEX001[m
-	[31mmodified:   .Rproj.user/C3865889/pcs/files-pane.pper[m
-	[31mmodified:   .Rproj.user/C3865889/pcs/windowlayoutstate.pper[m
-	[31mmodified:   .Rproj.user/C3865889/rmd-outputs[m
-	[31mmodified:   .Rproj.user/C3865889/sources/prop/INDEX[m
-	[31mmodified:   .Rproj.user/shared/notebooks/paths[m
-
-no changes added to commit
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ g[Kgit add .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit  -m "some o[Kupdates to template"
-[master 49d17f2] some updates to template
- 9 files changed, 72 insertions(+), 53 deletions(-)
- rewrite .Rproj.user/C3865889/console06/INDEX001 (97%)
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 24, done.
-Delta compression using up to 4 threads.
-Compressing objects:   5% (1/18)   Compressing objects:  11% (2/18)   Compressing objects:  16% (3/18)   Compressing objects:  22% (4/18)   Compressing objects:  27% (5/18)   Compressing objects:  33% (6/18)   Compressing objects:  38% (7/18)   Compressing objects:  44% (8/18)   Compressing objects:  50% (9/18)   Compressing objects:  55% (10/18)   Compressing objects:  61% (11/18)   Compressing objects:  66% (12/18)   Compressing objects:  72% (13/18)   Compressing objects:  77% (14/18)   Compressing objects:  83% (15/18)   Compressing objects:  88% (16/18)   Compressing objects:  94% (17/18)   Compressing objects: 100% (18/18)   Compressing objects: 100% (18/18), done.
-Writing objects:   4% (1/24)   Writing objects:   8% (2/24)   Writing objects:  12% (3/24)   Writing objects:  16% (4/24)   Writing objects:  20% (5/24)   Writing objects:  25% (6/24)   Writing objects:  29% (7/24)   Writing objects:  33% (8/24)   Writing objects:  37% (9/24)   Writing objects:  41% (10/24)   Writing objects:  45% (11/24)   Writing objects:  50% (12/24)   Writing objects:  54% (13/24)   Writing objects:  58% (14/24)   Writing objects:  62% (15/24)   Writing objects:  66% (16/24)   Writing objects:  70% (17/24)   Writing objects:  75% (18/24)   Writing objects:  79% (19/24)   Writing objects:  83% (20/24)   Writing objects:  87% (21/24)   Writing objects:  91% (22/24)   Writing objects:  95% (23/24)   Writing objects: 100% (24/24)   Writing objects: 100% (24/24), 3.14 KiB | 92.00 KiB/s, done.
-Total 24 (delta 11), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/11)[Kremote: Resolving deltas:   9% (1/11)[Kremote: Resolving deltas:  18% (2/11)[Kremote: Resolving deltas:  27% (3/11)[Kremote: Resolving deltas:  36% (4/11)[Kremote: Resolving deltas:  45% (5/11)[Kremote: Resolving deltas:  54% (6/11)[Kremote: Resolving deltas:  63% (7/11)[Kremote: Resolving deltas:  72% (8/11)[Kremote: Resolving deltas:  81% (9/11)[Kremote: Resolving deltas:  90% (10/11)[Kremote: Resolving deltas: 100% (11/11)[Kremote: Resolving deltas: 100% (11/11), completed with 11 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   636d6c2..49d17f2  master -> master
-gi [Kt add ./ [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K/
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit  -m "breaking up parsing cod[K[K[K[K steps"[K and adding m[Kminn[Ki.R"
-[master f6774e2] breaking up parsing steps and adding mini.R
- 12 files changed, 372 insertions(+), 193 deletions(-)
- rewrite .Rproj.user/C3865889/console06/INDEX001 (95%)
- create mode 100644 R/mini.R
- create mode 100644 tmp.R
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 28, done.
-Delta compression using up to 4 threads.
-Compressing objects:   4% (1/22)   Compressing objects:   9% (2/22)   Compressing objects:  13% (3/22)   Compressing objects:  18% (4/22)   Compressing objects:  22% (5/22)   Compressing objects:  27% (6/22)   Compressing objects:  31% (7/22)   Compressing objects:  36% (8/22)   Compressing objects:  40% (9/22)   Compressing objects:  45% (10/22)   Compressing objects:  50% (11/22)   Compressing objects:  54% (12/22)   Compressing objects:  59% (13/22)   Compressing objects:  63% (14/22)   Compressing objects:  68% (15/22)   Compressing objects:  72% (16/22)   Compressing objects:  77% (17/22)   Compressing objects:  81% (18/22)   Compressing objects:  86% (19/22)   Compressing objects:  90% (20/22)   Compressing objects:  95% (21/22)   Compressing objects: 100% (22/22)   Compressing objects: 100% (22/22), done.
-Writing objects:   3% (1/28)   Writing objects:   7% (2/28)   Writing objects:  10% (3/28)   Writing objects:  14% (4/28)   Writing objects:  17% (5/28)   Writing objects:  21% (6/28)   Writing objects:  25% (7/28)   Writing objects:  28% (8/28)   Writing objects:  32% (9/28)   Writing objects:  35% (10/28)   Writing objects:  39% (11/28)   Writing objects:  42% (12/28)   Writing objects:  46% (13/28)   Writing objects:  50% (14/28)   Writing objects:  53% (15/28)   Writing objects:  57% (16/28)   Writing objects:  60% (17/28)   Writing objects:  64% (18/28)   Writing objects:  67% (19/28)   Writing objects:  71% (20/28)   Writing objects:  75% (21/28)   Writing objects:  78% (22/28)   Writing objects:  82% (23/28)   Writing objects:  85% (24/28)   Writing objects:  89% (25/28)   Writing objects:  92% (26/28)   Writing objects:  96% (27/28)   Writing objects: 100% (28/28)   Writing objects: 100% (28/28), 4.51 KiB | 104.00 KiB/s, done.
-Total 28 (delta 12), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/12)[Kremote: Resolving deltas:   8% (1/12)[Kremote: Resolving deltas:  16% (2/12)[Kremote: Resolving deltas:  25% (3/12)[Kremote: Resolving deltas:  33% (4/12)[Kremote: Resolving deltas:  41% (5/12)[Kremote: Resolving deltas:  50% (6/12)[Kremote: Resolving deltas:  58% (7/12)[Kremote: Resolving deltas:  66% (8/12)[Kremote: Resolving deltas:  75% (9/12)[Kremote: Resolving deltas:  91% (11/12)[Kremote: Resolving deltas: 100% (12/12)[Kremote: Resolving deltas: 100% (12/12), completed with 11 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   49d17f2..f6774e2  master -> master
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ [KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add . [K
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit - [Km "did the dve[K[Keve[Ktools chekc[K[Kck, decided  to comment out eveything[K[K[K[K[K[Krything in the .min[K[K[K[Kmini f[K[K.R for now"
-[master 3c3c95d] did the devtools check, decided to comment out everything in the mini.R for now
- 6 files changed, 174 insertions(+), 307 deletions(-)
- rewrite R/mini.R (99%)
- rename man/{code_parse.Rd => code_base_parse.Rd} (77%)
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 13, done.
-Delta compression using up to 4 threads.
-Compressing objects:   7% (1/13)   Compressing objects:  15% (2/13)   Compressing objects:  23% (3/13)   Compressing objects:  30% (4/13)   Compressing objects:  38% (5/13)   Compressing objects:  46% (6/13)   Compressing objects:  53% (7/13)   Compressing objects:  61% (8/13)   Compressing objects:  69% (9/13)   Compressing objects:  76% (10/13)   Compressing objects:  84% (11/13)   Compressing objects:  92% (12/13)   Compressing objects: 100% (13/13)   Compressing objects: 100% (13/13), done.
-Writing objects:   7% (1/13)   Writing objects:  15% (2/13)   Writing objects:  23% (3/13)   Writing objects:  30% (4/13)   Writing objects:  38% (5/13)   Writing objects:  46% (6/13)   Writing objects:  53% (7/13)   Writing objects:  61% (8/13)   Writing objects:  69% (9/13)   Writing objects:  76% (10/13)   Writing objects:  84% (11/13)   Writing objects:  92% (12/13)   Writing objects: 100% (13/13)   Writing objects: 100% (13/13), 2.34 KiB | 2.34 MiB/s, done.
-Total 13 (delta 8), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/8)[Kremote: Resolving deltas:  12% (1/8)[Kremote: Resolving deltas:  25% (2/8)[Kremote: Resolving deltas:  37% (3/8)[Kremote: Resolving deltas:  50% (4/8)[Kremote: Resolving deltas:  62% (5/8)[Kremote: Resolving deltas:  75% (6/8)[Kremote: Resolving deltas:  87% (7/8)[Kremote: Resolving deltas: 100% (8/8)[Kremote: Resolving deltas: 100% (8/8), completed with 8 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   f6774e2..3c3c95d  master -> master
-[KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git commit -m "adding the flipbook mini codee[K!" [K[K[K -- [K[K[K[K"
-[master 3cae01a] adding the flipbook mini code
- 15 files changed, 438 insertions(+), 248 deletions(-)
- rewrite .Rproj.user/C3865889/console06/INDEX001 (90%)
- rewrite .Rproj.user/C3865889/rmd-outputs (99%)
- rewrite R/mini.R (97%)
- create mode 100644 man/create_cow_frame.Rd
- create mode 100644 man/partial_plotting_code_plot.Rd
- create mode 100644 man/prepped_partial_plotting_code_plot_text.Rd
- delete mode 100644 tmp.R
-]0;~/Google Drive/r_packages/flipbookrEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git push
-Counting objects: 31, done.
-Delta compression using up to 4 threads.
-Compressing objects:   4% (1/25)   Compressing objects:   8% (2/25)   Compressing objects:  12% (3/25)   Compressing objects:  16% (4/25)   Compressing objects:  20% (5/25)   Compressing objects:  24% (6/25)   Compressing objects:  28% (7/25)   Compressing objects:  32% (8/25)   Compressing objects:  36% (9/25)   Compressing objects:  40% (10/25)   Compressing objects:  44% (11/25)   Compressing objects:  48% (12/25)   Compressing objects:  52% (13/25)   Compressing objects:  56% (14/25)   Compressing objects:  60% (15/25)   Compressing objects:  64% (16/25)   Compressing objects:  68% (17/25)   Compressing objects:  72% (18/25)   Compressing objects:  76% (19/25)   Compressing objects:  80% (20/25)   Compressing objects:  84% (21/25)   Compressing objects:  88% (22/25)   Compressing objects:  92% (23/25)   Compressing objects:  96% (24/25)   Compressing objects: 100% (25/25)   Compressing objects: 100% (25/25), done.
-Writing objects:   3% (1/31)   Writing objects:   6% (2/31)   Writing objects:   9% (3/31)   Writing objects:  12% (4/31)   Writing objects:  16% (5/31)   Writing objects:  19% (6/31)   Writing objects:  22% (7/31)   Writing objects:  25% (8/31)   Writing objects:  29% (9/31)   Writing objects:  32% (10/31)   Writing objects:  35% (11/31)   Writing objects:  38% (12/31)   Writing objects:  41% (13/31)   Writing objects:  45% (14/31)   Writing objects:  48% (15/31)   Writing objects:  51% (16/31)   Writing objects:  54% (17/31)   Writing objects:  58% (18/31)   Writing objects:  61% (19/31)   Writing objects:  64% (20/31)   Writing objects:  67% (21/31)   Writing objects:  70% (22/31)   Writing objects:  74% (23/31)   Writing objects:  77% (24/31)   Writing objects:  80% (25/31)   Writing objects:  83% (26/31)   Writing objects:  87% (27/31)   Writing objects:  90% (28/31)   Writing objects:  93% (29/31)   Writing objects:  96% (30/31)   Writing objects: 100% (31/31)   Writing objects: 100% (31/31), 6.66 KiB | 1.33 MiB/s, done.
-Total 31 (delta 12), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/12)[Kremote: Resolving deltas:   8% (1/12)[Kremote: Resolving deltas:  16% (2/12)[Kremote: Resolving deltas:  25% (3/12)[Kremote: Resolving deltas:  33% (4/12)[Kremote: Resolving deltas:  41% (5/12)[Kremote: Resolving deltas:  50% (6/12)[Kremote: Resolving deltas:  58% (7/12)[Kremote: Resolving deltas:  66% (8/12)[Kremote: Resolving deltas:  75% (9/12)[Kremote: Resolving deltas:  83% (10/12)[Kremote: Resolving deltas:  91% (11/12)[Kremote: Resolving deltas: 100% (12/12)[Kremote: Resolving deltas: 100% (12/12), completed with 12 local objects.[K
-To https://github.com/EvaMaeRey/flipbookr.git
-   3c3c95d..3cae01a  master -> master
-[KEvangelines-MacBook-Air:flipbookr evangelinereynolds$ git add .

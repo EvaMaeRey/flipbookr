@@ -1,11 +1,10 @@
 Package: flipbookr
 Type: Package
-Title: Parses code, returns 
+Title: Parses code, creates partial code builds, delivers code movie
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: Evangeline "Gina" Reynolds
+Maintainer: The package maintainer <evangeline.reynolds@du.edu>
+Description: Flipbooks present code step-by-step and side-by-side with its output.  Flipbookr helps creators build flipbooks efficiently because code pipelines are automatically parsed and prepped for presentation as flipbooks. 
 License: BSD-3 LICENSE
 Encoding: UTF-8
 LazyData: true
