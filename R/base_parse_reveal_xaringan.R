@@ -135,7 +135,7 @@ r_base_parsed_count_parentheses <- function(base_parsed){
 
   num_lines <- max(base_parsed$line1)
 
-  tibble(line = 1:num_lines) ->
+  tibble::tibble(line = 1:num_lines) ->
   all_lines
 
   base_parsed %>%
