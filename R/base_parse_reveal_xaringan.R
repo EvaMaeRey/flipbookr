@@ -222,7 +222,10 @@ python_code_full_parse <- function(code){
   code %>%
     code_simple_parse() %>%
     dplyr::mutate(code = raw_code) %>%
-    dplyr::mutate(auto = ifelse(raw_code == "", FALSE, TRUE)) %>%
+    dplry::mutate(open_par = stringr::str_count(code, "{([")) %>%
+    dplyr::mutate(closed_par = stringr::str_count(code, "})]")) %>%
+    dplyr::mutate(auto = cumsum(open_par) == cumsum(closed_par)) %>%
+    dplyr::mutate(auto = ifelse(raw_code == "", FALSE, auto)) %>%
     dplyr::mutate(connector = "") %>%
     dplyr::mutate(comment = "")
 
