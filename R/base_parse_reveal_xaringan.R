@@ -93,7 +93,7 @@ code_as_table <- function(code){
 code_as_table_process_break_messages <- function(code_as_table){
 
   code_as_table %>%
-    dplyr::mutate(raw_code = str_remove(raw_code, "\\s+$")) %>%
+    dplyr::mutate(raw_code = stringr::str_remove(raw_code, "\\s+$")) %>%
     dplyr::mutate(non_seq = stringr::str_extract(raw_code, "#BREAK-?\\d+")) %>%
     dplyr::mutate(non_seq = stringr::str_extract(non_seq, "-?\\d+")) %>%
     dplyr::mutate(non_seq = as.numeric(non_seq)) %>%
@@ -221,10 +221,10 @@ python_code_full_parse <- function(code){
 
   code %>%
     code_simple_parse() %>%
-    mutate(code = raw_code) %>%
-    mutate(auto = ifelse(raw_code == "", FALSE, TRUE)) %>%
-    mutate(connector = "") %>%
-    mutate(comment = "")
+    dplyr::mutate(code = raw_code) %>%
+    dplyr::mutate(auto = ifelse(raw_code == "", FALSE, TRUE)) %>%
+    dplyr::mutate(connector = "") %>%
+    dplyr::mutate(comment = "")
 
 }
 
@@ -233,10 +233,10 @@ stata_code_full_parse <- function(code){
 
   code %>%
     code_simple_parse() %>%
-    mutate(code = raw_code) %>%
-    mutate(auto = ifelse(rawcode == "", FALSE, TRUE)) %>%
-    mutate(connector = "") %>%
-    mutate(comment = "")
+    dplyr::mutate(code = raw_code) %>%
+    dplyr::mutate(auto = ifelse(raw_code == "", FALSE, TRUE)) %>%
+    dplyr::mutate(connector = "") %>%
+    dplyr::mutate(comment = "")
 
 }
 
