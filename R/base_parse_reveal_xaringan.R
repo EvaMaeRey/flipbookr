@@ -159,9 +159,9 @@ r_base_parsed_count_parentheses <- function(base_parsed){
       num_open_square = sum(open_square),
       num_closed_square = sum(closed_square)
               ) %>%
-    full_join(all_lines) %>%
-    arrange(line) %>%
-    mutate(
+    tidyr::full_join(all_lines) %>%
+    dplyr::arrange(line) %>%
+    dplyr::mutate(
       full_line = tidyr::replace_na(full_line, ""),
       comment = tidyr::replace_na(comment, ""),
       num_open_par = tidyr::replace_na(num_open_par, 0),
@@ -175,7 +175,7 @@ r_base_parsed_count_parentheses <- function(base_parsed){
     dplyr::mutate(balanced_curly = (cumsum(num_open_curly) - cumsum(num_closed_curly)) == 0) %>%
     dplyr::mutate(balanced_square = (cumsum(num_open_square) - cumsum(num_closed_square)) == 0) %>%
     dplyr::mutate(all_parentheses_balanced = balanced_paren & balanced_curly & balanced_square) %>%
-    select(line, full_line, comment, all_parentheses_balanced)
+    dplyr::select(line, full_line, comment, all_parentheses_balanced)
 
 
 }
