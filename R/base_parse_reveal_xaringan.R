@@ -159,7 +159,7 @@ r_base_parsed_count_parentheses <- function(base_parsed){
       num_open_square = sum(open_square),
       num_closed_square = sum(closed_square)
               ) %>%
-    tidyr::full_join(all_lines) %>%
+    dplyr::full_join(all_lines) %>%
     dplyr::arrange(line) %>%
     dplyr::mutate(
       full_line = tidyr::replace_na(full_line, ""),
