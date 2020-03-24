@@ -208,7 +208,7 @@ r_code_full_parse <- function(code = code){
   right_assign <- "->$"
   combine_booleans <- "\\|$|\\&$"
 
-  connectors <- paste0(arithmetic, matrix, ggplot_change_data,
+  connectors <- paste(arithmetic, matrix, ggplot_change_data,
                        the_magrittr,
                        right_assign, combine_booleans, sep = "|")
 
