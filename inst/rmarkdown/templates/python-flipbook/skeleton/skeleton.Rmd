@@ -21,7 +21,7 @@ This is pretty experimental work.  The python "parser" (basically no parsing) me
 # This is the recommended set up for flipbooks
 # you might think about setting cache to TRUE as you gain practice --- building flipbooks from scracth can be time consuming
 knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, 
-                      comment = "", cache = F, fig.retina = 3, eval = T)
+                      comment = "", cache = F, fig.retina = 3, eval = F)
 library(flipbookr)
 library(tidyverse)
 library(reticulate)
@@ -60,7 +60,8 @@ np.reshape(np.arange(1,25), (4,3,2), "F")
 
 ```{python simple_plot, include = F}
 import matplotlib.pyplot as plt
-year = [1950, 1970, 1990, 2010]
+year = [1950, 1970, 
+  1990, 2010]
 pop = [2.519, 3, 5, 6]
 plt.plot(year, pop)
 plt.show()
@@ -71,10 +72,10 @@ plt.show()
 
 ---
 
-`r chunk_reveal("mine", lang = "python")`
+`r chunk_reveal("numpy", lang = "python")`
 
 
-```{python mine, include = F}
+```{python numpy, include = F}
 # import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
@@ -82,91 +83,21 @@ t = np.arange(0, 2, .05)
 t
 s = np.sin(2*np.pi*t)
 s
+```
+
+
+---
+
+`r chunk_reveal("numpy2", lang = "python")`
+
+
+```{python numpy2, include = F}
 plt.plot(t, s)
 plt.xlabel('time (s)')
 plt.ylabel('voltage (mV)')
 plt.grid(True)
 plt.show()
 ```
-
-
----
-
-We'll use reticulate to pass cars to the python session
-
-```{r, include=F}
-py$cars <- cars
-```
-
-
----
-
-Next is a python session...
-
----
-
-`r chunk_reveal("py_cars1", lang = "python")`
-
-```{python py_cars1, include = F}
-import pandas as pd
-cars
-cars[cars['dist'] > 15]
-cars[['dist']]
-cars['speed']
-cars['dist']
-```
----
-
-
-`r chunk_reveal("py_cars", lang = "python")`
-
-```{python py_cars, include = F}
-import matplotlib.pyplot as plt   # This
-plt.plot(cars['speed'], cars['dist'])  # is
-plt.xlabel('speed (mph)')  # a
-plt.ylabel('distance (ft)') # flipbook
-plt.grid(True) # in 
-plt.show() # python 
-```
-
----
-
-Define some functions:
-
-```{python}
-from sklearn.datasets import load_iris
-
-def remove_units(df):
-    df.columns = pd.Index(map(lambda x: x.replace(" (cm)", ""), df.columns))
-    return df
-
-def length_times_width(df):
-    df['sepal length*width'] = df['sepal length'] * df['sepal width']
-    df['petal length*width'] = df['petal length'] * df['petal width']
-```
-
-And we'll use `left_assign` next.
-
----
-
-
-
-
-`r chunk_reveal("iris", lang = "python", left_assign = T)`
-
-
-```{python iris}
-xobject = load_iris()
-xobject = pd.DataFrame(xobject.data,columns=xobject.feature_names)
-xobject.pipe(remove_units).pipe(length_times_width)
-```
-
-
-
-
----
-
-
 
 
 

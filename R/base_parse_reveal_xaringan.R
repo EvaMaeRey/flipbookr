@@ -45,6 +45,16 @@ create_ggplot_code <- function(){ # for testing w/o knitting
 }
 
 
+create_python_code <- function(){
+
+  "xobject = load_iris()
+xobject = pd.DataFrame(xobject.data,
+  columns=xobject.feature_names)
+
+xobject.pipe(remove_units).pipe(length_times_width)"
+
+
+}
 
 create_data_table_code <- function(){ # for testing w/o knitting
 
@@ -191,7 +201,16 @@ r_base_parsed_count_parentheses <- function(base_parsed){
 
 r_code_full_parse <- function(code = code){
 
-  connectors <- "%>%$|\\+$|->$|%\\+%$|%\\$%$|-$|\\/$|\\*$|\\^$|%%$|%/%$|%\\*%$|%o%$"
+  arithmetic <- "\\+$|-$|\\/$|\\*$|\\^$|%%$|%\\/%$"
+  matrix <- "%\\*%$|%o%$"
+  ggplot_change_data <- "%\\+%$"
+  the_magrittr <- "%>%$|%\\$%$"
+  right_assign <- "->$"
+  combine_booleans <- "\\|$|\\&$"
+
+  connectors <- paste0(arithmetic, matrix, ggplot_change_data,
+                       the_magrittr,
+                       right_assign, combine_booleans, sep = "|")
 
   raw_code_table <- code_simple_parse(code = code)
 
@@ -217,13 +236,17 @@ r_code_full_parse <- function(code = code){
 }
 
 
+# create_python_code() %>%
+#   python_code_full_parse()
+
+
 python_code_full_parse <- function(code){
 
   code %>%
     code_simple_parse() %>%
     dplyr::mutate(code = raw_code) %>%
-    dplyr::mutate(open_par = stringr::str_count(code, "{([")) %>%
-    dplyr::mutate(closed_par = stringr::str_count(code, "})]")) %>%
+    dplyr::mutate(open_par = stringr::str_count(code, "\\{|\\(|\\[")) %>%
+    dplyr::mutate(closed_par = stringr::str_count(code, "\\}|\\)|\\]")) %>%
     dplyr::mutate(auto = cumsum(open_par) == cumsum(closed_par)) %>%
     dplyr::mutate(auto = ifelse(raw_code == "", FALSE, auto)) %>%
     dplyr::mutate(connector = "") %>%
