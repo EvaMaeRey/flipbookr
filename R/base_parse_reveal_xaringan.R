@@ -49,8 +49,15 @@ create_python_code <- function(){
 
   "xobject = load_iris()
 xobject = pd.DataFrame(xobject.data,
-  columns=xobject.feature_names)
+columns=xobject.feature_names)
+def evenOdd( x ):
+    if (x % 2 == 0):
+        print \"even\"
+    else:
+        print \"odd\"
 
+# Driver code
+evenOdd(2)
 xobject.pipe(remove_units).pipe(length_times_width)"
 
 
@@ -236,8 +243,8 @@ r_code_full_parse <- function(code = code){
 }
 
 
-# create_python_code() %>%
-#   python_code_full_parse()
+create_python_code() %>%
+  python_code_full_parse()
 
 
 python_code_full_parse <- function(code){
@@ -249,6 +256,9 @@ python_code_full_parse <- function(code){
     dplyr::mutate(closed_par = stringr::str_count(code, "\\}|\\)|\\]")) %>%
     dplyr::mutate(auto = cumsum(open_par) == cumsum(closed_par)) %>%
     dplyr::mutate(auto = ifelse(raw_code == "", FALSE, auto)) %>%
+    dplyr::mutate(indented = stringr::str_detect(code, "^\\s+")) %>%
+    dplyr::mutate(indented_follows = dplyr::lead(indented, default = FALSE)) %>%
+    dplyr::mutate(auto = ifelse(indented_follows, FALSE, auto)) %>%
     dplyr::mutate(connector = "") %>%
     dplyr::mutate(comment = "")
 
