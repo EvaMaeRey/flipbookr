@@ -243,8 +243,8 @@ r_code_full_parse <- function(code = code){
 }
 
 
-create_python_code() %>%
-  python_code_full_parse()
+# create_python_code() %>%
+#   python_code_full_parse()
 
 
 python_code_full_parse <- function(code){
