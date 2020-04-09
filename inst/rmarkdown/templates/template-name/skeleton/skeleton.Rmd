@@ -458,6 +458,19 @@ matrix(1:4, ncol = 4) %*%
 
 ---
 
+`r chunk_reveal("my_rotate", break_type = "rotate")`
+
+```{r my_rotate, include = F}
+ggplot(data = cars) +
+  aes(x = speed) +
+  aes(y = dist) +
+  geom_point() +
+  scale_x_log10() + #ROTATE
+  scale_x_sqrt() + #ROTATE
+  scale_x_reverse() #ROTATE
+```
+
+
 
 ---
 

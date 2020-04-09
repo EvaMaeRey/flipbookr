@@ -25,6 +25,27 @@ create_code <- function(){ # for testing w/o knitting
 }
 
 
+
+####### Make some test code available as character strings #####
+create_rotate_code <- function(){ # for testing w/o knitting
+
+  "cars %>%             # the data  #BREAK
+  filter(speed > 4) %>%  # subset
+  ggplot() +              # pipe to ggplot
+  aes(x = speed) +
+  aes(y = dist) +
+  # Describing what follows
+  geom_point(alpha = .3) + #ROTATE
+  geom_point(color = 'blue') + #ROTATE
+  geom_point(shape = 'square') -> #ROTATE
+  my_plot  #BREAK
+
+
+  1 + 1 #BREAK"
+
+}
+
+
 create_short_code <- function(){ # for testing w/o knitting
 
   "cars %>%             # the data
@@ -115,7 +136,8 @@ code_as_table_process_break_messages <- function(code_as_table){
     dplyr::mutate(non_seq = stringr::str_extract(non_seq, "-?\\d+")) %>%
     dplyr::mutate(non_seq = as.numeric(non_seq)) %>%
     dplyr::mutate(non_seq = tidyr::replace_na(non_seq, 1)) %>%
-    dplyr::mutate(user = stringr::str_detect(raw_code, "#BREAK$"))
+    dplyr::mutate(user = stringr::str_detect(raw_code, "#BREAK$")) %>%
+    dplyr::mutate(rotate = stringr::str_detect(raw_code, "#ROTATE$"))
 
 }
 
@@ -235,10 +257,11 @@ r_code_full_parse <- function(code = code){
     dplyr::mutate(connector = tidyr::replace_na(connector, "")) %>%
     # delete comments understood as
     dplyr::mutate(comment = stringr::str_remove(comment, "#BREAK\\d?")) %>%
+    dplyr::mutate(comment = stringr::str_remove(comment, "#ROTATE")) %>%
     dplyr::mutate(comment = stringr::str_remove(comment, "XXXXXXXXX")) %>%
     dplyr::mutate(code = stringr::str_remove(stringi::stri_trim_right(code), connectors))  %>%
     dplyr::mutate(auto = all_parentheses_balanced & code != "") %>%
-    dplyr::select(line, raw_code, code, connector, comment, auto, user, non_seq)
+    dplyr::select(line, raw_code, code, connector, comment, auto, user, non_seq, rotate)
 
 }
 
@@ -297,9 +320,9 @@ code_parse <- function(code = create_code(), lang = "r") {
 
 }
 
-# create_code() %>%
+# create_rotate_code() %>%
 #   code_parse() %>%
-#   parsed_calc_show() %>%
+#   parsed_calc_show(break_type = "rotate") %>%
 #   shown_lines_calc_highlight()
 
 
@@ -327,18 +350,37 @@ parsed_calc_show <- function(parsed, break_type = "auto"){
     code_order <- rep(1, nrow(parsed))
     num_panes <- break_type
 
+  } else if (break_type == "rotate") {
+
+    num_panes <- sum(parsed$rotate)
+
   }
+
+
 
   which_show <- list()
 
-  for (i in 1:num_panes) {
+  if (break_type == "rotate") {
 
-    # fix this for non_sequential to allow removal
-    which_show[[i]] <- which(code_order <= i)
-    # Matt Gambino: change pipes to second statement to drop negative values
-    # which_show[[i]] <-
-    #   which( code_order <= i ) %>%
-    #   .[!. %in% which( code_order >= -i & code_order < 0 )]
+    for (i in 1:num_panes) {
+
+      which_show[[i]] <-
+        sort(c(which(!parsed$rotate),
+          which(parsed$rotate)[i]))
+    }
+
+  }else{
+
+    for (i in 1:num_panes) {
+
+      # fix this for non_sequential to allow removal
+      which_show[[i]] <- which(code_order <= i)
+      # Matt Gambino: change pipes to second statement to drop negative values
+      # which_show[[i]] <-
+      #   which( code_order <= i ) %>%
+      #   .[!. %in% which( code_order >= -i & code_order < 0 )]
+
+    }
 
   }
 
@@ -354,9 +396,24 @@ shown_lines_calc_highlight <- function(which_show = list(c(1, 2), c(1, 2, 3, 4))
 
   which_highlight <- list()
 
+
+  # first frame highlighting
+
   if (break_type == "user" | break_type == "auto") {
 
   which_highlight[[1]] <- which_show[[1]]
+
+  }
+
+  if (break_type == "non_seq" | break_type == "rotate") {
+
+    which_highlight[[1]] <- as.integer(c())
+
+  }
+
+  # additional frames highlighting
+
+  if (break_type %in% c("user", "auto", "non_seq", "rotate")) {
 
     for (i in 2:length(which_show)) {
 
@@ -364,7 +421,11 @@ shown_lines_calc_highlight <- function(which_show = list(c(1, 2), c(1, 2, 3, 4))
 
     }
 
-  }  else if (is.numeric(break_type)) {
+  }
+
+  # multiverse highlighting
+
+  if (is.numeric(break_type)) {
 
       for (i in 1:length(which_show)) {
 
@@ -372,19 +433,7 @@ shown_lines_calc_highlight <- function(which_show = list(c(1, 2), c(1, 2, 3, 4))
 
       }
 
-  } else if (break_type == "non_seq") {
-
-
-    which_highlight[[1]] <- as.integer(c())
-
-    for (i in 2:length(which_show)) {
-
-      which_highlight[[i]] <- which_show[[i]][!(which_show[[i]] %in% which_show[[i - 1]])]
-
-    }
-
-
-    }
+  }
 
   which_highlight
 
@@ -393,7 +442,7 @@ shown_lines_calc_highlight <- function(which_show = list(c(1, 2), c(1, 2, 3, 4))
 
 
 # create_code() %>%
-#   code_parse() %>%
+  # code_parse() %>%
 #   parsed_return_partial_code(which_show_frame = 1:5,
 #                              which_highlight_frame = 4)
 
@@ -404,10 +453,10 @@ parsed_return_partial_code <- function(parsed,
                                        which_highlight_frame = 3){
 
   parsed %>%
-    dplyr::filter(1:dplyr::n() %in% which_show_frame) %>%
+    dplyr::filter(line %in% which_show_frame) %>%
     dplyr::mutate(connector = dplyr::case_when(1:dplyr::n() == dplyr::n() ~ "",
                                                1:dplyr::n() != dplyr::n() ~ connector)) %>%
-    dplyr::mutate(highlight = ifelse(1:dplyr::n() %in% which_highlight_frame, "#<<", "" )) %>%
+    dplyr::mutate(highlight = ifelse(line %in% which_highlight_frame, "#<<", "" )) %>%
     dplyr::mutate(highlight = ifelse(code == "" | code == "\\s?", "", highlight)) %>%
     dplyr::mutate(out = paste0(code, "",
                                connector,
