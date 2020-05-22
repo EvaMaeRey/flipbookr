@@ -34,6 +34,15 @@ library(tidyverse)
 
 - Yes, you can help make it less fragile and perilous by letting us know if/how it breaks and frustrates you and/or contributing at https://github.com/EvaMaeRey/flipbookr!  
 
+---
+
+# Spread the word and giving feedback
+
+Please help us spread the word about flipbooks.  Let your audience know *how* you created your flipbook with a quick acknowledgement, for example, *The flipbooked portion of this presentation was created with the new {flipbookr} package.  Get it at remotes::install_github("EvaMaeRey/flipbookr")*  
+
+Also consider sharing your work on social media, and let me know what you've built on Twitter with a mention to @EvaMaeRey
+
+Feedback? Contributions? Leave an issue at:  https://github.com/EvaMaeRey/flipbookr 
 
 
 ---
@@ -126,6 +135,10 @@ cars %>%
   aes(size = speed) #BREAK
 ```
 
+
+
+
+
 ---
 
 # `break_type`
@@ -151,7 +164,7 @@ One parameter of flipbooking is the break_type.  The default is "auto", in which
 ```{r, code = knitr::knit_code$get("cars"), eval = FALSE, echo = TRUE}
 ```
 
-
+  
 
 ---
 
@@ -170,6 +183,9 @@ If the break_type is set to "user", the breakpoints are those indicated by the u
 ---
 
 `r chunk_reveal("cars", break_type = "user")`
+
+
+
 
 ---
 
@@ -279,11 +295,6 @@ cars_plot +
   labs(x = "Speed (mph)") + 
   labs(y = "Stopping distance (ft)")
 ```
-
-
-
-
-
 
 
 
@@ -421,6 +432,8 @@ lines(inputs_of_x,
       col = "blue")
 ```
 
+---
+
 # And arithmetic operation
 
 ---
@@ -474,6 +487,54 @@ ggplot(data = cars) +
 
 ---
 
+A new addition is the %$% pipe from the magrittr library.  And example follows. 
+
+---
+
+`r chunk_reveal("new_pipe")`
+
+```{r new_pipe, include=F}
+library(magrittr)
+
+cars %$%
+  cor(x = speed,
+      y = dist)
+```
+
+
+---
+class: middle, inverse, center
+
+# Custom Styling
+
+---
+
+
+`r chunk_reveal("custom_example", title = "# Pipe to correlation coefficient", width_code = "29%", width_output = "70%", font_size_code = "130%")`
+
+
+```{r custom_example, include=F}
+library(magrittr)
+
+cars %$%
+  cor(x = speed,
+      y = dist)
+```
+
+
+---
+class: middle, inverse, center
+
+# Slow Message
+
+---
+
+`r text_reveal("This is my text.", sep = " ")`
+
+
+
+---
+
 ## Xaringan slide show look and feel
 
 To quickly change the look and feel of your {xaringan} slide show, you might check out the [available themes](https://github.com/yihui/xaringan/wiki/Themes#avaliable-themes) from the xaringan package and [xaringanthemer](https://github.com/gadenbuie/xaringanthemer) package.
@@ -490,37 +551,17 @@ Flipbooks created with Xaringan are multi-file creations.  The figures produced 
 - flip, zip, and ship
 - get it on github, with github pages.  A good walk through is the one that I learned with (to get [the ggplot2 flipbook](https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html) online) by Brian Caffo https://www.youtube.com/watch?v=BBCesiebEuQ  Larger flipbooks will take longer to load online - something to keep in mind as you are building. 
 
----
-
-# Spread the word and giving feedback
-
-Please help us spread the word about flipbooks.  Let your audience know *how* you created your flipbook with a quick acknowledgement, for example, *The flipbooked portion of this presentation was created with the new {flipbookr} package.  Get it at remotes::install_github("EvaMaeRey/flipbookr")*  
-
-Also consider sharing your work on social media, and let me know what you've built on Twitter with a mention to @EvaMaeRey
-
-Feedback? Contributions? Leave an issue at:  https://github.com/EvaMaeRey/flipbookr 
-
----
-
-A new addition is the %$% pipe from the magrittr library.  And example follows. 
-
----
-
-`r chunk_reveal("new_pipe")`
-
-```{r new_pipe, include=F}
-library(magrittr)
-
-cars %$%
-  cor(x = speed,
-      y = dist)
-```
-
 
 
 
 
 ---
+class: inverse, middle, center
+
+The flipbooked portion of this presentation was created with the new {flipbookr} package.  Get it with remotes::install_github("EvaMaeRey/flipbookr")
+
+
+
 
 
 

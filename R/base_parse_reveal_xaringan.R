@@ -1,3 +1,22 @@
+
+# I've had a look over the pkg and documentation, and it's truly amazing and magical, what a wonderful package!
+# I could follow the instructions perfectly, and making it work for my examples was a delight.
+#
+# I can see the documentation that I get when I run `?flipbookr::chunk_reveal` is not yet complete, so I suggest some more edits to that to replace the placeholder text and expand
+#
+# On the GitHub repo https://github.com/EvaMaeRey/flipbookr I'd recommend adding some of the items listed in the rOpenSci onboarding guidelines. For example, unit tests, a code of conduct and  a guide to contributors.
+#
+# Continuous integration
+#
+# Chapter 1 Packaging Guide | rOpenSci Packages: Development, Maintenance, and Peer Review
+# devguide.ropensci.org
+# I know that you're aiming for JOSS and not the rOpenSci onboarding, but the community of reviewers for both overlap considerably, and my sense is that expectations about R pkgs are mostly shared. So I recommend taking a look at the rOpenSci onboading guidelines to see what you can take from that to improve your pkg:
+# My sense is that tests, community guidelines (CoC, etc.) and CI are things that JOSS reviewers might look for. Tests and community guidelines are specifically mentioned in the JOSS guide to reviewers: https://joss.readthedocs.io/en/latest/review_criteria.html
+# I'd suggest using the authors@R field in place of authors: in flipbookr DESCRIPTION so you can express contributorship more specifically, and adding in there everyone who has made a accepted PR to the pkg. My sense is that this is a pretty common approach to acknowledging contributions in the R community (with the exception of mega-pks that get 100s of PRs). I see a few names mentioned in your docs, and if some of their code appears anywhere in the pkg I reckon they should be named in authors@R in the DESCRIPTION. This is a bit of a delicate topic, and I think it's best to be more inclusive when recognising contributions, even very small ones.
+#
+
+
+
 # Emi Tanaka (@statsgen) and Garrick Aden-Buie (@grrrck) and Evangeline Reynolds (@EvaMaeRey)
 # have contributed to this code
 
@@ -81,7 +100,6 @@ def evenOdd( x ):
 evenOdd(2)
 xobject.pipe(remove_units).pipe(length_times_width)"
 
-
 }
 
 create_data_table_code <- function(){ # for testing w/o knitting
@@ -98,7 +116,7 @@ create_data_table_code <- function(){ # for testing w/o knitting
 create_left_assign_code <- function(){
 
 # for testing w/o knitting
-  "my_cars <- cars %>%             # the data  #BREAK
+"my_cars <- cars %>%             # the data  #BREAK
 filter(speed > 4) %>%  # subset
 ggplot() +              # pipe to ggplot
 aes(x = speed) +
@@ -116,6 +134,11 @@ chunk_code_get <- function(chunk_name){
   paste(knitr::knit_code$get(chunk_name), collapse = "\n")
 
 }
+
+# create_code() %>%
+#   code_as_table() %>%
+#   code_as_table_process_break_messages()
+
 
 #### Code parsing #########
 code_as_table <- function(code){
@@ -538,19 +561,55 @@ chunk_name %>%
 return_partial_chunks_template_code <- function(){
 
   "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks>>>_code, eval = FALSE, echo = TRUE, code = code_seq[[<<<breaks>>>]]}
-  ```"
+```"
 
 }
 
 return_partial_chunks_template_output <- function(){
 
   "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks>>>_output, eval = TRUE, echo = FALSE, code = code_seq[[<<<breaks>>>]]}
-  ```"
+```"
 
   # , out.width = \"<<<out.width>>>\", out.height = \"<<<out.height>>>\"
 }
 
 
+
+#### define CSS ####
+
+
+define_css <- function(
+  chunk_name = "example",
+  break_type = "auto",
+  width_code = "38%",
+  width_output = "60%",
+  font_size_code = "80%"
+){
+  id <- paste0(chunk_name, "-", break_type)
+
+  knitr::asis_output(glue::glue(
+    "<style>
+    .left-code-<<<id>>> {
+      color: #777;
+      width: <<<width_code>>>;
+      height: 92%;
+      float: left;
+      font-size: <<<font_size_code>>>
+    }
+    .right-output-<<<id>>> {
+      width: <<<width_output>>>;
+      float: right;
+      padding-left: 1%;
+    }
+    </style>
+    ",
+    .open = "<<<",
+    .close = ">>>",
+    .sep = "\n"
+  ))
+}
+
+# return_css()
 
 # create_code() %>%
 #   code_parse() %>%
@@ -558,6 +617,7 @@ return_partial_chunks_template_output <- function(){
 
 # "code_chunk_name" %>%
 #   chunk_expand(lang = "python")
+
 ###### Create spauned code chunks ######
 chunk_expand <- function(chunk_name = "example",
                          break_type = "auto",
@@ -565,62 +625,89 @@ chunk_expand <- function(chunk_name = "example",
                          num_breaks = 2,
                          split = 40,
                          title = "",
-                         lang = "r"#,
-                         #out.width = "70%",
-                         #out.height = "70%"
-                         ){
+                         lang = "r",
+                         custom = F,
+                         width_code = "38%",
+                         width_output = "60%",
+                         font_size_code = "80%"
+){
 
-breaks <- 1:num_breaks
+  breaks <- 1:num_breaks
 
-if (display_type == "both") {
+  if (display_type == "both") {
 
-  partial_knit_steps <- glue::glue(
-    "class: split-<<<split>>>",
-    "count: false",
-    " ",
-    title,
-    " ",
-    ".column[.content[",
-    return_partial_chunks_template_code(),
-    "]]",
-    ".column[.content[",
-    return_partial_chunks_template_output(),
-    "]]",
-    " ",
-    .open = "<<<", .close = ">>>", .sep = "\n"
-  )
+    partial_knit_steps <- glue::glue(
+      "class: split-<<<split>>>",
+      "count: false",
+      " ",
+      title,
+      ".left-code-<<<chunk_name>>>-<<<break_type>>>[",
+      return_partial_chunks_template_code(),
+      "]",
+      " ",
+      ".right-output-<<<chunk_name>>>-<<<break_type>>>[",
+      return_partial_chunks_template_output(),
+      "]",
+      " ",
+      .open = "<<<", .close = ">>>", .sep = "\n"
+    )
 
-} else if (display_type == "code" | display_type == "output") {
+  } else if (display_type == "code" | display_type == "output") {
 
-  if (display_type == "output") {
+    if (display_type == "output") {
 
-    chunk <- return_partial_chunks_template_output()
+      chunk <- return_partial_chunks_template_output()
 
-  } else {
+    } else {
 
-    chunk <- return_partial_chunks_template_code()
+      chunk <- return_partial_chunks_template_code()
+
+    }
+
+    partial_knit_steps <- glue::glue(
+      "count: false",
+      title,
+      chunk,
+      .open = "<<<", .close = ">>>", .sep = "\n"
+    )
 
   }
 
-  partial_knit_steps <- glue::glue(
-    "count: false",
-    chunk,
-    .open = "<<<", .close = ">>>", .sep = "\n"
-  )
+
+
+
+defined_css <- define_css(chunk_name = chunk_name,
+                          break_type = break_type,
+                          width_code = width_code,
+                          width_output = width_output,
+                          font_size_code = font_size_code
+                          )
+
+  slide_code <- glue::glue_collapse(partial_knit_steps, sep = "\n\n---\n")
+
+  glue::glue("{slide_code}\n\n{defined_css}\n\n", .trim = FALSE)
+
 
 }
 
-glue::glue_collapse(x = partial_knit_steps, sep = "\n---\n")
 
-}
 
+# chunk_expand()
+# defined_css %>%
+#   str()
+#
+# expanded %>%
+#   str()
+#
+# chunk_expand() %>%
+#   length()
 
 ######## The exported function ############
 
 #' Title
 #'
 #' @param chunk_name a character string refering to the name of the source chunk for the flipbooking
-#' @param break_type "auto" is default finding appropriate breakpoints, "user" can be used with the special comment message #BREAK within the source code chunk, "non_seq" can be used for non sequential display of code with special comment messages #BREAK2 (will show in second frame) and #BREAK3 (will show in third frame), an integer input can be given too, to simply display the source code chunk multiple times which is appropriate for observing multiple realizations of sampling
+#' @param break_type "auto" is default finding appropriate breakpoints, "user" can be used with the special comment message #BREAK within the source code chunk, "non_seq" can be used for non sequential display of code with special comment messages #BREAK2 (will show in second frame) and #BREAK3 (will show in third frame), an integer input can be given too, to simply display the source code chunk multiple times which is appropriate for observing multiple realizations of sampling, "rotate" allows cycling through different lines of code, the comment #ROTATE is used for lines to by cycled through
 #' @param left_assign a logical, default is FALSE, if TRUE will print the object created in the upper lefthand corner of the source code chunk at the end of each partial reveal
 #' @param code_seq a list of code as character strings, the list will automatically be created based on the previous three arguments or the user can input code manually
 #' @param num_breaks an integer, automatically calculated based on the length of the the code_seq list
@@ -638,7 +725,11 @@ chunk_reveal <- function(chunk_name = "example_name",
                    num_breaks = length(code_seq),
                    display_type = "both",
                    split = 40,
-                   title = ""#,
+                   title = "",
+                   width_code = "38%",
+                   width_output = "60%",
+                   font_size_code = "80%"
+                   #,
                    # out.width = "70%",
                    # out.height = "70%"
                    ){
@@ -650,15 +741,48 @@ chunk_reveal <- function(chunk_name = "example_name",
                        display_type = display_type,
                        split = split,
                        title = title,
-                       lang = lang#,
+                       lang = lang,
+                       width_code = width_code,
+                       width_output = width_output,
+                       font_size_code = font_size_code
+                       #,
                        #out.height = out.height,
                        #out.width = out.width
                        )
 
-  paste(knitr::knit(text = text), collapse = "\n")
 
+paste(knitr::knit(text = text), collapse = "\n")
 
 }
+
+
+#### text return ####
+text_prep <- function(text = "This is my text.  Return it one sentence per page. Thanks",
+                      sep = "\\. +|! +|"
+                      ){
+
+  text %>%
+    stringr::str_split(pattern = sep) %>%
+    .[[1]] -> sentences
+
+  glue::glue(
+    "---",
+    "class: inverse, middle, center",
+    "## {sentences}",
+    "", .sep = "\n")
+
+}
+
+
+
+text_reveal <- function(text, sep){
+
+  the_text <- text_prep(text = text, sep = sep)
+
+  paste(knitr::knit(text = the_text), collapse = "\n")
+
+}
+
 
 
 # Thinking about delivery to sweave/beamer
