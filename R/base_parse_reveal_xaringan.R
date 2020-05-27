@@ -674,8 +674,6 @@ chunk_expand <- function(chunk_name = "example",
   }
 
 
-
-
 defined_css <- define_css(chunk_name = chunk_name,
                           break_type = break_type,
                           width_code = width_code,
@@ -691,6 +689,50 @@ defined_css <- define_css(chunk_name = chunk_name,
 }
 
 
+chunk_expand_beamer()
+
+chunk_expand_beamer <- function(chunk_name = "example",
+                                break_type = "auto",
+                                display_type = "both",
+                                num_breaks = 2,
+                                split = 40,
+                                title = "",
+                                lang = "r",
+                                custom = F,
+                                width_code = "38%",
+                                width_output = "60%",
+                                font_size_code = "80%"
+){
+
+  breaks <- 1:num_breaks
+
+  partial_knit_steps <- glue::glue(
+    # \documentclass{beamer}
+    # \begin{document}
+    "\\begin{frame}",
+    "\\begin{columns}[T] % align columns",
+    "\\begin{column}{.48\\textwidth}",
+    # "\color{red}\rule{\linewidth}{4pt}",
+    # Left Part
+    return_partial_chunks_template_code(),
+    "\\end{column}%",
+    "\\hfill%",
+    "\\begin{column}{.48\\textwidth}",
+
+    # "\color{blue}\rule{\linewidth}{4pt}"
+    # Right Part
+    return_partial_chunks_template_output(),
+    "\\end{column}%",
+    "\\end{columns}",
+    "\\end{frame}",
+    # \end{document}
+    .open = "<<<", .close = ">>>", .sep = "\n"
+  )
+
+
+  partial_knit_steps
+
+}
 
 # chunk_expand()
 # defined_css %>%
