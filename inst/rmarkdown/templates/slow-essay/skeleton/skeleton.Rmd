@@ -1,0 +1,114 @@
+---
+title: "Slow Essay"
+subtitle: "With {flipbookr} and {xaringan}"
+author: "Gina Reynolds, March 2020"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [default, hygge, ninjutsu]
+    nature:
+      ratio: 16:10
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+# Do you need a slow essay?  Here's a tool for that. 
+
+
+```{r setup, include = F}
+# This is the recommended set up for flipbooks
+# you might think about setting cache to TRUE as you gain practice --- building flipbooks from scracth can be time consuming
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, 
+                      comment = "", cache = F, fig.retina = 3, eval = T)
+library(flipbookr)
+library(tidyverse)
+```
+
+
+<!-- This next chunk is just for the developer -- working w/ local code -->
+
+```{r just_for_evamaerey, cache = FALSE, echo = FALSE, eval = T}
+try(source("../../../../../R/base_parse_reveal_xaringan.R"))
+try(source("../../../../../R/mini.R"))
+```
+
+
+
+
+```{r, include = F}
+"Sometimes, we just need to slow down and look at exactly one sentence.  This is the idea of the slow essay.  Parse the entire essay.  Then give it back to me piece by piece.  Give me just one sentence back. Make that sentence big. Let it stand on its own.  Slow down my essay" ->
+  philosophy
+```
+
+---
+
+
+`r text_reveal(philosophy, sep = "\\. ", sep_replace = ".")`
+
+
+
+
+`r text_reveal("This is my text.", sep = " ", break_type = "--")`
+
+
+
+```{r, echo = F}
+my_text <- "Some text to present slowly.  You can write it in a code chunk."
+```
+
+`r text_reveal(my_text, sep = " ")`
+
+
+
+
+
+```{r, echo = F}
+my_text <- "You have control of the pause points. Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+```
+
+`r text_reveal(my_text, sep = "\\. ", sep_replace = ".")`
+
+
+---
+
+```{r without_assignment, echo=F, eval = F}
+Without assignment.  Also works
+```
+
+`r text_reveal(knitr::knit_code$get("without_assignment"), sep = "\\. ", sep_replace = ".")`
+
+
+---
+
+
+`r text_reveal(my_text, sep = "\\. ", sep_replace = ".")`
+
+---
+
+
+
+---
+
+
+```{r}
+# # for use with external file:
+# path <- ??
+# readLines(path) %>% 
+#   paste0(collapse = "\\n") ->
+# text
+
+# pagedown::chrome_print() # might be a good idea to make your output pdf.  Does not always print faithfully...
+```
+
+
+`r text_reveal(philosophy, sep = "\\. ", sep_replace = ".")`
+
+
+
+
+
+```{css, eval = TRUE, echo = FALSE}
+.remark-code{line-height: 1.5; font-size: 90%}
+```

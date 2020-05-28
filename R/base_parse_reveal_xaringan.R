@@ -689,7 +689,7 @@ defined_css <- define_css(chunk_name = chunk_name,
 }
 
 
-chunk_expand_beamer()
+# chunk_expand_beamer()
 
 chunk_expand_beamer <- function(chunk_name = "example",
                                 break_type = "auto",
@@ -800,26 +800,41 @@ paste(knitr::knit(text = text), collapse = "\n")
 
 #### text return ####
 text_prep <- function(text = "This is my text.  Return it one sentence per page. Thanks",
-                      sep = "\\. +|! +|"
+                      sep = "\\. +|! +",
+                      md_header = "",
+                      sep_replace = "",
+                      break_type = "---",
+                      class = "inverse, middle, center"
                       ){
 
   text %>%
     stringr::str_split(pattern = sep) %>%
-    .[[1]] -> sentences
+    .[[1]] -> segments
+
 
   glue::glue(
-    "---",
-    "class: inverse, middle, center",
-    "## {sentences}",
-    "", .sep = "\n")
+    {break_type},
+    "class: {class}",
+    "{md_header} {segments}{sep_replace}",
+    "",
+    .sep = "\n")
 
 }
 
 
+text_reveal <- function(text,
+                        sep, md_header = "#",
+                        sep_replace = "",
+                        break_type = "---",
+                        class = "inverse, middle, center"){
 
-text_reveal <- function(text, sep){
-
-  the_text <- text_prep(text = text, sep = sep)
+  the_text <- text_prep(text = text,
+                        sep = sep,
+                        md_header = md_header,
+                        sep_replace = sep_replace,
+                        break_type = break_type,
+                        class = class
+                        )
 
   paste(knitr::knit(text = the_text), collapse = "\n")
 
