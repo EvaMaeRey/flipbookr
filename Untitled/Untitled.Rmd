@@ -99,7 +99,7 @@ Without assignment.  Also works
 #   paste0(collapse = "\\n") ->
 # text
 
-# pagedown::chrome_print() # might be a good idea to make your output pdf.  Does not always print faithfully...  switch to class without inverse is a good idea. 
+# pagedown::chrome_print() # might be a good idea to make your output pdf.  Does not always print faithfully...
 ```
 
 
