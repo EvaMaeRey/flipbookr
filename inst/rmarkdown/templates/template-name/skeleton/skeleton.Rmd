@@ -1,5 +1,5 @@
 ---
-title: "The art of flipbooking"
+title: "The art of flipbooking (building code movies)"
 subtitle: "With flipbookr and xaringan"
 author: "Gina Reynolds, December 2019"
 output:
@@ -249,7 +249,7 @@ Let's look at where only the *output* is displayed for the "cars" code chunk.
 
 ---
 
-`r chunk_reveal("cars", break_type = "user", display_type = "output")`
+`r chunk_reveal("cars", break_type = "auto", display_type = "output")`
 
 ---
 
@@ -261,6 +261,18 @@ And now where only the *code* is displayed for the "cars" code chunk.
 ---
 
 `r chunk_reveal("cars", break_type = "auto", display_type = "code")`
+
+---
+
+## `display_type = c("output", "code")`
+
+Not sure why you'd want to do this, but you can flip output and code.  It's also not totally stable - jumps moving from tabular output to figure.  Have to figure that one out. It is something to do with fixed height.
+
+
+---
+
+`r chunk_reveal("cars", break_type = "auto", display_type = c("output", "code"))`
+
 
 
 
@@ -510,7 +522,7 @@ class: middle, inverse, center
 ---
 
 
-`r chunk_reveal("custom_example", title = "# Pipe to correlation coefficient", width_code = "29%", width_output = "70%", font_size_code = "130%")`
+`r chunk_reveal("custom_example", title = "# Pipe to correlation coefficient", width_left = "29%", width_right = "70%", font_size_code = "130%")`
 
 
 ```{r custom_example, include=F}
@@ -522,6 +534,41 @@ cars %$%
 ```
 
 
+
+---
+
+`r chunk_reveal("custom_example", md = c("### hello", "# goodbye", "## $$\\frac{\\sum(1)}{2}$$"), display_type = c("md", "code"))`
+
+
+---
+
+
+`r chunk_reveal("custom_example", md = c("### hello", "# goodbye", "## $$\\frac{\\sum(1)}{2}$$"), display_type = c("md", "output"))`
+
+
+---
+
+
+`r chunk_reveal(num_breaks = 3, md = c("### hello", "# goodbye", "## $$\\frac{\\sum(1)}{2}$$"), display_type = "md")`
+
+
+---
+
+
+```{r cars3, include=F}
+cars %>% 
+  ggplot() +
+  aes(x = speed) +
+  aes(y = dist) +
+  geom_point() +
+  aes(size = speed)
+```
+
+
+`r chunk_reveal("cars3", display_type = c("code", "func", "output"), width_left = "32%", width_middle = "32%", width_right = "32%")`
+
+
+
 ---
 class: middle, inverse, center
 
@@ -531,6 +578,12 @@ class: middle, inverse, center
 
 `r text_reveal("This is my text.", sep = " ")`
 
+
+---
+
+'One driver of equality we should invest in is upskilling everyone - not just the select few.'
+
+digital inclusion.
 
 
 ---

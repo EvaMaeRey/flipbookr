@@ -4,12 +4,10 @@
 \alias{chunk_reveal}
 \title{Title}
 \usage{
-chunk_reveal(chunk_name = "example_name", break_type = "auto",
-  left_assign = F, lang = "r",
-  code_seq = chunk_name_return_code_sequence(chunk_name, break_type,
-  left_assign, lang), num_breaks = length(code_seq),
-  display_type = "both", split = 40, title = "",
-  width_code = "38\%", width_output = "60\%",
+chunk_reveal(chunk_name = NULL, break_type = "auto", left_assign = F,
+  lang = "r", code_seq = NULL, func_seq = NULL, num_breaks = NULL,
+  display_type = "both", split = 40, title = "", md = NULL,
+  width_left = "38\%", width_middle = "32\%", width_right = "60\%",
   font_size_code = "80\%")
 }
 \arguments{

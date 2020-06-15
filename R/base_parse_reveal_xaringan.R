@@ -195,6 +195,7 @@ r_code_base_parse <- function(code) {
 
 r_base_parsed_count_parentheses <- function(base_parsed){
 
+
   num_lines <- max(base_parsed$line1)
 
   tibble::tibble(line = 1:num_lines) ->
@@ -329,7 +330,9 @@ code_parse <- function(code = create_code(), lang = "r") {
 
   if (lang == "r") {
 
-    r_code_full_parse(code = code)
+    r_code_full_parse(code = code) %>%
+      dplyr::mutate(func = stringr::str_extract(code, "\\w+\\(")) %>%
+      dplyr::mutate(func = stringr::str_remove(func, "\\("))
 
   } else if (lang == "python") {
 
@@ -340,6 +343,9 @@ code_parse <- function(code = create_code(), lang = "r") {
   NULL
 
   }
+
+
+
 
 }
 
@@ -392,7 +398,7 @@ parsed_calc_show <- function(parsed, break_type = "auto"){
           which(parsed$rotate)[i]))
     }
 
-  }else{
+  } else {
 
     for (i in 1:num_panes) {
 
@@ -490,6 +496,21 @@ parsed_return_partial_code <- function(parsed,
 }
 
 
+
+parsed_return_recent_function <- function(parsed,
+                                          which_highlight_frame = 3){
+
+  parsed %>%
+    dplyr::filter(line %in% which_highlight_frame) %>%
+    dplyr::pull(func)
+
+}
+
+
+# create_code() %>%
+#   code_parse() %>%
+#   parsed_return_recent_function()
+
 parsed_left_assign_return_partial_code <- function(parsed,
                                                which_show_frame = 1:3,
                                                which_highlight_frame = 3){
@@ -543,6 +564,43 @@ parsed_return_partial_code_sequence <- function(parsed,
 }
 
 
+parsed_return_recent_function_sequence <- function(parsed,
+                                                   break_type = "auto",
+                                                   which_show = parsed_calc_show(parsed = parsed,
+                                                                                  break_type = break_type),
+                                                   which_highlight =
+                                                              shown_lines_calc_highlight(which_show = which_show,
+                                                                                         break_type = break_type),
+                                                            left_assign = F){
+
+  partial_recent_functions <- list()
+
+  for (i in 1:length(which_show)) {
+
+
+    if (left_assign == F) {
+      partial_recent_functions[[i]] <-
+        parsed_return_recent_function(parsed,
+                                   which_highlight_frame = which_highlight[[i]]) %>% .[!is.na(.)]
+    }else{
+      partial_recent_functions[[i]] <-
+        parsed_return_recent_function(parsed,
+                                      which_highlight_frame = which_highlight[[i]]) %>% .[!is.na(.)]
+    }
+
+  }
+
+  partial_recent_functions
+
+
+}
+
+
+# create_code() %>%
+#   code_parse() %>%
+#   parsed_return_recent_function_sequence()
+
+
 chunk_name_return_code_sequence <- function(chunk_name,
                                             break_type = "auto",
                                             left_assign = F,
@@ -552,7 +610,20 @@ chunk_name %>%
   chunk_code_get() %>%
   code_parse(lang = lang) %>%
   parsed_return_partial_code_sequence(break_type = break_type,
-                                 left_assign = left_assign)
+                                      left_assign = left_assign)
+
+}
+
+chunk_name_return_function_sequence <- function(chunk_name,
+                                            break_type = "auto",
+                                            left_assign = F,
+                                            lang = "r"){
+
+  chunk_name %>%
+    chunk_code_get() %>%
+    code_parse(lang = lang) %>%
+    parsed_return_recent_function_sequence(break_type = break_type,
+                                            left_assign = left_assign)
 
 }
 
@@ -574,32 +645,90 @@ return_partial_chunks_template_output <- function(){
 }
 
 
+return_partial_chunks_template_function <- function(){
+
+  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks>>>_function, eval = TRUE, echo = FALSE, code = func_seq[[<<<breaks>>>]]}
+```"
+
+  # , out.width = \"<<<out.width>>>\", out.height = \"<<<out.height>>>\"
+}
+
+
+return_markdown <- function(text, sep = "|"){
+
+  text %>%
+    stringr::str_split(pattern = sep)
+
+}
+
 
 #### define CSS ####
+
+
+# choose_css_components <- function(display_type = "both"){
+#
+# left <- ".left-panel-<<<id>>> {
+#       color: #777;
+#       width: <<<width_left>>>;
+#       height: 92%;
+#       float: left;
+#       font-size: <<<font_size_code>>>
+#     }"
+#
+# right <- ".right-panel-<<<id>>> {
+#       width: <<<width_right>>>;
+#       float: right;
+#       padding-left: 1%;
+#     }"
+#
+# middle <- ".middle-panel-<<<id>>> {
+#       width: <<<width_middle>>>;
+#       float: center;
+#       padding-left: 1%;
+#     }"
+#
+# if (display_type[1] == "both" | length(display_type) == 2) {
+#   paste0(left, right)
+# } else if (length(display_type) == 2) {
+#   paste0(left, right)
+# } else if (length(display_type) == 3) {
+#   paste0(left, middle, right)
+# }
+#
+# }
 
 
 define_css <- function(
   chunk_name = "example",
   break_type = "auto",
-  width_code = "38%",
-  width_output = "60%",
+  width_left = "38%",
+  width_right = "60%",
+  width_middle = "32%",
   font_size_code = "80%"
 ){
+
   id <- paste0(chunk_name, "-", break_type)
 
   knitr::asis_output(glue::glue(
     "<style>
-    .left-code-<<<id>>> {
+    .left-panel-<<<id>>> {
       color: #777;
-      width: <<<width_code>>>;
+      width: <<<width_left>>>;
       height: 92%;
       float: left;
       font-size: <<<font_size_code>>>
     }
-    .right-output-<<<id>>> {
-      width: <<<width_output>>>;
+    .right-panel-<<<id>>> {
+      width: <<<width_right>>>;
       float: right;
       padding-left: 1%;
+      font-size: <<<font_size_code>>>
+    }
+    .middle-panel-<<<id>>> {
+      width: <<<width_middle>>>;
+      float: left;
+      padding-left: 1%;
+      font-size: <<<font_size_code>>>
     }
     </style>
     ",
@@ -608,6 +737,8 @@ define_css <- function(
     .sep = "\n"
   ))
 }
+
+# define_css()
 
 # return_css()
 
@@ -625,114 +756,106 @@ chunk_expand <- function(chunk_name = "example",
                          num_breaks = 2,
                          split = 40,
                          title = "",
+                         md = NULL,
+                         func = NULL,
                          lang = "r",
                          custom = F,
-                         width_code = "38%",
-                         width_output = "60%",
+                         width_left = "38%",
+                         width_right = "60%",
+                         width_middle = "32%",
                          font_size_code = "80%"
 ){
 
   breaks <- 1:num_breaks
+  code <- return_partial_chunks_template_code()
+  output <- return_partial_chunks_template_output()
+  md <- "`r md[<<<breaks>>>]`"
+  func <- return_partial_chunks_template_function()
 
-  if (display_type == "both") {
+
+if (display_type[1] == "both") {
+  left <- code
+  right <- output
+} else if (length(display_type) == 1) {
+  left <- get(display_type)
+} else if (length(display_type) == 2) {
+  left <- get(display_type[1])
+  right <- get(display_type[2])
+} else if (length(display_type) == 3) {
+  left <- get(display_type[1])
+  middle <- get(display_type[2])
+  right <- get(display_type[3])
+}
+
+  if (length(display_type) == 3) {
 
     partial_knit_steps <- glue::glue(
       "class: split-<<<split>>>",
       "count: false",
       " ",
       title,
-      ".left-code-<<<chunk_name>>>-<<<break_type>>>[",
-      return_partial_chunks_template_code(),
+      ".left-panel-<<<chunk_name>>>-<<<break_type>>>[",
+      left,
       "]",
       " ",
-      ".right-output-<<<chunk_name>>>-<<<break_type>>>[",
-      return_partial_chunks_template_output(),
+      ".middle-panel-<<<chunk_name>>>-<<<break_type>>>[",
+      middle,
+      "]",
+      " ",
+      ".right-panel-<<<chunk_name>>>-<<<break_type>>>[",
+      right,
       "]",
       " ",
       .open = "<<<", .close = ">>>", .sep = "\n"
     )
 
-  } else if (display_type == "code" | display_type == "output") {
+  } else if (length(display_type) == 2 | display_type[1] == "both") {
 
-    if (display_type == "output") {
+    partial_knit_steps <- glue::glue(
+      "class: split-<<<split>>>",
+      "count: false",
+      " ",
+      title,
+      ".left-panel-<<<chunk_name>>>-<<<break_type>>>[",
+      left,
+      "]",
+      " ",
+      ".right-panel-<<<chunk_name>>>-<<<break_type>>>[",
+      right,
+      "]",
+      " ",
+      .open = "<<<", .close = ">>>", .sep = "\n"
+    )
 
-      chunk <- return_partial_chunks_template_output()
-
-    } else {
-
-      chunk <- return_partial_chunks_template_code()
-
-    }
+  } else if (length(display_type) == 1) {
 
     partial_knit_steps <- glue::glue(
       "count: false",
       title,
-      chunk,
+      left,
       .open = "<<<", .close = ">>>", .sep = "\n"
     )
 
   }
 
 
-defined_css <- define_css(chunk_name = chunk_name,
+the_defined_css <- define_css(chunk_name = chunk_name,
                           break_type = break_type,
-                          width_code = width_code,
-                          width_output = width_output,
+                          width_left = width_left,
+                          width_middle = width_middle,
+                          width_right = width_right,
                           font_size_code = font_size_code
                           )
 
   slide_code <- glue::glue_collapse(partial_knit_steps, sep = "\n\n---\n")
 
-  glue::glue("{slide_code}\n\n{defined_css}\n\n", .trim = FALSE)
+  glue::glue("{slide_code}\n\n{the_defined_css}\n\n", .trim = FALSE)
 
 
 }
 
 
-# chunk_expand_beamer()
 
-chunk_expand_beamer <- function(chunk_name = "example",
-                                break_type = "auto",
-                                display_type = "both",
-                                num_breaks = 2,
-                                split = 40,
-                                title = "",
-                                lang = "r",
-                                custom = F,
-                                width_code = "38%",
-                                width_output = "60%",
-                                font_size_code = "80%"
-){
-
-  breaks <- 1:num_breaks
-
-  partial_knit_steps <- glue::glue(
-    # \documentclass{beamer}
-    # \begin{document}
-    "\\begin{frame}",
-    "\\begin{columns}[T] % align columns",
-    "\\begin{column}{.48\\textwidth}",
-    # "\color{red}\rule{\linewidth}{4pt}",
-    # Left Part
-    return_partial_chunks_template_code(),
-    "\\end{column}%",
-    "\\hfill%",
-    "\\begin{column}{.48\\textwidth}",
-
-    # "\color{blue}\rule{\linewidth}{4pt}"
-    # Right Part
-    return_partial_chunks_template_output(),
-    "\\end{column}%",
-    "\\end{columns}",
-    "\\end{frame}",
-    # \end{document}
-    .open = "<<<", .close = ">>>", .sep = "\n"
-  )
-
-
-  partial_knit_steps
-
-}
 
 # chunk_expand()
 # defined_css %>%
@@ -759,23 +882,31 @@ chunk_expand_beamer <- function(chunk_name = "example",
 #' @return a string object - will only work in 'knitr' context
 #' @export
 #'
-chunk_reveal <- function(chunk_name = "example_name",
+chunk_reveal <- function(chunk_name = NULL,
                    break_type = "auto",
                    left_assign = F,
                    lang = "r",
-                   code_seq = chunk_name_return_code_sequence(chunk_name, break_type, left_assign, lang),
-                   num_breaks = length(code_seq),
+                   code_seq = NULL,
+                   func_seq = NULL,
+                   num_breaks = NULL,
                    display_type = "both",
                    split = 40,
                    title = "",
-                   width_code = "38%",
-                   width_output = "60%",
+                   md = NULL,
+                   width_left = "38%",
+                   width_middle = "32%",
+                   width_right = "60%",
                    font_size_code = "80%"
                    #,
                    # out.width = "70%",
                    # out.height = "70%"
                    ){
 
+  if (!is.null(chunk_name)) {
+  code_seq <- chunk_name_return_code_sequence(chunk_name, break_type, left_assign, lang)
+  func_seq <- chunk_name_return_function_sequence(chunk_name, break_type, left_assign, lang)
+  num_breaks <- length(code_seq)
+  }
 
   text <- chunk_expand(chunk_name = chunk_name,
                        break_type = break_type,
@@ -784,14 +915,16 @@ chunk_reveal <- function(chunk_name = "example_name",
                        split = split,
                        title = title,
                        lang = lang,
-                       width_code = width_code,
-                       width_output = width_output,
+                       md = md,
+                       func = func,
+                       width_left = width_left,
+                       width_middle = width_middle,
+                       width_right = width_right,
                        font_size_code = font_size_code
                        #,
                        #out.height = out.height,
                        #out.width = out.width
                        )
-
 
 paste(knitr::knit(text = text), collapse = "\n")
 
@@ -821,3 +954,48 @@ paste(knitr::knit(text = text), collapse = "\n")
 #     }
 #
 #   }
+
+# chunk_expand_beamer()
+
+# chunk_expand_beamer <- function(chunk_name = "example",
+#                                 break_type = "auto",
+#                                 display_type = "both",
+#                                 num_breaks = 2,
+#                                 split = 40,
+#                                 title = "",
+#                                 lang = "r",
+#                                 custom = F,
+#                                 width_left = "38%",
+#                                 width_right = "60%",
+#                                 font_size_code = "80%"
+# ){
+#
+#   breaks <- 1:num_breaks
+#
+#   partial_knit_steps <- glue::glue(
+#     # \documentclass{beamer}
+#     # \begin{document}
+#     "\\begin{frame}",
+#     "\\begin{columns}[T] % align columns",
+#     "\\begin{column}{.48\\textwidth}",
+#     # "\color{red}\rule{\linewidth}{4pt}",
+#     # Left Part
+#     return_partial_chunks_template_code(),
+#     "\\end{column}%",
+#     "\\hfill%",
+#     "\\begin{column}{.48\\textwidth}",
+#
+#     # "\color{blue}\rule{\linewidth}{4pt}"
+#     # Right Part
+#     return_partial_chunks_template_output(),
+#     "\\end{column}%",
+#     "\\end{columns}",
+#     "\\end{frame}",
+#     # \end{document}
+#     .open = "<<<", .close = ">>>", .sep = "\n"
+#   )
+#
+#
+#   partial_knit_steps
+#
+# }
