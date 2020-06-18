@@ -1,22 +1,3 @@
-
-# I've had a look over the pkg and documentation, and it's truly amazing and magical, what a wonderful package!
-# I could follow the instructions perfectly, and making it work for my examples was a delight.
-#
-# I can see the documentation that I get when I run `?flipbookr::chunk_reveal` is not yet complete, so I suggest some more edits to that to replace the placeholder text and expand
-#
-# On the GitHub repo https://github.com/EvaMaeRey/flipbookr I'd recommend adding some of the items listed in the rOpenSci onboarding guidelines. For example, unit tests, a code of conduct and  a guide to contributors.
-#
-# Continuous integration
-#
-# Chapter 1 Packaging Guide | rOpenSci Packages: Development, Maintenance, and Peer Review
-# devguide.ropensci.org
-# I know that you're aiming for JOSS and not the rOpenSci onboarding, but the community of reviewers for both overlap considerably, and my sense is that expectations about R pkgs are mostly shared. So I recommend taking a look at the rOpenSci onboading guidelines to see what you can take from that to improve your pkg:
-# My sense is that tests, community guidelines (CoC, etc.) and CI are things that JOSS reviewers might look for. Tests and community guidelines are specifically mentioned in the JOSS guide to reviewers: https://joss.readthedocs.io/en/latest/review_criteria.html
-# I'd suggest using the authors@R field in place of authors: in flipbookr DESCRIPTION so you can express contributorship more specifically, and adding in there everyone who has made a accepted PR to the pkg. My sense is that this is a pretty common approach to acknowledging contributions in the R community (with the exception of mega-pks that get 100s of PRs). I see a few names mentioned in your docs, and if some of their code appears anywhere in the pkg I reckon they should be named in authors@R in the DESCRIPTION. This is a bit of a delicate topic, and I think it's best to be more inclusive when recognising contributions, even very small ones.
-#
-
-
-
 # Emi Tanaka (@statsgen) and Garrick Aden-Buie (@grrrck) and Evangeline Reynolds (@EvaMaeRey)
 # have contributed to this code
 
@@ -701,11 +682,20 @@ return_markdown <- function(text, sep = "|"){
 define_css <- function(
   chunk_name = "example",
   break_type = "auto",
-  width_left = "38%",
-  width_right = "60%",
-  width_middle = "32%",
-  font_size_code = "80%"
+  widths = c(32, 32, 33),
+  spacing = 1,
+  font_size_code = 80
 ){
+
+  normalized_widths <- 100*widths/(sum(widths) + spacing*(length(widths) - 1))
+
+  width_left <-  32
+  width_right <- 32
+  width_middle <- 32
+
+  try(width_left   <- normalized_widths[1])
+  try(width_right  <- normalized_widths[2])
+  try(width_middle <- normalized_widths[3])
 
   id <- paste0(chunk_name, "-", break_type)
 
@@ -713,19 +703,19 @@ define_css <- function(
     "<style>
     .left-panel-<<<id>>> {
       color: #777;
-      width: <<<width_left>>>;
+      width: <<<width_left>>>%;
       height: 92%;
       float: left;
       font-size: <<<font_size_code>>>
     }
     .right-panel-<<<id>>> {
-      width: <<<width_right>>>;
+      width: <<<width_right>>>%;
       float: right;
       padding-left: 1%;
       font-size: <<<font_size_code>>>
     }
     .middle-panel-<<<id>>> {
-      width: <<<width_middle>>>;
+      width: <<<width_middle>>>%;
       float: left;
       padding-left: 1%;
       font-size: <<<font_size_code>>>
@@ -760,9 +750,7 @@ chunk_expand <- function(chunk_name = "example",
                          func = NULL,
                          lang = "r",
                          custom = F,
-                         width_left = "38%",
-                         width_right = "60%",
-                         width_middle = "32%",
+                         widths = c(39, 60, 0),
                          font_size_code = "80%"
 ){
 
@@ -841,9 +829,7 @@ if (display_type[1] == "both") {
 
 the_defined_css <- define_css(chunk_name = chunk_name,
                           break_type = break_type,
-                          width_left = width_left,
-                          width_middle = width_middle,
-                          width_right = width_right,
+                          widths = widths,
                           font_size_code = font_size_code
                           )
 
@@ -893,9 +879,7 @@ chunk_reveal <- function(chunk_name = NULL,
                    split = 40,
                    title = "",
                    md = NULL,
-                   width_left = "38%",
-                   width_middle = "32%",
-                   width_right = "60%",
+                   widths = c(39, 60, 0),
                    font_size_code = "80%"
                    #,
                    # out.width = "70%",
@@ -917,9 +901,7 @@ chunk_reveal <- function(chunk_name = NULL,
                        lang = lang,
                        md = md,
                        func = func,
-                       width_left = width_left,
-                       width_middle = width_middle,
-                       width_right = width_right,
+                       widths = widths,
                        font_size_code = font_size_code
                        #,
                        #out.height = out.height,

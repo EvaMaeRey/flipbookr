@@ -1,5 +1,5 @@
 ---
-title: "The art of flipbooking (building code movies)"
+title: "The art of flipbooking"
 subtitle: "With flipbookr and xaringan"
 author: "Gina Reynolds, December 2019"
 output:
@@ -207,6 +207,30 @@ If the break_type is set to "non_seq", the breakpoints are those indicated by th
 
 ---
 
+# break_type = "rotate", with #ROTATE, #ROTATE, #ROTATE
+
+you can use break_type = "rotate" to cycle through distinct lines of code.  Sometimes, you will need to set the chunk option to eval = F, echo = F instead of include = F.  This will be true when the input code itself cannot be executed. 
+
+
+---
+
+`r chunk_reveal("my_rotate", break_type = "rotate")`
+
+```{r my_rotate, eval = F, echo = F}
+ggplot(data = cars) +
+  aes(x = speed) +
+  aes(y = dist) +
+  geom_point() +
+  aes(color = speed) +
+  scale_color_viridis_c(option = "magma") + #ROTATE
+  scale_color_viridis_c(option = "cividis") + #ROTATE
+  scale_color_viridis_c(option = "plasma") #ROTATE
+```
+
+
+
+---
+
 ## `break_type = 5` (or "entering the multiverse")
 
 Another modality is to set break_type equal to a positive integer, indicating that you want the same code chunk to be displayed multiple times.  This makes the most sense in a setting where there is some randomization or random sampling and you want to see different realizations. Let's see this used on the user input code chunk "cars_multi", whose first step is to randomly sample rows from the data set cars with replacement.  
@@ -272,6 +296,78 @@ Not sure why you'd want to do this, but you can flip output and code.  It's also
 ---
 
 `r chunk_reveal("cars", break_type = "auto", display_type = c("output", "code"))`
+
+---
+
+## `display_type = c("md", "code"), md = c("hi", "by")`
+
+Include a panel for markdown.  Double backslashes required to escape.
+
+
+
+---
+
+`r chunk_reveal("custom_example", md = c("### hello", "# goodbye", "## $$\\frac{\\sum(1)}{2}$$"), display_type = c("md", "code"))`
+
+
+
+
+```{r custom_example, include=F}
+library(magrittr)
+
+cars %$%
+  cor(x = speed,
+      y = dist)
+```
+
+
+
+
+---
+
+## `display_type = "func"`
+
+to display underlying functions that the code pipeline is using...
+
+---
+
+`r chunk_reveal("rnorm", display_type = c("code", "func", "output"), widths = c(32, 32, 33))`
+
+```{r rnorm, include=F}
+rnorm(50) %>% 
+  sd() %>% 
+  length()
+```
+
+
+
+
+---
+class: middle, inverse, center
+
+# `title = "## My title"`
+
+Give your little flipbook a title if you like...
+
+---
+
+# `widths = c(32, 32, 33)`
+
+depending on how many display panels you have, you can adjust relative widths with a vector
+
+---
+
+`r chunk_reveal("cars3", title = "## Several widths", widths = c(22, 30, 40), display_type = c("code", "func", "output"))`
+
+
+```{r cars3, include=F}
+cars %>% 
+  ggplot() +
+  aes(x = speed) +
+  aes(y = dist) +
+  geom_point() +
+  aes(size = speed)
+```
 
 
 
@@ -446,17 +542,18 @@ lines(inputs_of_x,
 
 ---
 
-# And arithmetic operation
+# And arithmetic operations
 
 ---
 
 `r chunk_reveal("arith")`
 
 ```{r arith, include = FALSE}
-(4 + 5) /
-  6 *
-  7 -
-  3 
+(4 + 5) / # just be careful
+  6 * # because order of operations 
+  7 - # hold
+  3 * # contrasting to pipe logic
+  12 # PEMDAS
 
 1:10 %%
   3
@@ -481,19 +578,6 @@ matrix(1:4, ncol = 4) %*%
 ```
 
 
----
-
-`r chunk_reveal("my_rotate", break_type = "rotate")`
-
-```{r my_rotate, include = F}
-ggplot(data = cars) +
-  aes(x = speed) +
-  aes(y = dist) +
-  geom_point() +
-  scale_x_log10() + #ROTATE
-  scale_x_sqrt() + #ROTATE
-  scale_x_reverse() #ROTATE
-```
 
 
 
@@ -514,58 +598,6 @@ cars %$%
 ```
 
 
----
-class: middle, inverse, center
-
-# Custom Styling
-
----
-
-
-`r chunk_reveal("custom_example", title = "# Pipe to correlation coefficient", width_left = "29%", width_right = "70%", font_size_code = "130%")`
-
-
-```{r custom_example, include=F}
-library(magrittr)
-
-cars %$%
-  cor(x = speed,
-      y = dist)
-```
-
-
-
----
-
-`r chunk_reveal("custom_example", md = c("### hello", "# goodbye", "## $$\\frac{\\sum(1)}{2}$$"), display_type = c("md", "code"))`
-
-
----
-
-
-`r chunk_reveal("custom_example", md = c("### hello", "# goodbye", "## $$\\frac{\\sum(1)}{2}$$"), display_type = c("md", "output"))`
-
-
----
-
-
-`r chunk_reveal(num_breaks = 3, md = c("### hello", "# goodbye", "## $$\\frac{\\sum(1)}{2}$$"), display_type = "md")`
-
-
----
-
-
-```{r cars3, include=F}
-cars %>% 
-  ggplot() +
-  aes(x = speed) +
-  aes(y = dist) +
-  geom_point() +
-  aes(size = speed)
-```
-
-
-`r chunk_reveal("cars3", display_type = c("code", "func", "output"), width_left = "32%", width_middle = "32%", width_right = "32%")`
 
 
 
@@ -574,6 +606,10 @@ class: middle, inverse, center
 
 # Slow Message
 
+--
+
+use text_reveal, and define a delimiter.
+
 ---
 
 `r text_reveal("This is my text.", sep = " ")`
@@ -581,9 +617,7 @@ class: middle, inverse, center
 
 ---
 
-'One driver of equality we should invest in is upskilling everyone - not just the select few.'
-
-digital inclusion.
+<!-- 'One driver of equality we should invest in is upskilling everyone - not just the select few.' -->
 
 
 ---
