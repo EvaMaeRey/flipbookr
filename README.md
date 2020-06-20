@@ -50,10 +50,10 @@ accessed from within RStudio (New File -\> RMarkdown -\> From Template
 -\> A Minimal Flipbook)
 [here](https://raw.githubusercontent.com/EvaMaeRey/flipbookr/master/inst/rmarkdown/templates/template-name/skeleton/skeleton.Rmd).
 The resultant flipbook can be viewed
-[here](https://evamaerey.github.io/little_flipbooks_library/flipbookr/skeleton#1).
+[here](https://evamaerey.github.io/flipbooks/flipbookr/skeleton#1).
 
 ## Intuition about how it works
 
 We believe in communicating with flipbooks, so we use the tool to
 describe the functions that are at work within the package
-[here](https://evamaerey.github.io/little_flipbooks_library/flipbookr/flipbookr_building_blocks#1)
+[here](https://evamaerey.github.io/flipbooks/flipbookr/flipbookr_building_blocks#1)
