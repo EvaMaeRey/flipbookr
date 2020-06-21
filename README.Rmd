@@ -1,5 +1,17 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
 
 # The flipbookr package
 
@@ -49,13 +61,16 @@ demonstrates various flipbooking modalities; the template can also be
 accessed from within RStudio (New File -\> RMarkdown -\> From Template
 -\> A Minimal Flipbook)
 [here](https://raw.githubusercontent.com/EvaMaeRey/flipbookr/master/inst/rmarkdown/templates/template-name/skeleton/skeleton.Rmd).
-Here is a preview, :
+  Here is a preview, : 
 
-<img src="https://github.com/EvaMaeRey/flipbooks/blob/master/flipbookr/skeleton.gif?raw=true" width="100%" />
+```{r, echo = F}
+knitr::include_graphics("https://github.com/EvaMaeRey/flipbooks/blob/master/flipbookr/skeleton.gif?raw=true")
+```
 
-The full flipbook, an html slideshow, that you can advance at your own
-pace, can be viewed
+The full flipbook, an html slideshow, that you can advance at your own pace, can be viewed
 [here](https://evamaerey.github.io/flipbooks/flipbookr/skeleton#1).
+
+
 
 ## Intuition about how it works
 
