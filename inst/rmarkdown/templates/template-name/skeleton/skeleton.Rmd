@@ -17,7 +17,7 @@ output:
 
 ```{r, include = F}
 # This is the recommended set up for flipbooks
-# you might think about setting cache to TRUE as you gain practice --- building flipbooks from scracth can be time consuming
+# you might think about setting cache to TRUE as you gain practice --- building flipbooks from scratch can be time consuming
 knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = FALSE, fig.retina = 3)
 library(flipbookr)
 library(tidyverse)
@@ -653,12 +653,12 @@ Flipbooks created with Xaringan are multi-file creations.  The figures produced 
 
 ## Convert to pdf
 
-to create a pdf from you may use the pagedown package as follows to use chrome print to pdf:
+to create a pdf from you may use the pagedown package as follows to use chrome print to pdf (here, eval is set to FALSE):
 
 ```{r, eval = F}
 pagedown::chrome_print(input = "my_flipbook.Rmd")
 
-# or 
+# or (recommended):
 
 pagedown::chrome_print(input = "my_flipbook.html")
 ```
@@ -667,7 +667,22 @@ Note:  This works for flipbooks when css is set as it is in the last css code ch
 
 ---
 
-Coming soon, build a previews, using [viztoc](https://github.com/EvaMaeRey/viztoc). Development package!  Breaking changes planned. 
+## flipbook preview -- as gif
+
+If you want to create a preview of your flipbook, you can pass the pdf to functions from magick (here, eval is set to FALSE):  
+
+```{r, eval = F}
+# then create gif as follows
+magick::image_read_pdf(path = "my_flipbook.pdf", density = 100) %>% # create images
+  magick::image_write_gif(path = "my_flipbook.gif", delay = .4) # images to gif
+```
+
+Bryan Shalloway proposed this workflow.  Thanks Bryan!
+
+Coming soon, build a previews, using [viztoc](https://github.com/EvaMaeRey/viztoc). Development package!  Breaking changes are the norm! 
+
+
+
 
 
 ---

@@ -7,7 +7,7 @@
 
 <!-- badges: end -->
 
-“Flipbooks” are tools that present side-by-side, aligned, incremental
+“Flipbooks” are tools that present side-by-side, aligned, incremental  
 code-output evolution via automated code parsing and reconstruction.
 Like traditional flipbooks, they let the reader watch a scene evolve at
 their own pace. Existing “dynamic documents” provide valuable insights

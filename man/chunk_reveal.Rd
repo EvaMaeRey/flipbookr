@@ -6,9 +6,8 @@
 \usage{
 chunk_reveal(chunk_name = NULL, break_type = "auto", left_assign = F,
   lang = "r", code_seq = NULL, func_seq = NULL, num_breaks = NULL,
-  display_type = "both", split = 40, title = "", md = NULL,
-  width_left = "38\%", width_middle = "32\%", width_right = "60\%",
-  font_size_code = "80\%")
+  display_type = c("code", "output"), title = "", md = NULL,
+  widths = c(39, 60, 0), font_size_code = "80\%")
 }
 \arguments{
 \item{chunk_name}{a character string refering to the name of the source chunk for the flipbooking}
@@ -22,8 +21,6 @@ chunk_reveal(chunk_name = NULL, break_type = "auto", left_assign = F,
 \item{num_breaks}{an integer, automatically calculated based on the length of the the code_seq list}
 
 \item{display_type}{the default is "both" for code and output to be displayed side-by-side, "output" will create spauned code chunks to only display output, "code" will create spauned code chunks only to show the partial code builds}
-
-\item{split}{is the percentage of the width of the left hand side if both code and output are displayed.}
 }
 \value{
 a string object - will only work in 'knitr' context

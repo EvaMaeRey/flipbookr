@@ -742,9 +742,8 @@ define_css <- function(
 ###### Create spauned code chunks ######
 chunk_expand <- function(chunk_name = "example",
                          break_type = "auto",
-                         display_type = "both",
+                         display_type = c("code", "output"),
                          num_breaks = 2,
-                         split = 40,
                          title = "",
                          md = NULL,
                          func = NULL,
@@ -778,7 +777,7 @@ if (display_type[1] == "both") {
   if (length(display_type) == 3) {
 
     partial_knit_steps <- glue::glue(
-      "class: split-<<<split>>>",
+      #"class: split-<<<split>>>",
       "count: false",
       " ",
       title,
@@ -800,7 +799,7 @@ if (display_type[1] == "both") {
   } else if (length(display_type) == 2 | display_type[1] == "both") {
 
     partial_knit_steps <- glue::glue(
-      "class: split-<<<split>>>",
+      #"class: split-<<<split>>>",
       "count: false",
       " ",
       title,
@@ -863,7 +862,6 @@ the_defined_css <- define_css(chunk_name = chunk_name,
 #' @param code_seq a list of code as character strings, the list will automatically be created based on the previous three arguments or the user can input code manually
 #' @param num_breaks an integer, automatically calculated based on the length of the the code_seq list
 #' @param display_type the default is "both" for code and output to be displayed side-by-side, "output" will create spauned code chunks to only display output, "code" will create spauned code chunks only to show the partial code builds
-#' @param split is the percentage of the width of the left hand side if both code and output are displayed.
 #'
 #' @return a string object - will only work in 'knitr' context
 #' @export
@@ -875,8 +873,7 @@ chunk_reveal <- function(chunk_name = NULL,
                    code_seq = NULL,
                    func_seq = NULL,
                    num_breaks = NULL,
-                   display_type = "both",
-                   split = 40,
+                   display_type = c("code", "output"),
                    title = "",
                    md = NULL,
                    widths = c(39, 60, 0),
@@ -896,7 +893,6 @@ chunk_reveal <- function(chunk_name = NULL,
                        break_type = break_type,
                        num_breaks = num_breaks,
                        display_type = display_type,
-                       split = split,
                        title = title,
                        lang = lang,
                        md = md,
@@ -943,7 +939,6 @@ paste(knitr::knit(text = text), collapse = "\n")
 #                                 break_type = "auto",
 #                                 display_type = "both",
 #                                 num_breaks = 2,
-#                                 split = 40,
 #                                 title = "",
 #                                 lang = "r",
 #                                 custom = F,
