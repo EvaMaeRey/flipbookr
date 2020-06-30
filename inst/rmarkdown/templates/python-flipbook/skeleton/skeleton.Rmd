@@ -49,13 +49,15 @@ try(source("../../../../../R/mini.R"))
 4 * 8
 [1,2] + [3,4,5,6]
 import numpy as np
-np.reshape(np.arange(1,25), (4,3,2), "F")
-["hello", "world!", 1, 2, 3] * 2
+np.reshape(np.arange(1,25), 
+    (4,3,2), "F")
+["hello", "world!", 
+    1, 2, 3] * 2
 ```
 
 ---
 
-`r chunk_reveal("simple_plot", lang = "python")`
+`r chunk_reveal("simple_plot", lang = "python", widths = c(59,40))`
 
 
 ```{python simple_plot, include = F}
@@ -103,5 +105,5 @@ plt.show()
 
 
 ```{css, eval = TRUE, echo = FALSE}
-.remark-code{line-height: 1.5; font-size: 50%}
+.remark-code{line-height: 1.5; font-size: 100%}
 ```
