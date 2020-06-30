@@ -885,8 +885,10 @@ chunk_reveal <- function(chunk_name = NULL,
 
   if (!is.null(chunk_name)) {
   code_seq <- chunk_name_return_code_sequence(chunk_name, break_type, left_assign, lang)
-  func_seq <- chunk_name_return_function_sequence(chunk_name, break_type, left_assign, lang)
   num_breaks <- length(code_seq)
+    if (!is.null(func_seq)){
+    func_seq <- chunk_name_return_function_sequence(chunk_name, break_type, left_assign, lang)
+    }
   }
 
   text <- chunk_expand(chunk_name = chunk_name,

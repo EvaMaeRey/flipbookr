@@ -220,7 +220,7 @@ you can use break_type = "rotate" to cycle through distinct lines of code.  Some
 ggplot(data = cars) +
   aes(x = speed) +
   aes(y = dist) +
-  geom_point() +
+  geom_point(size = 3) +
   aes(color = speed) +
   scale_color_viridis_c(option = "magma") + #ROTATE
   scale_color_viridis_c(option = "cividis") + #ROTATE
