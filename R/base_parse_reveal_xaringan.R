@@ -487,7 +487,6 @@ parsed_return_recent_function <- function(parsed,
 
 }
 
-
 # create_code() %>%
 #   code_parse() %>%
 #   parsed_return_recent_function()
@@ -617,6 +616,15 @@ return_partial_chunks_template_code <- function(){
 
 }
 
+#### Template code chunks to deliver partial builds on ####
+return_partial_chunks_template_code_lag <- function(){
+
+  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks>>>_code_lag, eval = FALSE, echo = TRUE, code = code_seq_lag[[<<<breaks>>>]]}
+```"
+
+}
+
+
 return_partial_chunks_template_output <- function(){
 
   "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks>>>_output, eval = TRUE, echo = FALSE, code = code_seq[[<<<breaks>>>]]}
@@ -625,13 +633,26 @@ return_partial_chunks_template_output <- function(){
   # , out.width = \"<<<out.width>>>\", out.height = \"<<<out.height>>>\"
 }
 
+return_partial_chunks_template_output_lag <- function(){
+
+  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks>>>_output_lag, eval = TRUE, echo = FALSE, code = code_seq_lag[[<<<breaks>>>]]}
+```"
+
+}
+
+return_partial_chunks_template_output_lag2 <- function(){
+
+  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks>>>_output_lag2, eval = TRUE, echo = FALSE, code = code_seq_lag2[[<<<breaks>>>]]}
+```"
+
+}
+
 
 return_partial_chunks_template_function <- function(){
 
   "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks>>>_function, eval = TRUE, echo = FALSE, code = func_seq[[<<<breaks>>>]]}
 ```"
 
-  # , out.width = \"<<<out.width>>>\", out.height = \"<<<out.height>>>\"
 }
 
 
@@ -679,43 +700,50 @@ return_markdown <- function(text, sep = "|"){
 # }
 
 
+
+
+
 define_css <- function(
   chunk_name = "example",
   break_type = "auto",
   widths = c(32, 32, 33),
+  color = c("black", "black", "black"),
   spacing = 1,
   font_size_code = 80
 ){
 
-  normalized_widths <- 100*widths/(sum(widths) + spacing*(length(widths) - 1))
+  active_in_100 <- 100 - spacing*(length(widths))
+  normalized_widths <- active_in_100*widths/sum(widths)
 
-  width_left <-  32
-  width_right <- 32
-  width_middle <- 32
+  width_left <- NULL
+  width_right <- NULL
+  width_middle <- NULL
 
-  try(width_left   <- normalized_widths[1])
-  try(width_right  <- normalized_widths[2])
-  try(width_middle <- normalized_widths[3])
+  try(width_1   <- normalized_widths[1])
+  try(width_2  <- normalized_widths[2])
+  try(width_3 <- normalized_widths[3])
 
   id <- paste0(chunk_name, "-", break_type)
 
   knitr::asis_output(glue::glue(
     "<style>
-    .left-panel-<<<id>>> {
-      color: #777;
-      width: <<<width_left>>>%;
-      height: 92%;
+    .panel1-<<<id>>> {
+      color: <<<color[1]>>>;
+      width: <<<width_1>>>%;
       float: left;
-      font-size: <<<font_size_code>>>
-    }
-    .right-panel-<<<id>>> {
-      width: <<<width_right>>>%;
-      float: right;
       padding-left: 1%;
       font-size: <<<font_size_code>>>
     }
-    .middle-panel-<<<id>>> {
-      width: <<<width_middle>>>%;
+    .panel2-<<<id>>> {
+      color: <<<color[2]>>>;
+      width: <<<width_2>>>%;
+      float: left;
+      padding-left: 1%;
+      font-size: <<<font_size_code>>>
+    }
+    .panel3-<<<id>>> {
+      color: <<<color[3]>>>;
+      width: <<<width_3>>>%;
       float: left;
       padding-left: 1%;
       font-size: <<<font_size_code>>>
@@ -739,7 +767,7 @@ define_css <- function(
 # "code_chunk_name" %>%
 #   chunk_expand(lang = "python")
 
-###### Create spauned code chunks ######
+###### Create spawned code chunks ######
 chunk_expand <- function(chunk_name = "example",
                          break_type = "auto",
                          display_type = c("code", "output"),
@@ -750,15 +778,18 @@ chunk_expand <- function(chunk_name = "example",
                          lang = "r",
                          custom = F,
                          widths = c(39, 60, 0),
+                         color = c("black", "black", "black"),
                          font_size_code = "80%"
 ){
 
   breaks <- 1:num_breaks
   code <- return_partial_chunks_template_code()
+  code_lag <- return_partial_chunks_template_code_lag()
   output <- return_partial_chunks_template_output()
-  md <- "`r md[<<<breaks>>>]`"
+  output_lag <- return_partial_chunks_template_output_lag()
+  output_lag2 <- return_partial_chunks_template_output_lag2()
   func <- return_partial_chunks_template_function()
-
+  md <- "`r md[<<<breaks>>>]`"
 
 if (display_type[1] == "both") {
   left <- code
@@ -781,15 +812,15 @@ if (display_type[1] == "both") {
       "count: false",
       " ",
       title,
-      ".left-panel-<<<chunk_name>>>-<<<break_type>>>[",
+      ".panel1-<<<chunk_name>>>-<<<break_type>>>[",
       left,
       "]",
       " ",
-      ".middle-panel-<<<chunk_name>>>-<<<break_type>>>[",
+      ".panel2-<<<chunk_name>>>-<<<break_type>>>[",
       middle,
       "]",
       " ",
-      ".right-panel-<<<chunk_name>>>-<<<break_type>>>[",
+      ".panel3-<<<chunk_name>>>-<<<break_type>>>[",
       right,
       "]",
       " ",
@@ -803,11 +834,11 @@ if (display_type[1] == "both") {
       "count: false",
       " ",
       title,
-      ".left-panel-<<<chunk_name>>>-<<<break_type>>>[",
+      ".panel1-<<<chunk_name>>>-<<<break_type>>>[",
       left,
       "]",
       " ",
-      ".right-panel-<<<chunk_name>>>-<<<break_type>>>[",
+      ".panel2-<<<chunk_name>>>-<<<break_type>>>[",
       right,
       "]",
       " ",
@@ -829,6 +860,7 @@ if (display_type[1] == "both") {
 the_defined_css <- define_css(chunk_name = chunk_name,
                           break_type = break_type,
                           widths = widths,
+                          color = color,
                           font_size_code = font_size_code
                           )
 
@@ -852,18 +884,53 @@ the_defined_css <- define_css(chunk_name = chunk_name,
 # chunk_expand() %>%
 #   length()
 
+
+code_seq_create_lag <- function(code_seq, lag = 1){
+
+  len <- length(code_seq)
+  code_seq_lag <- list()
+
+  for (i in 1:lag){
+  code_seq_lag[[i]] <- "'--'" #position 1
+  }
+
+  # position 2 to length
+  for (i in 1:(len - lag)){
+
+    code_seq_lag[[i + lag]]  <- code_seq[[i]]
+
+  }
+
+  code_seq_lag
+
+}
+
+
+# create_ggplot_code() %>%
+#   code_parse() %>%
+#   parsed_return_partial_code_sequence() %>%
+#   code_seq_create_lag(lag = 3)
+
+
+
 ######## The exported function ############
 
-#' Title
+#' Title CREA
 #'
-#' @param chunk_name a character string refering to the name of the source chunk for the flipbooking
+#' @param chunk_name a character string referring to the name of the source chunk for the flipbooking
 #' @param break_type "auto" is default finding appropriate breakpoints, "user" can be used with the special comment message #BREAK within the source code chunk, "non_seq" can be used for non sequential display of code with special comment messages #BREAK2 (will show in second frame) and #BREAK3 (will show in third frame), an integer input can be given too, to simply display the source code chunk multiple times which is appropriate for observing multiple realizations of sampling, "rotate" allows cycling through different lines of code, the comment #ROTATE is used for lines to by cycled through
-#' @param left_assign a logical, default is FALSE, if TRUE will print the object created in the upper lefthand corner of the source code chunk at the end of each partial reveal
+#' @param left_assign a logical, default is FALSE, if TRUE will print the object created in the upper left hand corner of the source code chunk at the end of each partial reveal
 #' @param code_seq a list of code as character strings, the list will automatically be created based on the previous three arguments or the user can input code manually
 #' @param num_breaks an integer, automatically calculated based on the length of the the code_seq list
-#' @param display_type the default is "both" for code and output to be displayed side-by-side, "output" will create spauned code chunks to only display output, "code" will create spauned code chunks only to show the partial code builds
+#' @param display_type a character string vector, the default is c("code", "output") for code and output to be displayed side-by-side, "output" will create spawned code chunks to only display output, "code" will create spawned code chunks only to show the partial code builds; "func" and "md" may also be displayed
+#' @param lang a character string indicating what programming language will be used. "r" is default; "python" is experimental
+#' @param func_seq a character string with function names; default is NULL and will reflect whatever function is highlighted from the code sequence
+#' @param title a character string that may contain a title for the frames of the flipbook; this may included header info "## My Title" for example is a second level markdown title in Xaringan
+#' @param md a character string vector that contains markdown; each element will be shown on a separate slide in the display panel "md" (see display_type)
+#' @param widths a numeric vector containing relative widths for panels
+#' @param font_size_code this is not reliable yet, place holder!
 #'
-#' @return a string object - will only work in 'knitr' context
+#' @return a string object is returned will only work in 'knitr' context
 #' @export
 #'
 chunk_reveal <- function(chunk_name = NULL,
@@ -871,12 +938,15 @@ chunk_reveal <- function(chunk_name = NULL,
                    left_assign = F,
                    lang = "r",
                    code_seq = NULL,
+                   code_seq_lag = NULL,
+                   code_seq_lag2 = NULL,
                    func_seq = NULL,
                    num_breaks = NULL,
                    display_type = c("code", "output"),
                    title = "",
                    md = NULL,
                    widths = c(39, 60, 0),
+                   color = c("black", "black", "black"),
                    font_size_code = "80%"
                    #,
                    # out.width = "70%",
@@ -884,11 +954,14 @@ chunk_reveal <- function(chunk_name = NULL,
                    ){
 
   if (!is.null(chunk_name)) {
-  code_seq <- chunk_name_return_code_sequence(chunk_name, break_type, left_assign, lang)
-  num_breaks <- length(code_seq)
+    code_seq <- chunk_name_return_code_sequence(chunk_name, break_type, left_assign, lang)
+    num_breaks <- length(code_seq)
     if (!is.null(func_seq)){
     func_seq <- chunk_name_return_function_sequence(chunk_name, break_type, left_assign, lang)
     }
+    code_seq_lag <- code_seq_create_lag(code_seq = code_seq)
+    code_seq_lag2 <- code_seq_create_lag(code_seq = code_seq, lag = 2)
+
   }
 
   text <- chunk_expand(chunk_name = chunk_name,
@@ -900,6 +973,7 @@ chunk_reveal <- function(chunk_name = NULL,
                        md = md,
                        func = func,
                        widths = widths,
+                       color = color,
                        font_size_code = font_size_code
                        #,
                        #out.height = out.height,

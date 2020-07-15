@@ -2,29 +2,43 @@
 % Please edit documentation in R/base_parse_reveal_xaringan.R
 \name{chunk_reveal}
 \alias{chunk_reveal}
-\title{Title}
+\title{Title CREA}
 \usage{
 chunk_reveal(chunk_name = NULL, break_type = "auto", left_assign = F,
-  lang = "r", code_seq = NULL, func_seq = NULL, num_breaks = NULL,
+  lang = "r", code_seq = NULL, code_seq_lag = NULL,
+  code_seq_lag2 = NULL, func_seq = NULL, num_breaks = NULL,
   display_type = c("code", "output"), title = "", md = NULL,
-  widths = c(39, 60, 0), font_size_code = "80\%")
+  widths = c(39, 60, 0), color = c("black", "black", "black"),
+  font_size_code = "80\%")
 }
 \arguments{
-\item{chunk_name}{a character string refering to the name of the source chunk for the flipbooking}
+\item{chunk_name}{a character string referring to the name of the source chunk for the flipbooking}
 
 \item{break_type}{"auto" is default finding appropriate breakpoints, "user" can be used with the special comment message #BREAK within the source code chunk, "non_seq" can be used for non sequential display of code with special comment messages #BREAK2 (will show in second frame) and #BREAK3 (will show in third frame), an integer input can be given too, to simply display the source code chunk multiple times which is appropriate for observing multiple realizations of sampling, "rotate" allows cycling through different lines of code, the comment #ROTATE is used for lines to by cycled through}
 
-\item{left_assign}{a logical, default is FALSE, if TRUE will print the object created in the upper lefthand corner of the source code chunk at the end of each partial reveal}
+\item{left_assign}{a logical, default is FALSE, if TRUE will print the object created in the upper left hand corner of the source code chunk at the end of each partial reveal}
+
+\item{lang}{a character string indicating what programming language will be used. "r" is default; "python" is experimental}
 
 \item{code_seq}{a list of code as character strings, the list will automatically be created based on the previous three arguments or the user can input code manually}
 
+\item{func_seq}{a character string with function names; default is NULL and will reflect whatever function is highlighted from the code sequence}
+
 \item{num_breaks}{an integer, automatically calculated based on the length of the the code_seq list}
 
-\item{display_type}{the default is "both" for code and output to be displayed side-by-side, "output" will create spauned code chunks to only display output, "code" will create spauned code chunks only to show the partial code builds}
+\item{display_type}{a character string vector, the default is c("code", "output") for code and output to be displayed side-by-side, "output" will create spawned code chunks to only display output, "code" will create spawned code chunks only to show the partial code builds; "func" and "md" may also be displayed}
+
+\item{title}{a character string that may contain a title for the frames of the flipbook; this may included header info "## My Title" for example is a second level markdown title in Xaringan}
+
+\item{md}{a character string vector that contains markdown; each element will be shown on a separate slide in the display panel "md" (see display_type)}
+
+\item{widths}{a numeric vector containing relative widths for panels}
+
+\item{font_size_code}{this is not reliable yet, place holder!}
 }
 \value{
-a string object - will only work in 'knitr' context
+a string object is returned will only work in 'knitr' context
 }
 \description{
-Title
+Title CREA
 }
