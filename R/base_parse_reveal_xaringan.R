@@ -774,6 +774,7 @@ chunk_expand <- function(chunk_name = "example",
                          num_breaks = 2,
                          title = "",
                          md = NULL,
+                         md2 = NULL,
                          func = NULL,
                          lang = "r",
                          custom = F,
@@ -790,6 +791,7 @@ chunk_expand <- function(chunk_name = "example",
   output_lag2 <- return_partial_chunks_template_output_lag2()
   func <- return_partial_chunks_template_function()
   md <- "`r md[<<<breaks>>>]`"
+  md2 <- "`r md2[<<<breaks>>>]`"
 
 if (display_type[1] == "both") {
   left <- code
@@ -927,6 +929,7 @@ code_seq_create_lag <- function(code_seq, lag = 1){
 #' @param func_seq a character string with function names; default is NULL and will reflect whatever function is highlighted from the code sequence
 #' @param title a character string that may contain a title for the frames of the flipbook; this may included header info "## My Title" for example is a second level markdown title in Xaringan
 #' @param md a character string vector that contains markdown; each element will be shown on a separate slide in the display panel "md" (see display_type)
+#' @param md2 a character string vector that contains markdown; each element will be shown on a separate slide in the display panel "md" (see display_type)
 #' @param widths a numeric vector containing relative widths for panels
 #' @param font_size_code this is not reliable yet, place holder!
 #'
@@ -945,6 +948,7 @@ chunk_reveal <- function(chunk_name = NULL,
                    display_type = c("code", "output"),
                    title = "",
                    md = NULL,
+                   md2 = NULL,
                    widths = c(39, 60, 0),
                    color = c("black", "black", "black"),
                    font_size_code = "80%"
@@ -971,6 +975,7 @@ chunk_reveal <- function(chunk_name = NULL,
                        title = title,
                        lang = lang,
                        md = md,
+                       md2 = md2,
                        func = func,
                        widths = widths,
                        color = color,
