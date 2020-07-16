@@ -793,11 +793,9 @@ The flipbooked portion of this presentation was created with the new {flipbookr}
 
 
 ```{css, eval = TRUE, echo = FALSE}
-# quickly chance font size of code
 .remark-code{line-height: 1.5; font-size: 80%}
 
 
-# this bit is with a mind to converting to pdf or gif
 @media print {
   .has-continuation {
     display: block;
