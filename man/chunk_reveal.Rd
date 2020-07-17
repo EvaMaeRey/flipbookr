@@ -8,8 +8,8 @@ chunk_reveal(chunk_name = NULL, break_type = "auto", left_assign = F,
   lang = "r", code_seq = NULL, code_seq_lag = NULL,
   code_seq_lag2 = NULL, func_seq = NULL, num_breaks = NULL,
   display_type = c("code", "output"), title = "", md = NULL,
-  widths = c(39, 60, 0), color = c("black", "black", "black"),
-  font_size_code = "80\%")
+  md2 = NULL, widths = c(39, 60, 0), color = c("black", "black",
+  "black"), font_size_code = "80\%")
 }
 \arguments{
 \item{chunk_name}{a character string referring to the name of the source chunk for the flipbooking}
@@ -31,6 +31,8 @@ chunk_reveal(chunk_name = NULL, break_type = "auto", left_assign = F,
 \item{title}{a character string that may contain a title for the frames of the flipbook; this may included header info "## My Title" for example is a second level markdown title in Xaringan}
 
 \item{md}{a character string vector that contains markdown; each element will be shown on a separate slide in the display panel "md" (see display_type)}
+
+\item{md2}{a character string vector that contains markdown; each element will be shown on a separate slide in the display panel "md" (see display_type)}
 
 \item{widths}{a numeric vector containing relative widths for panels}
 

@@ -603,7 +603,7 @@ chunk_name_return_function_sequence <- function(chunk_name,
     chunk_code_get() %>%
     code_parse(lang = lang) %>%
     parsed_return_recent_function_sequence(break_type = break_type,
-                                            left_assign = left_assign)
+                                           left_assign = left_assign)
 
 }
 
@@ -957,16 +957,38 @@ chunk_reveal <- function(chunk_name = NULL,
                    # out.height = "70%"
                    ){
 
-  if (!is.null(chunk_name)) {
+  if (!is.null(chunk_name) & is.null(code_seq)) {
+
     code_seq <- chunk_name_return_code_sequence(chunk_name, break_type, left_assign, lang)
-    num_breaks <- length(code_seq)
-    if (!is.null(func_seq)){
-    func_seq <- chunk_name_return_function_sequence(chunk_name, break_type, left_assign, lang)
-    }
-    code_seq_lag <- code_seq_create_lag(code_seq = code_seq)
-    code_seq_lag2 <- code_seq_create_lag(code_seq = code_seq, lag = 2)
 
   }
+
+  if (is.null(func_seq) & !is.null(code_seq)){
+
+    func_seq <- chunk_name_return_function_sequence(chunk_name, break_type, left_assign, lang)
+
+  }
+
+  # for break_type equal 1, lag throws error so just try
+  try(code_seq_lag <- code_seq_create_lag(code_seq = code_seq, lag = 1))
+  try(code_seq_lag2 <- code_seq_create_lag(code_seq = code_seq, lag = 2))
+
+  if (is.null(chunk_name)) {
+   #randomly generated chunk_name if there is none
+    chunk_name <- sample(1:100000, 1)
+  }
+
+  if (!is.null(code_seq)) {
+
+    num_breaks <- length(code_seq)
+
+  }
+
+  if (is.null(num_breaks)){ # in case you have no code sequence
+
+    num_breaks <- length(md)
+
+    }
 
   text <- chunk_expand(chunk_name = chunk_name,
                        break_type = break_type,

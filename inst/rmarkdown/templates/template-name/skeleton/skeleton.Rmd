@@ -225,7 +225,7 @@ Sometimes, you will need to set the chunk option to eval = F, echo = F instead o
 
 ---
 
-`r chunk_reveal("my_rotate", break_type = "rotate")`
+`r chunk_reveal("my_rotate", break_type = "rotate", widths = c(50,50))`
 
 ```{r my_rotate, eval = F, echo = F}
 ggplot(data = cars) +
@@ -275,6 +275,15 @@ cars %>%
   theme(legend.position = c(.9, .2))
 ```
 
+---
+
+## `break_type = 1`
+
+Of course gives you the side-by-side with no walk through, which is sometimes nice
+
+---
+
+`r chunk_reveal("cars_multi", break_type = 1)`
 
 
 
@@ -387,7 +396,7 @@ Now to include a panel for markdown "md" should be one of the inputs of the disp
 
 --
 
-The length of the md vector will likely be the same length as the slides in the flipbook.
+You'll probably plan on the length of the md vector will likely be the same length as the slides in the flipbook which is calculated from the number of breaks for the code sequence.
 
 --
 
@@ -399,7 +408,18 @@ Double backslashes may be required for escape characters.
 
 `r chunk_reveal("custom_example", md = c("### hello", "# goodbye", "## $$\\frac{\\sum(x)}{2}$$"), display_type = c("md", "code"))`
 
+---
 
+## `display_type = c("md", "md2")`
+
+Sometimes, perhaps your only inputs will be markdown sequences.
+
+---
+
+`r chunk_reveal(md = c("### hello", "# goodbye", "## $$\\frac{\\sum(x)}{2}$$"), md2 = c("greeting", "another", "math mode"), display_type = c("md", "md2"))`
+
+
+---
 
 
 ```{r custom_example, include=F}
