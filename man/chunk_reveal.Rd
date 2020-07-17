@@ -6,10 +6,11 @@
 \usage{
 chunk_reveal(chunk_name = NULL, break_type = "auto", left_assign = F,
   lang = "r", code_seq = NULL, code_seq_lag = NULL,
-  code_seq_lag2 = NULL, func_seq = NULL, num_breaks = NULL,
+  code_seq_lag2 = NULL, code_seq_target = NULL,
+  code_seq_start = NULL, func_seq = NULL, num_breaks = NULL,
   display_type = c("code", "output"), title = "", md = NULL,
-  md2 = NULL, widths = c(39, 60, 0), color = c("black", "black",
-  "black"), font_size_code = "80\%")
+  md2 = NULL, widths = NULL, color = c("black", "black", "black"),
+  font_size_code = "80\%")
 }
 \arguments{
 \item{chunk_name}{a character string referring to the name of the source chunk for the flipbooking}

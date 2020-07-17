@@ -295,7 +295,7 @@ There are also different display modes.
 
 --
 
-The default is `display_type = c("code", "output")` which will give you the classic flipbook --- code and output co-evolution.
+The default is `display_type = c("code", "output")` which will give you the classic flipbook --- code and output co-evolution. (Note this was formerly "both", but that is now deprecated)
 
 ---
 
@@ -345,11 +345,12 @@ If you want to allow for lateral comparison (so not just temporal displacement) 
 Sometimes we might want to compare the previous output or with the current one *laterally* -- i.e. spatial offset instead of temporal (temporal offset is the essence of flipbooks) but sometimes we might want to have that lateral (spatial) comparison as well. This is most true when differencing via motion detection is not easy.  i.e. when there are large jumps in the position of tabular/text output.
 
 
+
 ---
 
-`r chunk_reveal("boring", break_type = "auto", display_type = c("code", "output", "output_lag"), widths = c(1,1,1))`
+`r chunk_reveal("short", break_type = "auto", display_type = c("code", "output", "output_lag"), widths = c(1,1,1))`
 
-```{r boring, include=FALSE}
+```{r short, include=FALSE}
 cars %>% 
   ggplot() +
   aes(x = dist)
@@ -373,8 +374,29 @@ list(1, 2) %>%
   .[3]
 ```
 
+---
 
 
+## `display_type = c("code", "output", "output_target")`
+
+Perhaps we want the target to appear on every slide as we build to this target...
+
+---
+
+
+`r chunk_reveal("hello", display_type = c("code", "output", "output_target"), widths = c(20, 20, 10))`
+
+```{r hello, include = F}
+ggplot(data = cars) +
+  aes(x = speed) +
+  aes(y = dist) +
+  geom_point(size = 8,
+             shape = 21,
+             alpha = .9,
+             color = "snow") +
+  aes(fill = speed) +
+  scale_fill_viridis_c(option = "magma") 
+```
 
 
 ---
@@ -533,7 +555,7 @@ But, setting the left_assign parameter to T and using left assignment, you can s
 
 ---
 
-`r chunk_reveal("left_assign", break_type = "auto", display_type = "both", left_assign = TRUE)`
+`r chunk_reveal("left_assign", break_type = "auto", display_type = c("code", "output"), left_assign = TRUE)`
 
 
 ```{r left_assign, include = FALSE}
@@ -574,7 +596,7 @@ But base R techniques and other popular tools can certainly also be employed.
 
 ---
 
-`r chunk_reveal("left_assign2", break_type = "auto", display_type = "both", left_assign = TRUE)`
+`r chunk_reveal("left_assign2", break_type = "auto", left_assign = TRUE)`
 
 
 ```{r left_assign2, include = FALSE}

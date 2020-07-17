@@ -644,7 +644,18 @@ return_partial_chunks_template_output_lag2 <- function(){
 
   "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks>>>_output_lag2, eval = TRUE, echo = FALSE, code = code_seq_lag2[[<<<breaks>>>]]}
 ```"
+}
 
+return_partial_chunks_template_output_target <- function(){
+
+  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks>>>_output_target, eval = TRUE, echo = FALSE, code = code_seq_target[[<<<breaks>>>]]}
+```"
+}
+
+return_partial_chunks_template_output_start <- function(){
+
+  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks>>>_output_target, eval = TRUE, echo = FALSE, code = code_seq_start[[<<<breaks>>>]]}
+```"
 }
 
 
@@ -789,6 +800,8 @@ chunk_expand <- function(chunk_name = "example",
   output <- return_partial_chunks_template_output()
   output_lag <- return_partial_chunks_template_output_lag()
   output_lag2 <- return_partial_chunks_template_output_lag2()
+  output_target <- return_partial_chunks_template_output_target()
+  output_start <- return_partial_chunks_template_output_start()
   func <- return_partial_chunks_template_function()
   md <- "`r md[<<<breaks>>>]`"
   md2 <- "`r md2[<<<breaks>>>]`"
@@ -908,10 +921,37 @@ code_seq_create_lag <- function(code_seq, lag = 1){
 }
 
 
+code_seq_create_target <- function(code_seq){
+
+  len <- length(code_seq)
+  code_seq_target <- list()
+
+  for (i in 1:len){
+    code_seq_target[[i]] <- code_seq[[len]]
+  }
+
+  code_seq_target
+
+}
+
+
+code_seq_create_start <- function(code_seq){
+
+  len <- length(code_seq)
+  code_seq_start <- list()
+
+  for (i in 1:len){
+    code_seq_start[[i]] <- code_seq[[1]]
+  }
+
+  code_seq_start
+
+}
+
 # create_ggplot_code() %>%
 #   code_parse() %>%
 #   parsed_return_partial_code_sequence() %>%
-#   code_seq_create_lag(lag = 3)
+#   code_seq_create_target()
 
 
 
@@ -943,19 +983,29 @@ chunk_reveal <- function(chunk_name = NULL,
                    code_seq = NULL,
                    code_seq_lag = NULL,
                    code_seq_lag2 = NULL,
+                   code_seq_target = NULL,
+                   code_seq_start = NULL,
                    func_seq = NULL,
                    num_breaks = NULL,
                    display_type = c("code", "output"),
                    title = "",
                    md = NULL,
                    md2 = NULL,
-                   widths = c(39, 60, 0),
+                   widths = NULL,
                    color = c("black", "black", "black"),
                    font_size_code = "80%"
                    #,
                    # out.width = "70%",
                    # out.height = "70%"
                    ){
+
+  if (is.null(widths)){
+
+    if (length(display_type) == 1) { widths <- c(1)}
+    if (length(display_type) == 2) { widths <- c(39,60)}
+    if (length(display_type) == 3) { widths <- c(29,39,30)}
+
+  }
 
   if (!is.null(chunk_name) & is.null(code_seq)) {
 
@@ -972,6 +1022,8 @@ chunk_reveal <- function(chunk_name = NULL,
   # for break_type equal 1, lag throws error so just try
   try(code_seq_lag <- code_seq_create_lag(code_seq = code_seq, lag = 1))
   try(code_seq_lag2 <- code_seq_create_lag(code_seq = code_seq, lag = 2))
+  try(code_seq_target <- code_seq_create_target(code_seq = code_seq))
+  try(code_seq_start <- code_seq_create_start(code_seq = code_seq))
 
   if (is.null(chunk_name)) {
    #randomly generated chunk_name if there is none
