@@ -89,7 +89,7 @@ Also, at the top of this template in that "setup" code chunk, I set *code chunk*
 
 <!-- Hi there!  It's me, the developer.  So that I can sometimes work interactively on the package, I still am making the local source script available for myself - the code in the following chunk is for this purpose.  It will just work for your, but because I'm using "try" it won't throw an error for you!-->
 
-```{r just_for_evamaerey, cache = FALSE, echo = FALSE}
+```{r just_for_evamaerey, cache = FALSE, echo = FALSE, message=F, warning=F}
 try(source("../../../../../R/base_parse_reveal_xaringan.R"))
 try(source("../../../../../R/mini.R"))
 ```
@@ -118,9 +118,9 @@ There are several modes that you might be interested in using for "flipbooking" 
 
 ---
 
-At first we'll apply `chunk_reveal()` to the below input code - the code chunk is named "cars".  For now I set echo = TRUE for this code chunk, so you can see the code content but sometimes you might like to set echo to FALSE. This code uses tidyverse tools, so we loaded that too in the "setup" code chunk at the beginning of the template. 
+At first we'll apply `chunk_reveal()` to the below input code - the code chunk is named "my_cars".  For now I set echo = TRUE for this code chunk, so you can see the code content but sometimes you might like to set echo to FALSE. This code uses tidyverse tools, so we loaded that too in the "setup" code chunk at the beginning of the template. 
 
-```{r cars, include = FALSE}
+```{r my_cars, include = FALSE}
 cars %>%
   filter(speed > 4) %>%
   ggplot() +
@@ -153,10 +153,10 @@ There are several ways that input code can be revealed:
 In the above input code, notice the regular comments and the special *#BREAK* comments, these will be used for a couple of the different `break_type` modes.
 
 
-```{r, code = knitr::knit_code$get("cars"), eval = FALSE, echo = TRUE}
+```{r, code = knitr::knit_code$get("my_cars"), eval = FALSE, echo = TRUE}
 ```
 
-<!-- Also notice how we've created a new code chunk with the code from the previous chunk by calling knitr::knit_code$get("cars"). -->
+<!-- Also notice how we've created a new code chunk with the code from the previous chunk by calling knitr::knit_code$get("my_cars"). -->
 <!-- This slide is also about giving you some intuition about how flipbooking works in the background. -->
 <!-- (more on this [here](https://emitanaka.rbind.io/post/knitr-knitr-code/)) -->
 
@@ -168,14 +168,14 @@ In the above input code, notice the regular comments and the special *#BREAK* co
 The default break_type is "auto", in which appropriate breakpoints are determined automatically --- by finding where parentheses are balanced. 
 
 <!-- display the user input code as a refresher -->
-```{r, code = knitr::knit_code$get("cars"), eval = FALSE, echo = TRUE}
+```{r, code = knitr::knit_code$get("my_cars"), eval = FALSE, echo = TRUE}
 ```
 
   
 
 ---
 
-`r chunk_reveal("cars", break_type = "auto")`
+`r chunk_reveal("my_cars", break_type = "auto")`
 
 ---
 
@@ -184,12 +184,12 @@ The default break_type is "auto", in which appropriate breakpoints are determine
 If the break_type is set to "user", the breakpoints are those indicated by the user with the special comment #BREAK
 
 <!-- display the user input code as a refresher -->
-```{r, code = knitr::knit_code$get("cars"), eval = FALSE, echo = TRUE}
+```{r, code = knitr::knit_code$get("my_cars"), eval = FALSE, echo = TRUE}
 ```
 
 ---
 
-`r chunk_reveal("cars", break_type = "user")`
+`r chunk_reveal("my_cars", break_type = "user")`
 
 
 
@@ -201,7 +201,7 @@ If the break_type is set to "user", the breakpoints are those indicated by the u
 If the break_type is set to "non_seq", the breakpoints are those indicated by the user with the special numeric comment #BREAK2, #BREAK3 etc to indicate at which point in time the code should appear.  
 
 <!-- display the user input code as a refresher -->
-```{r, code = knitr::knit_code$get("cars"), eval = FALSE, echo = TRUE}
+```{r, code = knitr::knit_code$get("my_cars"), eval = FALSE, echo = TRUE}
 ```
 
 
@@ -209,7 +209,7 @@ If the break_type is set to "non_seq", the breakpoints are those indicated by th
 ---
 
 
-`r chunk_reveal("cars", break_type = "non_seq")`
+`r chunk_reveal("my_cars", break_type = "non_seq")`
 
 
 ---
@@ -316,23 +316,23 @@ Also "md" is allowed but the requires you to give an input for another argument 
 
 ## `display_type = "output"`
 
-Let's look at where only the *output* is displayed for the "cars" code chunk.
+Let's look at where only the *output* is displayed for the "my_cars" code chunk.
 
 
 ---
 
-`r chunk_reveal("cars", display_type = "output")`
+`r chunk_reveal("my_cars", display_type = "output")`
 
 ---
 
 ## `display_type = "code"`
 
-And now where only the *code* is displayed for the "cars" code chunk.
+And now where only the *code* is displayed for the "my_cars" code chunk.
 
 
 ---
 
-`r chunk_reveal("cars", display_type = "code")`
+`r chunk_reveal("my_cars", display_type = "code")`
 
 ---
 
@@ -408,7 +408,7 @@ Not sure why you'd want to do this, but you can flip output and code.
 
 ---
 
-`r chunk_reveal("cars", break_type = "auto", display_type = c("output", "code"))`
+`r chunk_reveal("my_cars", break_type = "auto", display_type = c("output", "code"))`
 
 ---
 
@@ -833,10 +833,38 @@ class: middle, center
 The flipbooked portion of this presentation was created with the new {flipbookr} package.  Get it with remotes::install_github("EvaMaeRey/flipbookr")
 
 
+---
+
+
+
+
+```{r cars2, include = F}
+ggplot(data = cars) +
+  aes(x = speed) +
+  aes(y = dist) + #BREAK
+  geom_point(
+    alpha = .8, #BREAK2
+    color = "blue" #BREAK3
+    ) + #BREAK
+  aes(size = speed) + #BREAK
+  geom_tile() +
+  geom_density2d() +
+  geom_line(alpha = .6, 
+            size = 1) +
+  geom_segment(aes(xend = 0, yend = 0),
+               size = 1,) +
+  geom_curve(aes(xend = 0, yend = 0),
+               size = 1)
+```
+# The End!
+
+
+```{r, code = chunk_code_seq_as_vector("cars2"), echo = F, fig.show="hold", out.width="20%"}
+```
+
 
 ```{css, eval = TRUE, echo = FALSE}
 .remark-code{line-height: 1.5; font-size: 80%}
-
 
 @media print {
   .has-continuation {

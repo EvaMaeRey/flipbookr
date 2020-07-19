@@ -1064,6 +1064,33 @@ paste(knitr::knit(text = text), collapse = "\n")
 }
 
 
+## returning code sequence as a vector
+
+code_seq_as_vector <- function(code_seq){
+
+  code_seq %>%
+    tibble::tibble(code = .) %>%
+    tidyr::unnest() %>%
+    dplyr::pull("code")
+
+}
+
+
+chunk_code_seq_as_vector <- function(chunk_name,
+                                     break_type = "auto",
+                                     left_assign = F
+                                     ){
+
+
+  chunk_name %>%
+    chunk_code_get() %>%
+    code_parse() %>%
+    parsed_return_partial_code_sequence(break_type = break_type,
+                                        left_assign = left_assign) %>%
+    code_seq_as_vector()
+
+
+}
 
 # Thinking about delivery to sweave/beamer
 # return_partial_chunks_template_code <-
