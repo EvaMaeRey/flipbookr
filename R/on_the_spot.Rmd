@@ -1,0 +1,54 @@
+---
+title: "Flipbooking"
+subtitle: "With flipbookr and xaringan"
+author: "Gina Reynolds, December 2019"
+output:
+  xaringan::moon_reader:
+    seal: false
+    lib_dir: libs
+    css: [default, hygge, ninjutsu]
+    nature:
+      ratio: 16:10
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+
+```{r, include = F}
+# This is the recommended set up for flipbooks
+# you might think about setting cache to TRUE as you gain practice --- building flipbooks from scratch can be time consuming
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F, fig.retina = 3)
+library(flipbookr)
+library(tidyverse)
+```
+
+
+```{r hello, include=F}
+cars %>% 
+  ggplot +
+  aes(x = speed)
+```
+
+
+```{r}
+chunk_name_return_code_sequence("hello") ->
+  the_code_seq
+
+chunk_reveal()
+```
+
+
+`r chunk_reveal(chunk_name = "yup", code_seq = the_code_seq)`
+
+
+```{css, eval = TRUE, echo = FALSE}
+.remark-code{line-height: 1.5; font-size: 80%}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+```

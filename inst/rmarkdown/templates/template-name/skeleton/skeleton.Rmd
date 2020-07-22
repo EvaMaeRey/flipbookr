@@ -384,9 +384,9 @@ Perhaps we want the target to appear on every slide as we build to this target..
 ---
 
 
-`r chunk_reveal("hello", display_type = c("code", "output", "output_target"), widths = c(20, 20, 10))`
+`r chunk_reveal("goodbye", display_type = c("code", "output", "output_target"), widths = c(20, 20, 10))`
 
-```{r hello, include = F}
+```{r goodbye, include = F}
 ggplot(data = cars) +
   aes(x = speed) +
   aes(y = dist) +
@@ -398,6 +398,29 @@ ggplot(data = cars) +
   scale_fill_viridis_c(option = "magma") 
 ```
 
+---
+
+## `display_type = c("code", "output", "output_start")`
+
+Or maybe we want the input to appear on every slide ...
+
+---
+
+`r chunk_reveal("hello", display_type = c("code", "output", "output_start"), widths = c(20, 20, 10))`
+
+
+```{r hello, include = F}
+cars %>% 
+  ggplot(data = .) +
+  aes(x = speed) +
+  aes(y = dist) +
+  geom_point(size = 8,
+             shape = 21,
+             alpha = .9,
+             color = "snow") +
+  aes(fill = speed) +
+  scale_fill_viridis_c(option = "magma") 
+```
 
 ---
 
@@ -856,6 +879,7 @@ ggplot(data = cars) +
   geom_curve(aes(xend = 0, yend = 0),
                size = 1)
 ```
+
 # The End!
 
 

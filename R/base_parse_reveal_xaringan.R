@@ -955,7 +955,7 @@ code_seq_create_start <- function(code_seq){
 
 
 
-######## The exported function ############
+######## The exported functions ############
 
 #' Title CREA
 #'
@@ -1041,6 +1041,8 @@ chunk_reveal <- function(chunk_name = NULL,
     num_breaks <- length(md)
 
     }
+
+  if(is.null(chunk_name)){chunk_name <- sample(1000:9999, 1)}
 
   text <- chunk_expand(chunk_name = chunk_name,
                        break_type = break_type,
