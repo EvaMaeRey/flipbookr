@@ -21,10 +21,9 @@ This is pretty experimental work.  The python "parser" (basically no parsing) me
 # This is the recommended set up for flipbooks
 # you might think about setting cache to TRUE as you gain practice --- building flipbooks from scratch can be time consuming
 knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, 
-                      comment = "", cache = F, fig.retina = 3, eval = F)
+                      comment = "", cache = F, fig.retina = 3, eval = T)
 library(flipbookr)
 library(tidyverse)
-library(reticulate)
 ```
 
 
@@ -65,8 +64,7 @@ import matplotlib.pyplot as plt
 year = [1950, 1970, 
   1990, 2010]
 pop = [2.519, 3, 5, 6]
-plt.plot(year, pop)
-plt.show()
+plt.plot(year, pop); plt.show()
 ```
 
 
@@ -97,8 +95,7 @@ s
 plt.plot(t, s)
 plt.xlabel('time (s)')
 plt.ylabel('voltage (mV)')
-plt.grid(True)
-plt.show()
+plt.grid(True); plt.show()
 ```
 
 

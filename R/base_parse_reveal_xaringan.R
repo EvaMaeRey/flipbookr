@@ -19,11 +19,30 @@ create_code <- function(){ # for testing w/o knitting
   cars ->
   my_plot  #BREAK
 
+  NULL #OMIT
 
   1 + 1 #BREAK"
 
 }
 
+
+create_code_rotate_omit <- function(){
+
+'ggplot(data = cars) +
+  aes(x = speed) +
+  aes(y = dist) +
+  geom_point(size = 8,
+             shape = 21,
+             alpha = .9,
+             color = "snow") +
+  aes(fill = speed) +
+  scale_fill_viridis_c(option = "magma") + #OMIT
+  scale_fill_viridis_c(option = "magma") + #ROTATE
+  scale_fill_viridis_c(option = "cividis") + #ROTATE
+  scale_fill_viridis_c(option = "plasma") + #ROTATE
+  NULL'
+
+}
 
 
 ####### Make some test code available as character strings #####
@@ -116,21 +135,36 @@ chunk_code_get <- function(chunk_name){
 
 }
 
+
+
+code_remove_omit <- function(code, omit = "#OMIT"){
+
+  code %>%
+    stringr::str_split(pattern = "\n") %>%
+    .[[1]] %>%
+    .[!stringr::str_detect(., omit)] %>%
+    paste(collapse = "\n")
+
+}
+
+
+#
 # create_code() %>%
 #   code_as_table() %>%
 #   code_as_table_process_break_messages()
 
-
 #### Code parsing #########
-code_as_table <- function(code){
+code_as_table <- function(code, omit = "#OMIT"){
 
   code %>%
+    code_remove_omit(omit = omit) %>%
     stringr::str_split(pattern = "\n") %>%
     .[[1]] %>%
     tibble::tibble(raw_code = .) %>%
     dplyr::mutate(line = 1:dplyr::n())
 
 }
+
 
 code_as_table_process_break_messages <- function(code_as_table){
 
@@ -145,27 +179,27 @@ code_as_table_process_break_messages <- function(code_as_table){
 
 }
 
-
-code_simple_parse <- function(code){
-
-  code %>%
-    code_as_table() %>%
-    code_as_table_process_break_messages()
-
-}
-
-# dplyr::mutate(comment = stringr::str_remove(comment, "#BREAK\\d+")) %>%
-
-
 # create_code() %>%
 #   code_as_table() %>%
 #   code_as_table_process_break_messages()
 
 
+code_simple_parse <- function(code, omit = "#OMIT"){
+
+  code %>%
+    code_as_table(omit = omit) %>%
+    code_as_table_process_break_messages()
+
+}
+
+
 #### Real Parsing ####
 
 
-r_code_base_parse <- function(code) {
+r_code_base_parse <- function(code, omit = "#OMIT") {
+
+  code <- code_remove_omit(code = code, omit = omit)
+  # code <- stringr::str_remove_all(code, "#BREAK\\d+|#BREAK|#ROTATE|#OMIT")
 
   sf <- srcfile(code)
   try(parse(text = code, srcfile = sf))
@@ -233,7 +267,7 @@ r_base_parsed_count_parentheses <- function(base_parsed){
 #### Full parse R, python, stata ####
 
 
-r_code_full_parse <- function(code = code){
+r_code_full_parse <- function(code = code, omit = "#OMIT"){
 
   arithmetic <- "\\+$|-$|\\/$|\\*$|\\^$|%%$|%\\/%$"
   matrix <- "%\\*%$|%o%$"
@@ -246,10 +280,10 @@ r_code_full_parse <- function(code = code){
                        the_magrittr,
                        right_assign, combine_booleans, sep = "|")
 
-  raw_code_table <- code_simple_parse(code = code)
+  raw_code_table <- code_simple_parse(code = code, omit = omit)
 
   parsed_code_table <- code %>%
-    r_code_base_parse() %>%
+    r_code_base_parse(omit = omit) %>%
     r_base_parsed_count_parentheses()
 
   raw_code_table %>%
@@ -263,6 +297,7 @@ r_code_full_parse <- function(code = code){
     # delete comments understood as
     dplyr::mutate(comment = stringr::str_remove(comment, "#BREAK\\d?")) %>%
     dplyr::mutate(comment = stringr::str_remove(comment, "#ROTATE")) %>%
+    dplyr::mutate(comment = stringr::str_remove(comment, "#[[A-Z]]+")) %>%
     dplyr::mutate(comment = stringr::str_remove(comment, "XXXXXXXXX")) %>%
     dplyr::mutate(code = stringr::str_remove(stringi::stri_trim_right(code), connectors))  %>%
     dplyr::mutate(auto = all_parentheses_balanced & code != "") %>%
@@ -275,10 +310,10 @@ r_code_full_parse <- function(code = code){
 #   python_code_full_parse()
 
 
-python_code_full_parse <- function(code){
+python_code_full_parse <- function(code, omit = "#OMIT"){
 
   code %>%
-    code_simple_parse() %>%
+    code_simple_parse(omit = omit) %>%
     dplyr::mutate(code = raw_code) %>%
     dplyr::mutate(open_par = stringr::str_count(code, "\\{|\\(|\\[")) %>%
     dplyr::mutate(closed_par = stringr::str_count(code, "\\}|\\)|\\]")) %>%
@@ -293,10 +328,10 @@ python_code_full_parse <- function(code){
 }
 
 
-stata_code_full_parse <- function(code){
+stata_code_full_parse <- function(code, omit = "#OMIT"){
 
   code %>%
-    code_simple_parse() %>%
+    code_simple_parse(omit = omit) %>%
     dplyr::mutate(code = raw_code) %>%
     dplyr::mutate(auto = ifelse(raw_code == "", FALSE, TRUE)) %>%
     dplyr::mutate(connector = "") %>%
@@ -307,17 +342,17 @@ stata_code_full_parse <- function(code){
 
 #### Combined code parsing all languages ####
 
-code_parse <- function(code = create_code(), lang = "r") {
+code_parse <- function(code = create_code(), lang = "r", omit = "#OMIT") {
 
   if (lang == "r") {
 
-    r_code_full_parse(code = code) %>%
+    r_code_full_parse(code = code, omit = omit) %>%
       dplyr::mutate(func = stringr::str_extract(code, "\\w+\\(")) %>%
       dplyr::mutate(func = stringr::str_remove(func, "\\("))
 
   } else if (lang == "python") {
 
-  python_code_full_parse(code = code)
+  python_code_full_parse(code = code, omit = omit)
 
   } else if (lang == "stata") {
 
@@ -375,8 +410,10 @@ parsed_calc_show <- function(parsed, break_type = "auto"){
     for (i in 1:num_panes) {
 
       which_show[[i]] <-
-        sort(c(which(!parsed$rotate),
-          which(parsed$rotate)[i]))
+        sort(
+           c(which(!parsed$rotate),
+          which(parsed$rotate)[i]
+          ))
     }
 
   } else {
@@ -402,7 +439,8 @@ parsed_calc_show <- function(parsed, break_type = "auto"){
 
 
 shown_lines_calc_highlight <- function(which_show = list(c(1, 2), c(1, 2, 3, 4)),
-                                    break_type = "auto"){
+                                       break_type = "auto",
+                                       parsed){
 
   which_highlight <- list()
 
@@ -415,11 +453,19 @@ shown_lines_calc_highlight <- function(which_show = list(c(1, 2), c(1, 2, 3, 4))
 
   }
 
-  if (break_type == "non_seq" | break_type == "rotate") {
+  if (break_type == "non_seq") {
 
     which_highlight[[1]] <- as.integer(c())
 
   }
+
+  if (break_type == "rotate") {
+
+    which_highlight[[1]] <- which_show[[1]][!(which_show[[1]] %in% which_show[[2]])]
+
+  }
+
+
 
   # additional frames highlighting
 
@@ -584,11 +630,12 @@ parsed_return_recent_function_sequence <- function(parsed,
 chunk_name_return_code_sequence <- function(chunk_name,
                                             break_type = "auto",
                                             left_assign = F,
-                                            lang = "r"){
+                                            lang = "r",
+                                            omit = "#OMIT"){
 
 chunk_name %>%
   chunk_code_get() %>%
-  code_parse(lang = lang) %>%
+  code_parse(lang = lang, omit = omit) %>%
   parsed_return_partial_code_sequence(break_type = break_type,
                                       left_assign = left_assign)
 
@@ -597,11 +644,12 @@ chunk_name %>%
 chunk_name_return_function_sequence <- function(chunk_name,
                                             break_type = "auto",
                                             left_assign = F,
-                                            lang = "r"){
+                                            lang = "r",
+                                            omit = "#OMIT"){
 
   chunk_name %>%
     chunk_code_get() %>%
-    code_parse(lang = lang) %>%
+    code_parse(lang = lang, omit = omit) %>%
     parsed_return_recent_function_sequence(break_type = break_type,
                                            left_assign = left_assign)
 
@@ -802,7 +850,7 @@ chunk_expand <- function(chunk_name = "example",
   output_lag2 <- return_partial_chunks_template_output_lag2()
   output_target <- return_partial_chunks_template_output_target()
   output_start <- return_partial_chunks_template_output_start()
-  func <- return_partial_chunks_template_function()
+  try(func <- return_partial_chunks_template_function()) #because not worked out for python
   md <- "`r md[<<<breaks>>>]`"
   md2 <- "`r md2[<<<breaks>>>]`"
 
@@ -980,6 +1028,7 @@ chunk_reveal <- function(chunk_name = NULL,
                    break_type = "auto",
                    left_assign = F,
                    lang = "r",
+                   omit = "#OMIT",
                    code_seq = NULL,
                    code_seq_lag = NULL,
                    code_seq_lag2 = NULL,
@@ -1009,14 +1058,14 @@ chunk_reveal <- function(chunk_name = NULL,
 
   if (!is.null(chunk_name) & is.null(code_seq)) {
 
-    code_seq <- chunk_name_return_code_sequence(chunk_name, break_type, left_assign, lang)
+    code_seq <- chunk_name_return_code_sequence(chunk_name, break_type, left_assign, lang, omit = omit)
 
   }
 
   if (is.null(func_seq) & !is.null(code_seq)){
 
-    func_seq <- chunk_name_return_function_sequence(chunk_name, break_type, left_assign, lang)
-
+    try(func_seq <- chunk_name_return_function_sequence(chunk_name, break_type, left_assign, lang, omit = omit))
+    #try because not worked out for python?
   }
 
   # for break_type equal 1, lag throws error so just try
@@ -1080,13 +1129,15 @@ code_seq_as_vector <- function(code_seq){
 
 chunk_code_seq_as_vector <- function(chunk_name,
                                      break_type = "auto",
-                                     left_assign = F
+                                     left_assign = F,
+                                     lang = "r",
+                                     omit = "#OMIT"
                                      ){
 
 
   chunk_name %>%
     chunk_code_get() %>%
-    code_parse() %>%
+    code_parse(lang = lang, omit = omit) %>%
     parsed_return_partial_code_sequence(break_type = break_type,
                                         left_assign = left_assign) %>%
     code_seq_as_vector()

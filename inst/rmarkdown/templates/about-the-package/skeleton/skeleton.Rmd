@@ -1,0 +1,378 @@
+---
+title: "flipbookr building blocks"
+subtitle: "what lies beneath"
+author: "Gina Reynolds, December 2019"
+output:
+  xaringan::moon_reader:
+    seal: false
+    lib_dir: libs
+    css: ["xaringan-themer.css", ninjutsu]
+    nature:
+      ratio: 30:10
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+
+
+```{r setup}
+# library(flipbookr)
+library(tidyverse)
+knitr::opts_chunk$set(fig.width = 6, message = F, warning = F, comment = "", cache = F, cols.print = 20)
+```
+
+```{r just_for_evamaerey, cache = FALSE, echo = FALSE, message=F, warning=F}
+try(source("../../../../../R/base_parse_reveal_xaringan.R"))
+try(source("../../../../../R/text_reveal.R"))
+try(source("../../../../../R/mini.R"))
+```
+
+
+```{r xaringan_look}
+xaringanthemer::mono_accent(
+  code_highlight_color = "rgba(255, 211, 0, .35)",
+  base_color = "#03418A")
+```
+
+---
+
+
+
+
+We'll use the tidyverse packages to create a pipeline, and flipbookr to walk through the steps in this pipeline.
+
+```{r}
+library(tidyverse)
+library(flipbookr)
+```
+
+The input code to be "flipbookified" is below:
+
+```{r cars_plot, echo = T, eval = F, fig.height=5}
+cars %>% #BREAK
+  ggplot() +  
+  aes(x = speed) + 
+  aes(color = speed) + #BREAK2
+  geom_rug() #BREAK
+```
+
+
+---
+
+Let's first look at the result of using flipbookr to bring this code.
+
+---
+
+`r chunk_reveal("cars_plot")`
+
+---
+
+
+# Move to automate
+
+
+## 1. *Automatically* parsing a block of input code 
+
+--
+
+## 2. *Automatically* reconstructing code into partial builds
+
+--
+
+## 3. *Automatically* delivered on a presentation platform (here Xaringan)
+
+
+
+---
+
+Now, lets look at some of the functions working in the background.
+
+
+---
+class: middle center inverse
+
+# Step 1
+## Parse block of input code
+
+---
+
+```{r}
+code <- create_code()
+omit <- "#OMIT"
+
+  arithmetic <- "\\+$|-$|\\/$|\\*$|\\^$|%%$|%\\/%$"
+  matrix <- "%\\*%$|%o%$"
+  ggplot_change_data <- "%\\+%$"
+  the_magrittr <- "%>%$|%\\$%$"
+  right_assign <- "->$"
+  combine_booleans <- "\\|$|\\&$"
+
+  connectors <- paste(arithmetic, matrix, ggplot_change_data,
+                       the_magrittr,
+                       right_assign, combine_booleans, sep = "|")
+
+  raw_code_table <- code_simple_parse(code = code, omit = omit)
+
+  parsed_code_table <- code %>%
+    r_code_base_parse() %>%
+    r_base_parsed_count_parentheses()
+```
+
+
+---
+
+`r chunk_reveal("the_big_prep", widths = c(1, 3), title = "The big parse")`
+
+```{r the_big_prep, include = F}
+options(tibble.print_max = 100, tibble.width = 500)
+  raw_code_table %>%
+  tibble() %>% 
+    dplyr::full_join(parsed_code_table) %>%
+    # we need this XXXXXXX so that we don't get a bunch of warnings
+    dplyr::mutate(comment = tidyr::replace_na(comment, "XXXXXXXXX")) %>%
+    dplyr::mutate(comment = stringr::str_replace(comment, "^$", "XXXXXXXXX")) %>%
+    dplyr::mutate(code = stringr::str_remove(raw_code, comment)) %>%
+    dplyr::mutate(connector = stringr::str_extract(stringr::str_trim(code), connectors)) %>%
+    dplyr::mutate(connector = tidyr::replace_na(connector, "")) %>%
+    # delete comments understood as
+    dplyr::mutate(comment = stringr::str_remove(comment, "#BREAK\\d?")) %>%
+    dplyr::mutate(comment = stringr::str_remove(comment, "#ROTATE$")) %>% 
+    dplyr::mutate(code = stringr::str_remove(stringi::stri_trim_right(code), connectors))  %>%
+    dplyr::mutate(auto = all_parentheses_balanced & code != "") %>%
+    dplyr::select(line, raw_code, code, connector, comment, auto, user, non_seq, rotate)
+  
+  
+```
+
+
+
+---
+
+`r chunk_reveal("the_code_parsing", widths = c(1,1,1),  display_type = c("code", "func", "output"))`
+
+```{r the_code_parsing, include=FALSE}
+create_code() %>%
+  code_remove_omit() %>% 
+  code_as_table() %>%
+  code_as_table_process_break_messages() ->
+hide_away
+
+create_code() %>%
+  code_remove_omit() %>% 
+  r_code_base_parse() %>% 
+  r_base_parsed_count_parentheses() ->
+hide_again
+
+create_code() %>% 
+  code_remove_omit() %>% 
+  r_code_full_parse() ->
+hide_more
+```
+
+
+---
+class: middle center inverse
+
+# Step 2
+## Reconstruct code into partial builds
+
+---
+
+## First calculate which lines need to be shown and highlighted in each frame of the mini flipbook.
+
+--
+
+A list is returned where each frame corresponds to the element in the list. 
+
+--
+
+Within the list numbers of the lines of code for each frame is returned.
+
+--
+
+This is dependent on what the user has set for the break_type. 
+
+--
+
+Appropriate highlighting is calculated based on what appears in previous frame and what is new in current frame. 
+
+
+---
+
+`r chunk_reveal("the_code_highlight", widths = c(1,1,1),  display_type = c("code", "func", "output"))`
+
+```{r the_code_highlight, include=F}
+create_code() %>% 
+  code_remove_omit() %>% 
+  code_parse() %>% 
+  parsed_calc_show() %>% 
+  shown_lines_calc_highlight()
+```
+
+---
+
+`r chunk_reveal("rotate_code_highlight", widths = c(1,1,1),  display_type = c("code", "output", "output_lag"))`
+
+```{r rotate_code_highlight, include=F}
+create_rotate_code() %>% 
+  code_remove_omit() %>% 
+  code_parse() %>% 
+  parsed_calc_show(break_type = "rotate") %>% 
+  shown_lines_calc_highlight(break_type = "rotate")
+```
+
+---
+
+`r chunk_reveal("omit_rotate", widths = c(1,1,1),  display_type = c("code", "output", "output_lag"), title = "## omit rotate")`
+
+```{r omit_rotate, include=F}
+create_code_rotate_omit() %>% 
+  code_remove_omit(omit = "#ROTATE") %>% 
+  code_parse() %>% 
+  parsed_return_partial_code_sequence()
+```
+
+---
+
+
+
+```{r omit, include = F}
+ggplot(data = cars) +
+  aes(x = speed) +
+  aes(y = dist) +
+  geom_point(size = 8,
+             shape = 21,
+             alpha = .9,
+             color = "snow") +
+  aes(fill = speed) + 
+  scale_fill_viridis_c(option = "magma") + #OMIT
+  scale_fill_viridis_c(option = "magma") + #ROTATE
+  scale_fill_viridis_c(option = "cividis") + #ROTATE
+  scale_fill_viridis_c(option = "plasma") + #ROTATE
+  NULL
+```
+
+---
+
+
+```{r}
+chunk_code_get("omit") %>% 
+  code_remove_omit(omit = "#ROTATE") %>% 
+  code_parse() %>% 
+  parsed_return_partial_code_sequence()
+```
+
+
+---
+
+## Based on the calculation, return partial code builds for each frame of the flipbook.
+
+--
+
+We create a list of strings of the partial builds, which can be saved as an object `code_seq`.
+
+---
+
+
+`r chunk_reveal("return_partial_and_sequence", widths = c(1,1,1),  display_type = c("code", "func", "output"), break_type = "rotate")`
+
+```{r return_partial_and_sequence, eval = F, echo = F} 
+create_code() %>% 
+  code_remove_omit() %>% 
+  code_parse() %>% 
+  parsed_return_partial_code() #ROTATE
+  parsed_left_assign_return_partial_code() #ROTATE
+  parsed_return_partial_code_sequence() #ROTATE
+  parsed_return_recent_function() #ROTATE
+  parsed_return_recent_function_sequence() #ROTATE
+```
+
+
+
+
+---
+class: middle center inverse
+
+# Step 3 
+## Deliver to a presentation platform (here Xaringan)
+
+---
+
+## We have generic code chunk templates ...
+
+---
+
+`r chunk_reveal("returns", widths = c(1,1,1),  display_type = c("code", "func", "output"), break_type = "rotate")`
+
+```{r returns, eval = F, echo = F} 
+return_partial_chunks_template_code() #ROTATE
+return_partial_chunks_template_output() #ROTATE
+return_partial_chunks_template_function() #ROTATE
+return_markdown(text = "my. short. text.", sep = "\\.") #ROTATE
+```
+
+
+
+---
+
+## ... which are used to create chunks of code and output displayed side-by-side
+
+```{r}
+chunk_expand(chunk_name = "cars_plot")
+```
+
+
+---
+
+## ... or a series of slides that *just* display output or *just* display code 
+
+
+```{r}
+chunk_expand(num_breaks = 2, display_type = "code")
+chunk_expand(num_breaks = 2, display_type = "output")
+```
+
+
+
+
+---
+
+# The reveal asks for the chunks we've created to be evaluated, by using the knitr::knit() function. 
+
+We've applied it above.  Let's just look at the function itself.  
+
+
+
+---
+
+`r chunk_reveal("last", c(1,1,1),  display_type = c("code", "func", "output"), break_type = "rotate")`
+
+```{r last, eval = F, echo = F} 
+define_css() #ROTATE
+chunk_expand() #ROTATE
+chunk_reveal #ROTATE
+
+create_code() %>% 
+  code_parse() %>% 
+  parsed_return_partial_code_sequence()
+```
+
+
+
+
+---
+
+
+# Go to code [**here**](https://github.com/EvaMaeRey/flipbookr/blob/master/R/base_parse_reveal_xaringan.R)
+
+https://github.com/EvaMaeRey/flipbookr/blob/master/R/base_parse_reveal_xaringan.R
+
+
+
+
+
+```{css, eval = TRUE, echo = F}
+.remark-code{line-height: 1.5; font-size: 80%}
+```

@@ -18,8 +18,8 @@ output:
 ```{r, include = F}
 # This is the recommended set up for flipbooks
 # you might think about setting cache to TRUE as you gain practice --- building flipbooks from scratch can be time consuming
-knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F, fig.retina = 3)
-library(flipbookr)
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = T, fig.retina = 3)
+# library(flipbookr)
 library(tidyverse)
 ```
 
@@ -91,6 +91,7 @@ Also, at the top of this template in that "setup" code chunk, I set *code chunk*
 
 ```{r just_for_evamaerey, cache = FALSE, echo = FALSE, message=F, warning=F}
 try(source("../../../../../R/base_parse_reveal_xaringan.R"))
+try(source("../../../../../R/text_reveal.R"))
 try(source("../../../../../R/mini.R"))
 ```
 
@@ -240,6 +241,39 @@ ggplot(data = cars) +
   scale_fill_viridis_c(option = "cividis") + #ROTATE
   scale_fill_viridis_c(option = "plasma") #ROTATE
 ```
+
+---
+
+You might want to combine the reveal experience and rotate as one idea.  This can be done with the omit function.  
+
+
+---
+
+`r chunk_reveal("omit", omit = "#ROTATE", break_type = "auto")`
+
+---
+
+`r chunk_reveal("omit", omit = "#OMIT", break_type = "rotate")`
+
+```{r omit, include = F}
+ggplot(data = cars) +
+  theme_minimal(base_size = 13) +
+  aes(x = speed) +
+  aes(y = dist) +
+  geom_point(size = 8,
+             shape = 21,
+             alpha = .9,
+             color = "snow") +
+  aes(fill = speed) + 
+  scale_fill_viridis_c(option = "viridis") + #OMIT
+  scale_fill_viridis_c(option = "magma") + #ROTATE
+  scale_fill_viridis_c(option = "cividis") + #ROTATE
+  scale_fill_viridis_c(option = "plasma") + #ROTATE
+  labs(title = "Cars") +
+  labs(speed = "Speed\n(mph)") +
+  theme(legend.position = "none")
+```
+
 
 
 
@@ -864,20 +898,14 @@ The flipbooked portion of this presentation was created with the new {flipbookr}
 ```{r cars2, include = F}
 ggplot(data = cars) +
   aes(x = speed) +
-  aes(y = dist) + #BREAK
-  geom_point(
-    alpha = .8, #BREAK2
-    color = "blue" #BREAK3
-    ) + #BREAK
-  aes(size = speed) + #BREAK
-  geom_tile() +
-  geom_density2d() +
-  geom_line(alpha = .6, 
-            size = 1) +
-  geom_segment(aes(xend = 0, yend = 0),
-               size = 1,) +
-  geom_curve(aes(xend = 0, yend = 0),
-               size = 1)
+  aes(y = dist) + 
+  geom_point(alpha = .8) + 
+  aes(size = speed) + 
+  aes(color = speed) +
+  scale_size(range = c(3,8)) +
+  scale_color_viridis_c(option = "magma") +
+  labs(title = "Cars") +
+  theme(title.position = "plot")
 ```
 
 # The End!

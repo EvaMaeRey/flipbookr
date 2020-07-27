@@ -5,7 +5,7 @@
 \title{Title CREA}
 \usage{
 chunk_reveal(chunk_name = NULL, break_type = "auto", left_assign = F,
-  lang = "r", code_seq = NULL, code_seq_lag = NULL,
+  lang = "r", omit = "#OMIT", code_seq = NULL, code_seq_lag = NULL,
   code_seq_lag2 = NULL, code_seq_target = NULL,
   code_seq_start = NULL, func_seq = NULL, num_breaks = NULL,
   display_type = c("code", "output"), title = "", md = NULL,
