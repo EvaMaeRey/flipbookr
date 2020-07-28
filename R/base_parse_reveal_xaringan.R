@@ -659,7 +659,7 @@ chunk_name_return_function_sequence <- function(chunk_name,
 #### Template code chunks to deliver partial builds on ####
 return_partial_chunks_template_code <- function(){
 
-  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks>>>_code, eval = FALSE, echo = TRUE, code = code_seq[[<<<breaks>>>]]}
+  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks_prep>>>_code, eval = FALSE, echo = TRUE, code = code_seq[[<<<breaks>>>]]}
 ```"
 
 }
@@ -667,7 +667,7 @@ return_partial_chunks_template_code <- function(){
 #### Template code chunks to deliver partial builds on ####
 return_partial_chunks_template_code_lag <- function(){
 
-  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks>>>_code_lag, eval = FALSE, echo = TRUE, code = code_seq_lag[[<<<breaks>>>]]}
+  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks_prep>>>_code_lag, eval = FALSE, echo = TRUE, code = code_seq_lag[[<<<breaks>>>]]}
 ```"
 
 }
@@ -675,7 +675,7 @@ return_partial_chunks_template_code_lag <- function(){
 
 return_partial_chunks_template_output <- function(){
 
-  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks>>>_output, eval = TRUE, echo = FALSE, code = code_seq[[<<<breaks>>>]]}
+  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks_prep>>>_output, eval = TRUE, echo = FALSE, code = code_seq[[<<<breaks>>>]]}
 ```"
 
   # , out.width = \"<<<out.width>>>\", out.height = \"<<<out.height>>>\"
@@ -683,33 +683,33 @@ return_partial_chunks_template_output <- function(){
 
 return_partial_chunks_template_output_lag <- function(){
 
-  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks>>>_output_lag, eval = TRUE, echo = FALSE, code = code_seq_lag[[<<<breaks>>>]]}
+  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks_prep>>>_output_lag, eval = TRUE, echo = FALSE, code = code_seq_lag[[<<<breaks>>>]]}
 ```"
 
 }
 
 return_partial_chunks_template_output_lag2 <- function(){
 
-  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks>>>_output_lag2, eval = TRUE, echo = FALSE, code = code_seq_lag2[[<<<breaks>>>]]}
+  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks_prep>>>_output_lag2, eval = TRUE, echo = FALSE, code = code_seq_lag2[[<<<breaks>>>]]}
 ```"
 }
 
 return_partial_chunks_template_output_target <- function(){
 
-  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks>>>_output_target, eval = TRUE, echo = FALSE, code = code_seq_target[[<<<breaks>>>]]}
+  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks_prep>>>_output_target, eval = TRUE, echo = FALSE, code = code_seq_target[[<<<breaks>>>]]}
 ```"
 }
 
 return_partial_chunks_template_output_start <- function(){
 
-  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks>>>_output_target, eval = TRUE, echo = FALSE, code = code_seq_start[[<<<breaks>>>]]}
+  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks_prep>>>_output_target, eval = TRUE, echo = FALSE, code = code_seq_start[[<<<breaks>>>]]}
 ```"
 }
 
 
 return_partial_chunks_template_function <- function(){
 
-  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks>>>_function, eval = TRUE, echo = FALSE, code = func_seq[[<<<breaks>>>]]}
+  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks_prep>>>_function, eval = TRUE, echo = FALSE, code = func_seq[[<<<breaks>>>]]}
 ```"
 
 }
@@ -843,6 +843,7 @@ chunk_expand <- function(chunk_name = "example",
 ){
 
   breaks <- 1:num_breaks
+  breaks_prep <- stringr::str_pad(breaks, width = 2, pad = "0")
   code <- return_partial_chunks_template_code()
   code_lag <- return_partial_chunks_template_code_lag()
   output <- return_partial_chunks_template_output()

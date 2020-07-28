@@ -18,7 +18,7 @@ output:
 ```{r, include = F}
 # This is the recommended set up for flipbooks
 # you might think about setting cache to TRUE as you gain practice --- building flipbooks from scratch can be time consuming
-knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = T, fig.retina = 3)
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F, fig.retina = 3)
 library(flipbookr)
 library(tidyverse)
 ```
@@ -905,7 +905,7 @@ ggplot(data = cars) +
   scale_size(range = c(3,8)) +
   scale_color_viridis_c(option = "magma") +
   labs(title = "Cars") +
-  theme(title.position = "plot")
+  theme(plot.title.position = "plot")
 ```
 
 # The End!
