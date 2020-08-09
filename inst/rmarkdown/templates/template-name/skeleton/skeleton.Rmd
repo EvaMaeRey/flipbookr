@@ -892,7 +892,20 @@ The flipbooked portion of this presentation was created with the new {flipbookr}
 
 ---
 
+`r chunk_reveal("for_loop", break_type = "inject_vector")`
 
+
+```{r for_loop, eval = F, echo = F}
+for (i in 1:#VECTOR){
+     
+    print(i)
+     
+}
+```
+
+
+
+---
 
 
 ```{r cars2, include = F}

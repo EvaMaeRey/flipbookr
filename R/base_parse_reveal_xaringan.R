@@ -26,6 +26,39 @@ create_code <- function(){ # for testing w/o knitting
 }
 
 
+
+
+
+# create_injectable_code() %>%
+#   code_highlight_inject_vector()
+
+code_highlight_inject_vector <- function(inject_code, injection = 1:3){
+
+  injection <- as.character(injection)
+  code_seq <- list()
+
+for (i in 1:length(injection)){
+
+  code_seq[[i]] <- inject_code %>%
+    code_as_table() %>%
+    dplyr::mutate(code = ifelse(stringr::str_detect(raw_code, "#VECTOR"),
+                         paste(raw_code, "#<<"),
+                         raw_code)) %>%
+    dplyr::mutate(code =
+             stringr::str_replace_all(code,
+                                      "#VECTOR",
+                                      injection[i])) %>%
+    dplyr::pull(code)
+
+}
+
+code_seq
+
+}
+
+
+
+
 create_code_rotate_omit <- function(){
 
 'ggplot(data = cars) +
@@ -41,6 +74,17 @@ create_code_rotate_omit <- function(){
   scale_fill_viridis_c(option = "cividis") + #ROTATE
   scale_fill_viridis_c(option = "plasma") + #ROTATE
   NULL'
+
+}
+
+
+
+
+create_injectable_code <- function(){
+
+  "for (i in 1:#VECTOR){
+  print(i)
+}  "
 
 }
 
@@ -101,6 +145,13 @@ evenOdd(2)
 xobject.pipe(remove_units).pipe(length_times_width)"
 
 }
+
+create_python_code_pipeline <- function(){
+
+  "student_scores \\\n  .melt(id_vars=['student', \"sex\"], \n        var_name=\"subject\", \n        value_name=\"final_grade\") \\\n  .sort_values(by=['final_grade'], ascending=False) \\\n  .head(3)"
+
+}
+
 
 create_data_table_code <- function(){ # for testing w/o knitting
 
@@ -309,8 +360,15 @@ r_code_full_parse <- function(code = code, omit = "#OMIT"){
 # create_python_code() %>%
 #   python_code_full_parse()
 
+# create_python_code_pipeline() %>%
+#   python_code_full_parse()
+#
+# code <- create_python_code_pipeline()
+
 
 python_code_full_parse <- function(code, omit = "#OMIT"){
+
+  connectors <- "\\\\"
 
   code %>%
     code_simple_parse(omit = omit) %>%
@@ -320,9 +378,12 @@ python_code_full_parse <- function(code, omit = "#OMIT"){
     dplyr::mutate(auto = cumsum(open_par) == cumsum(closed_par)) %>%
     dplyr::mutate(auto = ifelse(raw_code == "", FALSE, auto)) %>%
     dplyr::mutate(indented = stringr::str_detect(code, "^\\s+")) %>%
-    dplyr::mutate(indented_follows = dplyr::lead(indented, default = FALSE)) %>%
-    dplyr::mutate(auto = ifelse(indented_follows, FALSE, auto)) %>%
-    dplyr::mutate(connector = "") %>%
+    # dplyr::mutate(indented_follows = dplyr::lead(indented, default = FALSE)) %>%
+    # dplyr::mutate(auto = ifelse(indented_follows, FALSE, auto))  %>%
+    dplyr::mutate(connector = stringr::str_extract(stringr::str_trim(code), connectors)) %>%
+    dplyr::mutate(connector = tidyr::replace_na(connector, "")) %>%
+    # dplyr::mutate(connector = stringr::str_replace(connector, "\\\\", "\\")) %>%
+    dplyr::mutate(code = stringr::str_remove(stringi::stri_trim_right(code), connectors))  %>%
     dplyr::mutate(comment = "")
 
 }
@@ -350,7 +411,7 @@ code_parse <- function(code = create_code(), lang = "r", omit = "#OMIT") {
       dplyr::mutate(func = stringr::str_extract(code, "\\w+\\(")) %>%
       dplyr::mutate(func = stringr::str_remove(func, "\\("))
 
-  } else if (lang == "python") {
+  } else if (lang %in% c("python", "py")) {
 
   python_code_full_parse(code = code, omit = omit)
 
@@ -360,15 +421,17 @@ code_parse <- function(code = create_code(), lang = "r", omit = "#OMIT") {
 
   }
 
-
-
-
 }
 
 # create_rotate_code() %>%
 #   code_parse() %>%
 #   parsed_calc_show(break_type = "rotate") %>%
 #   shown_lines_calc_highlight()
+
+#
+# create_python_code_pipeline() %>%
+#   code_parse(lang = "python") %>%
+#   parsed_return_partial_code_sequence()
 
 
 #### Calculate lines and highlighting to show in frames ####
@@ -399,6 +462,10 @@ parsed_calc_show <- function(parsed, break_type = "auto"){
 
     num_panes <- sum(parsed$rotate)
 
+  } else if (break_type == "inject_vector") {
+
+    num_panes <- length(injection)
+
   }
 
 
@@ -416,6 +483,8 @@ parsed_calc_show <- function(parsed, break_type = "auto"){
           ))
     }
 
+  } else if (break_type == "inject_vector")  {
+    NULL
   } else {
 
     for (i in 1:num_panes) {
@@ -465,6 +534,11 @@ shown_lines_calc_highlight <- function(which_show = list(c(1, 2), c(1, 2, 3, 4))
 
   }
 
+  if (break_type == "inject_vector") {
+
+    NULL
+
+  }
 
 
   # additional frames highlighting
@@ -501,6 +575,10 @@ shown_lines_calc_highlight <- function(which_show = list(c(1, 2), c(1, 2, 3, 4))
   # code_parse() %>%
 #   parsed_return_partial_code(which_show_frame = 1:5,
 #                              which_highlight_frame = 4)
+
+# create_python_code_pipeline() %>%
+#   code_parse()
+
 
 
 #### Return partial code builds for frames ######
@@ -575,12 +653,14 @@ parsed_return_partial_code_sequence <- function(parsed,
     partial_code_frames[[i]] <-
       parsed_return_partial_code(parsed,
                                  which_show_frame = which_show[[i]],
-                                 which_highlight_frame = which_highlight[[i]])
+                                 which_highlight_frame = which_highlight[[i]]) %>%
+      stringr::str_trim(side = "right") # this is for python
   }else{
     partial_code_frames[[i]] <-
       parsed_left_assign_return_partial_code(parsed,
                                             which_show_frame = which_show[[i]],
-                                            which_highlight_frame = which_highlight[[i]])
+                                            which_highlight_frame = which_highlight[[i]]) %>%
+      stringr::str_trim(side = "right") # this is for python
   }
 
   }
@@ -633,11 +713,22 @@ chunk_name_return_code_sequence <- function(chunk_name,
                                             lang = "r",
                                             omit = "#OMIT"){
 
+if (break_type == "inject_vector"){
+
+  chunk_name %>%
+    chunk_code_get() %>%
+    code_highlight_inject_vector()
+
+} else {
+
+
 chunk_name %>%
   chunk_code_get() %>%
   code_parse(lang = lang, omit = omit) %>%
   parsed_return_partial_code_sequence(break_type = break_type,
                                       left_assign = left_assign)
+
+  }
 
 }
 
@@ -647,6 +738,7 @@ chunk_name_return_function_sequence <- function(chunk_name,
                                             lang = "r",
                                             omit = "#OMIT"){
 
+
   chunk_name %>%
     chunk_code_get() %>%
     code_parse(lang = lang, omit = omit) %>%
@@ -654,6 +746,7 @@ chunk_name_return_function_sequence <- function(chunk_name,
                                            left_assign = left_assign)
 
 }
+
 
 
 #### Template code chunks to deliver partial builds on ####
@@ -666,6 +759,7 @@ return_partial_chunks_template_code <- function(){
 
 #### Template code chunks to deliver partial builds on ####
 return_partial_chunks_template_code_lag <- function(){
+
 
   "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks_prep>>>_code_lag, eval = FALSE, echo = TRUE, code = code_seq_lag[[<<<breaks>>>]]}
 ```"
@@ -1003,6 +1097,12 @@ code_seq_create_start <- function(code_seq){
 #   code_seq_create_target()
 
 
+correct_py <- function(lang){
+
+  if (lang == "py") {lang <- "python"}
+
+}
+
 
 ######## The exported functions ############
 
@@ -1048,6 +1148,8 @@ chunk_reveal <- function(chunk_name = NULL,
                    # out.width = "70%",
                    # out.height = "70%"
                    ){
+
+  correct_py(lang = lang)
 
   if (is.null(widths)){
 

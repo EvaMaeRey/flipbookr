@@ -22,7 +22,7 @@ This is pretty experimental work.  The python "parser" (basically no parsing) me
 # you might think about setting cache to TRUE as you gain practice --- building flipbooks from scratch can be time consuming
 knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, 
                       comment = "", cache = F, fig.retina = 3, eval = T)
-library(flipbookr)
+# library(flipbookr)
 library(tidyverse)
 ```
 
@@ -42,16 +42,21 @@ try(source("../../../../../R/mini.R"))
 
 ```{python hello_python, include = F}
 [1, 4] * 8
+
 3 + 4 * 8 
+
 2 + 6
 
 4 * 8
+
 [1,2] + [3,4,5,6]
+
+["hello", "world!", 1, 2, 3] * 2
+
 import numpy as np
+
 np.reshape(np.arange(1,25), 
     (4,3,2), "F")
-["hello", "world!", 
-    1, 2, 3] * 2
 ```
 
 ---
@@ -99,10 +104,63 @@ plt.grid(True); plt.show()
 ```
 
 
+---
+
+Credit to matplotlib.org for this example!
+
+---
+
+
+`r chunk_reveal("prep", lang = "python", break_type = 1)`
+
+```{python prep, include = F}
+import numpy as np  
+import pandas as pd 
+
+student_scores = pd.DataFrame(
+{"student": ["Andy", "Bernie", "Cindy", "Deb"],
+"sex": ["M", "M", "F", "F"],
+"english": [98, 95, 70, 40], # eng grades
+"math": [66, 89, 60, 70], # math grades
+"physics": [78, 90, 92, 88] # physics grades
+}) 
+
+student_scores 
+```
+
+
+---
+
+## Now lets find the highest three grades among all of these grades.  This is done by reshaping the data, sorting it decending order, and selecting the top three rows. 
+
+---
+
+`r chunk_reveal("bam", lang = "python", widths = c(1,1))`
+
+```{python bam, include = F}
+student_scores \
+  .melt(id_vars=['student', "sex"], 
+        var_name="subject", 
+        value_name="final_grade") \
+  .sort_values(by=['final_grade'], ascending=False) \
+  .head(3)
+```
+
+
+---
+
+Thanks Suraj Thapa for sketching out ideas for this example!
+
+
+
+
+
+
+
 
 
 ```{css, eval = TRUE, echo = FALSE}
-.remark-code{line-height: 1.5; font-size: 100%}
+.remark-code{line-height: 1.5; font-size: 80%}
 
 @media print {
   .has-continuation {
