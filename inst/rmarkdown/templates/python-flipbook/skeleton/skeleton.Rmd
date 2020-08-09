@@ -22,7 +22,7 @@ This is pretty experimental work.  The python "parser" (basically no parsing) me
 # you might think about setting cache to TRUE as you gain practice --- building flipbooks from scratch can be time consuming
 knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, 
                       comment = "", cache = F, fig.retina = 3, eval = T)
-# library(flipbookr)
+library(flipbookr)
 library(tidyverse)
 ```
 
@@ -149,7 +149,7 @@ student_scores \
 
 ---
 
-Thanks Suraj Thapa for sketching out ideas for this example!
+This example Suraj Thapa for sketching out ideas for this example!
 
 
 
