@@ -711,13 +711,14 @@ chunk_name_return_code_sequence <- function(chunk_name,
                                             break_type = "auto",
                                             left_assign = F,
                                             lang = "r",
-                                            omit = "#OMIT"){
+                                            omit = "#OMIT",
+                                            injection = NULL){
 
 if (break_type == "inject_vector"){
 
   chunk_name %>%
     chunk_code_get() %>%
-    code_highlight_inject_vector()
+    code_highlight_inject_vector(injection = injection)
 
 } else {
 
@@ -1141,6 +1142,7 @@ chunk_reveal <- function(chunk_name = NULL,
                    title = "",
                    md = NULL,
                    md2 = NULL,
+                   injection = NULL,
                    widths = NULL,
                    color = c("black", "black", "black"),
                    font_size_code = "80%"
@@ -1161,7 +1163,7 @@ chunk_reveal <- function(chunk_name = NULL,
 
   if (!is.null(chunk_name) & is.null(code_seq)) {
 
-    code_seq <- chunk_name_return_code_sequence(chunk_name, break_type, left_assign, lang, omit = omit)
+    code_seq <- chunk_name_return_code_sequence(chunk_name, break_type, left_assign, lang, omit = omit, injection = injection)
 
   }
 

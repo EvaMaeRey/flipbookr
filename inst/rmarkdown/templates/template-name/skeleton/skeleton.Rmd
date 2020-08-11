@@ -892,7 +892,7 @@ The flipbooked portion of this presentation was created with the new {flipbookr}
 
 ---
 
-`r chunk_reveal("for_loop", break_type = "inject_vector")`
+`r chunk_reveal("for_loop", break_type = "inject_vector", injection = 1:8)`
 
 
 ```{r for_loop, eval = F, echo = F}
