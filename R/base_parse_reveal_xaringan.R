@@ -29,10 +29,10 @@ create_code <- function(){ # for testing w/o knitting
 
 
 
-# create_injectable_code() %>%
-#   code_highlight_inject_vector()
+create_injectable_code() %>%
+  code_highlight_inject_vector(replace = 10)
 
-code_highlight_inject_vector <- function(inject_code, injection = 1:3){
+code_highlight_inject_vector <- function(inject_code, injection = 1:3, replace = NULL){
 
   injection <- as.character(injection)
   code_seq <- list()
@@ -41,12 +41,12 @@ for (i in 1:length(injection)){
 
   code_seq[[i]] <- inject_code %>%
     code_as_table() %>%
-    dplyr::mutate(code = ifelse(stringr::str_detect(raw_code, "#VECTOR"),
+    dplyr::mutate(code = ifelse(stringr::str_detect(raw_code, replace),
                          paste(raw_code, "#<<"),
                          raw_code)) %>%
     dplyr::mutate(code =
              stringr::str_replace_all(code,
-                                      "#VECTOR",
+                                      replace,
                                       injection[i])) %>%
     dplyr::pull(code)
 
@@ -82,14 +82,13 @@ create_code_rotate_omit <- function(){
 
 create_injectable_code <- function(){
 
-  "for (i in 1:#VECTOR){
+  "for (i in 1:10){
   print(i)
 }  "
 
 }
 
 
-####### Make some test code available as character strings #####
 create_rotate_code <- function(){ # for testing w/o knitting
 
   "cars %>%             # the data  #BREAK
@@ -180,6 +179,7 @@ geom_point(alpha = .3)"
 
 
 ####### Get code from source chunk #####
+
 chunk_code_get <- function(chunk_name){
 
   paste(knitr::knit_code$get(chunk_name), collapse = "\n")
@@ -688,7 +688,7 @@ parsed_return_recent_function_sequence <- function(parsed,
       partial_recent_functions[[i]] <-
         parsed_return_recent_function(parsed,
                                    which_highlight_frame = which_highlight[[i]]) %>% .[!is.na(.)]
-    }else{
+    } else {
       partial_recent_functions[[i]] <-
         parsed_return_recent_function(parsed,
                                       which_highlight_frame = which_highlight[[i]]) %>% .[!is.na(.)]

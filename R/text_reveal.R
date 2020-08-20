@@ -1,5 +1,5 @@
-text_prep <- function(text = "This is my text.  Return it one sentence per page. Thanks",
-                      sep = "\\. +|! +",
+text_prep <- function(text = "This is my text.    Return it one sentence per page.   Thanks",
+                      sep = "   ",
                       md_header = "",
                       sep_replace = "",
                       break_type = "---",
