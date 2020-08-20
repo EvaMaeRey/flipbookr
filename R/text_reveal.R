@@ -1,6 +1,7 @@
-text_prep <- function(text = "This is my text.  Return it one sentence per page. Thanks",
+
+text_prep <- function(text = "This is my text.   Return it one sentence per page.   Thanks",
                       sep = "   ",
-                      md_prefix = "",
+                      md_header = "",
                       sep_replace = "",
                       slide_break = "---",
                       class = "class: inverse, middle, center"

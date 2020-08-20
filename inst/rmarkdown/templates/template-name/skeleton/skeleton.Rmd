@@ -313,12 +313,33 @@ cars %>%
 
 ## `break_type = 1`
 
-Of course gives you the side-by-side with no walk through, which is sometimes nice
+Of course gives you the side-by-side with no walk through, which is sometimes handy
 
 ---
 
 `r chunk_reveal("cars_multi", break_type = 1)`
 
+
+---
+
+## break_type = "inject_vector" (with injection argument)
+
+This is going to let you inject some different code (number, argument option) into each slide to be displayed. 
+
+Use with caution! Experimental
+
+---
+
+`r chunk_reveal("for_loop", break_type = "inject_vector", injection = 1:8)`
+
+
+```{r for_loop, eval = F, echo = F}
+for (i in 1:#VECTOR){
+     
+    print(i)
+     
+}
+```
 
 
 ---
@@ -518,9 +539,6 @@ cars %$%
 
 to display the contents of the functions of a pipeline, you can use display_type = c("code", "func").  The function panel will show the contents of composition of the function that is in the highlighted line. 
 
---
-
-This is work in progress - seems to be currently broken
 
 ---
 
@@ -890,18 +908,7 @@ class: middle, center
 The flipbooked portion of this presentation was created with the new {flipbookr} package.  Get it with remotes::install_github("EvaMaeRey/flipbookr")
 
 
----
 
-`r chunk_reveal("for_loop", break_type = "inject_vector", injection = 1:8)`
-
-
-```{r for_loop, eval = F, echo = F}
-for (i in 1:#VECTOR){
-     
-    print(i)
-     
-}
-```
 
 
 
