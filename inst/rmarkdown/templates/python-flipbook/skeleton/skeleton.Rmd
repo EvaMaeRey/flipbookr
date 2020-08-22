@@ -17,12 +17,11 @@ output:
 This is pretty experimental work.  The python "parser" (basically no parsing) means there are strong constraints on code.  Each new line must yield complete code statement...  
 
 
-```{r setup, include = F}
+```{r, include = F}
 # This is the recommended set up for flipbooks
 # you might think about setting cache to TRUE as you gain practice --- building flipbooks from scratch can be time consuming
-knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, 
-                      comment = "", cache = F, fig.retina = 3, eval = T)
-library(flipbookr)
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F, dev = "svg", fig.ext = "svg")
+# library(flipbookr)
 library(tidyverse)
 ```
 
@@ -30,8 +29,13 @@ library(tidyverse)
 <!-- This next chunk is just for the developer -- working w/ local code -->
 
 ```{r just_for_evamaerey, cache = FALSE, echo = FALSE, eval = T}
-try(source("../../../../../R/base_parse_reveal_xaringan.R"))
-try(source("../../../../../R/mini.R"))
+try(source("../../../../../R/a_create_test_code.R"))
+try(source("../../../../../R/b_parsing.R"))
+try(source("../../../../../R/c_prep_sequences.R"))
+try(source("../../../../../R/d_prep_rmd_chunks.R"))
+try(source("../../../../../R/e_define_css.R"))
+try(source("../../../../../R/f_chunk_expand.R"))
+try(source("../../../../../R/g_exported_functions.R"))
 ```
 
 
