@@ -18,8 +18,8 @@ output:
 ```{r, include = F}
 # This is the recommended set up for flipbooks
 # you might think about setting cache to TRUE as you gain practice --- building flipbooks from scratch can be time consuming
-knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F, fig.retina = 3)
-# library(flipbookr)
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F, dev = "svg", fig.ext = "svg")
+library(flipbookr)
 library(tidyverse)
 ```
 
@@ -949,6 +949,8 @@ ggplot(data = cars) +
 
 ```{r, code = chunk_code_seq_as_vector("cars2"), echo = F, fig.show="hold", out.width="20%"}
 ```
+
+
 
 
 ```{css, eval = TRUE, echo = FALSE}
