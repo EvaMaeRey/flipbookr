@@ -18,7 +18,7 @@ output:
 ```{r, include = F}
 # This is the recommended set up for flipbooks
 # you might think about setting cache to TRUE as you gain practice --- building flipbooks from scratch can be time consuming
-knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F, fig.retina = 3)
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F, dev = "svg", fig.ext = "svg")
 library(flipbookr)
 library(tidyverse)
 ```
@@ -90,9 +90,15 @@ Also, at the top of this template in that "setup" code chunk, I set *code chunk*
 <!-- Hi there!  It's me, the developer.  So that I can sometimes work interactively on the package, I still am making the local source script available for myself - the code in the following chunk is for this purpose.  It will just work for your, but because I'm using "try" it won't throw an error for you!-->
 
 ```{r just_for_evamaerey, cache = FALSE, echo = FALSE, message=F, warning=F}
-try(source("../../../../../R/base_parse_reveal_xaringan.R"))
-try(source("../../../../../R/text_reveal.R"))
-try(source("../../../../../R/mini.R"))
+try(source("../../../../../R/a_create_test_code.R"))
+try(source("../../../../../R/b_parsing.R"))
+try(source("../../../../../R/c_prep_sequences.R"))
+try(source("../../../../../R/d_prep_rmd_chunks.R"))
+try(source("../../../../../R/e_define_css.R"))
+try(source("../../../../../R/f_chunk_expand.R"))
+try(source("../../../../../R/g_exported_functions.R"))
+
+#try(source("../../../../../R/mini.R"))
 ```
 
 
@@ -322,7 +328,7 @@ Of course gives you the side-by-side with no walk through, which is sometimes ha
 
 ---
 
-## break_type = "inject_vector" (with injection argument)
+## break_type = "replacement" (with injection argument)
 
 This is going to let you inject some different code (number, argument option) into each slide to be displayed. 
 
@@ -330,11 +336,11 @@ Use with caution! Experimental
 
 ---
 
-`r chunk_reveal("for_loop", break_type = "inject_vector", injection = 1:8)`
+`r chunk_reveal("for_loop", break_type = "replacement", replacements = 1:4, replace = "10")`
 
 
 ```{r for_loop, eval = F, echo = F}
-for (i in 1:#VECTOR){
+for (i in 1:10){
      
     print(i)
      
@@ -566,18 +572,28 @@ You may give your flipbook slides a consistent title if you like that will show 
 
 Depending on how many display panels you have, you can also adjust relative widths with a vector.
 
+
+
 ---
 
-`r chunk_reveal("cars3", title = "## Using a title and custom widths", widths = c(24, 75))`
+`r chunk_reveal("adjustable_widths", title = "## Using a title and custom widths", widths = c(24, 75))`
 
-
-```{r cars3, include=F}
+```{r adjustable_widths, include=F}
 cars %>% 
   ggplot() +
   aes(x = speed) +
   aes(y = dist) +
-  geom_point() +
-  aes(size = speed)
+  geom_point()
+```
+
+---
+
+`r chunk_reveal("top_bottom", title = "## Using a title and custom widths", widths = c(24, 75), float = "top")`
+
+```{r top_bottom, include=F}
+cars %>% 
+  slice(1:10) %>% 
+  t()
 ```
 
 
@@ -834,12 +850,12 @@ The input is a character string, and delimiter can be defined using the `sep` ar
 ---
 
 ```{r, echo = F}
-"Sometimes, it's helpful to slow down and look at exactly one decision.| Flipbooks present code step-by-step and side-by-side with output.| They parse code pipelines.| And reconstruct code into partial builds.| Then present those builds with their output.| Both code and output are superimposed on the previous state. | This makes seeing what changed --- both in code and output --- easy." ->
+"Sometimes, it's helpful to slow down and look at exactly one decision.   Flipbooks present code step-by-step and side-by-side with output.   They parse code pipelines.| And reconstruct code into partial builds.   Then present those builds with their output.| Both code and output are superimposed on the previous state.   This makes seeing what changed --- both in code and output --- easy." ->
   philosophy
 ```
 
 
-`r text_reveal(text = philosophy, sep = "\\|")`
+`r text_reveal(text = philosophy, sep = "   ")`
 
 ---
 
@@ -933,6 +949,8 @@ ggplot(data = cars) +
 
 ```{r, code = chunk_code_seq_as_vector("cars2"), echo = F, fig.show="hold", out.width="20%"}
 ```
+
+
 
 
 ```{css, eval = TRUE, echo = FALSE}
