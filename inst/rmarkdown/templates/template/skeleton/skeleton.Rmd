@@ -336,7 +336,7 @@ Use with caution! Experimental
 
 ---
 
-`r chunk_reveal("for_loop", break_type = "replacement", replacements = 1:4, replace = "10")`
+`r chunk_reveal("for_loop", break_type = "replacement", replacements = 1:4, replace = "10", replacements2 = 5:8, replace2 = "500")`
 
 
 ```{r for_loop, eval = F, echo = F}
@@ -345,6 +345,8 @@ for (i in 1:10){
     print(i)
      
 }
+
+500
 ```
 
 
