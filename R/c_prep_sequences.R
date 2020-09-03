@@ -289,13 +289,20 @@ chunk_name_return_code_sequence <- function(chunk_name,
                                             lang = "r",
                                             omit = "#OMIT",
                                             replacements = NULL,
-                                            replace = NULL){
+                                            replace = NULL,
+                                            replacements2 = NULL,
+                                            replace2 = NULL,
+                                            replacements3 = NULL,
+                                            replace3 = NULL){
 
   if (break_type == "replacement"){
 
     chunk_name %>%
       chunk_code_get() %>%
-      code_replacements_and_highlight(replace = replace, replacements = replacements)
+      code_replacements_and_highlight(replace = replace,
+                                      replacements = replacements,
+                                      replace2 = replace2, replacements2 = replacements2,
+                                      replace3 = replace3, replacements3 = replacements3)
 
   } else {
 
