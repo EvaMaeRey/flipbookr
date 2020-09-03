@@ -1,9 +1,13 @@
 {
-    "path": "~/Google Drive/r_packages/flipbookr/R",
+    "path": "~/Google Drive/r_packages/flipbookr/inst/rmarkdown/templates",
     "sortOrder": [
         {
             "columnIndex": 2,
             "ascending": true
+        },
+        {
+            "columnIndex": 4,
+            "ascending": false
         }
     ]
 }
