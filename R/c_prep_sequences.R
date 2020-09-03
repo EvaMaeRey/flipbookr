@@ -330,9 +330,15 @@ chunk_name_return_function_sequence <- function(chunk_name,
 # create_code() %>%
 #   code_replacements_and_highlight(replacements = 1:8/8, replace = "\\.3")
 
-code_replacements_and_highlight <- function(code, replacements = 1:3, replace = NULL){
+code_replacements_and_highlight <- function(code,
+                                            replacements = 1:3, replace = NULL,
+                                            replacements2 = 4:6, replace2 = NULL,
+                                            replacements3 = 4:6, replace3 = NULL){
 
   replacements <- as.character(replacements)
+  replacements2 <- as.character(replacements2)
+  replacements3 <- as.character(replacements3)
+
   code_seq <- list()
 
   for (i in 1:length(replacements)){
@@ -346,6 +352,20 @@ code_replacements_and_highlight <- function(code, replacements = 1:3, replace = 
                       stringr::str_replace_all(code,
                                                replace,
                                                replacements[i])) %>%
+      dplyr::mutate(code = ifelse(stringr::str_detect(raw_code, replace2),
+                                  paste(raw_code, "#<<"),
+                                  raw_code)) %>%
+      dplyr::mutate(code =
+                      stringr::str_replace_all(code,
+                                               replace2,
+                                               replacements2[i])) %>%
+      dplyr::mutate(code = ifelse(stringr::str_detect(raw_code, replace3),
+                                  paste(raw_code, "#<<"),
+                                  raw_code)) %>%
+      dplyr::mutate(code =
+                      stringr::str_replace_all(code,
+                                               replace3,
+                                               replacements3[i])) %>%
       dplyr::pull(code)
 
   }

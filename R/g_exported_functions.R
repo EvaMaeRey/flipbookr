@@ -21,6 +21,12 @@ knit_text_and_collapse <- function(text){
 #' @param title a character string that may contain a title for the frames of the flipbook; this may included header info "## My Title" for example is a second level markdown title in Xaringan
 #' @param md a character string vector that contains markdown; each element will be shown on a separate slide in the display panel "md" (see display_type)
 #' @param md2 a character string vector that contains markdown; each element will be shown on a separate slide in the display panel "md" (see display_type)
+#' @param replace a character string to be replaced in the input code sequentially with the replacement vector elements
+#' @param replacements a character string vector to be replace the string indicated by the 'replace' parameter
+#' @param replace a character string to be replaced in the input code sequentially with the replacement2 vector elements
+#' @param replacements a character string vector to be replace the string indicated by the 'replace2' parameter
+#' @param replace a character string to be replaced in the input code sequentially with the replacement3 vector elements
+#' @param replacements a character string vector to be replace the string indicated by the 'replace3' parameter
 #' @param widths a numeric vector containing relative widths for panels
 #' @param font_size_code this is not reliable yet, place holder!
 #'
@@ -45,6 +51,10 @@ chunk_reveal <- function(chunk_name = NULL,
                    md2 = NULL,
                    replacements = NULL,
                    replace = NULL,
+                   replacements2 = NULL,
+                   replace2 = NULL,
+                   replacements3 = NULL,
+                   replace3 = NULL,
                    widths = NULL,
                    float = "left",
                    color = c("black", "black", "black"),
@@ -66,7 +76,11 @@ chunk_reveal <- function(chunk_name = NULL,
 
   if (!is.null(chunk_name) & is.null(code_seq)) {
 
-    code_seq <- chunk_name_return_code_sequence(chunk_name, break_type, left_assign, lang, omit = omit, replace = replace, replacements = replacements)
+    code_seq <- chunk_name_return_code_sequence(chunk_name, break_type, left_assign,
+                                                lang, omit = omit,
+                                                replace = replace, replacements = replacements,
+                                                replace2 = replace2, replacements2 = replacements2,
+                                                replace3 = replace3, replacements3 = replacements3)
 
   }
 
