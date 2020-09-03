@@ -9,9 +9,10 @@ chunk_reveal(chunk_name = NULL, break_type = "auto", left_assign = F,
   code_seq_lag2 = NULL, code_seq_target = NULL,
   code_seq_start = NULL, func_seq = NULL, num_breaks = NULL,
   display_type = c("code", "output"), title = "", md = NULL,
-  md2 = NULL, replacements = NULL, replace = NULL, widths = NULL,
-  float = "left", color = c("black", "black", "black"),
-  font_size_code = "80\%")
+  md2 = NULL, replacements = NULL, replace = NULL,
+  replacements2 = NULL, replace2 = NULL, replacements3 = NULL,
+  replace3 = NULL, widths = NULL, float = "left",
+  color = c("black", "black", "black"), font_size_code = "80\%")
 }
 \arguments{
 \item{chunk_name}{a character string referring to the name of the source chunk for the flipbooking}
@@ -36,9 +37,21 @@ chunk_reveal(chunk_name = NULL, break_type = "auto", left_assign = F,
 
 \item{md2}{a character string vector that contains markdown; each element will be shown on a separate slide in the display panel "md" (see display_type)}
 
+\item{replacements}{a character string vector to be replace the string indicated by the 'replace' parameter}
+
+\item{replace}{a character string to be replaced in the input code sequentially with the replacement vector elements}
+
 \item{widths}{a numeric vector containing relative widths for panels}
 
 \item{font_size_code}{this is not reliable yet, place holder!}
+
+\item{replace}{a character string to be replaced in the input code sequentially with the replacement2 vector elements}
+
+\item{replacements}{a character string vector to be replace the string indicated by the 'replace2' parameter}
+
+\item{replace}{a character string to be replaced in the input code sequentially with the replacement3 vector elements}
+
+\item{replacements}{a character string vector to be replace the string indicated by the 'replace3' parameter}
 }
 \value{
 a string object is returned will only work in 'knitr' context
