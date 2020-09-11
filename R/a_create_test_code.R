@@ -1,6 +1,22 @@
 # Emi Tanaka (@statsgen) and Garrick Aden-Buie (@grrrck) and Evangeline Reynolds (@EvaMaeRey)
 # have contributed to this code
 
+# how to solve "no visible binding for global variable" note
+utils::globalVariables(
+c('func', '.', 'raw_code', 'non_seq', 'func', '.','raw_code', '.',
+  'replacements','line','code','highlight','connector','line','func',
+  '.','raw_code','open_par','closed_par', 'auto','connector','line1',
+  'text','open_square','line','token','open_par','closed_par','open_curly',
+  'closed_curly','closed_square','full_line','num_open_par','num_closed_par',
+  'num_open_curly','num_closed_curly','num_open_square','num_closed_square',
+  'balanced_paren','balanced_curly','balanced_square','all_parenteses_balanced',
+  'raw_code', 'connector','all_parentheses_balanced', 'line', 'auto', 'user',
+  'non_seq', 'rotate','raw_code', '.')
+
+)
+
+
+
 ####### Make some test code available as character strings #####
 create_code <- function(){ # for testing w/o knitting
 

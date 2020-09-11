@@ -8,11 +8,14 @@ knit_text_and_collapse <- function(text){
 
 ######## The exported functions ############
 
-#' Title CREA
+#' Function takes code from referenced code chunk and returns partial code
+#' sequence to series of code chunks separated by slide breaks.
+#' Upon compiling you get step-by-step code walk-through.
 #'
 #' @param chunk_name a character string referring to the name of the source chunk for the flipbooking
 #' @param break_type "auto" is default finding appropriate breakpoints, "user" can be used with the special comment message #BREAK within the source code chunk, "non_seq" can be used for non sequential display of code with special comment messages #BREAK2 (will show in second frame) and #BREAK3 (will show in third frame), an integer input can be given too, to simply display the source code chunk multiple times which is appropriate for observing multiple realizations of sampling, "rotate" allows cycling through different lines of code, the comment #ROTATE is used for lines to by cycled through
 #' @param left_assign a logical, default is FALSE, if TRUE will print the object created in the upper left hand corner of the source code chunk at the end of each partial reveal
+#' @param table_formatting a character string containing function for table formatting in output, for left assign case only
 #' @param code_seq a list of code as character strings, the list will automatically be created based on the previous three arguments or the user can input code manually
 #' @param num_breaks an integer, automatically calculated based on the length of the the code_seq list
 #' @param display_type a character string vector, the default is c("code", "output") for code and output to be displayed side-by-side, "output" will create spawned code chunks to only display output, "code" will create spawned code chunks only to show the partial code builds; "func" and "md" may also be displayed
@@ -23,12 +26,12 @@ knit_text_and_collapse <- function(text){
 #' @param md2 a character string vector that contains markdown; each element will be shown on a separate slide in the display panel "md" (see display_type)
 #' @param replace a character string to be replaced in the input code sequentially with the replacement vector elements
 #' @param replacements a character string vector to be replace the string indicated by the 'replace' parameter
-#' @param replace a character string to be replaced in the input code sequentially with the replacement2 vector elements
-#' @param replacements a character string vector to be replace the string indicated by the 'replace2' parameter
-#' @param replace a character string to be replaced in the input code sequentially with the replacement3 vector elements
-#' @param replacements a character string vector to be replace the string indicated by the 'replace3' parameter
+#' @param replace2 a character string to be replaced in the input code sequentially with the replacement2 vector elements
+#' @param replacements2 a character string vector to be replace the string indicated by the 'replace2' parameter
+#' @param replace3 a character string to be replaced in the input code sequentially with the replacement3 vector elements
+#' @param replacements3 a character string vector to be replace the string indicated by the 'replace3' parameter
 #' @param widths a numeric vector containing relative widths for panels
-#' @param font_size_code this is not reliable yet, place holder!
+#' @param font_size_code this ain't working yet!
 #'
 #' @return a string object is returned will only work in 'knitr' context
 #' @export
@@ -36,6 +39,7 @@ knit_text_and_collapse <- function(text){
 chunk_reveal <- function(chunk_name = NULL,
                    break_type = "auto",
                    left_assign = F,
+                   table_formatting = NULL,
                    lang = "r",
                    omit = "#OMIT",
                    code_seq = NULL,
@@ -76,8 +80,12 @@ chunk_reveal <- function(chunk_name = NULL,
 
   if (!is.null(chunk_name) & is.null(code_seq)) {
 
-    code_seq <- chunk_name_return_code_sequence(chunk_name, break_type, left_assign,
-                                                lang, omit = omit,
+    code_seq <- chunk_name_return_code_sequence(chunk_name = chunk_name,
+                                                break_type = break_type,
+                                                left_assign = left_assign,
+                                                table_formatting = table_formatting,
+                                                lang = lang,
+                                                omit = omit,
                                                 replace = replace, replacements = replacements,
                                                 replace2 = replace2, replacements2 = replacements2,
                                                 replace3 = replace3, replacements3 = replacements3)
@@ -86,7 +94,9 @@ chunk_reveal <- function(chunk_name = NULL,
 
   if (is.null(func_seq) & !is.null(code_seq)){
 
-    try(func_seq <- chunk_name_return_function_sequence(chunk_name, break_type, left_assign, lang, omit = omit))
+    try(func_seq <- chunk_name_return_function_sequence(chunk_name, break_type, left_assign,
+                                                        table_formatting = table_formatting,
+                                                        lang = lang, omit = omit))
     #try because not worked out for python?
   }
 
@@ -153,6 +163,7 @@ code_seq_as_vector <- function(code_seq){
 chunk_code_seq_as_vector <- function(chunk_name,
                                      break_type = "auto",
                                      left_assign = F,
+                                     table_formatting = NULL,
                                      lang = "r",
                                      omit = "#OMIT"
                                      ){
@@ -162,7 +173,8 @@ chunk_code_seq_as_vector <- function(chunk_name,
     chunk_code_get() %>%
     code_parse(lang = lang, omit = omit) %>%
     parsed_return_partial_code_sequence(break_type = break_type,
-                                        left_assign = left_assign) %>%
+                                        left_assign = left_assign,
+                                        table_formatting = table_formatting) %>%
     code_seq_as_vector()
 
 
@@ -172,12 +184,13 @@ chunk_code_seq_as_vector <- function(chunk_name,
 
 
 
-#' Title
+#' Function takes character string, splits it based on delimiter,
+#' and returns each element of the resultant vector on its own slide
 #'
 #' @param text a character string to be split and delivered piece-wise to a slide
 #' @param sep a character string to delimit the split of the input text
 #' @param md_prefix a character string prefix to each markdown element, defaults to "#"
-#' @param sep_replace a character string that will replace the delimitor, defaults to empty string ""
+#' @param sep_replace a character string that will replace the delimiter, defaults to empty string ""
 #' @param slide_break a character string containing slide break characters, defaults to "---" for xaringan slideshows
 #' @param class a character string in which you can set the class, defaults to "class: inverse, middle, center"
 #'

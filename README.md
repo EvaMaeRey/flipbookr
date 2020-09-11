@@ -62,3 +62,5 @@ pace, can be viewed
 We believe in communicating with flipbooks, so we use the tool to
 describe the functions that are at work within the package
 [here](https://evamaerey.github.io/flipbooks/flipbookr/flipbookr_building_blocks#1)
+
+## please check out the code of conduct for contributors.

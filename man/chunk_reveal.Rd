@@ -2,17 +2,20 @@
 % Please edit documentation in R/g_exported_functions.R
 \name{chunk_reveal}
 \alias{chunk_reveal}
-\title{Title CREA}
+\title{Function takes code from referenced code chunk and returns partial code
+sequence to series of code chunks separated by slide breaks.
+Upon compiling you get step-by-step code walk-through.}
 \usage{
 chunk_reveal(chunk_name = NULL, break_type = "auto", left_assign = F,
-  lang = "r", omit = "#OMIT", code_seq = NULL, code_seq_lag = NULL,
-  code_seq_lag2 = NULL, code_seq_target = NULL,
-  code_seq_start = NULL, func_seq = NULL, num_breaks = NULL,
-  display_type = c("code", "output"), title = "", md = NULL,
-  md2 = NULL, replacements = NULL, replace = NULL,
-  replacements2 = NULL, replace2 = NULL, replacements3 = NULL,
-  replace3 = NULL, widths = NULL, float = "left",
-  color = c("black", "black", "black"), font_size_code = "80\%")
+  table_formatting = NULL, lang = "r", omit = "#OMIT",
+  code_seq = NULL, code_seq_lag = NULL, code_seq_lag2 = NULL,
+  code_seq_target = NULL, code_seq_start = NULL, func_seq = NULL,
+  num_breaks = NULL, display_type = c("code", "output"), title = "",
+  md = NULL, md2 = NULL, replacements = NULL, replace = NULL,
+  replacements2 = replacements, replace2 = replace,
+  replacements3 = replacements, replace3 = replace, widths = NULL,
+  float = "left", color = c("black", "black", "black"),
+  font_size_code = "80\%")
 }
 \arguments{
 \item{chunk_name}{a character string referring to the name of the source chunk for the flipbooking}
@@ -20,6 +23,8 @@ chunk_reveal(chunk_name = NULL, break_type = "auto", left_assign = F,
 \item{break_type}{"auto" is default finding appropriate breakpoints, "user" can be used with the special comment message #BREAK within the source code chunk, "non_seq" can be used for non sequential display of code with special comment messages #BREAK2 (will show in second frame) and #BREAK3 (will show in third frame), an integer input can be given too, to simply display the source code chunk multiple times which is appropriate for observing multiple realizations of sampling, "rotate" allows cycling through different lines of code, the comment #ROTATE is used for lines to by cycled through}
 
 \item{left_assign}{a logical, default is FALSE, if TRUE will print the object created in the upper left hand corner of the source code chunk at the end of each partial reveal}
+
+\item{table_formatting}{a character string containing function for table formatting in output, for left assign case only}
 
 \item{lang}{a character string indicating what programming language will be used. "r" is default; "python" is experimental}
 
@@ -41,21 +46,23 @@ chunk_reveal(chunk_name = NULL, break_type = "auto", left_assign = F,
 
 \item{replace}{a character string to be replaced in the input code sequentially with the replacement vector elements}
 
+\item{replacements2}{a character string vector to be replace the string indicated by the 'replace2' parameter}
+
+\item{replace2}{a character string to be replaced in the input code sequentially with the replacement2 vector elements}
+
+\item{replacements3}{a character string vector to be replace the string indicated by the 'replace3' parameter}
+
+\item{replace3}{a character string to be replaced in the input code sequentially with the replacement3 vector elements}
+
 \item{widths}{a numeric vector containing relative widths for panels}
 
-\item{font_size_code}{this is not reliable yet, place holder!}
-
-\item{replace}{a character string to be replaced in the input code sequentially with the replacement2 vector elements}
-
-\item{replacements}{a character string vector to be replace the string indicated by the 'replace2' parameter}
-
-\item{replace}{a character string to be replaced in the input code sequentially with the replacement3 vector elements}
-
-\item{replacements}{a character string vector to be replace the string indicated by the 'replace3' parameter}
+\item{font_size_code}{this ain't working yet!}
 }
 \value{
 a string object is returned will only work in 'knitr' context
 }
 \description{
-Title CREA
+Function takes code from referenced code chunk and returns partial code
+sequence to series of code chunks separated by slide breaks.
+Upon compiling you get step-by-step code walk-through.
 }

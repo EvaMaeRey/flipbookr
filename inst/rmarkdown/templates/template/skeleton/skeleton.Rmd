@@ -253,6 +253,8 @@ ggplot(data = cars) +
 You might want to combine the reveal experience and rotate as one idea.  This can be done with the omit function.  
 
 
+
+
 ---
 
 `r chunk_reveal("omit", omit = "#ROTATE", break_type = "auto")`
@@ -658,6 +660,28 @@ my_plot <- cars %>%   # the data
   aes(x = speed) +
   aes(y = dist) +
   geom_point()
+```
+
+---
+
+# left assign, table formatting
+
+```{r}
+# right now, for some reason 
+# library needs to be loaded, no double colons
+library(gt)
+```
+
+
+---
+
+`r chunk_reveal("table_formatting", break_type = "auto", display_type = c("code", "output"), left_assign = TRUE, table_formatting = "gt")`
+
+
+```{r table_formatting, include = FALSE}
+the_cars <- cars %>%   # the data  
+  filter(speed > 4) %>% 
+  select(speed)
 ```
 
 

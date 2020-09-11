@@ -77,3 +77,5 @@ The full flipbook, an html slideshow, that you can advance at your own pace, can
 We believe in communicating with flipbooks, so we use the tool to
 describe the functions that are at work within the package
 [here](https://evamaerey.github.io/flipbooks/flipbookr/flipbookr_building_blocks#1)
+
+## please check out the code of conduct for contributors.

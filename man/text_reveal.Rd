@@ -2,7 +2,8 @@
 % Please edit documentation in R/g_exported_functions.R
 \name{text_reveal}
 \alias{text_reveal}
-\title{Title}
+\title{Function takes character string, splits it based on delimiter,
+and returns each element of the resultant vector on its own slide}
 \usage{
 text_reveal(text, sep = "   ", md_prefix = "#", sep_replace = "",
   slide_break = "---", class = "class: inverse, middle, center")
@@ -14,7 +15,7 @@ text_reveal(text, sep = "   ", md_prefix = "#", sep_replace = "",
 
 \item{md_prefix}{a character string prefix to each markdown element, defaults to "#"}
 
-\item{sep_replace}{a character string that will replace the delimitor, defaults to empty string ""}
+\item{sep_replace}{a character string that will replace the delimiter, defaults to empty string ""}
 
 \item{slide_break}{a character string containing slide break characters, defaults to "---" for xaringan slideshows}
 
@@ -24,7 +25,8 @@ text_reveal(text, sep = "   ", md_prefix = "#", sep_replace = "",
 knit text to be interpreted as slides
 }
 \description{
-Title
+Function takes character string, splits it based on delimiter,
+and returns each element of the resultant vector on its own slide
 }
 \examples{
 text_reveal("Hello world", sep = " ")

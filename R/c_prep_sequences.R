@@ -193,7 +193,8 @@ parsed_return_recent_function <- function(parsed,
 
 parsed_left_assign_return_partial_code <- function(parsed,
                                                    which_show_frame = 1:3,
-                                                   which_highlight_frame = 3){
+                                                   which_highlight_frame = 3,
+                                                   table_formatting = "flextable::flextable()"){
 
   the_reveal <- parsed_return_partial_code(parsed,
                                            which_show_frame,
@@ -205,7 +206,11 @@ parsed_left_assign_return_partial_code <- function(parsed,
     stringr::str_trim() ->
     object_to_track  # this is the object created at the beginning of the code chunk
 
+  if(is.null(table_formatting)) {
   c(the_reveal, " ", object_to_track)
+  }else{
+  c(the_reveal, " ", paste(object_to_track, " %>% "), table_formatting)
+  }
 
 }
 
@@ -218,7 +223,9 @@ parsed_return_partial_code_sequence <- function(parsed,
                                                 which_highlight =
                                                   shown_lines_calc_highlight(which_show = which_show,
                                                                              break_type = break_type),
-                                                left_assign = F){
+                                                left_assign = F,
+                                                table_formatting = NULL
+                                                ){
 
   partial_code_frames <- list()
 
@@ -235,7 +242,8 @@ parsed_return_partial_code_sequence <- function(parsed,
       partial_code_frames[[i]] <-
         parsed_left_assign_return_partial_code(parsed,
                                                which_show_frame = which_show[[i]],
-                                               which_highlight_frame = which_highlight[[i]]) %>%
+                                               which_highlight_frame = which_highlight[[i]],
+                                               table_formatting = table_formatting) %>%
         stringr::str_trim(side = "right") # this is for python
     }
 
@@ -253,7 +261,8 @@ parsed_return_recent_function_sequence <- function(parsed,
                                                    which_highlight =
                                                      shown_lines_calc_highlight(which_show = which_show,
                                                                                 break_type = break_type),
-                                                   left_assign = F){
+                                                   left_assign = F,
+                                                   table_formatting = NULL){
 
   partial_recent_functions <- list()
 
@@ -286,6 +295,7 @@ parsed_return_recent_function_sequence <- function(parsed,
 chunk_name_return_code_sequence <- function(chunk_name,
                                             break_type = "auto",
                                             left_assign = F,
+                                            table_formatting = NULL,
                                             lang = "r",
                                             omit = "#OMIT",
                                             replacements = NULL,
@@ -311,7 +321,8 @@ chunk_name_return_code_sequence <- function(chunk_name,
       chunk_code_get() %>%
       code_parse(lang = lang, omit = omit) %>%
       parsed_return_partial_code_sequence(break_type = break_type,
-                                          left_assign = left_assign)
+                                          left_assign = left_assign,
+                                          table_formatting = table_formatting)
 
   }
 
@@ -320,6 +331,7 @@ chunk_name_return_code_sequence <- function(chunk_name,
 chunk_name_return_function_sequence <- function(chunk_name,
                                                 break_type = "auto",
                                                 left_assign = F,
+                                                table_formatting = NULL,
                                                 lang = "r",
                                                 omit = "#OMIT"){
 
@@ -328,7 +340,8 @@ chunk_name_return_function_sequence <- function(chunk_name,
     chunk_code_get() %>%
     code_parse(lang = lang, omit = omit) %>%
     parsed_return_recent_function_sequence(break_type = break_type,
-                                           left_assign = left_assign)
+                                           left_assign = left_assign,
+                                           table_formatting = table_formatting)
 
 }
 
