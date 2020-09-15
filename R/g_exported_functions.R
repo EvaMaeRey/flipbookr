@@ -165,18 +165,28 @@ chunk_code_seq_as_vector <- function(chunk_name,
                                      left_assign = F,
                                      table_formatting = NULL,
                                      lang = "r",
-                                     omit = "#OMIT"
+                                     omit = "#OMIT",
+                                     replacements = NULL,
+                                     replace = NULL,
+                                     replacements2 = NULL,
+                                     replace2 = NULL,
+                                     replacements3 = NULL,
+                                     replace3 = NULL
                                      ){
 
-
-  chunk_name %>%
-    chunk_code_get() %>%
-    code_parse(lang = lang, omit = omit) %>%
-    parsed_return_partial_code_sequence(break_type = break_type,
-                                        left_assign = left_assign,
-                                        table_formatting = table_formatting) %>%
+    chunk_name_return_code_sequence(chunk_name = chunk_name,
+                                    break_type = break_type,
+                                    left_assign = left_assign,
+                                    table_formatting = table_formatting,
+                                    lang = lang,
+                                    omit = omit,
+                                    replacements = replacements,
+                                    replace = replace,
+                                    replacements2 = replacements2,
+                                    replace2 = replace2,
+                                    replacements3 = replacements3,
+                                    replace3 = replace3) %>%
     code_seq_as_vector()
-
 
 }
 
