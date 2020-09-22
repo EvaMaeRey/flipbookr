@@ -18,7 +18,7 @@ output:
 ```{r, include = F}
 # This is the recommended set up for flipbooks
 # you might think about setting cache to TRUE as you gain practice --- building flipbooks from scratch can be time consuming
-knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F, dev = "svg", fig.ext = "svg")
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F)
 library(flipbookr)
 library(tidyverse)
 ```
@@ -100,6 +100,8 @@ try(source("../../../../../R/g_exported_functions.R"))
 
 #try(source("../../../../../R/mini.R"))
 ```
+
+
 
 
 
@@ -351,6 +353,19 @@ for (i in 1:10){
 500
 ```
 
+---
+
+`r chunk_reveal("palettes", break_type = "replacement", replacements = c("cadetblue", "darkolivegreen", "firebrick2", "firebrick"), replace = "orange", my.fig.width = "8")`
+
+
+```{r palettes, include = F}
+cars %>% 
+  ggplot() +
+  aes(x = speed) +
+  geom_histogram(fill = "orange")
+```
+
+
 
 ---
 
@@ -592,7 +607,7 @@ cars %>%
 
 ---
 
-`r chunk_reveal("top_bottom", title = "## Using a title and custom widths", widths = c(24, 75), float = "top")`
+`r chunk_reveal("top_bottom", title = "## top/bottom display - experimental", widths = c(24, 75), float = "top")`
 
 ```{r top_bottom, include=F}
 cars %>% 
@@ -668,14 +683,14 @@ my_plot <- cars %>%   # the data
 
 ```{r}
 # right now, for some reason 
-# library needs to be loaded, no double colons
-library(gt)
+# library needs to be loaded, no double colons, below I use another data table printer so this library isn't necessary
+# library(gt)
 ```
 
 
 ---
 
-`r chunk_reveal("table_formatting", break_type = "auto", display_type = c("code", "output"), left_assign = TRUE, table_formatting = "gt")`
+`r chunk_reveal("table_formatting", break_type = "auto", display_type = c("code", "output"), left_assign = TRUE, table_formatting = "data.frame")`
 
 
 ```{r table_formatting, include = FALSE}
@@ -876,7 +891,7 @@ The input is a character string, and delimiter can be defined using the `sep` ar
 ---
 
 ```{r, echo = F}
-"Sometimes, it's helpful to slow down and look at exactly one decision.   Flipbooks present code step-by-step and side-by-side with output.   They parse code pipelines.| And reconstruct code into partial builds.   Then present those builds with their output.| Both code and output are superimposed on the previous state.   This makes seeing what changed --- both in code and output --- easy." ->
+"Sometimes, it's helpful to slow down and look at exactly one decision.   Flipbooks present code step-by-step and side-by-side with output.   They parse code pipelines.   And reconstruct code into partial builds.   Then present those builds with their output.   Both code and output are superimposed on the previous state.   This makes seeing what changed --- both in code and output --- easy." ->
   philosophy
 ```
 
@@ -938,9 +953,7 @@ magick::image_read_pdf(path = "my_flipbook.pdf", density = 100) %>% # create ima
 
 Bryan Shalloway proposed this workflow.  Thanks Bryan!
 
-Coming soon, build a previews, using [viztoc](https://github.com/EvaMaeRey/viztoc). Development package!  Breaking changes are the norm! 
-
-
+Coming soon, build a preview, using [viztoc](https://github.com/EvaMaeRey/viztoc). Development package!  Breaking changes are the norm! 
 
 
 
@@ -970,11 +983,19 @@ ggplot(data = cars) +
   theme(plot.title.position = "plot")
 ```
 
+
+
+
+
+
 # The End!
 
 
 ```{r, code = chunk_code_seq_as_vector("cars2"), echo = F, fig.show="hold", out.width="20%"}
 ```
+
+---
+
 
 
 

@@ -11,7 +11,7 @@
 
 
 #### Calculate lines and highlighting to show in frames ####
-parsed_calc_show <- function(parsed, break_type = "auto"){
+parsed_calc_show <- function(parsed, break_type = "auto", replacements = NULL){
 
   if (break_type == "auto") {
 
@@ -219,7 +219,8 @@ parsed_left_assign_return_partial_code <- function(parsed,
 parsed_return_partial_code_sequence <- function(parsed,
                                                 break_type = "auto",
                                                 which_show = parsed_calc_show(parsed = parsed,
-                                                                              break_type = break_type),
+                                                                              break_type = break_type,
+                                                                              replacements = NULL),
                                                 which_highlight =
                                                   shown_lines_calc_highlight(which_show = which_show,
                                                                              break_type = break_type),
@@ -291,6 +292,8 @@ parsed_return_recent_function_sequence <- function(parsed,
 #   code_parse() %>%
 #   parsed_return_recent_function_sequence()
 
+# create_injectable_code() %>%
+#   code_replacements_and_highlight(replacements = 1:4, replace = "10")
 
 chunk_name_return_code_sequence <- function(chunk_name,
                                             break_type = "auto",

@@ -16,7 +16,8 @@ Imports:
     tidyr,
     stringi,
     knitr,
-    glue
+    glue,
+    purrr
 RoxygenNote: 6.1.1
 Suggests: 
     testthat

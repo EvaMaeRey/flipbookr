@@ -6,12 +6,13 @@
 sequence to series of code chunks separated by slide breaks.
 Upon compiling you get step-by-step code walk-through.}
 \usage{
-chunk_reveal(chunk_name = NULL, break_type = "auto", left_assign = F,
-  table_formatting = NULL, lang = "r", omit = "#OMIT",
-  code_seq = NULL, code_seq_lag = NULL, code_seq_lag2 = NULL,
-  code_seq_target = NULL, code_seq_start = NULL, func_seq = NULL,
-  num_breaks = NULL, display_type = c("code", "output"), title = "",
-  md = NULL, md2 = NULL, replacements = NULL, replace = NULL,
+chunk_reveal(chunk_name = NULL, break_type = "auto",
+  my.fig.width = 6, left_assign = F, table_formatting = NULL,
+  lang = "r", omit = "#OMIT", code_seq = NULL, code_seq_lag = NULL,
+  code_seq_lag2 = NULL, code_seq_target = NULL,
+  code_seq_start = NULL, func_seq = NULL, num_breaks = NULL,
+  display_type = c("code", "output"), title = "", md = NULL,
+  md2 = NULL, replacements = NULL, replace = NULL,
   replacements2 = replacements, replace2 = replace,
   replacements3 = replacements, replace3 = replace, widths = NULL,
   float = "left", color = c("black", "black", "black"),

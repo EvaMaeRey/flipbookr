@@ -149,46 +149,40 @@ chunk_reveal <- function(chunk_name = NULL,
 
 
 ## returning code sequence as a vector
-
-code_seq_as_vector <- function(code_seq){
-
-  code_seq %>%
-    tibble::tibble(code = .) %>%
-    tidyr::unnest() %>%
-    dplyr::pull("code")
-
-}
+# create_injectable_code() %>%
+#   code_parse() %>%
+#   parsed_return_partial_code_sequence(break_type = "replacement",
+#                                       replacements = 1:4,
+#                                       replace = 10)
 
 
 chunk_code_seq_as_vector <- function(chunk_name,
-                                     break_type = "auto",
-                                     left_assign = F,
-                                     table_formatting = NULL,
-                                     lang = "r",
-                                     omit = "#OMIT",
-                                     replacements = NULL,
-                                     replace = NULL,
-                                     replacements2 = NULL,
-                                     replace2 = NULL,
-                                     replacements3 = NULL,
-                                     replace3 = NULL
-                                     ){
+                               break_type = "auto",
+                               left_assign = F,
+                               table_formatting = NULL,
+                               lang = "r",
+                               omit = "#OMIT",
+                               replacements = NULL,
+                               replace = NULL,
+                               replacements2 = NULL,
+                               replace2 = NULL,
+                               replacements3 = NULL,
+                               replace3 = NULL){
 
-    chunk_name_return_code_sequence(chunk_name = chunk_name,
-                                    break_type = break_type,
-                                    left_assign = left_assign,
-                                    table_formatting = table_formatting,
-                                    lang = lang,
-                                    omit = omit,
-                                    replacements = replacements,
-                                    replace = replace,
-                                    replacements2 = replacements2,
-                                    replace2 = replace2,
-                                    replacements3 = replacements3,
-                                    replace3 = replace3) %>%
-    code_seq_as_vector()
+  chunk_name_return_code_sequence(chunk_name = chunk_name,
+                                              break_type = break_type,
+                                              left_assign = left_assign,
+                                              table_formatting = table_formatting,
+                                              lang = lang,
+                                              omit = omit,
+                                              replace = replace, replacements = replacements,
+                                              replace2 = replace2, replacements2 = replacements2,
+                                              replace3 = replace3, replacements3 = replacements3) %>%
+    purrr::flatten_chr()
 
 }
+
+
 
 
 
