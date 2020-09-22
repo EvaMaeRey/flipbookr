@@ -355,7 +355,7 @@ for (i in 1:10){
 
 ---
 
-`r chunk_reveal("palettes", break_type = "replacement", replacements = c("cadetblue", "darkolivegreen", "firebrick2", "firebrick"), replace = "orange", my.fig.width = "8")`
+`r chunk_reveal("palettes", break_type = "replacement", replacements = c("cadetblue", "darkolivegreen", "firebrick2", "firebrick"), replace = "orange")`
 
 
 ```{r palettes, include = F}
@@ -690,7 +690,7 @@ my_plot <- cars %>%   # the data
 
 ---
 
-`r chunk_reveal("table_formatting", break_type = "auto", display_type = c("code", "output"), left_assign = TRUE, table_formatting = "data.frame")`
+`r chunk_reveal("table_formatting", break_type = "auto", display_type = c("code", "output"), left_assign = TRUE, table_formatting = "data.frame %>% head(6)")`
 
 
 ```{r table_formatting, include = FALSE}
