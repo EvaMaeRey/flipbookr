@@ -49,7 +49,7 @@ code_as_table_process_break_messages <- function(code_as_table){
 
   code_as_table %>%
     dplyr::mutate(raw_code = stringr::str_remove(raw_code, "\\s+$")) %>%
-    dplyr::mutate(non_seq = stringr::str_extract(raw_code, "#BREAK-?\\d+")) %>%
+    dplyr::mutate(non_seq = stringr::str_extract(raw_code, "#BREAK\\-?\\d+")) %>%
     dplyr::mutate(non_seq = stringr::str_extract(non_seq, "-?\\d+")) %>%
     dplyr::mutate(non_seq = as.numeric(non_seq)) %>%
     dplyr::mutate(non_seq = tidyr::replace_na(non_seq, 1)) %>%
@@ -61,6 +61,14 @@ code_as_table_process_break_messages <- function(code_as_table){
 # create_code() %>%
 #   code_as_table() %>%
 #   code_as_table_process_break_messages()
+
+
+# create_code() %>%
+#   code_as_table() %>%
+#   code_as_table_process_break_messages()
+#
+# create_code_remove() %>%
+#   code_simple_parse()
 
 
 code_simple_parse <- function(code, omit = "#OMIT"){
@@ -144,6 +152,9 @@ r_base_parsed_count_parentheses <- function(base_parsed){
 #   r_code_base_parse() %>%
 #   r_base_parsed_count_parentheses()
 
+# create_code_remove() %>%
+#   r_code_full_parse()
+
 
 #### Full parse R, python, stata ####
 
@@ -176,7 +187,7 @@ r_code_full_parse <- function(code = code, omit = "#OMIT"){
     dplyr::mutate(connector = stringr::str_extract(stringr::str_trim(code), connectors)) %>%
     dplyr::mutate(connector = tidyr::replace_na(connector, "")) %>%
     # delete comments understood as
-    dplyr::mutate(comment = stringr::str_remove(comment, "#BREAK\\d?")) %>%
+    dplyr::mutate(comment = stringr::str_remove(comment, "#BREAK-?\\d?")) %>%
     dplyr::mutate(comment = stringr::str_remove(comment, "#ROTATE")) %>%
     dplyr::mutate(comment = stringr::str_remove(comment, "#[[A-Z]]+")) %>%
     dplyr::mutate(comment = stringr::str_remove(comment, "XXXXXXXXX")) %>%
@@ -207,6 +218,7 @@ python_code_full_parse <- function(code, omit = "#OMIT"){
     dplyr::mutate(closed_par = stringr::str_count(code, "\\}|\\)|\\]")) %>%
     dplyr::mutate(auto = cumsum(open_par) == cumsum(closed_par)) %>%
     dplyr::mutate(auto = ifelse(raw_code == "", FALSE, auto)) %>%
+    dplyr::mutate(auto = ifelse(stringr::str_detect(raw_code, ":\\s?$"), FALSE, auto)) %>%
     dplyr::mutate(indented = stringr::str_detect(code, "^\\s+")) %>%
     # dplyr::mutate(indented_follows = dplyr::lead(indented, default = FALSE)) %>%
     # dplyr::mutate(auto = ifelse(indented_follows, FALSE, auto))  %>%

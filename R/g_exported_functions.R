@@ -61,6 +61,7 @@ chunk_reveal <- function(chunk_name = NULL,
                    replace3 = replace,
                    widths = NULL,
                    float = "left",
+                   chunk_options = "fig.width = 6",
                    color = c("black", "black", "black"),
                    font_size_code = "80%"
                    #,
@@ -137,7 +138,8 @@ chunk_reveal <- function(chunk_name = NULL,
                        widths = widths,
                        float = float,
                        color = color,
-                       font_size_code = font_size_code
+                       font_size_code = font_size_code,
+                       chunk_options = chunk_options
                        #,
                        #out.height = out.height,
                        #out.width = out.width

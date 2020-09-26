@@ -10,6 +10,10 @@
 #   parsed_return_partial_code_sequence()
 
 
+# create_code_remove() %>%
+#   code_parse() %>%
+#   parsed_return_partial_code_sequence(break_type = "non_seq")
+
 #### Calculate lines and highlighting to show in frames ####
 parsed_calc_show <- function(parsed, break_type = "auto", replacements = NULL){
 
@@ -38,7 +42,7 @@ parsed_calc_show <- function(parsed, break_type = "auto", replacements = NULL){
 
     num_panes <- sum(parsed$rotate)
 
-  } else if (break_type == "replacement") {
+  } else if (break_type == "replace") {
 
     num_panes <- length(replacements)
 
@@ -59,7 +63,7 @@ parsed_calc_show <- function(parsed, break_type = "auto", replacements = NULL){
           ))
     }
 
-  } else if (break_type == "replacement")  {
+  } else if (break_type == "replace")  {
     NULL
   } else {
 
@@ -68,9 +72,9 @@ parsed_calc_show <- function(parsed, break_type = "auto", replacements = NULL){
       # fix this for non_sequential to allow removal
       which_show[[i]] <- which(code_order <= i)
       # Matt Gambino: change pipes to second statement to drop negative values
-      # which_show[[i]] <-
-      #   which( code_order <= i ) %>%
-      #   .[!. %in% which( code_order >= -i & code_order < 0 )]
+      which_show[[i]] <-
+        which( code_order <= i ) %>%
+        .[!. %in% which( code_order >= -i & code_order < 0 )]
 
     }
 
@@ -110,7 +114,7 @@ shown_lines_calc_highlight <- function(which_show = list(c(1, 2), c(1, 2, 3, 4))
 
   }
 
-  if (break_type == "replacement") {
+  if (break_type == "replace") {
 
     NULL
 
@@ -209,7 +213,7 @@ parsed_left_assign_return_partial_code <- function(parsed,
   if(is.null(table_formatting)) {
   c(the_reveal, " ", object_to_track)
   }else{
-  c(the_reveal, " ", paste(object_to_track, " %>% "), table_formatting)
+  c(the_reveal, " ", paste(object_to_track, "    %>% "), table_formatting)
   }
 
 }
@@ -308,7 +312,7 @@ chunk_name_return_code_sequence <- function(chunk_name,
                                             replacements3 = NULL,
                                             replace3 = NULL){
 
-  if (break_type == "replacement"){
+  if (break_type == "replace"){
 
     chunk_name %>%
       chunk_code_get() %>%
@@ -376,14 +380,14 @@ code_replacements_and_highlight <- function(code,
                                                replace,
                                                replacements[i])) %>%
       dplyr::mutate(code = ifelse(stringr::str_detect(code, replace2),
-                                  paste(code, "#<<"),
+                                  paste(code, ifelse(replace == replace2, "", "#<<")),
                                   code)) %>%
       dplyr::mutate(code =
                       stringr::str_replace_all(code,
                                                replace2,
                                                replacements2[i])) %>%
       dplyr::mutate(code = ifelse(stringr::str_detect(code, replace3),
-                                  paste(code, "#<<"),
+                                  paste(code, ifelse(replace == replace3, "", "#<<")),
                                   code)) %>%
       dplyr::mutate(code =
                       stringr::str_replace_all(code,

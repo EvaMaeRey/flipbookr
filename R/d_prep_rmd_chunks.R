@@ -19,7 +19,7 @@ return_partial_chunks_template_code_lag <- function(){
 
 return_partial_chunks_template_output <- function(){
 
-  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks_prep>>>_output, eval = TRUE, echo = FALSE, code = code_seq[[<<<breaks>>>]]}
+  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks_prep>>>_output, eval = TRUE, echo = FALSE, code = code_seq[[<<<breaks>>>]], <<<chunk_options>>>}
 ```"
 
   # , out.width = \"<<<out.width>>>\", out.height = \"<<<out.height>>>\"
@@ -27,26 +27,26 @@ return_partial_chunks_template_output <- function(){
 
 return_partial_chunks_template_output_lag <- function(){
 
-  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks_prep>>>_output_lag, eval = TRUE, echo = FALSE, code = code_seq_lag[[<<<breaks>>>]]}
+  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks_prep>>>_output_lag, eval = TRUE, echo = FALSE, code = code_seq_lag[[<<<breaks>>>]], <<<chunk_options>>>}
 ```"
 
 }
 
 return_partial_chunks_template_output_lag2 <- function(){
 
-  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks_prep>>>_output_lag2, eval = TRUE, echo = FALSE, code = code_seq_lag2[[<<<breaks>>>]]}
+  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks_prep>>>_output_lag2, eval = TRUE, echo = FALSE, code = code_seq_lag2[[<<<breaks>>>]], <<<chunk_options>>>}
 ```"
 }
 
 return_partial_chunks_template_output_target <- function(){
 
-  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks_prep>>>_output_target, eval = TRUE, echo = FALSE, code = code_seq_target[[<<<breaks>>>]]}
+  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks_prep>>>_output_target, eval = TRUE, echo = FALSE, code = code_seq_target[[<<<breaks>>>]], <<<chunk_options>>>}
 ```"
 }
 
 return_partial_chunks_template_output_start <- function(){
 
-  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks_prep>>>_output_target, eval = TRUE, echo = FALSE, code = code_seq_start[[<<<breaks>>>]]}
+  "```{<<<lang>>> <<<chunk_name>>>_<<<break_type>>>_<<<breaks_prep>>>_output_target, eval = TRUE, echo = FALSE, code = code_seq_start[[<<<breaks>>>]], <<<chunk_options>>>}
 ```"
 }
 

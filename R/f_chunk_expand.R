@@ -10,6 +10,7 @@
 chunk_expand <- function(chunk_name = "example",
                          break_type = "auto",
                          display_type = c("code", "output"),
+                         chunk_options = "fig.height = 12",
                          num_breaks = 2,
                          title = "",
                          md = NULL,

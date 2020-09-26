@@ -220,6 +220,20 @@ If the break_type is set to "non_seq", the breakpoints are those indicated by th
 
 `r chunk_reveal("my_cars", break_type = "non_seq")`
 
+---
+
+
+`r chunk_reveal("removing", chunk_options = "fig.width = 12", break_type = "non_seq")`
+
+```{r removing, include = F}
+ggplot(cars) +
+  aes(x = dist) + #BREAK3
+  aes(y = speed) + #BREAK-3
+  geom_rug() #BREAK2
+```
+
+
+
 
 ---
 
@@ -332,7 +346,7 @@ Of course gives you the side-by-side with no walk through, which is sometimes ha
 
 ---
 
-## break_type = "replacement" (with injection argument)
+## break_type = "replace" 
 
 This is going to let you inject some different code (number, argument option) into each slide to be displayed. 
 
@@ -340,7 +354,7 @@ Use with caution! Experimental
 
 ---
 
-`r chunk_reveal("for_loop", break_type = "replacement", replacements = 1:4, replace = "10", replacements2 = 5:8, replace2 = "500")`
+`r chunk_reveal("for_loop", break_type = "replace", replace = "10", replacements = 1:4,  replace2 = "500", replacements2 = 5:8)`
 
 
 ```{r for_loop, eval = F, echo = F}
@@ -355,7 +369,7 @@ for (i in 1:10){
 
 ---
 
-`r chunk_reveal("palettes", break_type = "replacement", replacements = c("cadetblue", "darkolivegreen", "firebrick2", "firebrick"), replace = "orange")`
+`r chunk_reveal("palettes", break_type = "replace", replacements = c("cadetblue", "darkolivegreen", "firebrick2", "firebrick"), replace = "orange")`
 
 
 ```{r palettes, include = F}

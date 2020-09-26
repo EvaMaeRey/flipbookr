@@ -3,6 +3,7 @@
 
 # how to solve "no visible binding for global variable" note
 utils::globalVariables(
+
 c('func', '.', 'raw_code', 'non_seq', 'func', '.','raw_code', '.',
   'replacements','line','code','highlight','connector','line','func',
   '.','raw_code','open_par','closed_par', 'auto','connector','line1',
@@ -42,9 +43,14 @@ create_code <- function(){ # for testing w/o knitting
 }
 
 
+create_code_remove <- function(){
 
+"ggplot(data = cars) +
+  aes(x = speed) +
+  aes(y = dist) + #BREAK-2
+  geom_rug()"
 
-
+}
 
 
 
@@ -165,3 +171,4 @@ aes(y = dist) +
 geom_point(alpha = .3)"
 
 }
+

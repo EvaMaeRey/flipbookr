@@ -153,11 +153,25 @@ student_scores \
 
 ---
 
-This example Suraj Thapa for sketching out ideas for this example!
+The last example owes thanks Suraj Thapa for sketching out ideas these ideas!
 
 
+---
 
+`r chunk_reveal("hi", lang = "python", title = "## Code by Daniel Anderson's Daughter")`
 
+```{python hi, include = F}
+def flower(like):
+  print("I like flowers " + like)
+
+flower("that are red.")
+flower("that smell good.")
+
+def strawberry(sweet):
+  print("strawberrys are sweet" + sweet)
+  
+strawberry(", and red")  
+```
 
 
 
