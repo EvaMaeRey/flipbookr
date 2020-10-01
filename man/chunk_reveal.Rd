@@ -6,17 +6,16 @@
 sequence to series of code chunks separated by slide breaks.
 Upon compiling you get step-by-step code walk-through.}
 \usage{
-chunk_reveal(chunk_name = NULL, break_type = "auto",
-  my.fig.width = 6, left_assign = F, table_formatting = NULL,
-  lang = "r", omit = "#OMIT", code_seq = NULL, code_seq_lag = NULL,
-  code_seq_lag2 = NULL, code_seq_target = NULL,
-  code_seq_start = NULL, func_seq = NULL, num_breaks = NULL,
-  display_type = c("code", "output"), title = "", md = NULL,
-  md2 = NULL, replacements = NULL, replace = NULL,
+chunk_reveal(chunk_name = NULL, break_type = "auto", left_assign = F,
+  left_assign_add = NULL, lang = "r", omit = "#OMIT",
+  code_seq = NULL, code_seq_lag = NULL, code_seq_lag2 = NULL,
+  code_seq_target = NULL, code_seq_start = NULL, func_seq = NULL,
+  num_breaks = NULL, display_type = c("code", "output"), title = "",
+  md = NULL, md2 = NULL, replacements = NULL, replace = NULL,
   replacements2 = replacements, replace2 = replace,
   replacements3 = replacements, replace3 = replace, widths = NULL,
-  float = "left", color = c("black", "black", "black"),
-  font_size_code = "80\%")
+  float = "left", chunk_options = "fig.width = 6", color = c("black",
+  "black", "black"), font_size_code = "80\%")
 }
 \arguments{
 \item{chunk_name}{a character string referring to the name of the source chunk for the flipbooking}
@@ -25,7 +24,7 @@ chunk_reveal(chunk_name = NULL, break_type = "auto",
 
 \item{left_assign}{a logical, default is FALSE, if TRUE will print the object created in the upper left hand corner of the source code chunk at the end of each partial reveal}
 
-\item{table_formatting}{a character string containing function for table formatting in output, for left assign case only}
+\item{left_assign_add}{a character string containing function for table formatting in output, for left assign case only}
 
 \item{lang}{a character string indicating what programming language will be used. "r" is default; "python" is experimental}
 

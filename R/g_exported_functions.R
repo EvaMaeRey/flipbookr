@@ -15,7 +15,7 @@ knit_text_and_collapse <- function(text){
 #' @param chunk_name a character string referring to the name of the source chunk for the flipbooking
 #' @param break_type "auto" is default finding appropriate breakpoints, "user" can be used with the special comment message #BREAK within the source code chunk, "non_seq" can be used for non sequential display of code with special comment messages #BREAK2 (will show in second frame) and #BREAK3 (will show in third frame), an integer input can be given too, to simply display the source code chunk multiple times which is appropriate for observing multiple realizations of sampling, "rotate" allows cycling through different lines of code, the comment #ROTATE is used for lines to by cycled through
 #' @param left_assign a logical, default is FALSE, if TRUE will print the object created in the upper left hand corner of the source code chunk at the end of each partial reveal
-#' @param table_formatting a character string containing function for table formatting in output, for left assign case only
+#' @param left_assign_add a character string containing function for table formatting in output, for left assign case only
 #' @param code_seq a list of code as character strings, the list will automatically be created based on the previous three arguments or the user can input code manually
 #' @param num_breaks an integer, automatically calculated based on the length of the the code_seq list
 #' @param display_type a character string vector, the default is c("code", "output") for code and output to be displayed side-by-side, "output" will create spawned code chunks to only display output, "code" will create spawned code chunks only to show the partial code builds; "func" and "md" may also be displayed
@@ -39,7 +39,7 @@ knit_text_and_collapse <- function(text){
 chunk_reveal <- function(chunk_name = NULL,
                    break_type = "auto",
                    left_assign = F,
-                   table_formatting = NULL,
+                   left_assign_add = NULL,
                    lang = "r",
                    omit = "#OMIT",
                    code_seq = NULL,
@@ -84,7 +84,7 @@ chunk_reveal <- function(chunk_name = NULL,
     code_seq <- chunk_name_return_code_sequence(chunk_name = chunk_name,
                                                 break_type = break_type,
                                                 left_assign = left_assign,
-                                                table_formatting = table_formatting,
+                                                left_assign_add = left_assign_add,
                                                 lang = lang,
                                                 omit = omit,
                                                 replace = replace, replacements = replacements,
@@ -96,7 +96,7 @@ chunk_reveal <- function(chunk_name = NULL,
   if (is.null(func_seq) & !is.null(code_seq)){
 
     try(func_seq <- chunk_name_return_function_sequence(chunk_name, break_type, left_assign,
-                                                        table_formatting = table_formatting,
+                                                        left_assign_add = left_assign_add,
                                                         lang = lang, omit = omit))
     #try because not worked out for python?
   }
@@ -161,7 +161,7 @@ chunk_reveal <- function(chunk_name = NULL,
 chunk_code_seq_as_vector <- function(chunk_name,
                                break_type = "auto",
                                left_assign = F,
-                               table_formatting = NULL,
+                               left_assign_add = NULL,
                                lang = "r",
                                omit = "#OMIT",
                                replacements = NULL,
@@ -174,7 +174,7 @@ chunk_code_seq_as_vector <- function(chunk_name,
   chunk_name_return_code_sequence(chunk_name = chunk_name,
                                               break_type = break_type,
                                               left_assign = left_assign,
-                                              table_formatting = table_formatting,
+                                              left_assign_add = left_assign_add,
                                               lang = lang,
                                               omit = omit,
                                               replace = replace, replacements = replacements,
