@@ -1,0 +1,55 @@
+---
+title: "Instant Flipbook"
+subtitle: "With flipbookr and xaringan"
+author: "Gina Reynolds, December 2019"
+output: html_document
+---
+
+This is an example of where we try to embed an html flipbook in a larger html package.  
+
+```{r, include = F}
+# This is the recommended set up for flipbooks
+# you might think about setting cache to TRUE as you gain practice --- building flipbooks from scratch can be time consuming
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F)
+library(flipbookr)
+library(tidyverse)
+```
+
+
+```{r my_code, eval = F}
+cars %>% 
+  ggplot() +
+  aes(x = dist) +
+  aes(y = speed) +
+  geom_point()
+```
+
+
+```{r}
+knitr::knit_code$get("my_code") %>% 
+  paste(collapse = "\n") %>% 
+  writeLines("temp.R")
+
+write_instant_flipbook(file = "instant1.Rmd")
+rmarkdown::render("instant1.Rmd", quiet = T)
+```
+
+
+```{r}
+knitr::include_url(url = "skeleton.html")
+```
+
+
+
+
+
+
+```{css, eval = TRUE, echo = FALSE}
+.remark-code{line-height: 1.5; font-size: 80%}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+```

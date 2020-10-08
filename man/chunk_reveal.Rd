@@ -14,8 +14,8 @@ chunk_reveal(chunk_name = NULL, break_type = "auto", left_assign = F,
   md = NULL, md2 = NULL, replacements = NULL, replace = NULL,
   replacements2 = replacements, replace2 = replace,
   replacements3 = replacements, replace3 = replace, widths = NULL,
-  float = "left", chunk_options = "fig.width = 6", color = c("black",
-  "black", "black"), font_size_code = "80\%")
+  float = "left", chunk_options = "", color = c("black", "black",
+  "black"), font_size_code = "80\%")
 }
 \arguments{
 \item{chunk_name}{a character string referring to the name of the source chunk for the flipbooking}
