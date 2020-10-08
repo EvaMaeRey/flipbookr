@@ -1,4 +1,4 @@
-name: A Container for Embedded Flipbooks
+name: A Flipbook Container
 description: >
-   Some examples of flipbook code
+   How to embed flipbooks in html
 create_dir: FALSE
