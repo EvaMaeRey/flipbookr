@@ -36,7 +36,7 @@ rmarkdown::render("instant1.Rmd", quiet = T)
 
 
 ```{r}
-knitr::include_url(url = "skeleton.html")
+knitr::include_url(url = "instant1.html")
 ```
 
 
