@@ -53,4 +53,3 @@ the_code_seq
 ', con = file)
 }
 
-write_instant_flipbook(file = "instant1.Rmd")

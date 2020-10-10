@@ -5,7 +5,7 @@ author: "Gina Reynolds, December 2019"
 output: html_document
 ---
 
-This is an example of where we try to embed an html flipbook in a larger html package.  
+This is an example of where we try to embed an html flipbook in a larger html document using an iframe.   
 
 ```{r, include = F}
 # This is the recommended set up for flipbooks
@@ -36,7 +36,14 @@ rmarkdown::render("instant1.Rmd", quiet = T)
 
 
 ```{r}
-knitr::include_url(url = "instant1.html")
+knitr::include_url(url = "instant1.html", height = 360)
+
+## another great option is to use the xaringanExtra package to embed
+## install with remotes::install_github("gadenbuie/xaringanExtra")
+# xaringanExtra::embed_xaringan(
+#   url = "instant1.html",
+#   ratio = "16:10"
+# )
 ```
 
 
