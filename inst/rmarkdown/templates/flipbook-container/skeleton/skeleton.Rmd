@@ -24,13 +24,18 @@ cars %>%
   geom_point()
 ```
 
+```{r}
+```
+
+
 
 ```{r}
 knitr::knit_code$get("my_code") %>% 
   paste(collapse = "\n") %>% 
   writeLines("temp.R")
 
-write_instant_flipbook(file = "instant1.Rmd")
+save.image("current_image.Rdata") # in case something is needed from 
+# write_instant_flipbook_source(file = "instant1.Rmd", use_share_again = T, title = "Cars Plot Build w/ ggplot2")
 rmarkdown::render("instant1.Rmd", quiet = T)
 ```
 

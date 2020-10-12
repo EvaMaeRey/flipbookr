@@ -1,8 +1,12 @@
-write_instant_flipbook <- function(file){
+
+###### write instant flipbook source
+
+write_instant_flipbook_source <- function(rmd_path, use_share_again = F, title = "", code_file_name = "temp.R"){
 
 writeLines(text =
+             paste0(
 '---
-title: "Instant Flipbook"
+title: "', title , '"
 subtitle: "With flipbookr and xaringan"
 author: "Gina Reynolds, December 2019"
 output:
@@ -20,16 +24,19 @@ output:
 
 
 ```{r, include = F}
-# This is the recommended set up for flipbooks
-# you might think about setting cache to TRUE as you gain practice --- building flipbooks from scratch can be time consuming
 knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F)
 library(flipbookr)
 library(tidyverse)
+load("current_image.Rdata")
 ```
 
 
-```{r prep code seq, include = F}
-readLines("temp.R") %>%
+```{r, echo = F, eval = ', use_share_again,' , message = F, warning = F}
+xaringanExtra::use_share_again()
+```
+
+```{r, include = F}
+readLines("', code_file_name ,'") %>%
   paste(collapse = "\n") %>%
   code_parse() %>%
   parsed_return_partial_code_sequence() ->
@@ -50,6 +57,29 @@ the_code_seq
   }
 }
 ```
-', con = file)
+')
+
+, con = rmd_path)
+}
+
+# to be used in build instant flipbook
+
+build_instant_flipbook <- function(chunk_name,
+                                   rmd_path,
+                                   use_share_again = F,
+                                   title = "",
+                                   code_file_name = "temp.R"){
+
+  knitr::knit_code$get(chunk_name) %>%
+    paste(collapse = "\n") %>%
+    writeLines(code_file_name)
+
+  save.image("current_image.Rdata") # in case something is needed from
+  write_instant_flipbook_source(rmd_path = rmd_path,
+                                use_share_again = use_share_again,
+                                title = title,
+                                code_file_name = code_file_name)
+  rmarkdown::render(file, quiet = T)
+
 }
 
