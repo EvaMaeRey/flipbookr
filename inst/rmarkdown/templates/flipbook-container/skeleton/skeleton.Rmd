@@ -5,54 +5,77 @@ author: "Gina Reynolds, December 2019"
 output: html_document
 ---
 
-This is an example of where we try to embed an html flipbook in a larger html document using an iframe.   
+This template aimed at doing the following:  preparing a flipbook within an .Rmd file, which we can *embedded* the in the resulting html.  Narrative might be interspersed between the code-movies.  
+
+How we get this done:
+
+1. write some code in a code chunk
+2. save that code out as text
+3. create an "instant flipbook"
+    - create an .Rmd file that will bring in code
+    - render that file to an html xaringan slide show
+4. embed the flipbook upon knitting the container doc to .html
+
 
 ```{r, include = F}
 # This is the recommended set up for flipbooks
 # you might think about setting cache to TRUE as you gain practice --- building flipbooks from scratch can be time consuming
+options(knitr.duplicate.label = "allow")
 knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F)
 library(flipbookr)
 library(tidyverse)
+save.image("current_image.Rdata")
 ```
 
+```{r just_for_evamaerey, cache = FALSE, echo = FALSE, message=F, warning=F}
+try(source("../../../../../R/a_create_test_code.R"))
+try(source("../../../../../R/b_parsing.R"))
+try(source("../../../../../R/c_prep_sequences.R"))
+try(source("../../../../../R/d_prep_rmd_chunks.R"))
+try(source("../../../../../R/e_define_css.R"))
+try(source("../../../../../R/f_chunk_expand.R"))
+try(source("../../../../../R/g_exported_functions.R"))
+try(source("../../../../../R/h_write_instant_flipbook.R"))
+```
 
-```{r my_code, eval = F}
+```{r my_code, echo = F}
 cars %>% 
   ggplot() +
   aes(x = dist) +
   aes(y = speed) +
-  geom_point()
+  geom_point() +
+  theme_minimal() +
+  labs(title = "cool plot") ->
+g
 ```
 
-```{r}
-```
-
-
-
-```{r}
-knitr::knit_code$get("my_code") %>% 
-  paste(collapse = "\n") %>% 
-  writeLines("temp.R")
-
-save.image("current_image.Rdata") # in case something is needed from 
-# write_instant_flipbook_source(file = "instant1.Rmd", use_share_again = T, title = "Cars Plot Build w/ ggplot2")
-rmarkdown::render("instant1.Rmd", quiet = T)
+```{r, echo = F}
+g
 ```
 
 
-```{r}
-knitr::include_url(url = "instant1.html", height = 360)
+# So how can we make it? 
 
-## another great option is to use the xaringanExtra package to embed
-## install with remotes::install_github("gadenbuie/xaringanExtra")
-# xaringanExtra::embed_xaringan(
-#   url = "instant1.html",
-#   ratio = "16:10"
-# )
+```{r, echo=F}
+build_instant_flipbook(chunk_name = "my_code", use_share_again = T)
 ```
 
+---
 
+# Going further
 
+```{r further, echo = F}
+g + 
+  aes(size = dist) +
+  aes(color = dist) +
+  geom_smooth() +
+  theme(legend.position = "none") +
+  labs(x = "distance") +
+  labs(y = "Speed")
+```
+```{r, echo=F}
+build_instant_flipbook(chunk_name = "further", use_share_again = T)
+```
 
 
 

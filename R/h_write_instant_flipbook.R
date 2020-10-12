@@ -1,7 +1,13 @@
 
 ###### write instant flipbook source
 
-write_instant_flipbook_source <- function(rmd_path, use_share_again = F, title = "", code_file_name = "temp.R"){
+write_instant_flipbook_source <- function(rmd_path,
+                                          title = "",
+                                          break_type = break_type,
+                                          use_share_again = F,
+                                          code_file_name,
+                                          chunk_name #mostly labels expanded chunks
+                                          ){
 
 writeLines(text =
              paste0(
@@ -44,12 +50,12 @@ the_code_seq
 ```
 
 
-`r chunk_reveal(code_seq = the_code_seq)`
+`r chunk_reveal(code_seq = the_code_seq, chunk_name = "', chunk_name,'", break_type = "', break_type, '")`
 
 
 
 ```{css, eval = TRUE, echo = FALSE}
-.remark-code{line-height: 1.5; font-size: 80%}
+.remark-code{line-height: 1.5; font-size: 100%}
 
 @media print {
   .has-continuation {
@@ -65,21 +71,34 @@ the_code_seq
 # to be used in build instant flipbook
 
 build_instant_flipbook <- function(chunk_name,
-                                   rmd_path,
+                                   break_type = "auto",
+                                   code_file_name = paste0(chunk_name, ".R"),
+                                   rmd_path = paste0(chunk_name, ".Rmd"),
+                                   title = str_replace(chunk_name, "_|\\.", " "),
                                    use_share_again = F,
-                                   title = "",
-                                   code_file_name = "temp.R"){
+                                   url = paste0(chunk_name, ".html"),
+                                   height = 360
+                                   ){
+
+  save.image("current_image.Rdata") # in case something is needed from it in instant fb
 
   knitr::knit_code$get(chunk_name) %>%
     paste(collapse = "\n") %>%
     writeLines(code_file_name)
 
-  save.image("current_image.Rdata") # in case something is needed from
-  write_instant_flipbook_source(rmd_path = rmd_path,
-                                use_share_again = use_share_again,
+  write_instant_flipbook_source(chunk_name = chunk_name,
+                                break_type = break_type,
+                                code_file_name = code_file_name,
+                                rmd_path = rmd_path,
                                 title = title,
-                                code_file_name = code_file_name)
-  rmarkdown::render(file, quiet = T)
+                                use_share_again = use_share_again
+                                )
+  rmarkdown::render(rmd_path, quiet = T)
+  knitr::include_url(url = url, height = height)
 
 }
+
+
+
+
 
