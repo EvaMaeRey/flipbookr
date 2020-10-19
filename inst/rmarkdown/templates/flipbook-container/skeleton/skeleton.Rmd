@@ -1,7 +1,7 @@
 ---
-title: "Instant Flipbook"
-subtitle: "With flipbookr and xaringan"
-author: "Gina Reynolds, December 2019"
+title: "Embedded Flipbook"
+subtitle: "1. Write a code chunk. 2. Create a flipbook for it and embed that in your html_document"
+author: Gina Reynolds
 output: html_document
 ---
 
@@ -10,21 +10,20 @@ This template aimed at doing the following:  preparing a flipbook within an .Rmd
 How we get this done:
 
 1. write some code in a code chunk
-2. save that code out as text
+2. save that code out as text and also the current image (what's in the environment)
 3. create an "instant flipbook"
     - create an .Rmd file that will bring in code
     - render that file to an html xaringan slide show
-4. embed the flipbook upon knitting the container doc to .html
+4. embed the flipbook upon knitting the working .Rmd to .html
 
 
-```{r, include = F}
+```{r setup, include = F}
 # This is the recommended set up for flipbooks
 # you might think about setting cache to TRUE as you gain practice --- building flipbooks from scratch can be time consuming
 options(knitr.duplicate.label = "allow")
 knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F)
 library(flipbookr)
 library(tidyverse)
-save.image("current_image.Rdata")
 ```
 
 ```{r just_for_evamaerey, cache = FALSE, echo = FALSE, message=F, warning=F}
@@ -38,43 +37,61 @@ try(source("../../../../../R/g_exported_functions.R"))
 try(source("../../../../../R/h_write_instant_flipbook.R"))
 ```
 
+
+# This is a plot: 
+
 ```{r my_code, echo = F}
 cars %>% 
   ggplot() +
   aes(x = dist) +
   aes(y = speed) +
-  geom_point() +
-  theme_minimal() +
-  labs(title = "cool plot") ->
-g
-```
-
-```{r, echo = F}
-g
+  geom_point() -> 
+  # assign plot as object
+  # and print
+g; g 
 ```
 
 
-# So how can we make it? 
+
+# How can we build it with ggplot2:
 
 ```{r, echo=F}
-build_instant_flipbook(chunk_name = "my_code", use_share_again = T)
+build_instant_flipbook(chunk_name = "my_code", 
+                       use_share_again = T,
+                       font_size = 120)
 ```
 
 ---
 
-# Going further
+# Styling plot:
 
-```{r further, echo = F}
+```{r fine_tuning, echo = F}
 g + 
+  theme_minimal(base_size = 12) +
   aes(size = dist) +
   aes(color = dist) +
+  scale_color_viridis_c() +
   geom_smooth() +
-  theme(legend.position = "none") +
+  theme(legend.position = 
+          "none") +
   labs(x = "distance") +
-  labs(y = "Speed")
+  labs(y = "Speed") +
+  labs(title = "Cool plot!") +
+  theme(plot.title.position = 
+          "plot")
 ```
+
+# How we style: 
+
 ```{r, echo=F}
-build_instant_flipbook(chunk_name = "further", use_share_again = T)
+build_instant_flipbook(chunk_name = "fine_tuning", 
+                       use_share_again = T, 
+                       use_embed_xaringan = T,
+                       font_size = 100,
+                       title_page = T,
+                       title = "How to Style",
+                       subtitle = "Thematic adjustments",
+                       author = "Reynolds Lab")
 ```
 
 

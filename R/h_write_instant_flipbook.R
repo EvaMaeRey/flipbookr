@@ -3,21 +3,25 @@
 
 write_instant_flipbook_source <- function(rmd_path,
                                           title = "",
+                                          subtitle = "",
+                                          author = "",
                                           break_type = break_type,
                                           use_share_again = F,
                                           code_file_name,
-                                          chunk_name #mostly labels expanded chunks
+                                          chunk_name, #mostly labels expanded chunks
+                                          font_size = 100,
+                                          title_page = F
                                           ){
 
 writeLines(text =
              paste0(
 '---
 title: "', title , '"
-subtitle: "With flipbookr and xaringan"
-author: "Gina Reynolds, December 2019"
+subtitle: "', subtitle , '"
+author: "', author , '"
 output:
   xaringan::moon_reader:
-    seal: FALSE
+    seal: ', title_page, '
     lib_dir: libs
     css: [default, hygge, ninjutsu]
     nature:
@@ -55,7 +59,7 @@ the_code_seq
 
 
 ```{css, eval = TRUE, echo = FALSE}
-.remark-code{line-height: 1.5; font-size: 100%}
+.remark-code{line-height: 1.5; font-size: ', font_size,'%}
 
 @media print {
   .has-continuation {
@@ -75,9 +79,14 @@ build_instant_flipbook <- function(chunk_name,
                                    code_file_name = paste0(chunk_name, ".R"),
                                    rmd_path = paste0(chunk_name, ".Rmd"),
                                    title = str_replace(chunk_name, "_|\\.", " "),
+                                   subtitle = "",
+                                   author = "",
                                    use_share_again = F,
                                    url = paste0(chunk_name, ".html"),
-                                   height = 360
+                                   height = 360,
+                                   font_size = 200,
+                                   use_embed_xaringan = F,
+                                   title_page = F
                                    ){
 
   save.image("current_image.Rdata") # in case something is needed from it in instant fb
@@ -91,10 +100,23 @@ build_instant_flipbook <- function(chunk_name,
                                 code_file_name = code_file_name,
                                 rmd_path = rmd_path,
                                 title = title,
-                                use_share_again = use_share_again
+                                subtitle = subtitle,
+                                author = author,
+                                use_share_again = use_share_again,
+                                font_size = font_size,
+                                title_page = title_page
                                 )
   rmarkdown::render(rmd_path, quiet = T)
+
+  if(use_embed_xaringan == T){
+
+  xaringanExtra::embed_xaringan(url = url)
+
+  } else {
+
   knitr::include_url(url = url, height = height)
+
+  }
 
 }
 
