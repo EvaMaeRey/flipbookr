@@ -74,7 +74,7 @@ the_code_seq
 
 # to be used in build instant flipbook
 
-build_instant_flipbook <- function(chunk_name,
+embed_flipbook <- function(chunk_name,
                                    break_type = "auto",
                                    code_file_name = paste0(chunk_name, ".R"),
                                    rmd_path = paste0(chunk_name, ".Rmd"),

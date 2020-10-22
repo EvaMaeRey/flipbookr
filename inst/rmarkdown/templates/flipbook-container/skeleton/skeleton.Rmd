@@ -1,9 +1,12 @@
 ---
 title: "Embedded Flipbook"
-subtitle: "1. Write a code chunk. 2. Create a flipbook for it and embed that in your html_document"
 author: Gina Reynolds
 output: html_document
 ---
+
+#### 1. Write a code chunk. 
+#### 2. Use embed_flipbook() to create its flipbook and embed in your html_document 
+
 
 This template aimed at doing the following:  preparing a flipbook within an .Rmd file, which we can *embedded* the in the resulting html.  Narrative might be interspersed between the code-movies.  
 
@@ -27,6 +30,7 @@ library(tidyverse)
 ```
 
 ```{r just_for_evamaerey, cache = FALSE, echo = FALSE, message=F, warning=F}
+# you can just delete this whole code chunk -- it's just for testing and developing the package
 try(source("../../../../../R/a_create_test_code.R"))
 try(source("../../../../../R/b_parsing.R"))
 try(source("../../../../../R/c_prep_sequences.R"))
@@ -38,34 +42,38 @@ try(source("../../../../../R/h_write_instant_flipbook.R"))
 ```
 
 
-# This is a plot: 
+# A1. Here is some code (I'm naming the chunk "my_code"): 
 
-```{r my_code, echo = F}
+You might think about setting this code chunk's option include = F, to hide the code and output.
+
+```{r my_code}
 cars %>% 
   ggplot() +
   aes(x = dist) +
   aes(y = speed) +
   geom_point() -> 
-  # assign plot as object
-  # and print
-g; g 
+g
 ```
 
 
 
-# How can we build it with ggplot2:
+# A2. Let's get a walk-through using embed_flipbook():
 
-```{r, echo=F}
-build_instant_flipbook(chunk_name = "my_code", 
+You might want to set the code chunk options to echo = F, unless you are demoing embed_flibook(). 
+
+```{r}
+embed_flipbook(chunk_name = "my_code", 
                        use_share_again = T,
                        font_size = 120)
 ```
 
 ---
 
-# Styling plot:
+# B1. Here is some more code; I'm named the code chunk "fine_tuning":
 
-```{r fine_tuning, echo = F}
+You might just set the code chunk options include = F.
+
+```{r fine_tuning, fig.show='hide'}
 g + 
   theme_minimal(base_size = 12) +
   aes(size = dist) +
@@ -74,22 +82,24 @@ g +
   geom_smooth() +
   theme(legend.position = 
           "none") +
-  labs(x = "distance") +
+  labs(x = "Distance") +
   labs(y = "Speed") +
   labs(title = "Cool plot!") +
   theme(plot.title.position = 
           "plot")
 ```
 
-# How we style: 
+# B2. Let's look at the build created from  embed_flipbook. View below or view [in new tab](fine_tuning.html){target="_blank"}
 
-```{r, echo=F}
-build_instant_flipbook(chunk_name = "fine_tuning", 
+You might set the code chunk option echo = F
+
+```{r}
+embed_flipbook(chunk_name = "fine_tuning", 
                        use_share_again = T, 
                        use_embed_xaringan = T,
                        font_size = 100,
                        title_page = T,
-                       title = "How to Style",
+                       title = "How to Style your plot",
                        subtitle = "Thematic adjustments",
                        author = "Reynolds Lab")
 ```
