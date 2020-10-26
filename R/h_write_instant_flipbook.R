@@ -14,6 +14,11 @@ write_instant_flipbook_source <- function(rmd_path,
                                           ...
                                           ){
 
+readLines(code_file_name) %>%
+    paste(collapse = "\n") ->
+    the_code
+
+
 writeLines(text =
              paste0(
 '---
@@ -46,16 +51,12 @@ load("current_image.Rdata")
 xaringanExtra::use_share_again()
 ```
 
-```{r, include = F}
-readLines("', code_file_name ,'") %>%
-  paste(collapse = "\n") %>%
-  code_parse() %>%
-  parsed_return_partial_code_sequence(break_type = "', break_type, '") ->
-the_code_seq
+
+```{r the_chunk, include = F}
+',the_code,'
 ```
 
-
-`r chunk_reveal(code_seq = the_code_seq, chunk_name = "', chunk_name,'", break_type = "', break_type, '", ...)`
+`r chunk_reveal(chunk_name = "the_chunk", break_type = "', break_type, '", ...)`
 
 
 

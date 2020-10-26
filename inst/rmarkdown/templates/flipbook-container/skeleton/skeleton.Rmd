@@ -101,7 +101,8 @@ embed_flipbook(chunk_name = "fine_tuning",
                title_page = T,
                title = "How to Style your plot",
                subtitle = "Thematic adjustments",
-               author = "Reynolds Lab")
+               author = "Reynolds Flipbook Lab",
+               break_type = "user")
 ```
 
 
