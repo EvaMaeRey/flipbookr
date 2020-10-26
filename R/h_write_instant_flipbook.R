@@ -50,7 +50,7 @@ xaringanExtra::use_share_again()
 readLines("', code_file_name ,'") %>%
   paste(collapse = "\n") %>%
   code_parse() %>%
-  parsed_return_partial_code_sequence() ->
+  parsed_return_partial_code_sequence(break_type = "', break_type, '") ->
 the_code_seq
 ```
 

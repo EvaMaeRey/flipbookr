@@ -83,10 +83,10 @@ g +
   theme(legend.position = 
           "none") +
   labs(x = "Distance") +
-  labs(y = "Speed") +
+  labs(y = "Speed") + #BREAK
   labs(title = "Cool plot!") +
   theme(plot.title.position = 
-          "plot")
+          "plot") #BREAK
 ```
 
 # B2. Let's look at the build created from  embed_flipbook. View below or view [in new tab](fine_tuning.html){target="_blank"}
