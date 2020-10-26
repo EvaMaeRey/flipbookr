@@ -78,7 +78,7 @@ g +
   theme_minimal(base_size = 12) +
   aes(size = dist) +
   aes(color = dist) +
-  scale_color_viridis_c() +
+  scale_color_viridis_c() + 
   geom_smooth() +
   theme(legend.position = 
           "none") +
@@ -95,13 +95,13 @@ You might set the code chunk option echo = F
 
 ```{r}
 embed_flipbook(chunk_name = "fine_tuning", 
-                       use_share_again = T, 
-                       use_embed_xaringan = T,
-                       font_size = 100,
-                       title_page = T,
-                       title = "How to Style your plot",
-                       subtitle = "Thematic adjustments",
-                       author = "Reynolds Lab")
+               use_share_again = T, 
+               use_embed_xaringan = T,
+               font_size = 100,
+               title_page = T,
+               title = "How to Style your plot",
+               subtitle = "Thematic adjustments",
+               author = "Reynolds Lab")
 ```
 
 

@@ -10,7 +10,8 @@ write_instant_flipbook_source <- function(rmd_path,
                                           code_file_name,
                                           chunk_name, #mostly labels expanded chunks
                                           font_size = 100,
-                                          title_page = F
+                                          title_page = F,
+                                          ...
                                           ){
 
 writeLines(text =
@@ -54,7 +55,7 @@ the_code_seq
 ```
 
 
-`r chunk_reveal(code_seq = the_code_seq, chunk_name = "', chunk_name,'", break_type = "', break_type, '")`
+`r chunk_reveal(code_seq = the_code_seq, chunk_name = "', chunk_name,'", break_type = "', break_type, '", ...)`
 
 
 
@@ -86,7 +87,8 @@ embed_flipbook <- function(chunk_name,
                                    height = 360,
                                    font_size = 200,
                                    use_embed_xaringan = F,
-                                   title_page = F
+                                   title_page = F,
+                                   ...
                                    ){
 
   save.image("current_image.Rdata") # in case something is needed from it in instant fb
@@ -104,7 +106,8 @@ embed_flipbook <- function(chunk_name,
                                 author = author,
                                 use_share_again = use_share_again,
                                 font_size = font_size,
-                                title_page = title_page
+                                title_page = title_page,
+                                ...
                                 )
   rmarkdown::render(rmd_path, quiet = T)
 
