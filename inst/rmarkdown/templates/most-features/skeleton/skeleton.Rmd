@@ -1022,4 +1022,18 @@ ggplot(data = cars) +
     display: block;
   }
 }
+
+code.r.hljs.remark-code{
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+code.r.hljs.remark-code:hover{
+  overflow-x:visible;
+  width: 500px;
+  border-style: solid;
+}
+
+
 ```

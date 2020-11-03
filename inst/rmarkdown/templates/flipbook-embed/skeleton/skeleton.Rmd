@@ -1,30 +1,29 @@
 ---
 title: "Embedded Flipbook"
-author: Gina Reynolds
+author: Me, an Rmarkdown writer and flipbook builder
 output: html_document
 ---
 
+This template aimed at doing the following:  preparing a flipbook from within an .Rmd source file and then *embedded* it in the resulting html.  Narrative might be interspersed between the code-movies.  
+
+## Steps:
+
 #### 1. Write a code chunk. 
-#### 2. Use embed_flipbook() to create its flipbook and embed in your html_document 
+#### 2. Use embed_flipbook() to create chunk's flipbook and embed in your html_document 
 
+## More detail about step 2:
 
-This template aimed at doing the following:  preparing a flipbook within an .Rmd file, which we can *embedded* the in the resulting html.  Narrative might be interspersed between the code-movies.  
-
-How we get this done:
-
-1. write some code in a code chunk
-2. save that code out as text and also the current image (what's in the environment)
-3. create an "instant flipbook"
-    - create an .Rmd file that will bring in code
-    - render that file to an html xaringan slide show
-4. embed the flipbook upon knitting the working .Rmd to .html
+#### 2.a. save that chunk code out as text and the current global environment
+#### 2.b. create an .Rmd file that will bring in code and global environment
+#### 2.c. render that file to an html (xaringan slide show)
+#### 2.d. embed the flipbook upon knitting your working .Rmd to .html
 
 
 ```{r setup, include = F}
 # This is the recommended set up for flipbooks
 # you might think about setting cache to TRUE as you gain practice --- building flipbooks from scratch can be time consuming
 options(knitr.duplicate.label = "allow")
-knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F)
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F, error = F)
 library(flipbookr)
 library(tidyverse)
 ```
@@ -99,9 +98,9 @@ embed_flipbook(chunk_name = "fine_tuning",
                use_embed_xaringan = T,
                font_size = 100,
                title_page = T,
-               title = "How to Style your plot",
-               subtitle = "Thematic adjustments",
-               author = "Reynolds Flipbook Lab",
+               title = "How to Style your Plot",
+               subtitle = "Thematic Adjustments",
+               author = "Reynolds Lab",
                break_type = "user")
 ```
 

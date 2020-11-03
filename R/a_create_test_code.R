@@ -141,6 +141,16 @@ xobject.pipe(remove_units).pipe(length_times_width)"
 
 }
 
+
+create_sql_code <- function(){
+
+  "SELECT *
+  FROM tbl_hello_world
+  WHERE "
+
+}
+
+
 create_python_code_pipeline <- function(){
 
   "student_scores \\\n  .melt(id_vars=['student', \"sex\"], \n        var_name=\"subject\", \n        value_name=\"final_grade\") \\\n  .sort_values(by=['final_grade'], ascending=False) \\\n  .head(3)"

@@ -31,7 +31,7 @@ output:
     lib_dir: libs
     css: [default, hygge, ninjutsu]
     nature:
-      ratio: 16:10
+      ratio: 16:9
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
@@ -68,6 +68,18 @@ xaringanExtra::use_share_again()
     display: block;
   }
 }
+
+code.r.hljs.remark-code{
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+code.r.hljs.remark-code:hover{
+  overflow-x:visible;
+  width: 500px;
+  border-style: solid;
+}
 ```
 ')
 
@@ -79,14 +91,14 @@ xaringanExtra::use_share_again()
 embed_flipbook <- function(chunk_name,
                                    break_type = "auto",
                                    code_file_name = paste0(chunk_name, ".R"),
-                                   rmd_path = paste0(chunk_name, ".Rmd"),
-                                   title = str_replace(chunk_name, "_|\\.", " "),
+                                   rmd_path = paste0(chunk_name, "_embed.Rmd"),
+                                   title = stringr::str_replace_all(chunk_name, "_|\\.", " "),
                                    subtitle = "",
                                    author = "",
                                    use_share_again = F,
-                                   url = paste0(chunk_name, ".html"),
-                                   height = 360,
-                                   font_size = 200,
+                                   url = paste0(chunk_name, "_embed.html"),
+                                   height = 325,
+                                   font_size = 120,
                                    use_embed_xaringan = F,
                                    title_page = F,
                                    ...
@@ -110,6 +122,7 @@ embed_flipbook <- function(chunk_name,
                                 title_page = title_page,
                                 ...
                                 )
+
   rmarkdown::render(rmd_path, quiet = T)
 
   if(use_embed_xaringan == T){
