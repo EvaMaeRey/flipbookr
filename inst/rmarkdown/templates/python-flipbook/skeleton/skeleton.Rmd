@@ -36,6 +36,7 @@ try(source("../../../../../R/d_prep_rmd_chunks.R"))
 try(source("../../../../../R/e_define_css.R"))
 try(source("../../../../../R/f_chunk_expand.R"))
 try(source("../../../../../R/g_exported_functions.R"))
+try(source("../../../../../R/h_write_instant_flipbook.R.R"))
 ```
 
 
@@ -158,9 +159,9 @@ The last example owes thanks Suraj Thapa for sketching out ideas these ideas!
 
 ---
 
-`r chunk_reveal("hi", lang = "python", title = "## Code by Daniel Anderson's Daughter")`
+`r chunk_reveal("def", lang = "python", title = "## Code by Malia!")`
 
-```{python hi, include = F}
+```{python def, include = F}
 def flower(like):
   print("I like flowers " + like)
 
@@ -172,6 +173,7 @@ def strawberry(sweet):
   
 strawberry(", and red")  
 ```
+
 
 
 

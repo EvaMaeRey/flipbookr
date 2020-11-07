@@ -106,6 +106,37 @@ embed_flipbook(chunk_name = "fine_tuning",
 
 
 
+# C. Okay python!  Just kidding.  This doesn't work yet.
+
+---
+
+```{python hello_python, include = T}
+[1, 4] * 8
+
+3 + 4 * 8 
+
+2 + 6
+
+4 * 8
+
+[1,2] + [3,4,5,6]
+
+["hello", "world!", 1, 2, 3] * 2
+
+import numpy as np
+
+np.reshape(np.arange(1,25), 
+    (4,3,2), "F")
+```
+
+
+
+```{r, eval = F}
+embed_flipbook("hello_python",
+               lang = "python")
+```
+
+
 ```{css, eval = TRUE, echo = FALSE}
 .remark-code{line-height: 1.5; font-size: 80%}
 
