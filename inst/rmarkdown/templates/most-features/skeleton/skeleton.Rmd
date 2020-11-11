@@ -704,7 +704,7 @@ my_plot <- cars %>%   # the data
 
 ---
 
-`r chunk_reveal("table_formatting", break_type = "auto", display_type = c("code", "output"), left_assign = TRUE, table_formatting = "data.frame %>% head(6)")`
+`r chunk_reveal("table_formatting", break_type = "auto", display_type = c("code", "output"), left_assign = TRUE, left_assign_add = "data.frame %>% head(6)")`
 
 
 ```{r table_formatting, include = FALSE}
