@@ -137,6 +137,18 @@ embed_flipbook("hello_python",
 ```
 
 
+# D. Text flipbook subject to change:
+
+```{r}
+embed_text_flipbook("hi there good seeing you", 
+                    title = "greetings", 
+                    sep = " ",
+                    use_embed_xaringan = T)
+```
+
+
+
+
 ```{css, eval = TRUE, echo = FALSE}
 .remark-code{line-height: 1.5; font-size: 80%}
 
