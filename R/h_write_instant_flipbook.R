@@ -40,6 +40,7 @@ output:
 
 
 ```{r, include = F}
+options(knitr.duplicate.label = "allow")
 knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F)
 library(flipbookr)
 library(tidyverse)
@@ -90,13 +91,13 @@ code.r.hljs.remark-code:hover{
 
 embed_flipbook <- function(chunk_name,
                                    break_type = "auto",
-                                   code_file_name = paste0(chunk_name, ".R"),
-                                   rmd_path = paste0(chunk_name, "_embed.Rmd"),
+                                   code_file_name = paste0("embedded_flipbooks/", chunk_name, ".R"),
+                                   rmd_path = paste0("embedded_flipbooks/", chunk_name, "_embed.Rmd"),
                                    title = stringr::str_replace_all(chunk_name, "_|\\.", " "),
                                    subtitle = "",
                                    author = "",
                                    use_share_again = F,
-                                   url = paste0(chunk_name, "_embed.html"),
+                                   url = paste0("embedded_flipbooks/", chunk_name, "_embed.html"),
                                    height = 325,
                                    font_size = 120,
                                    use_embed_xaringan = F,
@@ -104,7 +105,8 @@ embed_flipbook <- function(chunk_name,
                                    ...
                                    ){
 
-  save.image("current_image.Rdata") # in case something is needed from it in instant fb
+  if(!dir.exists("embedded_flipbooks")){dir.create("embedded_flipbooks")}
+  save.image("embedded_flipbooks/current_image.Rdata") # in case something is needed from it in instant fb
 
   knitr::knit_code$get(chunk_name) %>%
     paste(collapse = "\n") %>%
@@ -176,6 +178,7 @@ class: inverse, middle, center
 # .Huge[Essay Exploder]
 
 ```{r, include = F}
+options(knitr.duplicate.label = "allow")
 knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F)
 library(flipbookr)
 library(tidyverse)
@@ -256,11 +259,11 @@ text_explode <-               function(text,
 embed_text_flipbook <- function(text,
                                 title,
                                 title_snake = stringr::str_replace(tolower(title), " ", ""),
-                           rmd_path = paste0(title_snake, "_text_embed.Rmd"),
+                           rmd_path = paste0("embedded_flipbooks/", title_snake, "_text_embed.Rmd"),
                            subtitle = "",
                            author = "",
                            use_share_again = F,
-                           url = paste0(title_snake, "_text_embed.html"),
+                           url = paste0("embedded_flipbooks/", title_snake, "_text_embed.html"),
                            height = 325,
                            font_size = 120,
                            use_embed_xaringan = F,
@@ -268,7 +271,7 @@ embed_text_flipbook <- function(text,
                            ...
 ){
 
-  save.image("current_image.Rdata") # in case something is needed from it in instant fb
+  save.image("embedded_flipbooks/current_image.Rdata") # in case something is needed from it in instant fb
 
 
   write_instant_text_flipbook_source(text = text,
