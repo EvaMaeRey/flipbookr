@@ -48,7 +48,7 @@ The package includes a template for building a flipbook that
 demonstrates various flipbooking modalities; the template can also be
 accessed from within RStudio (New File -\> RMarkdown -\> From Template
 -\> A Minimal Flipbook)
-[here](https://raw.githubusercontent.com/EvaMaeRey/flipbookr/master/inst/rmarkdown/templates/template-name/skeleton/skeleton.Rmd).
+[here](https://raw.githubusercontent.com/EvaMaeRey/flipbookr/master/inst/rmarkdown/templates/minimal-flipbook/skeleton/skeleton.Rmd).
 Here is a preview, :
 
 <img src="https://github.com/EvaMaeRey/flipbooks/blob/master/flipbookr/skeleton.gif?raw=true" width="100%" />
