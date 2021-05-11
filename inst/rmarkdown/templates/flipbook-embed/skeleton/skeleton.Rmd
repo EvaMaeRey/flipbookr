@@ -6,6 +6,11 @@ output: html_document
 
 This template aimed at doing the following:  preparing a flipbook from within an .Rmd source file and then *embedded* it in the resulting html.  Narrative might be interspersed between the code-movies.  
 
+```{r}
+#remotes::install_github("gadenbuie/xaringanExtra")
+```
+
+
 ## Steps:
 
 #### 1. Write a code chunk. 
@@ -22,7 +27,7 @@ This template aimed at doing the following:  preparing a flipbook from within an
 ```{r setup, include = F}
 # This is the recommended set up for flipbooks
 # you might think about setting cache to TRUE as you gain practice --- building flipbooks from scratch can be time consuming
-options(knitr.duplicate.label = "allow")
+# options(knitr.duplicate.label = "allow")
 knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F, error = F)
 library(flipbookr)
 library(tidyverse)
@@ -61,9 +66,9 @@ g
 You might want to set the code chunk options to echo = F, unless you are demoing embed_flibook(). 
 
 ```{r}
-embed_flipbook(chunk_name = "my_code", 
-                       use_share_again = T,
-                       font_size = 120)
+embed_flipbook(chunk_name = "my_code",
+               use_share_again = T,
+               font_size = 120)
 ```
 
 ---

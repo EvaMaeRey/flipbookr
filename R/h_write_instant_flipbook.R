@@ -173,16 +173,14 @@ output:
       countIncrementalSlides: false
 ---
 
-class: inverse, middle, center
 
-# .Huge[Essay Exploder]
 
 ```{r, include = F}
 options(knitr.duplicate.label = "allow")
 knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F)
 library(flipbookr)
 library(tidyverse)
-load("current_image.Rdata")
+# load("current_image.Rdata")
 ```
 
 
@@ -225,17 +223,24 @@ code.r.hljs.remark-code:hover{
 
 
 
-text_explode <-               function(text,
-                                        title,
-                                        title_snake = stringr::str_replace(tolower(title), " ", ""),
-                                       title_page = F,
-                                        rmd_path = paste0(title_snake, "_text_instant.Rmd"),
-                                        subtitle = "",
-                                        author = "",
-                                        use_share_again = F,
-                                        url = paste0(title_snake, "_text_instant.html"),
-                                        height = 325,
-                                        font_size = 120, ...) {
+
+text_explode <- function(text, sep = "   ",
+                                title = "Brought to you by Essay Exploder",
+                                title_snake = stringr::str_replace(tolower(title), " ", ""),
+                                rmd_path = paste0("exploded_texts/", title_snake, ".Rmd"),
+                                subtitle = "",
+                                author = "",
+                                use_share_again = F,
+                                url = paste0("exploded_texts/", title_snake, ".html"),
+                                height = 325,
+                                font_size = 120,
+                                title_page = T,
+                                ...
+){
+
+  # save.image("embedded_flipbooks/current_image.Rdata") # in case something is needed from it in instant fb
+
+  if(!dir.exists("exploded_texts")){dir.create("exploded_texts")}
 
 
   write_instant_text_flipbook_source(text = text,
@@ -250,10 +255,8 @@ text_explode <-               function(text,
 
   rmarkdown::render(rmd_path, quiet = T)
 
-
-
-
 }
+
 
 
 embed_text_flipbook <- function(text,
