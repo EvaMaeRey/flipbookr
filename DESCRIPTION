@@ -6,7 +6,6 @@ Author: Evangeline Reynolds, Garrick Aden-Buie, Emi Tanaka
 Maintainer: The package maintainer <evangeline.mae@gmail.com>
 Description: Flipbooks present code step-by-step and side-by-side with its output.  Flipbookr helps creators build flipbooks efficiently because code pipelines are automatically parsed and prepped for presentation as flipbooks. 
 Encoding: UTF-8
-LazyData: true
 Imports: 
     dplyr,
     magrittr,
