@@ -28,7 +28,17 @@ chunk_reveal(chunk_name = NULL, break_type = "auto", left_assign = F,
 
 \item{lang}{a character string indicating what programming language will be used. "r" is default; "python" is experimental}
 
+\item{omit}{a character string, as a comment, indicating lines that should be omitted, defaults to "#OMIT"}
+
 \item{code_seq}{a list of code as character strings, the list will automatically be created based on the previous three arguments or the user can input code manually}
+
+\item{code_seq_lag}{a list of code as character strings, lagged, the list will automatically be created based on the previous three arguments or the user can input code manually}
+
+\item{code_seq_lag2}{a list of code as character strings, twice lagged, the list will automatically be created based on the previous three arguments or the user can input code manually}
+
+\item{code_seq_target}{a list of code as character strings, the length of code_seq, but only containing the last element of code_seq}
+
+\item{code_seq_start}{a list of code as character strings, the length of code_seq, but only containing the first element of code_seq}
 
 \item{func_seq}{a character string with function names; default is NULL and will reflect whatever function is highlighted from the code sequence}
 
@@ -55,6 +65,12 @@ chunk_reveal(chunk_name = NULL, break_type = "auto", left_assign = F,
 \item{replace3}{a character string to be replaced in the input code sequentially with the replacement3 vector elements}
 
 \item{widths}{a numeric vector containing relative widths for panels}
+
+\item{float}{defines css float parameter, defaults to "left"}
+
+\item{chunk_options}{input 'knitr' code chunk options as a string, default to empty string "", useful input might be "fig.height = 4, fig.width = 3"}
+
+\item{color}{defines css parameter, defaults to "black"}
 
 \item{font_size_code}{this ain't working yet!}
 }

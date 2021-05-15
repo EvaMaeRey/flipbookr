@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MIT License • flipbookr</title>
+<title>Function takes character string, splits it based on delimiter,
+and returns each element of the resultant vector on its own slide — text_reveal • flipbookr</title>
 
 
 <!-- jquery -->
@@ -29,13 +30,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script>
+<link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script>
 
 
 
 
-<meta property="og:title" content="MIT License" />
+<meta property="og:title" content="Function takes character string, splits it based on delimiter,
+and returns each element of the resultant vector on its own slide — text_reveal" />
+<meta property="og:description" content="Function takes character string, splits it based on delimiter,
+and returns each element of the resultant vector on its own slide" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -54,7 +59,7 @@
   </head>
 
   <body>
-    <div class="container template-title-body">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -66,7 +71,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">flipbookr</a>
+        <a class="navbar-link" href="../index.html">flipbookr</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
@@ -74,16 +79,16 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">
+  <a href="../index.html">
     <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="news/index.html">Changelog</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -99,23 +104,68 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>MIT License</h1>
+    <h1>Function takes character string, splits it based on delimiter,
+and returns each element of the resultant vector on its own slide</h1>
+    
+    <div class="hidden name"><code>text_reveal.Rd</code></div>
     </div>
 
-<div id="mit-license" class="section level1">
+    <div class="ref-description">
+    <p>Function takes character string, splits it based on delimiter,
+and returns each element of the resultant vector on its own slide</p>
+    </div>
 
-<p>Copyright (c) 2021 flipbookr authors</p>
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
-</div>
+    <pre class="usage"><span class='fu'>text_reveal</span>(<span class='no'>text</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"   "</span>, <span class='kw'>md_prefix</span> <span class='kw'>=</span> <span class='st'>"#"</span>, <span class='kw'>sep_replace</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>slide_break</span> <span class='kw'>=</span> <span class='st'>"---"</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"class: inverse, middle, center"</span>)</pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>text</th>
+      <td><p>a character string to be split and delivered piece-wise to a slide</p></td>
+    </tr>
+    <tr>
+      <th>sep</th>
+      <td><p>a character string to delimit the split of the input text</p></td>
+    </tr>
+    <tr>
+      <th>md_prefix</th>
+      <td><p>a character string prefix to each markdown element, defaults to "#"</p></td>
+    </tr>
+    <tr>
+      <th>sep_replace</th>
+      <td><p>a character string that will replace the delimiter, defaults to empty string ""</p></td>
+    </tr>
+    <tr>
+      <th>slide_break</th>
+      <td><p>a character string containing slide break characters, defaults to "---" for xaringan slideshows</p></td>
+    </tr>
+    <tr>
+      <th>class</th>
+      <td><p>a character string in which you can set the class, defaults to "class: inverse, middle, center"</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>knit text to be interpreted as slides</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>text_reveal</span>(<span class='st'>"Hello world"</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>" "</span>)</div><div class='output co'>#&gt; [1] "---\nclass: inverse, middle, center\n# Hello\n---\nclass: inverse, middle, center\n# world"</div></pre>
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
-
 </div>
-
 
 
       <footer>

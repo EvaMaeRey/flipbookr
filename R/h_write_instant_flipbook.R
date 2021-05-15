@@ -87,21 +87,39 @@ code.r.hljs.remark-code:hover{
 , con = rmd_path)
 }
 
-# to be used in build instant flipbook
 
+
+# to be used in build instant flipbook
+#' embed_flipbook
+#'
+#' @param chunk_name a character string referring named chunk containing code to 'flipbook'
+#' @param break_type "auto" is default finding appropriate breakpoints, "user" can be used with the special comment message #BREAK within the source code chunk, "non_seq" can be used for non sequential display of code with special comment messages #BREAK2 (will show in second frame) and #BREAK3 (will show in third frame), an integer input can be given too, to simply display the source code chunk multiple times which is appropriate for observing multiple realizations of sampling, "rotate" allows cycling through different lines of code, the comment #ROTATE is used for lines to by cycled through
+#' @param code_file_name a .R file path where chunk's code will be saved
+#' @param rmd_path an .Rmd path were source of mini flipbook will be saved
+#' @param title a character string if a title is desired for the embedded flipbook, defaults to modified chunk name
+#' @param subtitle a character string for the embedded flipbook's subtitle, defaults to ""
+#' @param author a character string for the embedded flipbook's author info, defaults to ""
+#' @param url path to .html rendered mini flipbook
+#' @param height numeric size of iframe, defaults to 325
+#' @param font_size numeric to adjust the size of code in embedded flipbooks
+#' @param title_page logical indicating whether to include a title page for the mini flipbook, defaults to FALSE
+#' @param ... inherits from chunk_reveal()
+#'
+#' @return
+#' @export
 embed_flipbook <- function(chunk_name,
-                                   break_type = "auto",
-                                   code_file_name = paste0("embedded_flipbooks/", chunk_name, ".R"),
-                                   rmd_path = paste0("embedded_flipbooks/", chunk_name, "_embed.Rmd"),
-                                   title = stringr::str_replace_all(chunk_name, "_|\\.", " "),
-                                   subtitle = "",
-                                   author = "",
-                                   use_share_again = F,
-                                   url = paste0("embedded_flipbooks/", chunk_name, "_embed.html"),
-                                   height = 325,
-                                   font_size = 120,
-                                   use_embed_xaringan = F,
-                                   title_page = F,
+                           break_type = "auto",
+                           code_file_name = paste0("embedded_flipbooks/", chunk_name, ".R"),
+                           rmd_path = paste0("embedded_flipbooks/", chunk_name, "_embed.Rmd"),
+                           title = stringr::str_replace_all(chunk_name, "_|\\.", " "),
+                           subtitle = "",
+                           author = "",
+                           # use_share_again = F,
+                           url = paste0("embedded_flipbooks/", chunk_name, "_embed.html"),
+                           height = 325,
+                           font_size = 120,
+                           # use_embed_xaringan = F,
+                           title_page = F,
                                    ...
                                    ){
 
@@ -119,7 +137,7 @@ embed_flipbook <- function(chunk_name,
                                 title = title,
                                 subtitle = subtitle,
                                 author = author,
-                                use_share_again = use_share_again,
+                                # use_share_again = use_share_again,
                                 font_size = font_size,
                                 title_page = title_page,
                                 ...
@@ -127,15 +145,16 @@ embed_flipbook <- function(chunk_name,
 
   rmarkdown::render(rmd_path, quiet = T)
 
-  if(use_embed_xaringan == T){
-
-  xaringanExtra::embed_xaringan(url = url)
-
-  } else {
+  # xaringanExtra is development package, so this is not allowed for now.
+  # if(use_embed_xaringan == T){
+  #
+  # xaringanExtra::embed_xaringan(url = url)
+  #
+  # } else {
 
   knitr::include_url(url = url, height = height)
 
-  }
+  # }
 
 }
 
@@ -289,14 +308,15 @@ embed_text_flipbook <- function(text,
 
   rmarkdown::render(rmd_path, quiet = T)
 
-  if(use_embed_xaringan == T){
-
-    xaringanExtra::embed_xaringan(url = url)
-
-  } else {
+  # development package so not allowed
+  # if(use_embed_xaringan == T){
+  #
+  #   xaringanExtra::embed_xaringan(url = url)
+  #
+  # } else {
 
     knitr::include_url(url = url, height = height)
 
-  }
+  # }
 
 }

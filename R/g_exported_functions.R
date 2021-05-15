@@ -17,9 +17,14 @@ knit_text_and_collapse <- function(text){
 #' @param left_assign a logical, default is FALSE, if TRUE will print the object created in the upper left hand corner of the source code chunk at the end of each partial reveal
 #' @param left_assign_add a character string containing function for table formatting in output, for left assign case only
 #' @param code_seq a list of code as character strings, the list will automatically be created based on the previous three arguments or the user can input code manually
+#' @param code_seq_lag a list of code as character strings, lagged, the list will automatically be created based on the previous three arguments or the user can input code manually
+#' @param code_seq_lag2 a list of code as character strings, twice lagged, the list will automatically be created based on the previous three arguments or the user can input code manually
+#' @param code_seq_target a list of code as character strings, the length of code_seq, but only containing the last element of code_seq
+#' @param code_seq_start a list of code as character strings, the length of code_seq, but only containing the first element of code_seq
 #' @param num_breaks an integer, automatically calculated based on the length of the the code_seq list
 #' @param display_type a character string vector, the default is c("code", "output") for code and output to be displayed side-by-side, "output" will create spawned code chunks to only display output, "code" will create spawned code chunks only to show the partial code builds; "func" and "md" may also be displayed
 #' @param lang a character string indicating what programming language will be used. "r" is default; "python" is experimental
+#' @param omit a character string, as a comment, indicating lines that should be omitted, defaults to "#OMIT"
 #' @param func_seq a character string with function names; default is NULL and will reflect whatever function is highlighted from the code sequence
 #' @param title a character string that may contain a title for the frames of the flipbook; this may included header info "## My Title" for example is a second level markdown title in Xaringan
 #' @param md a character string vector that contains markdown; each element will be shown on a separate slide in the display panel "md" (see display_type)
@@ -31,6 +36,9 @@ knit_text_and_collapse <- function(text){
 #' @param replace3 a character string to be replaced in the input code sequentially with the replacement3 vector elements
 #' @param replacements3 a character string vector to be replace the string indicated by the 'replace3' parameter
 #' @param widths a numeric vector containing relative widths for panels
+#' @param float defines css float parameter, defaults to "left"
+#' @param color defines css parameter, defaults to "black"
+#' @param chunk_options input 'knitr' code chunk options as a string, default to empty string "", useful input might be "fig.height = 4, fig.width = 3"
 #' @param font_size_code this ain't working yet!
 #'
 #' @return a string object is returned will only work in 'knitr' context
