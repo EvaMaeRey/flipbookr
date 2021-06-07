@@ -19,24 +19,33 @@ knitr::opts_chunk$set(
 
 <!-- badges: end -->
 
-“Flipbooks” are tools that present side-by-side, aligned, incremental  
+“Flipbooks” present side-by-side, aligned, incremental 
 code-output evolution via automated code parsing and reconstruction.
-Like traditional flipbooks, they let the reader watch a scene evolve at
-their own pace. Existing “dynamic documents” provide valuable insights
-about code behavior, by presenting code blocks together with their
-output. Yet many substeps may be contained within a single pipeline of a
-code block. If the reader of the dynamic document is familiar with many
-of the substeps, the reader won’t have too much trouble inferring what
-must be happening in unfamiliar bits. However, if many substeps are
-unfamiliar to the reader, linking code and behavior is a much trickier
-business — how a block of code transforms input “A” to output “B” may be
-murky for a newcomer. Flipbooks seek to reduce the guesswork involved
+Like physical flipbooks, they let the 'reader' watch a scene evolve at
+their own pace. Flipbooks seek to reduce the guesswork involved
 between code and its behavior by presenting substeps of a coding
-workflow; the reader of a flipbook observes the partial code that is
-used to create “A.1”, “A.2”, “A.3” etc. all the way up to “B”. The
-additional burden to create a flipbook (versus a traditional dynamic
-document) is not great because parsing and reconstruction of code
-pipelines into substeps is automated.
+pipeline; the reader of a flipbook observes the partial code that is
+used to create “A.1”, “A.2”, “A.3” etc. all the way up to “B”. 
+
+Here's the 'minimal flipbook' template that's available with the package:
+
+[View flipbook in a new tab](https://evamaerey.github.io/flipbookr/minimal_flipbook.html){target="_blank"}
+
+```{r, echo = F}
+knitr::include_graphics("https://evamaerey.github.io/flipbookr/minimal_flipbook.gif")
+```
+
+The create a flipbook isn't hard because parsing and reconstruction of code
+pipelines into substeps is automated!
+
+[View *doublecrochet* flipbook new tab](https://evamaerey.github.io/flipbookr/minimal_flipbook_double_crochet.html){target="_blank"}
+
+
+```{r, echo = F}
+knitr::include_graphics("https://evamaerey.github.io/flipbookr/minimal_flipbook_double_crochet.gif")
+```
+
+
 
 ## Installation
 
@@ -78,4 +87,3 @@ We believe in communicating with flipbooks, so we use the tool to
 describe the functions that are at work within the package
 [here](https://evamaerey.github.io/flipbooks/flipbookr/flipbookr_building_blocks#1)
 
-## please check out the code of conduct for contributors.
