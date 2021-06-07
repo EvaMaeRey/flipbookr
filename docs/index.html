@@ -67,8 +67,13 @@
 <a href="#the-flipbookr-package" class="anchor"></a>The flipbookr package</h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
-<p>“Flipbooks” are tools that present side-by-side, aligned, incremental<br>
-code-output evolution via automated code parsing and reconstruction. Like traditional flipbooks, they let the reader watch a scene evolve at their own pace. Existing “dynamic documents” provide valuable insights about code behavior, by presenting code blocks together with their output. Yet many substeps may be contained within a single pipeline of a code block. If the reader of the dynamic document is familiar with many of the substeps, the reader won’t have too much trouble inferring what must be happening in unfamiliar bits. However, if many substeps are unfamiliar to the reader, linking code and behavior is a much trickier business — how a block of code transforms input “A” to output “B” may be murky for a newcomer. Flipbooks seek to reduce the guesswork involved between code and its behavior by presenting substeps of a coding workflow; the reader of a flipbook observes the partial code that is used to create “A.1”, “A.2”, “A.3” etc. all the way up to “B”. The additional burden to create a flipbook (versus a traditional dynamic document) is not great because parsing and reconstruction of code pipelines into substeps is automated.</p>
+<p>“Flipbooks” present side-by-side, aligned, incremental code-output evolution via automated code parsing and reconstruction. Like physical flipbooks, they let the ‘reader’ watch a scene evolve at their own pace. Flipbooks seek to reduce the guesswork involved between code and its behavior by presenting substeps of a coding pipeline; the reader of a flipbook observes the partial code that is used to create “A.1”, “A.2”, “A.3” etc. all the way up to “B”.</p>
+<p>Here’s the ‘minimal flipbook’ template that’s available with the package:</p>
+<p><a href="https://evamaerey.github.io/flipbookr/minimal_flipbook.html" target="_blank">View flipbook in a new tab</a></p>
+<p><img src="https://evamaerey.github.io/flipbookr/minimal_flipbook.gif" width="100%"></p>
+<p>The create a flipbook isn’t great because parsing and reconstruction of code pipelines into substeps is automated!</p>
+<p><a href="https://evamaerey.github.io/flipbookr/minimal_flipbook_double_crochet.html" target="_blank">View <em>doublecrochet</em> flipbook new tab</a></p>
+<p><img src="https://evamaerey.github.io/flipbookr/minimal_flipbook_double_crochet.gif" width="100%"></p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -80,7 +85,7 @@ code-output evolution via automated code parsing and reconstruction. Like tradit
 <div id="template" class="section level2">
 <h2 class="hasAnchor">
 <a href="#template" class="anchor"></a>Template</h2>
-<p>The package includes a template for building a flipbook that demonstrates various flipbooking modalities; the template can also be accessed from within RStudio (New File -&gt; RMarkdown -&gt; From Template -&gt; A Minimal Flipbook) <a href="https://raw.githubusercontent.com/EvaMaeRey/flipbookr/master/inst/rmarkdown/templates/minimal-flipbook/skeleton/skeleton.Rmd">here</a>. Here is a preview, :</p>
+<p>The package includes a template for building a flipbook that demonstrates various flipbooking modalities; the template can also be accessed from within RStudio (New File -&gt; RMarkdown -&gt; From Template -&gt; A Minimal Flipbook) <a href="https://raw.githubusercontent.com/EvaMaeRey/flipbookr/master/inst/rmarkdown/templates/minimal-flipbook/skeleton/skeleton.Rmd">here</a>. Here is a preview:</p>
 <p><img src="https://github.com/EvaMaeRey/flipbooks/blob/master/flipbookr/skeleton.gif?raw=true" width="100%"></p>
 <p>The full flipbook, an html slideshow, that you can advance at your own pace, can be viewed <a href="https://evamaerey.github.io/flipbooks/flipbookr/skeleton#1">here</a>.</p>
 </div>
@@ -97,7 +102,14 @@ code-output evolution via automated code parsing and reconstruction. Like tradit
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div class="license">
+    <div class="links">
+<h2>Links</h2>
+<ul class="list-unstyled">
+<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=flipbookr">https://​cloud.r-project.org/​package=flipbookr</a>
+</li>
+</ul>
+</div>
+<div class="license">
 <h2>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
