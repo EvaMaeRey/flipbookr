@@ -19,14 +19,18 @@ package:
 
 <a href="https://evamaerey.github.io/flipbookr/minimal_flipbook.html" target="_blank">View flipbook in a new tab</a>
 
-<img src="https://evamaerey.github.io/flipbookr/minimal_flipbook.gif" width="100%" />
+<img src="https://evamaerey.github.io/flipbookr/minimal_flipbook.gif" width="75%" style="display: block; margin: auto;" />
 
-The create a flipbook isn’t great because parsing and reconstruction of
+The create a flipbook isn’t hard because parsing and reconstruction of
 code pipelines into substeps is automated!
 
-<a href="https://evamaerey.github.io/flipbookr/minimal_flipbook_double_crochet.html" target="_blank">View <em>doublecrochet</em> flipbook new tab</a>
+flipbookr’s `chunk_reveal()` disassembles a single code chunk and
+creates the “build” of multiple partial-code chunks on different slides
+(the — is automatically generated for you too).
 
-<img src="https://evamaerey.github.io/flipbookr/minimal_flipbook_double_crochet.gif" width="100%" />
+Check out the details on how to do this in this
+<a href="https://evamaerey.github.io/flipbookr/minimal_flipbook_double_crochet.html" target="_blank"><em>doublecrocheted</em> version of the same flipbook</a>
+(quotes the .Rmd source on some slides).
 
 ## Installation
 
@@ -46,23 +50,19 @@ install.packages("xaringan")
 
 ## Template
 
-The package includes a template for building a flipbook that
-demonstrates various flipbooking modalities; the template can also be
-accessed from within RStudio (New File -&gt; RMarkdown -&gt; From
-Template -&gt; A Minimal Flipbook)
-[here](https://raw.githubusercontent.com/EvaMaeRey/flipbookr/master/inst/rmarkdown/templates/minimal-flipbook/skeleton/skeleton.Rmd).
-Here is a preview:
+The package includes several templates for building a flipbook that
+demonstrates various flipbooking modes.
 
-<img src="https://github.com/EvaMaeRey/flipbooks/blob/master/flipbookr/skeleton.gif?raw=true" width="100%" />
+The templates can be accessed from within RStudio. For example: New File
+-&gt; RMarkdown -&gt; From Template -&gt; A Minimal Flipbook. The
+templates are:
 
-The full flipbook, an html slideshow, that you can advance at your own
-pace, can be viewed
-[here](https://evamaerey.github.io/flipbooks/flipbookr/skeleton#1).
+-   A Minimal Flipbook
+-   Most Flipbookr Features,
+    <a href="https://raw.githubusercontent.com/EvaMaeRey/flipbookr/master/inst/rmarkdown/templates/minimal-flipbook/skeleton/skeleton.Rmd" target="_blank">preview output</a>
+-   A Python Flipbook
 
-## Intuition about how it works
+## How it works:
 
-We believe in communicating with flipbooks, so we use the tool to
-describe the functions that are at work within the package
-[here](https://evamaerey.github.io/flipbooks/flipbookr/flipbookr_building_blocks#1)
-
-## please check out the code of conduct for contributors.
+[Here’s](https://evamaerey.github.io/flipbooks/flipbookr/flipbookr_building_blocks#1)
+a flipbook going through some of the internal flipbookr functions.
