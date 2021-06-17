@@ -187,7 +187,7 @@ r_code_full_parse <- function(code = code, omit = "#OMIT"){
     dplyr::mutate(connector = stringr::str_extract(stringr::str_trim(code), connectors)) %>%
     dplyr::mutate(connector = tidyr::replace_na(connector, "")) %>%
     # delete comments understood as
-    dplyr::mutate(comment = stringr::str_remove(comment, "#BREAK-?\\d?")) %>%
+    dplyr::mutate(comment = stringr::str_remove(comment, "#BREAK-?\\d?\\d?")) %>%
     dplyr::mutate(comment = stringr::str_remove(comment, "#ROTATE")) %>%
     dplyr::mutate(comment = stringr::str_remove(comment, "#[[A-Z]]+")) %>%
     dplyr::mutate(comment = stringr::str_remove(comment, "XXXXXXXXX")) %>%
