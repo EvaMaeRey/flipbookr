@@ -126,7 +126,7 @@ r_base_parsed_count_parentheses <- function(base_parsed){
       num_open_square = sum(open_square),
       num_closed_square = sum(closed_square)
     ) %>%
-    dplyr::full_join(all_lines) %>%
+    dplyr::full_join(all_lines, by = "line") %>%
     dplyr::arrange(line) %>%
     dplyr::mutate(
       full_line = tidyr::replace_na(full_line, ""),
@@ -180,7 +180,7 @@ r_code_full_parse <- function(code = code, omit = "#OMIT"){
     r_base_parsed_count_parentheses()
 
   raw_code_table %>%
-    dplyr::full_join(parsed_code_table) %>%
+    dplyr::full_join(parsed_code_table, by = "line") %>%
     # we need this XXXXXXX so that we don't get a bunch of warnings
     dplyr::mutate(comment = tidyr::replace_na(comment, "XXXXXXXXX")) %>%
     dplyr::mutate(comment = stringr::str_replace(comment, "^$", "XXXXXXXXX")) %>%
