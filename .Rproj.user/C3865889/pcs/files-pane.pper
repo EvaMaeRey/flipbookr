@@ -1,9 +1,9 @@
 {
-    "path": "~/Google Drive/r_packages/flipbookr/R",
+    "path": "~/Google Drive/r_packages/flipbookr/inst/rmarkdown/templates/minimal-flipbook/skeleton",
     "sortOrder": [
         {
             "columnIndex": 2,
-            "ascending": false
+            "ascending": true
         },
         {
             "columnIndex": 4,

@@ -112,6 +112,31 @@ create_short_code <- function(){ # for testing w/o knitting
 
 }
 
+#' Title
+#'
+#' @export
+#'
+#' @examples
+#' create_base_pipe_code()
+#'
+#' create_base_pipe_code() %>%
+#'  code_parse()
+create_base_pipe_code <- function(){ # for testing w/o knitting
+
+  "cars %>%              # the data
+  filter(speed > 4) %>%   # subset #BREAK
+  ggplot() #BREAK"
+
+}
+
+
+
+create_single_line_code <- function(){ # for testing no reveal
+
+  "cars"
+
+}
+
 
 create_ggplot_code <- function(){ # for testing w/o knitting
 

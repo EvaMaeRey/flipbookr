@@ -165,11 +165,12 @@ r_code_full_parse <- function(code = code, omit = "#OMIT"){
   matrix <- "%\\*%$|%o%$"
   ggplot_change_data <- "%\\+%$"
   the_magrittr <- "%>%$|%\\$%$"
+  # base_pipe <- "\\|>$"
   right_assign <- "->$"
   combine_booleans <- "\\|$|\\&$"
 
   connectors <- paste(arithmetic, matrix, ggplot_change_data,
-                      the_magrittr,
+                      the_magrittr, #base_pipe,
                       right_assign, combine_booleans, sep = "|")
 
   raw_code_table <- code_simple_parse(code = code, omit = omit)

@@ -14,6 +14,15 @@
 #   code_parse() %>%
 #   parsed_return_partial_code_sequence(break_type = "non_seq")
 
+# create_single_line_code() %>%
+#   code_parse() %>%
+#   parsed_calc_show() %>%
+#   shown_lines_calc_highlight()
+#
+# create_single_line_code() %>%
+#   code_parse() %>%
+#   parsed_return_partial_code_sequence()
+
 #### Calculate lines and highlighting to show in frames ####
 parsed_calc_show <- function(parsed, break_type = "auto", replacements = NULL){
 
@@ -123,25 +132,30 @@ shown_lines_calc_highlight <- function(which_show = list(c(1, 2), c(1, 2, 3, 4))
 
   # additional frames highlighting
 
-  if (break_type %in% c("user", "auto", "non_seq", "rotate")) {
 
-    for (i in 2:length(which_show)) {
+  if (length(which_show) > 1){
 
-      which_highlight[[i]] <- which_show[[i]][!(which_show[[i]] %in% which_show[[i - 1]])]
+      if (break_type %in% c("user", "auto", "non_seq", "rotate")) {
 
-    }
+        for (i in 2:length(which_show)) {
 
-  }
+          which_highlight[[i]] <- which_show[[i]][!(which_show[[i]] %in% which_show[[i - 1]])]
 
-  # multiverse highlighting
+        }
 
-  if (is.numeric(break_type)) {
+      }
 
-    for (i in 1:length(which_show)) {
+      # multiverse highlighting
 
-      which_highlight[[i]] <- as.integer(c())
+      if (is.numeric(break_type)) {
 
-    }
+        for (i in 1:length(which_show)) {
+
+          which_highlight[[i]] <- as.integer(c())
+
+        }
+
+      }
 
   }
 
@@ -211,9 +225,9 @@ parsed_left_assign_return_partial_code <- function(parsed,
     object_to_track  # this is the object created at the beginning of the code chunk
 
   if(is.null(left_assign_add)) {
-  c(the_reveal, " ", object_to_track)
+    c(the_reveal, " ", object_to_track)
   }else{
-  c(the_reveal, " ", paste(object_to_track, "    %>% "), left_assign_add)
+    c(the_reveal, " ", paste(object_to_track, "    %>% "), left_assign_add)
   }
 
 }
@@ -230,7 +244,7 @@ parsed_return_partial_code_sequence <- function(parsed,
                                                                              break_type = break_type),
                                                 left_assign = F,
                                                 left_assign_add = NULL
-                                                ){
+){
 
   partial_code_frames <- list()
 
@@ -477,5 +491,4 @@ text_segment <- function(text, sep){
     .[[1]]
 
 }
-
 
