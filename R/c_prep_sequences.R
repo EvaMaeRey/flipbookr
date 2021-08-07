@@ -253,14 +253,18 @@ parsed_left_assign_return_partial_code <- function(parsed,
 #' @param parsed
 #'
 #' @return
-#' @export
 #'
 #' @examples
 #' create_left_assign_code() %>%
 #'  code_parse() %>%
 #'  left_assign_detect()
 #'
+#'  create_ggplot_code() %>%
+#'  code_parse() %>%
+#'  left_assign_detect()
+#'
 #'  create_code() %>%
+#'  r_code_base_parse()
 #'  code_parse() %>%
 #'  left_assign_detect()
 left_assign_detect <- function(parsed){
@@ -268,8 +272,11 @@ left_assign_detect <- function(parsed){
 parsed %>%
     dplyr::filter(!stringr::str_detect(raw_code, "^#")) %>%
     dplyr::slice(1) %>%
-    dplyr::pull(raw_code) %>%
-    stringr::str_detect("\\w+ ? = ?|\\w+ ? <- ?")
+    dplyr::pull(raw_code) ->
+first_raw
+
+  stringr::str_detect(first_raw, "\\w+ ?= ?|\\w+ ? <- ?") &
+  !stringr::str_detect(first_raw, "\\(") # function
 
 }
 

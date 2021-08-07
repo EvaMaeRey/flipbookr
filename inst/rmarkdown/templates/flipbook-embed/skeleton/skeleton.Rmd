@@ -67,7 +67,7 @@ You might want to set the code chunk options to echo = F, unless you are demoing
 
 ```{r}
 embed_flipbook(chunk_name = "my_code",
-               use_share_again = T,
+               # use_share_again = T,
                font_size = 120)
 ```
 
@@ -99,8 +99,8 @@ You might set the code chunk option echo = F
 
 ```{r}
 embed_flipbook(chunk_name = "fine_tuning", 
-               use_share_again = T, 
-               use_embed_xaringan = T,
+               # use_share_again = T, 
+               # use_embed_xaringan = T,
                font_size = 100,
                title_page = T,
                title = "How to Style your Plot",

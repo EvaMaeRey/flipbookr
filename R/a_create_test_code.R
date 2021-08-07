@@ -140,7 +140,7 @@ create_single_line_code <- function(){ # for testing no reveal
 
 create_ggplot_code <- function(){ # for testing w/o knitting
 
-  "ggplot2::ggplot(cars) +  # initiate ggplot
+  "ggplot2::ggplot(data = cars) +  # initiate ggplot
   ggplot2::aes(x = speed) +
   ggplot2::aes(y = dist) +
   # Describing what follows
