@@ -209,6 +209,19 @@ parsed_return_recent_function <- function(parsed,
 #   code_parse() %>%
 #   parsed_return_recent_function()
 
+#' Title
+#'
+#' @param parsed
+#' @param which_show_frame
+#' @param which_highlight_frame
+#' @param left_assign_add
+#'
+#' @return
+#'
+#' @examples
+#' create_left_assign_code() %>%
+#' code_parse() %>%
+#' parsed_left_assign_return_partial_code()
 parsed_left_assign_return_partial_code <- function(parsed,
                                                    which_show_frame = 1:3,
                                                    which_highlight_frame = 3,
@@ -218,7 +231,9 @@ parsed_left_assign_return_partial_code <- function(parsed,
                                            which_show_frame,
                                            which_highlight_frame)
 
-  the_reveal[1] %>%
+  the_reveal_no_comment_lines <- the_reveal[!stringr::str_detect(the_reveal, "^#")]
+
+  the_reveal_no_comment_lines[1] %>%
     stringr::str_extract(".+\\<-|.+\\=") %>%
     stringr::str_remove("<-|=") %>%
     stringr::str_trim() ->
@@ -233,6 +248,31 @@ parsed_left_assign_return_partial_code <- function(parsed,
 }
 
 
+#' Title
+#'
+#' @param parsed
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' create_left_assign_code() %>%
+#'  code_parse() %>%
+#'  left_assign_detect()
+#'
+#'  create_code() %>%
+#'  code_parse() %>%
+#'  left_assign_detect()
+left_assign_detect <- function(parsed){
+
+parsed %>%
+    dplyr::filter(!stringr::str_detect(raw_code, "^#")) %>%
+    dplyr::slice(1) %>%
+    dplyr::pull(raw_code) %>%
+    stringr::str_detect("\\w+ ? = ?|\\w+ ? <- ?")
+
+}
+
 
 parsed_return_partial_code_sequence <- function(parsed,
                                                 break_type = "auto",
@@ -245,6 +285,12 @@ parsed_return_partial_code_sequence <- function(parsed,
                                                 left_assign = F,
                                                 left_assign_add = NULL
 ){
+
+  if(left_assign == "detect"){
+
+    left_assign <- parsed %>% left_assign_detect()
+
+    }
 
   partial_code_frames <- list()
 

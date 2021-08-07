@@ -159,6 +159,14 @@ cars %>%
 ```
 
 
+---
+
+`r chunk_reveal("test", left_assign = "detect")`
+
+```{r test, include=FALSE}
+# hello
+jam <- "hi"
+```
 
 
 
