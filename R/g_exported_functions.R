@@ -153,9 +153,11 @@ chunk_reveal <- function(chunk_name = NULL,
                        #out.width = out.width
                        )
 
-  paste(knitr::knit(text = text), collapse = "\n")
+  # if (chunk_reveal)
+  paste(knitr::knit(text = text, quiet = F), collapse = "\n")
 
 }
+
 
 
 ## returning code sequence as a vector

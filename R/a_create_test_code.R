@@ -123,8 +123,8 @@ create_short_code <- function(){ # for testing w/o knitting
 #'  code_parse()
 create_base_pipe_code <- function(){ # for testing w/o knitting
 
-  "cars %>%              # the data
-  filter(speed > 4) %>%   # subset #BREAK
+  "cars |>             # the data
+  filter(speed > 4) |>
   ggplot() #BREAK"
 
 }
