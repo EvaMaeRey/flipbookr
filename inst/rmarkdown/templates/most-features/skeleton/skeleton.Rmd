@@ -939,35 +939,31 @@ Flipbooks created with Xaringan are multi-file creations.  The figures produced 
 
 ---
 
-## Convert to pdf
 
-to create a pdf from you may use the pagedown package as follows to use chrome print to pdf (here, eval is set to FALSE):
+## Convert to other file formats
+
+To convert your flipbooks to formats other than html (e.g. pdf, gif, pptx, mp4, png) use the `build_*()` functions in the [xaringanBuilder](https://github.com/jhelvy/xaringanBuilder) package by John Helveston. Example for pdf:
 
 ```{r, eval = F}
-pagedown::chrome_print(input = "my_flipbook.Rmd")
+if (!requireNamespace("xaringanBuilder")) remotes::install_github("jhelvy/xaringanBuilder")
+library(xaringanBuilder)
 
-# or (recommended):
+build_pdf("my_flipbook.Rmd")
 
-pagedown::chrome_print(input = "my_flipbook.html")
+# Or, if you've already rendered the html could do
+build_pdf("my_flipbook.html")
 ```
 
-Note:  This works for flipbooks when css is set as it is in the last css code chunk (the media print part) else only the last frame from the flipbooked chunks will display in the pdf.  Thanks to Bryan Shalloway for thinking about conversion to pdf, [the exposition of this last frame problem, and proposing a solution](https://github.com/EvaMaeRey/flipbookr/issues/21) and also to Antoine Bichat! Be sure to preview your work before you present --- translation might not be 100% visual match!
+Note:  In order for pdf (or other non-html flipbook output types) to successfully render a code chunks as a sequence of separate slides, the css at media rule must be set (see last css code chunk -- the media print part -- in this file). Otherwise only the last frame from the flipbook chunks will display in the pdf.  Thanks to Bryan Shalloway for thinking about conversion to pdf, [the exposition of this last frame problem, and proposing a solution](https://github.com/EvaMaeRey/flipbookr/issues/21) and also to Antoine Bichat! Be sure to preview your work before you present --- translation might not be 100% visual match!
+
 
 ---
 
-## flipbook preview -- as gif
+## flipbook preview
 
-If you want to create a preview of your flipbook, you can pass the pdf to functions from magick (here, eval is set to FALSE):  
+Using `xaringanBuilder::build_gif("my_flipbook.Rmd")` is the easiest way to make a gif of your flipbook.
 
-```{r, eval = F}
-# then create gif as follows
-magick::image_read_pdf(path = "my_flipbook.pdf", density = 100) %>% # create images
-  magick::image_write_gif(path = "my_flipbook.gif", delay = .4) # images to gif
-```
-
-Bryan Shalloway proposed this workflow.  Thanks Bryan!
-
-Coming soon, build a preview, using [viztoc](https://github.com/EvaMaeRey/viztoc). Development package!  Breaking changes are the norm! 
+Coming soon, build a visual table of contents, using [viztoc](https://github.com/EvaMaeRey/viztoc). Development package!  Breaking changes are the norm! 
 
 
 
