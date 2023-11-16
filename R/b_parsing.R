@@ -7,6 +7,14 @@ chunk_code_get <- function(chunk_name){
 
 }
 
+# # modifying with live code - this could help me write tests and such?
+# chunk_code_get <- function(chunk_name){
+#
+#   paste(knitr::knit_code$get(chunk_name), collapse = "\n")
+#
+# }
+
+
 
 correct_py <- function(lang){
 

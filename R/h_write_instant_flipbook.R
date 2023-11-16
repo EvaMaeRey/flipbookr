@@ -57,7 +57,7 @@ xaringanExtra::use_share_again()
 ',the_code,'
 ```
 
-`r chunk_reveal(chunk_name = "the_chunk", break_type = "', break_type, '", ...)`
+`r chunk_reveal(chunk_name = "the_chunk", break_type = "', break_type, '")`
 
 
 
@@ -158,6 +158,67 @@ embed_flipbook <- function(chunk_name,
 
 }
 
+
+chunk_reveal_live <- embed_flipbook <- function(chunk_name,
+                                             break_type = "auto",
+                                             code_file_name = paste0("embedded_flipbooks/", chunk_name, ".R"),
+                                             rmd_path = paste0("embedded_flipbooks/", chunk_name, "_embed.Rmd"),
+                                             title = stringr::str_replace_all(chunk_name, "_|\\.", " "),
+                                             subtitle = "",
+                                             author = "",
+                                             # use_share_again = F,
+                                             url = paste0("embedded_flipbooks/", chunk_name, "_embed.html"),
+                                             height = 325,
+                                             font_size = 120,
+                                             # use_embed_xaringan = F,
+                                             title_page = F,
+                                             ...
+){
+
+  if(!dir.exists("embedded_flipbooks")){dir.create("embedded_flipbooks")}
+  save.image("embedded_flipbooks/current_image.Rdata") # in case something is needed from it in instant fb
+
+  return_chunk_code(chunk_name = chunk_name) %>%
+    paste(collapse = "\n") %>%
+    writeLines(code_file_name)
+
+  write_instant_flipbook_source(chunk_name = chunk_name,
+                                break_type = break_type,
+                                code_file_name = code_file_name,
+                                rmd_path = rmd_path,
+                                title = title,
+                                subtitle = subtitle,
+                                author = author,
+                                # use_share_again = use_share_again,
+                                font_size = font_size,
+                                title_page = title_page,
+                                ...
+  )
+
+  # tmp <- tempfile()
+
+  rmarkdown::render(rmd_path, quiet = T)
+
+  # fs::file_show(path = paste(getwd(), url, sep = "/"),
+                # browser = getOption("browser"))
+
+  print(rstudioapi::isAvailable())
+  rstudioapi::viewer(file.path(getwd(), url), height = height)
+
+  # knitr::include_url(paste(getwd(), url, sep = "/"))
+
+  # xaringanExtra is development package, so this is not allowed for now.
+  # if(use_embed_xaringan == T){
+  #
+  # xaringanExtra::embed_xaringan(url = url)
+  #
+  # } else {
+
+  # knitr::include_url(url = url, height = height)
+
+  # }
+
+}
 
 
 ###### write instant flipbook source

@@ -73,3 +73,30 @@ The templates can be accessed from within RStudio.  For example: New File -\> RM
 
 [Here's](https://evamaerey.github.io/flipbooks/flipbookr/flipbookr_building_blocks#1) a flipbook going through some of the internal flipbookr functions. 
 
+
+```{r sample_chunk}
+library(tidyverse)
+Titanic %>% 
+  data.frame() %>% 
+  uncount(Freq) %>% 
+  ggplot() + 
+  aes(x = Sex) + 
+  geom_bar(position = "fill") + 
+  aes(fill = Survived)
+```
+
+
+
+## Coming soon
+
+```{r, eval = F}
+chunk_reveal_live(chunk_name = "sample_chunk")
+```
+
+
+# how am I using rstudioapi wrong?
+
+```{r}
+download.file(url = "https://evamaerey.github.io/flipbookr/", destfile = "myhtml.html")
+rstudioapi::viewer("myhtml.html")
+```
