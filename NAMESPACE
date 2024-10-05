@@ -2,6 +2,9 @@
 
 export("%>%")
 export(chunk_reveal)
+export(create_base_pipe_code)
 export(embed_flipbook)
+export(return_chunk_code)
 export(text_reveal)
 importFrom(magrittr,"%>%")
+importFrom(stringr,str_remove)
