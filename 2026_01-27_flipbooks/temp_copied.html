@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>sample chunk</title>
+    <title>copied</title>
     <meta charset="utf-8" />
     <meta name="author" content="" />
+    <script src="libs/header-attrs-2.30/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
@@ -27,8 +28,8 @@ count: false
 
 .panel1-the_chunk-auto[
 
-```r
-*library(tidyverse)
+``` r
+*library(ggplot2)
 ```
 ]
  
@@ -42,51 +43,15 @@ count: false
 
 .panel1-the_chunk-auto[
 
-```r
-library(tidyverse)
-*Titanic
+``` r
+library(ggplot2)
+
+*ggplot(cars)
 ```
 ]
  
 .panel2-the_chunk-auto[
-
-```
-, , Age = Child, Survived = No
-
-      Sex
-Class  Male Female
-  1st     0      0
-  2nd     0      0
-  3rd    35     17
-  Crew    0      0
-
-, , Age = Adult, Survived = No
-
-      Sex
-Class  Male Female
-  1st   118      4
-  2nd   154     13
-  3rd   387     89
-  Crew  670      3
-
-, , Age = Child, Survived = Yes
-
-      Sex
-Class  Male Female
-  1st     5      1
-  2nd    11     13
-  3rd    13     14
-  Crew    0      0
-
-, , Age = Adult, Survived = Yes
-
-      Sex
-Class  Male Female
-  1st    57    140
-  2nd    14     80
-  3rd    75     76
-  Crew  192     20
-```
+![](temp_copied_files/figure-html/the_chunk_auto_02_output-1.png)&lt;!-- --&gt;
 ]
 
 ---
@@ -95,115 +60,16 @@ count: false
 
 .panel1-the_chunk-auto[
 
-```r
-library(tidyverse)
-Titanic %&gt;%
-* data.frame()
+``` r
+library(ggplot2)
+
+ggplot(cars) +
+* aes(x = speed)
 ```
 ]
  
 .panel2-the_chunk-auto[
-
-]
-
----
-count: false
- 
-
-.panel1-the_chunk-auto[
-
-```r
-library(tidyverse)
-Titanic %&gt;%
-  data.frame() %&gt;%
-* uncount(Freq)
-```
-]
- 
-.panel2-the_chunk-auto[
-
-]
-
----
-count: false
- 
-
-.panel1-the_chunk-auto[
-
-```r
-library(tidyverse)
-Titanic %&gt;%
-  data.frame() %&gt;%
-  uncount(Freq) %&gt;%
-* ggplot()
-```
-]
- 
-.panel2-the_chunk-auto[
-![](sample_chunk_embed_files/figure-html/the_chunk_auto_05_output-1.png)&lt;!-- --&gt;
-]
-
----
-count: false
- 
-
-.panel1-the_chunk-auto[
-
-```r
-library(tidyverse)
-Titanic %&gt;%
-  data.frame() %&gt;%
-  uncount(Freq) %&gt;%
-  ggplot() +
-* aes(x = Sex)
-```
-]
- 
-.panel2-the_chunk-auto[
-![](sample_chunk_embed_files/figure-html/the_chunk_auto_06_output-1.png)&lt;!-- --&gt;
-]
-
----
-count: false
- 
-
-.panel1-the_chunk-auto[
-
-```r
-library(tidyverse)
-Titanic %&gt;%
-  data.frame() %&gt;%
-  uncount(Freq) %&gt;%
-  ggplot() +
-  aes(x = Sex) +
-* geom_bar(position = "fill")
-```
-]
- 
-.panel2-the_chunk-auto[
-![](sample_chunk_embed_files/figure-html/the_chunk_auto_07_output-1.png)&lt;!-- --&gt;
-]
-
----
-count: false
- 
-
-.panel1-the_chunk-auto[
-
-```r
-library(tidyverse)
-Titanic %&gt;%
-  data.frame() %&gt;%
-  uncount(Freq) %&gt;%
-  ggplot() +
-  aes(x = Sex) +
-  geom_bar(position = "fill") +
-* aes(fill = Survived)
-```
-]
- 
-.panel2-the_chunk-auto[
-![](sample_chunk_embed_files/figure-html/the_chunk_auto_08_output-1.png)&lt;!-- --&gt;
+![](temp_copied_files/figure-html/the_chunk_auto_03_output-1.png)&lt;!-- --&gt;
 ]
 
 &lt;style&gt;
@@ -258,14 +124,15 @@ code.r.hljs.remark-code:hover{
   border-style: solid;
 }
 &lt;/style&gt;
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"ratio": "16:9",
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false
+  "ratio": "16:9",
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

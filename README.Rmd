@@ -96,7 +96,143 @@ chunk_reveal_live(chunk_name = "sample_chunk")
 
 # how am I using rstudioapi wrong?
 
-```{r}
+```{r, eval = F}
 download.file(url = "https://evamaerey.github.io/flipbookr/", destfile = "myhtml.html")
 rstudioapi::viewer("myhtml.html")
+```
+
+
+```{r}
+code <- fs::dir_ls("R")
+
+for(i in code){
+  
+  source(file = i)
+
+}
+
+```
+
+
+
+```{r}
+create_code <- function(){ # for testing w/o knitting
+
+  "cars %>%             # the data  #BREAK
+  filter(speed > 4) %>%  # subset
+  ggplot() +              # pipe to ggplot
+  aes(x = speed) +
+  aes(y = dist) +
+  # Describing what follows
+  geom_point(alpha = .3) + #BREAK
+  geom_point(alpha = 1) + #BREAK2
+  geom_jitter(alpha = .5) + #BREAK3
+  aes(color =
+  speed > 14
+  ) %+%
+  cars ->
+  my_plot  #BREAK
+
+  NULL #OMIT
+
+  1 + 1 #BREAK"
+
+}
+
+
+```
+
+
+
+```{r code = readLines("R/b_parsing.R")}
+
+```
+
+
+```{r}
+create_code() %>% 
+  code_parse()
+```
+
+
+```{r code = readLines("R/c_prep_sequences.R")}
+
+
+
+```
+
+
+```{r}
+create_code() %>% 
+  code_parse() %>% 
+  parsed_return_partial_code()
+
+create_code() %>% 
+  code_parse() %>% 
+  parsed_return_partial_code_sequence() %>% 
+  head(3)
+```
+
+
+```{r code = readLines("R/d_prep_rmd_chunks.R")}
+
+
+
+```
+
+
+```{r}
+return_partial_chunks_template_code()
+
+create_code() %>% 
+  code_parse() %>% 
+  parsed_calc_show() %>% 
+  head()
+
+create_code() %>% 
+  code_parse() %>% 
+  parsed_return_partial_code_sequence() %>% 
+  head()
+```
+
+```{r code = readLines("R/e_define_css.R")}
+
+
+
+```
+
+```{r}
+define_css
+
+```
+
+```{r code = readLines("R/f_chunk_expand.R")}
+
+
+
+```
+
+
+```{r code = readLines("R/g_exported_functions.R")}
+
+
+
+```
+
+```{r}
+
+```
+
+
+```{r code = readLines("R/g_exported_functions.R")}
+
+
+
+```
+
+
+```{r code = readLines("R/h_write_instant_flipbook.R")}
+
+
+
 ```

@@ -1,5 +1,5 @@
 ---
-title: "sample chunk"
+title: "copied"
 subtitle: ""
 author: ""
 output:
@@ -31,14 +31,10 @@ xaringanExtra::use_share_again()
 
 
 ```{r the_chunk, include = F}
-library(tidyverse)
-Titanic %>% 
-  data.frame() %>% 
-  uncount(Freq) %>% 
-  ggplot() + 
-  aes(x = Sex) + 
-  geom_bar(position = "fill") + 
-  aes(fill = Survived)
+library(ggplot2)
+
+ggplot(cars) +
+  aes(x = speed)
 ```
 
 `r chunk_reveal(chunk_name = "the_chunk", break_type = "auto")`

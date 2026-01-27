@@ -5,8 +5,14 @@
 \title{Function takes character string, splits it based on delimiter,
 and returns each element of the resultant vector on its own slide}
 \usage{
-text_reveal(text, sep = "   ", md_prefix = "#", sep_replace = "",
-  slide_break = "---", class = "class: inverse, middle, center")
+text_reveal(
+  text,
+  sep = "   ",
+  md_prefix = "#",
+  sep_replace = "",
+  slide_break = "---",
+  class = "class: inverse, middle, center"
+)
 }
 \arguments{
 \item{text}{a character string to be split and delivered piece-wise to a slide}

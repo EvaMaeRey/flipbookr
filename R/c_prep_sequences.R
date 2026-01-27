@@ -135,27 +135,27 @@ shown_lines_calc_highlight <- function(which_show = list(c(1, 2), c(1, 2, 3, 4))
 
   if (length(which_show) > 1){
 
-      if (break_type %in% c("user", "auto", "non_seq", "rotate")) {
+    if (break_type %in% c("user", "auto", "non_seq", "rotate")) {
 
-        for (i in 2:length(which_show)) {
+      for (i in 2:length(which_show)) {
 
-          which_highlight[[i]] <- which_show[[i]][!(which_show[[i]] %in% which_show[[i - 1]])]
-
-        }
+        which_highlight[[i]] <- which_show[[i]][!(which_show[[i]] %in% which_show[[i - 1]])]
 
       }
 
-      # multiverse highlighting
+    }
 
-      if (is.numeric(break_type)) {
+    # multiverse highlighting
 
-        for (i in 1:length(which_show)) {
+    if (is.numeric(break_type)) {
 
-          which_highlight[[i]] <- as.integer(c())
+      for (i in 1:length(which_show)) {
 
-        }
+        which_highlight[[i]] <- as.integer(c())
 
       }
+
+    }
 
   }
 
@@ -269,14 +269,14 @@ parsed_left_assign_return_partial_code <- function(parsed,
 #'  left_assign_detect()
 left_assign_detect <- function(parsed){
 
-parsed %>%
+  parsed %>%
     dplyr::filter(!stringr::str_detect(raw_code, "^#")) %>%
     dplyr::slice(1) %>%
     dplyr::pull(raw_code) ->
-first_raw
+    first_raw
 
   stringr::str_detect(first_raw, "\\w+ ?= ?|\\w+ ? <- ?") &
-  !stringr::str_detect(first_raw, "\\(") # function
+    !stringr::str_detect(first_raw, "\\(") # function
 
 }
 
@@ -297,7 +297,7 @@ parsed_return_partial_code_sequence <- function(parsed,
 
     left_assign <- parsed %>% left_assign_detect()
 
-    }
+  }
 
   partial_code_frames <- list()
 
@@ -544,4 +544,3 @@ text_segment <- function(text, sep){
     .[[1]]
 
 }
-

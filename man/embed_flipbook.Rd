@@ -4,13 +4,20 @@
 \alias{embed_flipbook}
 \title{embed_flipbook}
 \usage{
-embed_flipbook(chunk_name, break_type = "auto",
+embed_flipbook(
+  chunk_name = NULL,
+  break_type = "auto",
   code_file_name = paste0("embedded_flipbooks/", chunk_name, ".R"),
   rmd_path = paste0("embedded_flipbooks/", chunk_name, "_embed.Rmd"),
   title = stringr::str_replace_all(chunk_name, "_|\\\\.", " "),
-  subtitle = "", author = "", url = paste0("embedded_flipbooks/",
-  chunk_name, "_embed.html"), height = 325, font_size = 120,
-  title_page = F, ...)
+  subtitle = "",
+  author = "",
+  url = paste0("embedded_flipbooks/", chunk_name, "_embed.html"),
+  height = 325,
+  font_size = 120,
+  title_page = F,
+  ...
+)
 }
 \arguments{
 \item{chunk_name}{a character string referring named chunk containing code to 'flipbook'}
